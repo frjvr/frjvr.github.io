@@ -5,3 +5,5 @@ I am a software developer skilled in Python, Javascript and Go, and focused on J
 
 ## Projects
 This is an overview of my latest works. Code and entity specifics are not shown to preserve deployment integrity.
+
+### [Travel Booking Engine. Java with microservices in Spring](/projects/tripping/index.html)
