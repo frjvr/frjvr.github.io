@@ -1,9 +1,0 @@
-com.authenticate.webtoken
-com.authenticate.webtoken.controller
-com.authenticate.webtoken.model
-com.authenticate.webtoken.payload.request
-com.authenticate.webtoken.payload.response
-com.authenticate.webtoken.repository
-com.authenticate.webtoken.security
-com.authenticate.webtoken.security.service
-com.authenticate.webtoken.security.webtoken
