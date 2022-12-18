@@ -1,25 +1,12 @@
----
-title: Cloud Controller Manager
-content_type: concept
-weight: 40
----
-
-<!-- overview -->
-
-{{< feature-state state="beta" for_k8s_version="v1.11" >}}
-
 Cloud infrastructure technologies let you run Kubernetes on public, private, and hybrid clouds.
 Kubernetes believes in automated, API-driven infrastructure without tight coupling between
 components.
 
-{{< glossary_definition term_id="cloud-controller-manager" length="all" prepend="The cloud-controller-manager is">}}
 
 The cloud-controller-manager is structured using a plugin
 mechanism that allows different cloud providers to integrate their platforms with Kubernetes.
 
 
-
-<!-- body -->
 
 ## Design
 
