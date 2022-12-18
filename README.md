@@ -6,4 +6,4 @@
 ### Contact
 #### fjavier.hormigosjimenez@protonmail.com
 
-### [Kubernetes Reference Documentation](/docs/kubernetes/en/home/readme)
+### [Kubernetes Reference Documentation](/docs/kubernetes/en/home/_index)
