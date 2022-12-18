@@ -79,7 +79,7 @@ See the [`kubectl logs` documentation](/docs/kubernetes/en/reference/generated/k
 
 ### How nodes handle container logs
 
-![Node level logging](/docs/kubernetes/en/images/user-guide/logging/logging-node-level.png)
+![Node level logging](/docs/kubernetes/images/user-guide/logging/logging-node-level.png)
 
 A container runtime handles and redirects any output generated to a containerized application's `stdout` and `stderr` streams.
 Different container runtimes implement this in different ways; however, the integration with the kubelet is standardized
@@ -209,7 +209,7 @@ While Kubernetes does not provide a native solution for cluster-level logging, t
 
 ### Using a node logging agent
 
-![Using a node level logging agent](/docs/kubernetes/en/images/user-guide/logging/logging-with-node-agent.png)
+![Using a node level logging agent](/docs/kubernetes/images/user-guide/logging/logging-with-node-agent.png)
 
 You can implement cluster-level logging by including a _node-level logging agent_ on each node. The logging agent is a dedicated tool that exposes logs or pushes logs to a backend. Commonly, the logging agent is a container that has access to a directory with log files from all of the application containers on that node.
 
@@ -229,7 +229,7 @@ You can use a sidecar container in one of the following ways:
 
 #### Streaming sidecar container
 
-![Sidecar container with a streaming container](/docs/kubernetes/en/images/user-guide/logging/logging-with-streaming-sidecar.png)
+![Sidecar container with a streaming container](/docs/kubernetes/images/user-guide/logging/logging-with-streaming-sidecar.png)
 
 By having your sidecar containers write to their own `stdout` and `stderr`
 streams, you can take advantage of the kubelet and the logging agent that
@@ -307,7 +307,7 @@ leave rotation and retention policies to the kubelet.
 
 #### Sidecar container with a logging agent
 
-![Sidecar container with a logging agent](/docs/kubernetes/en/images/user-guide/logging/logging-with-sidecar-agent.png)
+![Sidecar container with a logging agent](/docs/kubernetes/images/user-guide/logging/logging-with-sidecar-agent.png)
 
 If the node-level logging agent is not flexible enough for your situation, you
 can create a sidecar container with a separate logging agent that you have
@@ -338,7 +338,7 @@ The pod mounts a volume where fluentd can pick up its configuration data.
 
 ### Exposing logs directly from the application
 
-![Exposing logs directly from the application](/docs/kubernetes/en/images/user-guide/logging/logging-from-application.png)
+![Exposing logs directly from the application](/docs/kubernetes/images/user-guide/logging/logging-from-application.png)
 
 Cluster-logging that exposes or pushes logs directly from every application is outside the scope of Kubernetes.
 

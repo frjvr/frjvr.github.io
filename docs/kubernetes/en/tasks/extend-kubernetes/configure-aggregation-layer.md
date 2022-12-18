@@ -44,7 +44,7 @@ The rest of this section describes these steps in detail.
 
 The flow can be seen in the following diagram.
 
-![aggregation auth flows](/docs/kubernetes/en/images/aggregation-api-auth-flow.png).
+![aggregation auth flows](/docs/kubernetes/images/aggregation-api-auth-flow.png).
 
 The source for the above swimlanes can be found in the source of this document.
 

@@ -28,7 +28,7 @@ or deploy new applications using a deploy wizard.
 
 Dashboard also provides information on the state of Kubernetes resources in your cluster and on any errors that may have occurred.
 
-![Kubernetes Dashboard UI](/docs/kubernetes/en/images/ui-dashboard.png)
+![Kubernetes Dashboard UI](/docs/kubernetes/images/ui-dashboard.png)
 
 <!-- body -->
 
@@ -76,7 +76,7 @@ This page contains a link to this document as well as a button to deploy your fi
 In addition, you can view which system applications are running by default in the `kube-system`
 [namespace](/docs/kubernetes/en/tasks/administer-cluster/namespaces/) of your cluster, for example the Dashboard itself.
 
-![Kubernetes Dashboard welcome page](/docs/kubernetes/en/images/ui-dashboard-zerostate.png)
+![Kubernetes Dashboard welcome page](/docs/kubernetes/images/ui-dashboard-zerostate.png)
 
 ## Deploying containerized applications
 
@@ -250,7 +250,7 @@ The view allows for editing and managing config objects and displays secrets hid
 Pod lists and detail pages link to a logs viewer that is built into Dashboard.
 The viewer allows for drilling down logs from containers belonging to a single Pod.
 
-![Logs viewer](/docs/kubernetes/en/images/ui-dashboard-logs-view.png)
+![Logs viewer](/docs/kubernetes/images/ui-dashboard-logs-view.png)
 
 ## {{% heading "whatsnext" %}}
 

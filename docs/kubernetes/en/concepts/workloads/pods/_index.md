@@ -110,7 +110,7 @@ For example, you might have a container that
 acts as a web server for files in a shared volume, and a separate "sidecar" container
 that updates those files from a remote source, as in the following diagram:
 
-{{< figure src="/docs/kubernetes/en/images/pod.svg" alt="Pod creation diagram" class="diagram-medium" >}}
+{{< figure src="/docs/kubernetes/images/pod.svg" alt="Pod creation diagram" class="diagram-medium" >}}
 
 Some Pods have {{< glossary_tooltip text="init containers" term_id="init-container" >}} as well as {{< glossary_tooltip text="app containers" term_id="app-container" >}}. Init containers run and complete before the app containers are started.
 

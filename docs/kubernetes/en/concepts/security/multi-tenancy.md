@@ -77,7 +77,7 @@ cluster. Finally, hybrid architectures are also possible, such as a SaaS provide
 combination of per-customer workloads for sensitive data, combined with multi-tenant shared
 services.
 
-{{< figure src="/docs/kubernetes/en/images/multi-tenancy.png" title="A cluster showing coexisting tenancy models" class="diagram-large" >}}
+{{< figure src="/docs/kubernetes/images/multi-tenancy.png" title="A cluster showing coexisting tenancy models" class="diagram-large" >}}
 
 ### Isolation
 
