@@ -60,7 +60,7 @@ It also enforces `cgroups` (i.e. `cpuset.mems`) for pods.
 The complete flow diagram concerning pod admission and deployment process is illustrated in
 [Memory Manager KEP: Design Overview][4] and below:
 
-![Memory Manager in the pod admission and deployment process](/images/docs/memory-manager-diagram.svg)
+![Memory Manager in the pod admission and deployment process](/docs/kubernetes/en/images/memory-manager-diagram.svg)
 
 During this process, the Memory Manager updates its internal counters stored in
 [Node Map and Memory Maps][2] to manage guaranteed memory allocation.

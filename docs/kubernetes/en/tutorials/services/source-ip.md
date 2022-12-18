@@ -304,7 +304,7 @@ deliberately failing health checks.
 
 Visually:
 
-![Source IP with externalTrafficPolicy](/images/docs/sourceip-externaltrafficpolicy.svg)
+![Source IP with externalTrafficPolicy](/docs/kubernetes/en/images/sourceip-externaltrafficpolicy.svg)
 
 You can test this by setting the annotation:
 

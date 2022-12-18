@@ -33,7 +33,7 @@ the kubelet command line option `--reserved-cpus` to set an
 
 ## Node Allocatable
 
-![node capacity](/images/docs/node-capacity.svg)
+![node capacity](/docs/kubernetes/en/images/node-capacity.svg)
 
 'Allocatable' on a Kubernetes node is defined as the amount of compute resources
 that are available for pods. The scheduler does not over-subscribe

@@ -59,7 +59,7 @@ hostnames ("`cluster.local`" suffix by default).
 This is the path followed by DNS Queries after NodeLocal DNSCache is enabled:
 
 
-{{< figure src="/images/docs/nodelocaldns.svg" alt="NodeLocal DNSCache flow" title="Nodelocal DNSCache flow" caption="This image shows how NodeLocal DNSCache handles DNS queries." class="diagram-medium" >}}
+{{< figure src="/docs/kubernetes/en/images/nodelocaldns.svg" alt="NodeLocal DNSCache flow" title="Nodelocal DNSCache flow" caption="This image shows how NodeLocal DNSCache handles DNS queries." class="diagram-medium" >}}
 
 ## Configuration
 

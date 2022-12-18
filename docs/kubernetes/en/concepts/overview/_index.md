@@ -33,7 +33,7 @@ production workloads at scale with best-of-breed ideas and practices from the co
 
 Let's take a look at why Kubernetes is so useful by going back in time.
 
-![Deployment evolution](/images/docs/Container_Evolution.svg)
+![Deployment evolution](/docs/kubernetes/en/images/Container_Evolution.svg)
 
 **Traditional deployment era:**
 Early on, organizations ran applications on physical servers. There was no way to define

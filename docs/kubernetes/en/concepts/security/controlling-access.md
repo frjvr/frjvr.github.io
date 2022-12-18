@@ -19,7 +19,7 @@ authorized for API access.
 When a request reaches the API, it goes through several stages, illustrated in the
 following diagram:
 
-![Diagram of request handling steps for Kubernetes API request](/images/docs/admin/access-control-overview.svg)
+![Diagram of request handling steps for Kubernetes API request](/docs/kubernetes/en/images/admin/access-control-overview.svg)
 
 ## Transport security
 
