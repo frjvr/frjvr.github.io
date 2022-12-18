@@ -13,10 +13,10 @@ In order to support latency-critical and high-throughput workloads, Kubernetes o
 
 <!-- body -->
 
-The main manager, the Topology Manager, is a Kubelet component that co-ordinates the overall resource management process through its [policy](/docs/tasks/administer-cluster/topology-manager/).
+The main manager, the Topology Manager, is a Kubelet component that co-ordinates the overall resource management process through its [policy](/docs/kubernetes/en/tasks/administer-cluster/topology-manager/).
 
 The configuration of individual managers is elaborated in dedicated documents:
 
-- [CPU Manager Policies](/docs/tasks/administer-cluster/cpu-management-policies/)
-- [Device Manager](/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/#device-plugin-integration-with-the-topology-manager)
-- [Memory Manager Policies](/docs/tasks/administer-cluster/memory-manager/)
+- [CPU Manager Policies](/docs/kubernetes/en/tasks/administer-cluster/cpu-management-policies/)
+- [Device Manager](/docs/kubernetes/en/concepts/extend-kubernetes/compute-storage-net/device-plugins/#device-plugin-integration-with-the-topology-manager)
+- [Memory Manager Policies](/docs/kubernetes/en/tasks/administer-cluster/memory-manager/)

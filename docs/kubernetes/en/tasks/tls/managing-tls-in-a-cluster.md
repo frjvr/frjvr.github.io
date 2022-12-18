@@ -58,7 +58,7 @@ Service named `kubernetes` in the default namespace.
 
 If you want to use a custom certificate authority for your workloads, you should generate
 that CA separately, and distribute its CA certificate using a 
-[ConfigMap](/docs/tasks/configure-pod-container/configure-pod-configmap) that your pods 
+[ConfigMap](/docs/kubernetes/en/tasks/configure-pod-container/configure-pod-configmap) that your pods 
 have access to read.
 {{< /note >}}
 
@@ -137,7 +137,7 @@ and stashed in the `.spec.request` field. You are also requesting a
 certificate with the "digital signature", "key encipherment", and "server
 auth" key usages, signed by an example `example.com/serving` signer.
 A specific `signerName` must be requested.
-View documentation for [supported signer names](/docs/reference/access-authn-authz/certificate-signing-requests/#signers)
+View documentation for [supported signer names](/docs/kubernetes/en/reference/access-authn-authz/certificate-signing-requests/#signers)
 for more information.
 
 The CSR should now be visible from the API in a Pending state. You can see
@@ -168,7 +168,7 @@ Events: <none>
 
 ## Get the CertificateSigningRequest approved {#get-the-certificate-signing-request-approved}
 
-Approving the [certificate signing request](/docs/reference/access-authn-authz/certificate-signing-requests/)
+Approving the [certificate signing request](/docs/kubernetes/en/reference/access-authn-authz/certificate-signing-requests/)
 is either done by an automated approval process or on a one off basis by a cluster
 administrator. If you're authorized to approve a certificate request, you can do that
 manually using `kubectl`; for example:
@@ -352,7 +352,7 @@ If and only if these two requirements are met, the approver should approve
 the CSR and otherwise should deny the CSR.
 
 For more information on certificate approval and access control, read
-the [Certificate Signing Requests](/docs/reference/access-authn-authz/certificate-signing-requests/)
+the [Certificate Signing Requests](/docs/kubernetes/en/reference/access-authn-authz/certificate-signing-requests/)
 reference page.
 
 ## Configuring your cluster to provide signing

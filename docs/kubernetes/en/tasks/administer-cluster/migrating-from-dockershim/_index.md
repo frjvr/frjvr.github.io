@@ -18,7 +18,7 @@ to understand the problem better.
 Dockershim was removed from Kubernetes with the release of v1.24.
 If you use Docker Engine via dockershim as your container runtime, and wish to upgrade to v1.24,
 it is recommended that you either migrate to another runtime or find an alternative means to obtain Docker Engine support.
-Check out [container runtimes](/docs/setup/production-environment/container-runtimes/)
+Check out [container runtimes](/docs/kubernetes/en/setup/production-environment/container-runtimes/)
 section to know your options. Make sure to
 [report issues](https://github.com/kubernetes/kubernetes/issues) you encountered
 with the migration. So the issue can be fixed in a timely manner and your cluster would be
@@ -29,14 +29,14 @@ configuration.
 
 These tasks will help you to migrate:
 
-* [Check whether Dockershim removal affects you](/docs/tasks/administer-cluster/migrating-from-dockershim/check-if-dockershim-removal-affects-you/)
-* [Migrate Docker Engine nodes from dockershim to cri-dockerd](/docs/tasks/administer-cluster/migrating-from-dockershim/migrate-dockershim-dockerd/)
-* [Migrating telemetry and security agents from dockershim](/docs/tasks/administer-cluster/migrating-from-dockershim/migrating-telemetry-and-security-agents/)
+* [Check whether Dockershim removal affects you](/docs/kubernetes/en/tasks/administer-cluster/migrating-from-dockershim/check-if-dockershim-removal-affects-you/)
+* [Migrate Docker Engine nodes from dockershim to cri-dockerd](/docs/kubernetes/en/tasks/administer-cluster/migrating-from-dockershim/migrate-dockershim-dockerd/)
+* [Migrating telemetry and security agents from dockershim](/docs/kubernetes/en/tasks/administer-cluster/migrating-from-dockershim/migrating-telemetry-and-security-agents/)
 
 
 ## {{% heading "whatsnext" %}}
 
-* Check out [container runtimes](/docs/setup/production-environment/container-runtimes/)
+* Check out [container runtimes](/docs/kubernetes/en/setup/production-environment/container-runtimes/)
   to understand your options for a container runtime.
 * There is a
   [GitHub issue](https://github.com/kubernetes/kubernetes/issues/106917)

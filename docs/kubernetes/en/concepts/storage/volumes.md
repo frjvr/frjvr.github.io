@@ -18,7 +18,7 @@ but with a clean state. A second problem occurs when sharing files
 between containers running together in a `Pod`.
 The Kubernetes {{< glossary_tooltip text="volume" term_id="volume" >}} abstraction
 solves both of these problems.
-Familiarity with [Pods](/docs/concepts/workloads/pods/) is suggested.
+Familiarity with [Pods](/docs/kubernetes/en/concepts/workloads/pods/) is suggested.
 
 <!-- body -->
 
@@ -179,7 +179,7 @@ from the existing in-tree plugin to the `file.csi.azure.com` Container
 Storage Interface (CSI) Driver. In order to use this feature, the [Azure File CSI
 Driver](https://github.com/kubernetes-sigs/azurefile-csi-driver)
 must be installed on the cluster and the `CSIMigrationAzureFile`
-[feature gates](/docs/reference/command-line-tools-reference/feature-gates/) must be enabled.
+[feature gates](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) must be enabled.
 
 Azure File CSI driver does not support using same volume with different fsgroups. If
 `CSIMigrationAzureFile` is enabled, using same volume with different fsgroups won't be supported at all.
@@ -250,11 +250,11 @@ must be installed on the cluster.
 
 To disable the in-tree Cinder plugin from being loaded by the controller manager
 and the kubelet, you can enable the `InTreePluginOpenStackUnregister`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/).
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/).
 
 ### configMap
 
-A [ConfigMap](/docs/tasks/configure-pod-container/configure-pod-configmap/)
+A [ConfigMap](/docs/kubernetes/en/tasks/configure-pod-container/configure-pod-configmap/)
 provides a way to inject configuration data into pods.
 The data stored in a ConfigMap can be referenced in a volume of type
 `configMap` and then consumed by containerized applications running in a pod.
@@ -291,7 +291,7 @@ Note that this path is derived from the volume's `mountPath` and the `path`
 keyed with `log_level`.
 
 {{< note >}}
-* You must create a [ConfigMap](/docs/tasks/configure-pod-container/configure-pod-configmap/)
+* You must create a [ConfigMap](/docs/kubernetes/en/tasks/configure-pod-container/configure-pod-configmap/)
   before you can use it.
 
 * A container using a ConfigMap as a [`subPath`](#using-subpath) volume mount will not
@@ -311,7 +311,7 @@ A container using the downward API as a [`subPath`](#using-subpath) volume mount
 receive updates when field values change.
 {{< /note >}}
 
-See [Expose Pod Information to Containers Through Files](/docs/tasks/inject-data-application/downward-api-volume-expose-pod-information/)
+See [Expose Pod Information to Containers Through Files](/docs/kubernetes/en/tasks/inject-data-application/downward-api-volume-expose-pod-information/)
 to learn more.
 
 ### emptyDir {#emptydir}
@@ -346,12 +346,12 @@ your container's memory limit.
 
 A size limit can be specified for the default medium, which limits the capacity
 of the `emptyDir` volume. The storage is allocated from [node ephemeral
-storage](/docs/concepts/configuration/manage-resources-containers/#setting-requests-and-limits-for-local-ephemeral-storage).
+storage](/docs/kubernetes/en/concepts/configuration/manage-resources-containers/#setting-requests-and-limits-for-local-ephemeral-storage).
 If that is filled up from another source (for example, log files or image
 overlays), the `emptyDir` may run out of capacity before this limit.
 
 {{< note >}}
-If the `SizeMemoryBackedVolumes` [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) is enabled,
+If the `SizeMemoryBackedVolumes` [feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) is enabled,
 you can specify a size for memory backed volumes.  If no size is specified, memory
 backed volumes are sized to 50% of the memory on a Linux host.
 {{< /note>}}
@@ -459,7 +459,7 @@ as a PersistentVolume; referencing the volume directly from a pod is not support
 #### Manually provisioning a Regional PD PersistentVolume
 
 Dynamic provisioning is possible using a
-[StorageClass for GCE PD](/docs/concepts/storage/storage-classes/#gce-pd).
+[StorageClass for GCE PD](/docs/kubernetes/en/concepts/storage/storage-classes/#gce-pd).
 Before creating a PersistentVolume, you must create the persistent disk:
 
 ```shell
@@ -599,7 +599,7 @@ Watch out when using this type of volume, because:
   behave differently on different nodes due to different files on the nodes
 * The files or directories created on the underlying hosts are only writable by root. You
   either need to run your process as root in a
-  [privileged Container](/docs/tasks/configure-pod-container/security-context/) or modify the file
+  [privileged Container](/docs/kubernetes/en/tasks/configure-pod-container/security-context/) or modify the file
   permissions on the host to be able to write to a `hostPath` volume
 
 #### hostPath configuration example
@@ -736,7 +736,7 @@ value "Filesystem") to expose the local volume as a raw block device.
 
 When using local volumes, it is recommended to create a StorageClass with
 `volumeBindingMode` set to `WaitForFirstConsumer`. For more details, see the
-local [StorageClass](/docs/concepts/storage/storage-classes/#local) example.
+local [StorageClass](/docs/kubernetes/en/concepts/storage/storage-classes/#local) example.
 Delaying volume binding ensures that the PersistentVolumeClaim binding decision
 will also be evaluated with any other node constraints the Pod may have,
 such as node resource requirements, node selectors, Pod affinity, and Pod anti-affinity.
@@ -793,11 +793,11 @@ See the [NFS example](https://github.com/kubernetes/examples/tree/master/staging
 ### persistentVolumeClaim {#persistentvolumeclaim}
 
 A `persistentVolumeClaim` volume is used to mount a
-[PersistentVolume](/docs/concepts/storage/persistent-volumes/) into a Pod. PersistentVolumeClaims
+[PersistentVolume](/docs/kubernetes/en/concepts/storage/persistent-volumes/) into a Pod. PersistentVolumeClaims
 are a way for users to "claim" durable storage (such as a GCE PersistentDisk or an
 iSCSI volume) without knowing the details of the particular cloud environment.
 
-See the information about [PersistentVolumes](/docs/concepts/storage/persistent-volumes/) for more
+See the information about [PersistentVolumes](/docs/kubernetes/en/concepts/storage/persistent-volumes/) for more
 details.
 
 ### portworxVolume (deprecated) {#portworxvolume}
@@ -854,7 +854,7 @@ To enable the feature, set `CSIMigrationPortworx=true` in kube-controller-manage
 ### projected
 
 A projected volume maps several existing volume sources into the same
-directory. For more details, see [projected volumes](/docs/concepts/storage/projected-volumes/).
+directory. For more details, see [projected volumes](/docs/kubernetes/en/concepts/storage/projected-volumes/).
 
 ### rbd
 
@@ -888,7 +888,7 @@ glossary_tooltip text="CSI" term_id="csi" >}} driver. In order to use this
 feature, the
 [Ceph CSI driver](https://github.com/ceph/ceph-csi)
 must be installed on the cluster and the `CSIMigrationRBD`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/)
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/)
 must be enabled. (Note that the `csiMigrationRBD` flag has been removed and
 replaced with `CSIMigrationRBD` in release v1.24)
 
@@ -928,7 +928,7 @@ A container using a Secret as a [`subPath`](#using-subpath) volume mount will no
 receive Secret updates.
 {{< /note >}}
 
-For more details, see [Configuring Secrets](/docs/concepts/configuration/secret/).
+For more details, see [Configuring Secrets](/docs/kubernetes/en/concepts/configuration/secret/).
 
 ### vsphereVolume (deprecated) {#vspherevolume}
 
@@ -1071,7 +1071,7 @@ medium of the filesystem holding the kubelet root dir (typically
 pods.
 
 To learn about requesting space using a resource specification, see
-[how to manage resources](/docs/concepts/configuration/manage-resources-containers/).
+[how to manage resources](/docs/kubernetes/en/concepts/configuration/manage-resources-containers/).
 
 ## Out-of-tree volume plugins
 
@@ -1116,8 +1116,8 @@ CSI driver.
 A `csi` volume can be used in a Pod in three different ways:
 
 * through a reference to a [PersistentVolumeClaim](#persistentvolumeclaim)
-* with a [generic ephemeral volume](/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes)
-* with a [CSI ephemeral volume](/docs/concepts/storage/ephemeral-volumes/#csi-ephemeral-volumes) if the driver supports that
+* with a [generic ephemeral volume](/docs/kubernetes/en/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes)
+* with a [CSI ephemeral volume](/docs/kubernetes/en/concepts/storage/ephemeral-volumes/#csi-ephemeral-volumes) if the driver supports that
 
 The following fields are available to storage administrators to configure a CSI
 persistent volume:
@@ -1163,7 +1163,7 @@ persistent volume:
   volume expansion, the kubelet passes that data via the `NodeExpandVolume()`
   call to the CSI driver. In order to use the `nodeExpandSecretRef` field, your
   cluster should be running Kubernetes version 1.25 or later and you must enable
-  the [feature gate](https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates/)
+  the [feature gate](https://kubernetes.io/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/)
   named `CSINodeExpandSecret` for each kube-apiserver and for the kubelet on every
   node. You must also be using a CSI driver that supports or requires secret data during
   node-initiated storage resize operations.
@@ -1186,7 +1186,7 @@ Vendors with external CSI drivers can implement raw block volume support
 in Kubernetes workloads.
 
 You can set up your
-[PersistentVolume/PersistentVolumeClaim with raw block volume support](/docs/concepts/storage/persistent-volumes/#raw-block-volume-support) as usual, without any CSI specific changes.
+[PersistentVolume/PersistentVolumeClaim with raw block volume support](/docs/kubernetes/en/concepts/storage/persistent-volumes/#raw-block-volume-support) as usual, without any CSI specific changes.
 
 #### CSI ephemeral volumes
 
@@ -1195,7 +1195,7 @@ You can set up your
 You can directly configure CSI volumes within the Pod
 specification. Volumes specified in this way are ephemeral and do not
 persist across pod restarts. See [Ephemeral
-Volumes](/docs/concepts/storage/ephemeral-volumes/#csi-ephemeral-volumes)
+Volumes](/docs/kubernetes/en/concepts/storage/ephemeral-volumes/#csi-ephemeral-volumes)
 for more information.
 
 For more information on how to develop a CSI driver, refer to the
@@ -1331,4 +1331,4 @@ sudo systemctl restart docker
 
 ## {{% heading "whatsnext" %}}
 
-Follow an example of [deploying WordPress and MySQL with Persistent Volumes](/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/).
+Follow an example of [deploying WordPress and MySQL with Persistent Volumes](/docs/kubernetes/en/tutorials/stateful-application/mysql-wordpress-persistent-volume/).

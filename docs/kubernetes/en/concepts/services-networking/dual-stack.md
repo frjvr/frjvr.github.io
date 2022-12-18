@@ -49,7 +49,7 @@ The following prerequisites are needed in order to utilize IPv4/IPv6 dual-stack 
 
 * Provider support for dual-stack networking (Cloud provider or otherwise must be able to provide
   Kubernetes nodes with routable IPv4/IPv6 network interfaces)
-* A [network plugin](/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/) that
+* A [network plugin](/docs/kubernetes/en/concepts/extend-kubernetes/compute-storage-net/network-plugins/) that
   supports dual-stack networking.
 
 ## Configure IPv4/IPv6 dual-stack
@@ -125,8 +125,8 @@ These examples demonstrate the behavior of various dual-stack Service configurat
 1. This Service specification does not explicitly define `.spec.ipFamilyPolicy`. When you create
    this Service, Kubernetes assigns a cluster IP for the Service from the first configured
    `service-cluster-ip-range` and sets the `.spec.ipFamilyPolicy` to `SingleStack`. ([Services
-   without selectors](/docs/concepts/services-networking/service/#services-without-selectors) and
-   [headless Services](/docs/concepts/services-networking/service/#headless-services) with selectors
+   without selectors](/docs/kubernetes/en/concepts/services-networking/service/#services-without-selectors) and
+   [headless Services](/docs/kubernetes/en/concepts/services-networking/service/#headless-services) with selectors
    will behave in this same way.)
 
    {{< codenew file="service/networking/dual-stack-default-svc.yaml" >}}
@@ -199,7 +199,7 @@ dual-stack.)
    ```
 
 1. When dual-stack is enabled on a cluster, existing
-   [headless Services](/docs/concepts/services-networking/service/#headless-services) with selectors are
+   [headless Services](/docs/kubernetes/en/concepts/services-networking/service/#headless-services) with selectors are
    configured by the control plane to set `.spec.ipFamilyPolicy` to `SingleStack` and set
    `.spec.ipFamilies` to the address family of the first service cluster IP range (configured via the
    `--service-cluster-ip-range` flag to the kube-apiserver) even though `.spec.ClusterIP` is set to
@@ -268,7 +268,7 @@ Services can be changed from single-stack to dual-stack and from dual-stack to s
 
 ### Headless Services without selector
 
-For [Headless Services without selectors](/docs/concepts/services-networking/service/#without-selectors)
+For [Headless Services without selectors](/docs/kubernetes/en/concepts/services-networking/service/#without-selectors)
 and without `.spec.ipFamilyPolicy` explicitly set, the `.spec.ipFamilyPolicy` field defaults to
 `RequireDualStack`.
 
@@ -309,10 +309,10 @@ Overlay (VXLAN) networks on Windows **do not** support dual-stack networking.
 {{< /note >}}
 
 You can read more about the different network modes for Windows within the
-[Networking on Windows](/docs/concepts/services-networking/windows-networking#network-modes) topic.
+[Networking on Windows](/docs/kubernetes/en/concepts/services-networking/windows-networking#network-modes) topic.
 
 ## {{% heading "whatsnext" %}}
 
-* [Validate IPv4/IPv6 dual-stack](/docs/tasks/network/validate-dual-stack) networking
-* [Enable dual-stack networking using kubeadm](/docs/setup/production-environment/tools/kubeadm/dual-stack-support/)
+* [Validate IPv4/IPv6 dual-stack](/docs/kubernetes/en/tasks/network/validate-dual-stack) networking
+* [Enable dual-stack networking using kubeadm](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/dual-stack-support/)
 

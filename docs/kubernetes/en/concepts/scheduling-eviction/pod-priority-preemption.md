@@ -11,7 +11,7 @@ weight: 90
 
 {{< feature-state for_k8s_version="v1.14" state="stable" >}}
 
-[Pods](/docs/concepts/workloads/pods/) can have _priority_. Priority indicates the
+[Pods](/docs/kubernetes/en/concepts/workloads/pods/) can have _priority_. Priority indicates the
 importance of a Pod relative to other Pods. If a Pod cannot be scheduled, the
 scheduler tries to preempt (evict) lower priority Pods to make scheduling of the
 pending Pod possible.
@@ -28,7 +28,7 @@ scheduled.
 An administrator can use ResourceQuota to prevent users from creating pods at
 high priorities.
 
-See [limit Priority Class consumption by default](/docs/concepts/policy/resource-quotas/#limit-priority-class-consumption-by-default)
+See [limit Priority Class consumption by default](/docs/kubernetes/en/concepts/policy/resource-quotas/#limit-priority-class-consumption-by-default)
 for details.
 {{< /warning >}}
 
@@ -48,7 +48,7 @@ Keep reading for more information about these steps.
 {{< note >}}
 Kubernetes already ships with two PriorityClasses:
 `system-cluster-critical` and `system-node-critical`.
-These are common classes and are used to [ensure that critical components are always scheduled first](/docs/tasks/administer-cluster/guaranteed-scheduling-critical-addon-pods/).
+These are common classes and are used to [ensure that critical components are always scheduled first](/docs/kubernetes/en/tasks/administer-cluster/guaranteed-scheduling-critical-addon-pods/).
 {{< /note >}}
 
 ## PriorityClass
@@ -59,7 +59,7 @@ in the `name` field of the PriorityClass object's metadata. The value is
 specified in the required `value` field. The higher the value, the higher the
 priority.
 The name of a PriorityClass object must be a valid
-[DNS subdomain name](/docs/concepts/overview/working-with-objects/names#dns-subdomain-names),
+[DNS subdomain name](/docs/kubernetes/en/concepts/overview/working-with-objects/names#dns-subdomain-names),
 and it cannot be prefixed with `system-`.
 
 A PriorityClass object can have any 32-bit integer value smaller than or equal
@@ -218,7 +218,7 @@ makes Pod P eligible to preempt Pods on another Node.
 #### Graceful termination of preemption victims
 
 When Pods are preempted, the victims get their
-[graceful termination period](/docs/concepts/workloads/pods/pod-lifecycle/#pod-termination).
+[graceful termination period](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#pod-termination).
 They have that much time to finish their work and exit. If they don't, they are
 killed. This graceful termination period creates a time gap between the point
 that the scheduler preempts Pods and the time when the pending Pod (P) can be
@@ -231,7 +231,7 @@ priority Pods to zero or a small number.
 
 #### PodDisruptionBudget is supported, but not guaranteed
 
-A [PodDisruptionBudget](/docs/concepts/workloads/pods/disruptions/) (PDB)
+A [PodDisruptionBudget](/docs/kubernetes/en/concepts/workloads/pods/disruptions/) (PDB)
 allows application owners to limit the number of Pods of a replicated application
 that are down simultaneously from voluntary disruptions. Kubernetes supports
 PDB when preempting Pods, but respecting PDB is best effort. The scheduler tries
@@ -354,7 +354,7 @@ the removal of the lowest priority Pods is not sufficient to allow the scheduler
 to schedule the preemptor Pod, or if the lowest priority Pods are protected by
 `PodDisruptionBudget`.
 
-The kubelet uses Priority to determine pod order for [node-pressure eviction](/docs/concepts/scheduling-eviction/node-pressure-eviction/).
+The kubelet uses Priority to determine pod order for [node-pressure eviction](/docs/kubernetes/en/concepts/scheduling-eviction/node-pressure-eviction/).
 You can use the QoS class to estimate the order in which pods are most likely
 to get evicted. The kubelet ranks pods for eviction based on the following factors:
 
@@ -362,7 +362,7 @@ to get evicted. The kubelet ranks pods for eviction based on the following facto
   1. Pod Priority
   1. Amount of resource usage relative to requests 
 
-See [Pod selection for kubelet eviction](/docs/concepts/scheduling-eviction/node-pressure-eviction/#pod-selection-for-kubelet-eviction)
+See [Pod selection for kubelet eviction](/docs/kubernetes/en/concepts/scheduling-eviction/node-pressure-eviction/#pod-selection-for-kubelet-eviction)
 for more details.
 
 kubelet node-pressure eviction does not evict Pods when their
@@ -372,7 +372,7 @@ that exceeds its requests may be evicted.
 
 ## {{% heading "whatsnext" %}}
 
-* Read about using ResourceQuotas in connection with PriorityClasses: [limit Priority Class consumption by default](/docs/concepts/policy/resource-quotas/#limit-priority-class-consumption-by-default)
-* Learn about [Pod Disruption](/docs/concepts/workloads/pods/disruptions/)
-* Learn about [API-initiated Eviction](/docs/concepts/scheduling-eviction/api-eviction/)
-* Learn about [Node-pressure Eviction](/docs/concepts/scheduling-eviction/node-pressure-eviction/)
+* Read about using ResourceQuotas in connection with PriorityClasses: [limit Priority Class consumption by default](/docs/kubernetes/en/concepts/policy/resource-quotas/#limit-priority-class-consumption-by-default)
+* Learn about [Pod Disruption](/docs/kubernetes/en/concepts/workloads/pods/disruptions/)
+* Learn about [API-initiated Eviction](/docs/kubernetes/en/concepts/scheduling-eviction/api-eviction/)
+* Learn about [Node-pressure Eviction](/docs/kubernetes/en/concepts/scheduling-eviction/node-pressure-eviction/)

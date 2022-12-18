@@ -7,8 +7,8 @@ min-kubernetes-server-version: 1.19
 
 <!-- overview -->
 
-An [Ingress](/docs/concepts/services-networking/ingress/) is an API object that defines rules which allow external access
-to services in a cluster. An [Ingress controller](/docs/concepts/services-networking/ingress-controllers/) fulfills the rules set in the Ingress.
+An [Ingress](/docs/kubernetes/en/concepts/services-networking/ingress/) is an API object that defines rules which allow external access
+to services in a cluster. An [Ingress controller](/docs/kubernetes/en/concepts/services-networking/ingress-controllers/) fulfills the rules set in the Ingress.
 
 This page shows you how to set up a simple Ingress which routes requests to Service web or web2 depending on the HTTP URI.
 
@@ -28,7 +28,7 @@ Using Katacoda
 : {{< kat-button >}}
 
 Locally
-: If you already [installed Minikube](/docs/tasks/tools/#minikube)
+: If you already [installed Minikube](/docs/kubernetes/en/tasks/tools/#minikube)
   locally, run `minikube start` to create a cluster.
 
 <!-- steps -->
@@ -298,7 +298,7 @@ The following manifest defines an Ingress that sends traffic to your Service via
 
 ## {{% heading "whatsnext" %}}
 
-* Read more about [Ingress](/docs/concepts/services-networking/ingress/)
-* Read more about [Ingress Controllers](/docs/concepts/services-networking/ingress-controllers/)
-* Read more about [Services](/docs/concepts/services-networking/service/)
+* Read more about [Ingress](/docs/kubernetes/en/concepts/services-networking/ingress/)
+* Read more about [Ingress Controllers](/docs/kubernetes/en/concepts/services-networking/ingress-controllers/)
+* Read more about [Services](/docs/kubernetes/en/concepts/services-networking/service/)
 

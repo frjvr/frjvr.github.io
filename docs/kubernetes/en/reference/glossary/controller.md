@@ -2,7 +2,7 @@
 title: Controller
 id: controller
 date: 2018-04-12
-full_link: /docs/concepts/architecture/controller/
+full_link: /docs/kubernetes/en/concepts/architecture/controller/
 short_description: >
   A control loop that watches the shared state of the cluster through the apiserver and makes changes attempting to move the current state towards the desired state.
 

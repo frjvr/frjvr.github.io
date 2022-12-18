@@ -47,11 +47,11 @@ kubectl apply -f https://k8s.io/examples/controllers/daemonset.yaml
 
 As with all other Kubernetes config, a DaemonSet needs `apiVersion`, `kind`, and `metadata` fields.  For
 general information about working with config files, see
-[running stateless applications](/docs/tasks/run-application/run-stateless-application-deployment/)
-and [object management using kubectl](/docs/concepts/overview/working-with-objects/object-management/).
+[running stateless applications](/docs/kubernetes/en/tasks/run-application/run-stateless-application-deployment/)
+and [object management using kubectl](/docs/kubernetes/en/concepts/overview/working-with-objects/object-management/).
 
 The name of a DaemonSet object must be a valid
-[DNS subdomain name](/docs/concepts/overview/working-with-objects/names#dns-subdomain-names).
+[DNS subdomain name](/docs/kubernetes/en/concepts/overview/working-with-objects/names#dns-subdomain-names).
 
 A DaemonSet also needs a
 [`.spec`](https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status)
@@ -61,20 +61,20 @@ section.
 
 The `.spec.template` is one of the required fields in `.spec`.
 
-The `.spec.template` is a [pod template](/docs/concepts/workloads/pods/#pod-templates).
+The `.spec.template` is a [pod template](/docs/kubernetes/en/concepts/workloads/pods/#pod-templates).
 It has exactly the same schema as a {{< glossary_tooltip text="Pod" term_id="pod" >}},
 except it is nested and does not have an `apiVersion` or `kind`.
 
 In addition to required fields for a Pod, a Pod template in a DaemonSet has to specify appropriate
 labels (see [pod selector](#pod-selector)).
 
-A Pod Template in a DaemonSet must have a [`RestartPolicy`](/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy)
+A Pod Template in a DaemonSet must have a [`RestartPolicy`](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#restart-policy)
  equal to `Always`, or be unspecified, which defaults to `Always`.
 
 ### Pod Selector
 
 The `.spec.selector` field is a pod selector.  It works the same as the `.spec.selector` of
-a [Job](/docs/concepts/workloads/controllers/job/).
+a [Job](/docs/kubernetes/en/concepts/workloads/controllers/job/).
 
 You must specify a pod selector that matches the labels of the
 `.spec.template`.
@@ -85,7 +85,7 @@ unintentional orphaning of Pods, and it was found to be confusing to users.
 The `.spec.selector` is an object consisting of two fields:
 
 * `matchLabels` - works the same as the `.spec.selector` of a
-  [ReplicationController](/docs/concepts/workloads/controllers/replicationcontroller/).
+  [ReplicationController](/docs/kubernetes/en/concepts/workloads/controllers/replicationcontroller/).
 * `matchExpressions` - allows to build more sophisticated selectors by specifying key,
   list of values and an operator that relates the key and values.
 
@@ -97,10 +97,10 @@ Config with these two not matching will be rejected by the API.
 ### Running Pods on select Nodes
 
 If you specify a `.spec.template.spec.nodeSelector`, then the DaemonSet controller will
-create Pods on nodes which match that [node selector](/docs/concepts/scheduling-eviction/assign-pod-node/).
+create Pods on nodes which match that [node selector](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node/).
 Likewise if you specify a `.spec.template.spec.affinity`,
 then DaemonSet controller will create Pods on nodes which match that
-[node affinity](/docs/concepts/scheduling-eviction/assign-pod-node/).
+[node affinity](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node/).
 If you do not specify either, then the DaemonSet controller will create Pods on all nodes.
 
 ## How Daemon Pods are scheduled
@@ -117,7 +117,7 @@ That introduces the following issues:
 * Inconsistent Pod behavior: Normal Pods waiting to be scheduled are created
   and in `Pending` state, but DaemonSet pods are not created in `Pending`
   state. This is confusing to the user.
-* [Pod preemption](/docs/concepts/scheduling-eviction/pod-priority-preemption/)
+* [Pod preemption](/docs/kubernetes/en/concepts/scheduling-eviction/pod-priority-preemption/)
   is handled by default scheduler. When preemption is enabled, the DaemonSet controller
   will make scheduling decisions without considering pod priority and preemption.
 
@@ -148,7 +148,7 @@ automatically to DaemonSet Pods. The default scheduler ignores
 ### Taints and Tolerations
 
 Although Daemon Pods respect
-[taints and tolerations](/docs/concepts/scheduling-eviction/taint-and-toleration/),
+[taints and tolerations](/docs/kubernetes/en/concepts/scheduling-eviction/taint-and-toleration/),
 the following tolerations are added to DaemonSet Pods automatically according to
 the related features.
 
@@ -170,7 +170,7 @@ Some possible patterns for communicating with Pods in a DaemonSet are:
 - **NodeIP and Known Port**: Pods in the DaemonSet can use a `hostPort`, so that the pods
   are reachable via the node IPs.
   Clients know the list of node IPs somehow, and know the port by convention.
-- **DNS**: Create a [headless service](/docs/concepts/services-networking/service/#headless-services)
+- **DNS**: Create a [headless service](/docs/kubernetes/en/concepts/services-networking/service/#headless-services)
   with the same pod selector, and then discover DaemonSets using the `endpoints`
   resource or retrieve multiple A records from DNS.
 - **Service**: Create a service with the same Pod selector, and use the service to reach a
@@ -190,7 +190,7 @@ will be left on the nodes.  If you subsequently create a new DaemonSet with the 
 the new DaemonSet adopts the existing Pods. If any Pods need replacing the DaemonSet replaces
 them according to its `updateStrategy`.
 
-You can [perform a rolling update](/docs/tasks/manage-daemon/update-daemon-set/) on a DaemonSet.
+You can [perform a rolling update](/docs/kubernetes/en/tasks/manage-daemon/update-daemon-set/) on a DaemonSet.
 
 ## Alternatives to DaemonSet
 
@@ -215,14 +215,14 @@ use a DaemonSet rather than creating individual Pods.
 ### Static Pods
 
 It is possible to create Pods by writing a file to a certain directory watched by Kubelet.  These
-are called [static pods](/docs/tasks/configure-pod-container/static-pod/).
+are called [static pods](/docs/kubernetes/en/tasks/configure-pod-container/static-pod/).
 Unlike DaemonSet, static Pods cannot be managed with kubectl
 or other Kubernetes API clients.  Static Pods do not depend on the apiserver, making them useful
 in cluster bootstrapping cases.  Also, static Pods may be deprecated in the future.
 
 ### Deployments
 
-DaemonSets are similar to [Deployments](/docs/concepts/workloads/controllers/deployment/) in that
+DaemonSets are similar to [Deployments](/docs/kubernetes/en/concepts/workloads/controllers/deployment/) in that
 they both create Pods, and those Pods have processes which are not expected to terminate (e.g. web servers,
 storage servers).
 
@@ -231,21 +231,21 @@ number of replicas and rolling out updates are more important than controlling e
 the Pod runs on.  Use a DaemonSet when it is important that a copy of a Pod always run on
 all or certain hosts, if the DaemonSet provides node-level functionality that allows other Pods to run correctly on that particular node.
 
-For example, [network plugins](/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/) often include a component that runs as a DaemonSet. The DaemonSet component makes sure that the node where it's running has working cluster networking.
+For example, [network plugins](/docs/kubernetes/en/concepts/extend-kubernetes/compute-storage-net/network-plugins/) often include a component that runs as a DaemonSet. The DaemonSet component makes sure that the node where it's running has working cluster networking.
 
 
 ## {{% heading "whatsnext" %}}
 
-* Learn about [Pods](/docs/concepts/workloads/pods).
+* Learn about [Pods](/docs/kubernetes/en/concepts/workloads/pods).
   * Learn about [static Pods](#static-pods), which are useful for running Kubernetes
     {{< glossary_tooltip text="control plane" term_id="control-plane" >}} components.
 * Find out how to use DaemonSets
-  * [Perform a rolling update on a DaemonSet](/docs/tasks/manage-daemon/update-daemon-set/)
-  * [Perform a rollback on a DaemonSet](/docs/tasks/manage-daemon/rollback-daemon-set/)
+  * [Perform a rolling update on a DaemonSet](/docs/kubernetes/en/tasks/manage-daemon/update-daemon-set/)
+  * [Perform a rollback on a DaemonSet](/docs/kubernetes/en/tasks/manage-daemon/rollback-daemon-set/)
     (for example, if a roll out didn't work how you expected).
-* Understand [how Kubernetes assigns Pods to Nodes](/docs/concepts/scheduling-eviction/assign-pod-node/).
-* Learn about [device plugins](/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/) and
-  [add ons](/docs/concepts/cluster-administration/addons/), which often run as DaemonSets.
+* Understand [how Kubernetes assigns Pods to Nodes](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node/).
+* Learn about [device plugins](/docs/kubernetes/en/concepts/extend-kubernetes/compute-storage-net/device-plugins/) and
+  [add ons](/docs/kubernetes/en/concepts/cluster-administration/addons/), which often run as DaemonSets.
 * `DaemonSet` is a top-level resource in the Kubernetes REST API.
   Read the {{< api-reference page="workload-resources/daemon-set-v1" >}}
   object definition to understand the API for daemon sets.

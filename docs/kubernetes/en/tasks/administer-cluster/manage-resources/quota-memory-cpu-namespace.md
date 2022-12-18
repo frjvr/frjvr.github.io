@@ -12,7 +12,7 @@ description: >-
 This page shows how to set quotas for the total amount memory and CPU that
 can be used by all Pods running in a {{< glossary_tooltip text="namespace" term_id="namespace" >}}.
 You specify quotas in a
-[ResourceQuota](/docs/reference/kubernetes-api/policy-resources/resource-quota-v1/)
+[ResourceQuota](/docs/kubernetes/en/reference/kubernetes-api/policy-resources/resource-quota-v1/)
 object.
 
 
@@ -64,7 +64,7 @@ The ResourceQuota places these requirements on the quota-mem-cpu-example namespa
 * The CPU request total for all Pods in that namespace must not exceed 1 cpu.
 * The CPU limit total for all Pods in that namespace must not exceed 2 cpu.
 
-See [meaning of CPU](/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu)
+See [meaning of CPU](/docs/kubernetes/en/concepts/configuration/manage-resources-containers/#meaning-of-cpu)
 to learn what Kubernetes means by “1 CPU”.
 
 ## Create a Pod
@@ -110,7 +110,7 @@ status:
     requests.memory: 600Mi
 ```
 
-If you have the `jq` tool, you can also query (using [JSONPath](/docs/reference/kubectl/jsonpath/))
+If you have the `jq` tool, you can also query (using [JSONPath](/docs/kubernetes/en/reference/kubectl/jsonpath/))
 for just the `used` values, **and** pretty-print that that of the output. For example:
 
 ```shell
@@ -150,7 +150,7 @@ You can also restrict the totals for memory limit, cpu request, and cpu limit.
 
 Instead of managing total resource use within a namespace, you might want to restrict
 individual Pods, or the containers in those Pods. To achieve that kind of limiting, use a
-[LimitRange](/docs/concepts/policy/limit-range/).
+[LimitRange](/docs/kubernetes/en/concepts/policy/limit-range/).
 
 ## Clean up
 
@@ -167,25 +167,25 @@ kubectl delete namespace quota-mem-cpu-example
 
 ### For cluster administrators
 
-* [Configure Default Memory Requests and Limits for a Namespace](/docs/tasks/administer-cluster/manage-resources/memory-default-namespace/)
+* [Configure Default Memory Requests and Limits for a Namespace](/docs/kubernetes/en/tasks/administer-cluster/manage-resources/memory-default-namespace/)
 
-* [Configure Default CPU Requests and Limits for a Namespace](/docs/tasks/administer-cluster/manage-resources/cpu-default-namespace/)
+* [Configure Default CPU Requests and Limits for a Namespace](/docs/kubernetes/en/tasks/administer-cluster/manage-resources/cpu-default-namespace/)
 
-* [Configure Minimum and Maximum Memory Constraints for a Namespace](/docs/tasks/administer-cluster/manage-resources/memory-constraint-namespace/)
+* [Configure Minimum and Maximum Memory Constraints for a Namespace](/docs/kubernetes/en/tasks/administer-cluster/manage-resources/memory-constraint-namespace/)
 
-* [Configure Minimum and Maximum CPU Constraints for a Namespace](/docs/tasks/administer-cluster/manage-resources/cpu-constraint-namespace/)
+* [Configure Minimum and Maximum CPU Constraints for a Namespace](/docs/kubernetes/en/tasks/administer-cluster/manage-resources/cpu-constraint-namespace/)
 
-* [Configure a Pod Quota for a Namespace](/docs/tasks/administer-cluster/manage-resources/quota-pod-namespace/)
+* [Configure a Pod Quota for a Namespace](/docs/kubernetes/en/tasks/administer-cluster/manage-resources/quota-pod-namespace/)
 
-* [Configure Quotas for API Objects](/docs/tasks/administer-cluster/quota-api-object/)
+* [Configure Quotas for API Objects](/docs/kubernetes/en/tasks/administer-cluster/quota-api-object/)
 
 ### For app developers
 
-* [Assign Memory Resources to Containers and Pods](/docs/tasks/configure-pod-container/assign-memory-resource/)
+* [Assign Memory Resources to Containers and Pods](/docs/kubernetes/en/tasks/configure-pod-container/assign-memory-resource/)
 
-* [Assign CPU Resources to Containers and Pods](/docs/tasks/configure-pod-container/assign-cpu-resource/)
+* [Assign CPU Resources to Containers and Pods](/docs/kubernetes/en/tasks/configure-pod-container/assign-cpu-resource/)
 
-* [Configure Quality of Service for Pods](/docs/tasks/configure-pod-container/quality-service-pod/)
+* [Configure Quality of Service for Pods](/docs/kubernetes/en/tasks/configure-pod-container/quality-service-pod/)
 
 
 

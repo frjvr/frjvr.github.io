@@ -17,7 +17,7 @@ content_type: concept
 1. My Pods are stuck at "Container Creating" or restarting over and over
 
    Ensure that your pause image is compatible with your Windows OS version.
-   See [Pause container](/docs/concepts/windows/intro/#pause-container)
+   See [Pause container](/docs/kubernetes/en/concepts/windows/intro/#pause-container)
    to see the latest / recommended pause image and/or get more information.
 
    {{< note >}}
@@ -32,7 +32,7 @@ content_type: concept
    Windows Node.
 
    More information on how to specify a compatible node for your Pod can be found in
-   [this guide](/docs/concepts/windows/user-guide/#ensuring-os-specific-workloads-land-on-the-appropriate-container-host).
+   [this guide](/docs/kubernetes/en/concepts/windows/user-guide/#ensuring-os-specific-workloads-land-on-the-appropriate-container-host).
 
 ## Network troubleshooting {#troubleshooting-network}
 
@@ -54,7 +54,7 @@ content_type: concept
    configuration update will apply to any new Kubernetes resources.
 
    One of the Kubernetes networking requirements
-   (see [Kubernetes model](/docs/concepts/cluster-administration/networking/)) is
+   (see [Kubernetes model](/docs/kubernetes/en/concepts/cluster-administration/networking/)) is
    for cluster communication to occur without
    NAT internally. To honor this requirement, there is an
    [ExceptionList](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/cni/config/cni.conf#L20)
@@ -80,7 +80,7 @@ content_type: concept
 1. vNICs and HNS endpoints of containers are being deleted
 
    This issue can be caused when the `hostname-override` parameter is not passed to
-   [kube-proxy](/docs/reference/command-line-tools-reference/kube-proxy/). To resolve
+   [kube-proxy](/docs/kubernetes/en/reference/command-line-tools-reference/kube-proxy/). To resolve
    it, users need to pass the hostname to kube-proxy as follows:
 
    ```powershell
@@ -108,7 +108,7 @@ content_type: concept
 
 1. DNS resolution is not properly working
 
-   Check the DNS limitations for Windows in this [section](/docs/concepts/services-networking/dns-pod-service/#dns-windows).
+   Check the DNS limitations for Windows in this [section](/docs/kubernetes/en/concepts/services-networking/dns-pod-service/#dns-windows).
 
 1. `kubectl port-forward` fails with "unable to do port forwarding: wincat not found"
 

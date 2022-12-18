@@ -50,11 +50,11 @@ following steps:
 1. Generates the token that additional nodes can use to register
    themselves with a control-plane in the future. Optionally, the user can provide a
    token via `--token`, as described in the
-   [kubeadm token](/docs/reference/setup-tools/kubeadm/kubeadm-token/) docs.
+   [kubeadm token](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-token/) docs.
 
 1. Makes all the necessary configurations for allowing node joining with the
-   [Bootstrap Tokens](/docs/reference/access-authn-authz/bootstrap-tokens/) and
-   [TLS Bootstrap](/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/)
+   [Bootstrap Tokens](/docs/kubernetes/en/reference/access-authn-authz/bootstrap-tokens/) and
+   [TLS Bootstrap](/docs/kubernetes/en/reference/access-authn-authz/kubelet-tls-bootstrapping/)
    mechanism:
 
    - Write a ConfigMap for making available all the information required
@@ -64,7 +64,7 @@ following steps:
 
    - Configure auto-approval for new CSR requests.
 
-   See [kubeadm join](/docs/reference/setup-tools/kubeadm/kubeadm-join/) for additional info.
+   See [kubeadm join](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-join/) for additional info.
 
 1. Installs a DNS server (CoreDNS) and the kube-proxy addon components via the API server.
    In Kubernetes version 1.11 and later CoreDNS is the default DNS server.
@@ -129,13 +129,13 @@ contain a `ClusterConfiguration` structure and optionally more structures separa
 Mixing `--config` with others flags may not be allowed in some cases.
 
 The default configuration can be printed out using the
-[kubeadm config print](/docs/reference/setup-tools/kubeadm/kubeadm-config/) command.
+[kubeadm config print](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-config/) command.
 
 If your configuration is not using the latest version it is **recommended** that you migrate using
-the [kubeadm config migrate](/docs/reference/setup-tools/kubeadm/kubeadm-config/) command.
+the [kubeadm config migrate](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-config/) command.
 
 For more information on the fields and usage of the configuration you can navigate to our
-[API reference page](/docs/reference/config-api/kubeadm-config.v1beta3/).
+[API reference page](/docs/kubernetes/en/reference/config-api/kubeadm-config.v1beta3/).
 
 ### Using kubeadm init with feature gates {#feature-gates}
 
@@ -145,12 +145,12 @@ of the cluster. Feature gates are removed after a feature graduates to GA.
 
 To pass a feature gate you can either use the `--feature-gates` flag for
 `kubeadm init`, or you can add items into the `featureGates` field when you pass
-a [configuration file](/docs/reference/config-api/kubeadm-config.v1beta3/#kubeadm-k8s-io-v1beta3-ClusterConfiguration)
+a [configuration file](/docs/kubernetes/en/reference/config-api/kubeadm-config.v1beta3/#kubeadm-k8s-io-v1beta3-ClusterConfiguration)
 using `--config`.
 
-Passing [feature gates for core Kubernetes components](/docs/reference/command-line-tools-reference/feature-gates)
+Passing [feature gates for core Kubernetes components](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates)
 directly to kubeadm is not supported. Instead, it is possible to pass them by
-[Customizing components with the kubeadm API](/docs/setup/production-environment/tools/kubeadm/control-plane-flags/).
+[Customizing components with the kubeadm API](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/control-plane-flags/).
 
 List of feature gates:
 
@@ -192,7 +192,7 @@ if that does not succeed, kubeadm falls back to using the legacy (versioned) nam
 ### Adding kube-proxy parameters {#kube-proxy}
 
 For information about kube-proxy parameters in the kubeadm configuration see:
-- [kube-proxy reference](/docs/reference/config-api/kube-proxy-config.v1alpha1/)
+- [kube-proxy reference](/docs/kubernetes/en/reference/config-api/kube-proxy-config.v1alpha1/)
 
 For information about enabling IPVS mode with kubeadm see:
 - [IPVS](https://github.com/kubernetes/kubernetes/blob/master/pkg/proxy/ipvs/README.md)
@@ -200,7 +200,7 @@ For information about enabling IPVS mode with kubeadm see:
 ### Passing custom flags to control plane components {#control-plane-flags}
 
 For information about passing flags to control plane components see:
-- [control-plane-flags](/docs/setup/production-environment/tools/kubeadm/control-plane-flags/)
+- [control-plane-flags](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/control-plane-flags/)
 
 ### Running kubeadm without an Internet connection {#without-internet-connection}
 
@@ -253,7 +253,7 @@ To set a custom image for these you need to configure this in your
 to use the image.
 Consult the documentation for your container runtime to find out how to change this setting;
 for selected container runtimes, you can also find advice within the
-[Container Runtimes](/docs/setup/production-environment/container-runtimes/) topic.
+[Container Runtimes](/docs/kubernetes/en/setup/production-environment/container-runtimes/) topic.
 
 ### Uploading control-plane certificates to the cluster
 
@@ -270,7 +270,7 @@ The following phase command can be used to re-upload the certificates after expi
 kubeadm init phase upload-certs --upload-certs --config=SOME_YAML_FILE
 ```
 {{< note >}}
-A predefined `certificateKey` can be provided in `InitConfiguration` when passing the [configuration file](https://kubernetes.io/docs/reference/config-api/kubeadm-config.v1beta3/) with `--config`.
+A predefined `certificateKey` can be provided in `InitConfiguration` when passing the [configuration file](https://kubernetes.io/docs/kubernetes/en/reference/config-api/kubeadm-config.v1beta3/) with `--config`.
 {{< /note >}}
 
 If a predefined certificate key is not passed to `kubeadm init` and
@@ -285,7 +285,7 @@ kubeadm certs certificate-key
 ### Certificate management with kubeadm
 
 For detailed information on certificate management with kubeadm see
-[Certificate Management with kubeadm](/docs/tasks/administer-cluster/kubeadm/kubeadm-certs/).
+[Certificate Management with kubeadm](/docs/kubernetes/en/tasks/administer-cluster/kubeadm/kubeadm-certs/).
 The document includes information about using external CA, custom certificates
 and certificate renewal.
 
@@ -296,18 +296,18 @@ Note that the kubeadm CLI never touches this drop-in file. This drop-in file is 
 DEB/RPM package.
 
 For further information, see
-[Managing the kubeadm drop-in file for systemd](/docs/setup/production-environment/tools/kubeadm/kubelet-integration/#the-kubelet-drop-in-file-for-systemd).
+[Managing the kubeadm drop-in file for systemd](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/kubelet-integration/#the-kubelet-drop-in-file-for-systemd).
 
 ### Use kubeadm with CRI runtimes
 
 By default kubeadm attempts to detect your container runtime. For more details on this detection,
-see the [kubeadm CRI installation guide](/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-runtime).
+see the [kubeadm CRI installation guide](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-runtime).
 
 ### Setting the node name
 
 By default, `kubeadm` assigns a node name based on a machine's host address.
 You can override this setting with the `--node-name` flag.
-The flag passes the appropriate [`--hostname-override`](/docs/reference/command-line-tools-reference/kubelet/#options)
+The flag passes the appropriate [`--hostname-override`](/docs/kubernetes/en/reference/command-line-tools-reference/kubelet/#options)
 value to the kubelet.
 
 Be aware that overriding the hostname can
@@ -316,7 +316,7 @@ Be aware that overriding the hostname can
 ### Automating kubeadm
 
 Rather than copying the token you obtained from `kubeadm init` to each node, as
-in the [basic kubeadm tutorial](/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/),
+in the [basic kubeadm tutorial](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/),
 you can parallelize the token distribution for easier automation. To implement this automation,
 you must know the IP address that the control-plane node will have after it is started, or use a
 DNS name or an address of a load balancer.
@@ -348,16 +348,16 @@ at `/etc/kubernetes/admin.conf` and use that to talk to the cluster.
 Note that this style of bootstrap has some relaxed security guarantees because
 it does not allow the root CA hash to be validated with
 `--discovery-token-ca-cert-hash` (since it's not generated when the nodes are
-provisioned). For details, see the [kubeadm join](/docs/reference/setup-tools/kubeadm/kubeadm-join/).
+provisioned). For details, see the [kubeadm join](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-join/).
 
 ## {{% heading "whatsnext" %}}
 
-* [kubeadm init phase](/docs/reference/setup-tools/kubeadm/kubeadm-init-phase/) to understand more about
+* [kubeadm init phase](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-init-phase/) to understand more about
   `kubeadm init` phases
-* [kubeadm join](/docs/reference/setup-tools/kubeadm/kubeadm-join/) to bootstrap a Kubernetes
+* [kubeadm join](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-join/) to bootstrap a Kubernetes
   worker node and join it to the cluster
-* [kubeadm upgrade](/docs/reference/setup-tools/kubeadm/kubeadm-upgrade/) to upgrade a Kubernetes
+* [kubeadm upgrade](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-upgrade/) to upgrade a Kubernetes
   cluster to a newer version
-* [kubeadm reset](/docs/reference/setup-tools/kubeadm/kubeadm-reset/) to revert any changes made
+* [kubeadm reset](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-reset/) to revert any changes made
   to this host by `kubeadm init` or `kubeadm join`
 

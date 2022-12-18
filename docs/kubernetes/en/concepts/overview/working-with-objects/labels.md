@@ -24,7 +24,7 @@ Each object can have a set of key/value labels defined. Each Key must be unique 
 
 Labels allow for efficient queries and watches and are ideal for use in UIs
 and CLIs. Non-identifying information should be recorded using
-[annotations](/docs/concepts/overview/working-with-objects/annotations/).
+[annotations](/docs/kubernetes/en/concepts/overview/working-with-objects/annotations/).
 
 <!-- body -->
 
@@ -42,7 +42,7 @@ Example labels:
    * `"partition" : "customerA"`, `"partition" : "customerB"`
    * `"track" : "daily"`, `"track" : "weekly"`
 
-These are examples of [commonly used labels](/docs/concepts/overview/working-with-objects/common-labels/); you are free to develop your own conventions. Keep in mind that label Key must be unique for a given object.
+These are examples of [commonly used labels](/docs/kubernetes/en/concepts/overview/working-with-objects/common-labels/); you are free to develop your own conventions. Keep in mind that label Key must be unique for a given object.
 
 ## Syntax and character set
 
@@ -50,7 +50,7 @@ _Labels_ are key/value pairs. Valid label keys have two segments: an optional pr
 
 If the prefix is omitted, the label Key is presumed to be private to the user. Automated system components (e.g. `kube-scheduler`, `kube-controller-manager`, `kube-apiserver`, `kubectl`, or other third-party automation) which add labels to end-user objects must specify a prefix.
 
-The `kubernetes.io/` and `k8s.io/` prefixes are [reserved](/docs/reference/labels-annotations-taints/) for Kubernetes core components.
+The `kubernetes.io/` and `k8s.io/` prefixes are [reserved](/docs/kubernetes/en/reference/labels-annotations-taints/) for Kubernetes core components.
 
 Valid label value:
 * must be 63 characters or less (can be empty),
@@ -79,7 +79,7 @@ spec:
 
 ## Label selectors
 
-Unlike [names and UIDs](/docs/concepts/overview/working-with-objects/names/), labels do not provide uniqueness. In general, we expect many objects to carry the same label(s).
+Unlike [names and UIDs](/docs/kubernetes/en/concepts/overview/working-with-objects/names/), labels do not provide uniqueness. In general, we expect many objects to carry the same label(s).
 
 Via a _label selector_, the client/user can identify a set of objects. The label selector is the core grouping primitive in Kubernetes.
 
@@ -189,10 +189,10 @@ kubectl get pods -l 'environment,environment notin (frontend)'
 
 ### Set references in API objects
 
-Some Kubernetes objects, such as [`services`](/docs/concepts/services-networking/service/)
-and [`replicationcontrollers`](/docs/concepts/workloads/controllers/replicationcontroller/),
+Some Kubernetes objects, such as [`services`](/docs/kubernetes/en/concepts/services-networking/service/)
+and [`replicationcontrollers`](/docs/kubernetes/en/concepts/workloads/controllers/replicationcontroller/),
 also use label selectors to specify sets of other resources, such as
-[pods](/docs/concepts/workloads/pods/).
+[pods](/docs/kubernetes/en/concepts/workloads/pods/).
 
 #### Service and ReplicationController
 
@@ -216,10 +216,10 @@ this selector (respectively in `json` or `yaml` format) is equivalent to `compon
 
 #### Resources that support set-based requirements
 
-Newer resources, such as [`Job`](/docs/concepts/workloads/controllers/job/),
-[`Deployment`](/docs/concepts/workloads/controllers/deployment/),
-[`ReplicaSet`](/docs/concepts/workloads/controllers/replicaset/), and
-[`DaemonSet`](/docs/concepts/workloads/controllers/daemonset/),
+Newer resources, such as [`Job`](/docs/kubernetes/en/concepts/workloads/controllers/job/),
+[`Deployment`](/docs/kubernetes/en/concepts/workloads/controllers/deployment/),
+[`ReplicaSet`](/docs/kubernetes/en/concepts/workloads/controllers/replicaset/), and
+[`DaemonSet`](/docs/kubernetes/en/concepts/workloads/controllers/daemonset/),
 support _set-based_ requirements as well.
 
 ```yaml
@@ -236,4 +236,4 @@ selector:
 #### Selecting sets of nodes
 
 One use case for selecting over labels is to constrain the set of nodes onto which a pod can schedule.
-See the documentation on [node selection](/docs/concepts/scheduling-eviction/assign-pod-node/) for more information.
+See the documentation on [node selection](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node/) for more information.

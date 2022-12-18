@@ -23,10 +23,10 @@ This guide walks you through the steps to configure and deploy Windows container
 ## Before you begin
 
 * Create a Kubernetes cluster that includes a
-control plane and a [worker node running Windows Server](/docs/tasks/administer-cluster/kubeadm/adding-windows-nodes/)
+control plane and a [worker node running Windows Server](/docs/kubernetes/en/tasks/administer-cluster/kubeadm/adding-windows-nodes/)
 * It is important to note that creating and deploying services and workloads on Kubernetes
 behaves in much the same way for Linux and Windows containers.
-[Kubectl commands](/docs/reference/kubectl/) to interface with the cluster are identical.
+[Kubectl commands](/docs/kubernetes/en/reference/kubectl/) to interface with the cluster are identical.
 The example in the section below is provided to jumpstart your experience with Windows containers.
 
 ## Getting Started: Deploying a Windows container
@@ -108,7 +108,7 @@ port 80 of the container directly to the Service.
       using `docker exec` or `kubectl exec`
     * Service-to-pod communication, `curl` the virtual service IP (seen under `kubectl get services`)
       from the Linux control plane node and from individual pods
-    * Service discovery, `curl` the service name with the Kubernetes [default DNS suffix](/docs/concepts/services-networking/dns-pod-service/#services)
+    * Service discovery, `curl` the service name with the Kubernetes [default DNS suffix](/docs/kubernetes/en/concepts/services-networking/dns-pod-service/#services)
     * Inbound connectivity, `curl` the NodePort from the Linux control plane node or machines outside of the cluster
     * Outbound connectivity, `curl` external IPs from inside the pod using `kubectl exec`
 
@@ -141,7 +141,7 @@ to all your containers and add the necessary entrypoints for LogMonitor to push 
 
 Windows containers can be configured to run their entrypoints and processes
 with different usernames than the image defaults.
-Learn more about it [here](/docs/tasks/configure-pod-container/configure-runasusername/).
+Learn more about it [here](/docs/kubernetes/en/tasks/configure-pod-container/configure-runasusername/).
 
 ### Managing Workload Identity with Group Managed Service Accounts
 
@@ -149,7 +149,7 @@ Windows container workloads can be configured to use Group Managed Service Accou
 Group Managed Service Accounts are a specific type of Active Directory account that provide automatic password management,
 simplified service principal name (SPN) management, and the ability to delegate the management to other administrators across multiple servers.
 Containers configured with a GMSA can access external Active Directory Domain resources while carrying the identity configured with the GMSA.
-Learn more about configuring and using GMSA for Windows containers [here](/docs/tasks/configure-pod-container/configure-gmsa/).
+Learn more about configuring and using GMSA for Windows containers [here](/docs/kubernetes/en/tasks/configure-pod-container/configure-gmsa/).
 
 ## Taints and Tolerations
 
@@ -169,7 +169,7 @@ Starting from 1.25, the `IdentifyPodOS` feature is in GA stage and defaults to b
 
 The scheduler does not use the value of `.spec.os.name` when assigning Pods to nodes. You should
 use normal Kubernetes mechanisms for
-[assigning pods to nodes](/docs/concepts/scheduling-eviction/assign-pod-node/)
+[assigning pods to nodes](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node/)
 to ensure that the control plane for your cluster places pods onto nodes that are running the
 appropriate operating system.
 
@@ -306,4 +306,4 @@ spec:
     app: iis-2019
 ```
 
-[RuntimeClass]: /docs/concepts/containers/runtime-class/
+[RuntimeClass]: /docs/kubernetes/en/concepts/containers/runtime-class/

@@ -21,9 +21,9 @@ in connection with that removal.
 
 * Kubernetes blog: [Dockershim removal is coming. Are you ready?](/blog/2021/11/12/are-you-ready-for-dockershim-removal/) (published 2021/11/12)
 
-* Kubernetes documentation: [Migrating from dockershim](/docs/tasks/administer-cluster/migrating-from-dockershim/)
+* Kubernetes documentation: [Migrating from dockershim](/docs/kubernetes/en/tasks/administer-cluster/migrating-from-dockershim/)
 
-* Kubernetes documentation: [Container Runtimes](/docs/setup/production-environment/container-runtimes/)
+* Kubernetes documentation: [Container Runtimes](/docs/kubernetes/en/setup/production-environment/container-runtimes/)
 
 * Kubernetes enhancement proposal: [KEP-2221: Removing dockershim from kubelet](https://github.com/kubernetes/enhancements/blob/master/keps/sig-node/2221-remove-dockershim/README.md)
 

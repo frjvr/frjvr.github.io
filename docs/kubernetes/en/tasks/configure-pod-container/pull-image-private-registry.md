@@ -39,7 +39,7 @@ docker login
 When prompted, enter your Docker ID, and then the credential you want to use (access token,
 or the password for your Docker ID).
 
-The login process creates or updates a `config.json` file that holds an authorization token. Review [how Kubernetes interprets this file](/docs/concepts/containers/images#config-json). 
+The login process creates or updates a `config.json` file that holds an authorization token. Review [how Kubernetes interprets this file](/docs/kubernetes/en/concepts/containers/images#config-json). 
 
 View the `config.json` file:
 
@@ -213,9 +213,9 @@ kubectl get pod private-reg
 
 ## {{% heading "whatsnext" %}}
 
-* Learn more about [Secrets](/docs/concepts/configuration/secret/)
+* Learn more about [Secrets](/docs/kubernetes/en/concepts/configuration/secret/)
   * or read the API reference for {{< api-reference page="config-and-storage-resources/secret-v1" >}}
-* Learn more about [using a private registry](/docs/concepts/containers/images/#using-a-private-registry).
-* Learn more about [adding image pull secrets to a service account](/docs/tasks/configure-pod-container/configure-service-account/#add-imagepullsecrets-to-a-service-account).
-* See [kubectl create secret docker-registry](/docs/reference/generated/kubectl/kubectl-commands/#-em-secret-docker-registry-em-).
-* See the `imagePullSecrets` field within the [container definitions](/docs/reference/kubernetes-api/workload-resources/pod-v1/#containers) of a Pod
+* Learn more about [using a private registry](/docs/kubernetes/en/concepts/containers/images/#using-a-private-registry).
+* Learn more about [adding image pull secrets to a service account](/docs/kubernetes/en/tasks/configure-pod-container/configure-service-account/#add-imagepullsecrets-to-a-service-account).
+* See [kubectl create secret docker-registry](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#-em-secret-docker-registry-em-).
+* See the `imagePullSecrets` field within the [container definitions](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/pod-v1/#containers) of a Pod

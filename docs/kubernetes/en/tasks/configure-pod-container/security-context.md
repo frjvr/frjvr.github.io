@@ -24,10 +24,10 @@ a Pod or Container. Security context settings include, but are not limited to:
 * [Linux Capabilities](https://linux-audit.com/linux-capabilities-hardening-linux-binaries-by-removing-setuid/):
   Give a process some privileges, but not all the privileges of the root user.
 
-* [AppArmor](/docs/tutorials/security/apparmor/):
+* [AppArmor](/docs/kubernetes/en/tutorials/security/apparmor/):
   Use program profiles to restrict the capabilities of individual programs.
 
-* [Seccomp](/docs/tutorials/security/seccomp/): Filter a process's system calls.
+* [Seccomp](/docs/kubernetes/en/tutorials/security/seccomp/): Filter a process's system calls.
 
 * `allowPrivilegeEscalation`: Controls whether a process can gain more privileges than
   its parent process. This bool directly controls whether the
@@ -41,7 +41,7 @@ a Pod or Container. Security context settings include, but are not limited to:
 * `readOnlyRootFilesystem`: Mounts the container's root filesystem as read-only.
 
 The above bullets are not a complete set of security context settings -- please see
-[SecurityContext](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#securitycontext-v1-core)
+[SecurityContext](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#securitycontext-v1-core)
 for a comprehensive list.
 
 ## {{% heading "prerequisites" %}}
@@ -54,7 +54,7 @@ for a comprehensive list.
 
 To specify security settings for a Pod, include the `securityContext` field
 in the Pod specification. The `securityContext` field is a
-[PodSecurityContext](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podsecuritycontext-v1-core) object.
+[PodSecurityContext](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#podsecuritycontext-v1-core) object.
 The security settings that you specify for a Pod apply to all Containers in the Pod.
 Here is a configuration file for a Pod that has a `securityContext` and an `emptyDir` volume:
 
@@ -190,9 +190,9 @@ securityContext:
 
 {{< note >}}
 This field has no effect on ephemeral volume types such as
-[`secret`](/docs/concepts/storage/volumes/#secret),
-[`configMap`](/docs/concepts/storage/volumes/#configmap),
-and [`emptydir`](/docs/concepts/storage/volumes/#emptydir).
+[`secret`](/docs/kubernetes/en/concepts/storage/volumes/#secret),
+[`configMap`](/docs/kubernetes/en/concepts/storage/volumes/#configmap),
+and [`emptydir`](/docs/kubernetes/en/concepts/storage/volumes/#emptydir).
 {{< /note >}}
 
 ## Delegating volume permission and ownership change to CSI driver
@@ -213,7 +213,7 @@ provided `fsGroup`, resulting in a volume that is readable/writable by the
 
 To specify security settings for a Container, include the `securityContext` field
 in the Container manifest. The `securityContext` field is a
-[SecurityContext](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#securitycontext-v1-core) object.
+[SecurityContext](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#securitycontext-v1-core) object.
 Security settings that you specify for a Container apply only to
 the individual Container, and they override settings made at the Pod level when
 there is overlap. Container settings do not affect the Pod's Volumes.
@@ -390,7 +390,7 @@ For example, to add `CAP_SYS_TIME`, include `SYS_TIME` in your list of capabilit
 To set the Seccomp profile for a Container, include the `seccompProfile` field
 in the `securityContext` section of your Pod or Container manifest. The
 `seccompProfile` field is a
-[SeccompProfile](/docs/reference/generated/kubernetes-api/{{< param "version"
+[SeccompProfile](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version"
 >}}/#seccompprofile-v1-core) object consisting of `type` and `localhostProfile`.
 Valid options for `type` include `RuntimeDefault`, `Unconfined`, and
 `Localhost`. `localhostProfile` must only be set if `type: Localhost`. It
@@ -424,7 +424,7 @@ securityContext:
 To assign SELinux labels to a Container, include the `seLinuxOptions` field in
 the `securityContext` section of your Pod or Container manifest. The
 `seLinuxOptions` field is an
-[SELinuxOptions](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#selinuxoptions-v1-core)
+[SELinuxOptions](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#selinuxoptions-v1-core)
 object. Here's an example that applies an SELinux level:
 
 ```yaml
@@ -471,7 +471,7 @@ In Kubernetes 1.25, the kubelet loses track of volume labels after restart. In
 other words, then kubelet may refuse to start Pods with errors similar to  "conflicting
 SELinux labels of volume", while there are no conflicting labels in Pods. Make sure
 nodes are
-[fully drained](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/)
+[fully drained](https://kubernetes.io/docs/kubernetes/en/tasks/administer-cluster/safely-drain-node/)
 before restarting kubelet.
 {{< /note >}}
 
@@ -510,12 +510,12 @@ kubectl delete pod security-context-demo-4
 
 ## {{% heading "whatsnext" %}}
 
-* [PodSecurityContext](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podsecuritycontext-v1-core)
-* [SecurityContext](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#securitycontext-v1-core)
+* [PodSecurityContext](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#podsecuritycontext-v1-core)
+* [SecurityContext](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#securitycontext-v1-core)
 * [Tuning Docker with the newest security enhancements](https://github.com/containerd/containerd/blob/main/docs/cri/config.md)
 * [Security Contexts design document](https://git.k8s.io/design-proposals-archive/auth/security_context.md)
 * [Ownership Management design document](https://git.k8s.io/design-proposals-archive/storage/volume-ownership-management.md)
-* [PodSecurity Admission](/docs/concepts/security/pod-security-admission/)
+* [PodSecurity Admission](/docs/kubernetes/en/concepts/security/pod-security-admission/)
 * [AllowPrivilegeEscalation design
   document](https://git.k8s.io/design-proposals-archive/auth/no-new-privs.md)
 * For more information about security mechanisms in Linux, see

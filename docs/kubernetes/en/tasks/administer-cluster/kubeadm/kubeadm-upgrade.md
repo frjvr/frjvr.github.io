@@ -16,10 +16,10 @@ when upgrading is unsupported. For more details, please visit [Version Skew Poli
 To see information about upgrading clusters created using older versions of kubeadm,
 please refer to following pages instead:
 
-- [Upgrading a kubeadm cluster from {{< skew currentVersionAddMinor -2 >}} to {{< skew currentVersionAddMinor -1 >}}](https://v{{< skew currentVersionAddMinor -1 "-" >}}.docs.kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)
-- [Upgrading a kubeadm cluster from {{< skew currentVersionAddMinor -3 >}} to {{< skew currentVersionAddMinor -2 >}}](https://v{{< skew currentVersionAddMinor -2 "-" >}}.docs.kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)
-- [Upgrading a kubeadm cluster from {{< skew currentVersionAddMinor -4 >}} to {{< skew currentVersionAddMinor -3 >}}](https://v{{< skew currentVersionAddMinor -3 "-" >}}.docs.kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)
-- [Upgrading a kubeadm cluster from {{< skew currentVersionAddMinor -5 >}} to {{< skew currentVersionAddMinor -4 >}}](https://v{{< skew currentVersionAddMinor -4 "-" >}}.docs.kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)
+- [Upgrading a kubeadm cluster from {{< skew currentVersionAddMinor -2 >}} to {{< skew currentVersionAddMinor -1 >}}](https://v{{< skew currentVersionAddMinor -1 "-" >}}.docs.kubernetes.io/docs/kubernetes/en/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)
+- [Upgrading a kubeadm cluster from {{< skew currentVersionAddMinor -3 >}} to {{< skew currentVersionAddMinor -2 >}}](https://v{{< skew currentVersionAddMinor -2 "-" >}}.docs.kubernetes.io/docs/kubernetes/en/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)
+- [Upgrading a kubeadm cluster from {{< skew currentVersionAddMinor -4 >}} to {{< skew currentVersionAddMinor -3 >}}](https://v{{< skew currentVersionAddMinor -3 "-" >}}.docs.kubernetes.io/docs/kubernetes/en/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)
+- [Upgrading a kubeadm cluster from {{< skew currentVersionAddMinor -5 >}} to {{< skew currentVersionAddMinor -4 >}}](https://v{{< skew currentVersionAddMinor -4 "-" >}}.docs.kubernetes.io/docs/kubernetes/en/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)
 
 The upgrade workflow at high level is the following:
 
@@ -41,14 +41,14 @@ The upgrade workflow at high level is the following:
 If you are performing a **minor** version upgrade for any kubelet, you **must**
 first drain the node (or nodes) that you are upgrading. In the case of control plane nodes,
 they could be running CoreDNS Pods or other critical workloads. For more information see
-[Draining nodes](/docs/tasks/administer-cluster/safely-drain-node/).
+[Draining nodes](/docs/kubernetes/en/tasks/administer-cluster/safely-drain-node/).
 - All containers are restarted after upgrade, because the container spec hash value is changed.
 - To verify that the kubelet service has successfully restarted after the kubelet has been upgraded,
 you can execute `systemctl status kubelet`  or view the service logs with `journalctl -xeu kubelet`.
 - Usage of the `--config` flag of `kubeadm upgrade` with
-[kubeadm configuration API types](/docs/reference/config-api/kubeadm-config.v1beta3)
+[kubeadm configuration API types](/docs/kubernetes/en/reference/config-api/kubeadm-config.v1beta3)
 with the purpose of reconfiguring the cluster is not recommended and can have unexpected results. Follow the steps in
-[Reconfiguring a kubeadm cluster](/docs/tasks/administer-cluster/kubeadm/kubeadm-reconfigure) instead.
+[Reconfiguring a kubeadm cluster](/docs/kubernetes/en/tasks/administer-cluster/kubeadm/kubeadm-reconfigure) instead.
 
 <!-- steps -->
 
@@ -117,7 +117,7 @@ Pick a control plane node that you wish to upgrade first. It must have the `/etc
   {{< note >}}
   `kubeadm upgrade` also automatically renews the certificates that it manages on this node.
   To opt-out of certificate renewal the flag `--certificate-renewal=false` can be used.
-  For more information see the [certificate management guide](/docs/tasks/administer-cluster/kubeadm/kubeadm-certs).
+  For more information see the [certificate management guide](/docs/kubernetes/en/tasks/administer-cluster/kubeadm/kubeadm-certs).
   {{</ note >}}
   
   {{< note >}}
@@ -144,7 +144,7 @@ Pick a control plane node that you wish to upgrade first. It must have the `/etc
 - Manually upgrade your CNI provider plugin.
 
   Your Container Network Interface (CNI) provider may have its own upgrade instructions to follow.
-  Check the [addons](/docs/concepts/cluster-administration/addons/) page to
+  Check the [addons](/docs/kubernetes/en/concepts/cluster-administration/addons/) page to
   find your CNI provider and see whether additional upgrade steps are required.
 
   This step is not required on additional control plane nodes if the CNI provider runs as a DaemonSet.

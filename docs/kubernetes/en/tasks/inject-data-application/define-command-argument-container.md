@@ -90,9 +90,9 @@ args: ["$(MESSAGE)"]
 
 This means you can define an argument for a Pod using any of
 the techniques available for defining environment variables, including
-[ConfigMaps](/docs/tasks/configure-pod-container/configure-pod-configmap/)
+[ConfigMaps](/docs/kubernetes/en/tasks/configure-pod-container/configure-pod-configmap/)
 and
-[Secrets](/docs/concepts/configuration/secret/).
+[Secrets](/docs/kubernetes/en/concepts/configuration/secret/).
 
 {{< note >}}
 The environment variable appears in parentheses, `"$(VAR)"`. This is
@@ -113,6 +113,6 @@ args: ["-c", "while true; do echo hello; sleep 10;done"]
 ## {{% heading "whatsnext" %}}
 
 
-* Learn more about [configuring pods and containers](/docs/tasks/).
-* Learn more about [running commands in a container](/docs/tasks/debug/debug-application/get-shell-running-container/).
-* See [Container](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#container-v1-core).
+* Learn more about [configuring pods and containers](/docs/kubernetes/en/tasks/).
+* Learn more about [running commands in a container](/docs/kubernetes/en/tasks/debug/debug-application/get-shell-running-container/).
+* See [Container](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#container-v1-core).

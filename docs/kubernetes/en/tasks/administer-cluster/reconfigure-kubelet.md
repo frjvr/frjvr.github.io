@@ -22,7 +22,7 @@ allowed you to change the configuration of each
 by deploying a {{< glossary_tooltip text="ConfigMap" term_id="configmap" >}} and configuring
 each {{< glossary_tooltip term_id="node" >}} to use it.
 
-Please find documentation on this feature in [earlier versions of documentation](https://v1-23.docs.kubernetes.io/docs/tasks/administer-cluster/reconfigure-kubelet/).
+Please find documentation on this feature in [earlier versions of documentation](https://v1-23.docs.kubernetes.io/docs/kubernetes/en/tasks/administer-cluster/reconfigure-kubelet/).
 
 ## Migrating from using Dynamic Kubelet Configuration
 
@@ -30,12 +30,12 @@ There is no recommended replacement for this feature that works generically
 across various Kubernetes distributions. If you are using managed Kubernetes
 version, please consult with the vendor hosting Kubernetes for the best
 practices for customizing your Kubernetes. If you are using `kubeadm`, refer to
-[Configuring each kubelet in your cluster using kubeadm](/docs/setup/production-environment/tools/kubeadm/kubelet-integration/).
+[Configuring each kubelet in your cluster using kubeadm](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/kubelet-integration/).
 
 In order to migrate off the Dynamic Kubelet Configuration feature, the
 alternative mechanism should be used to distribute kubelet configuration files.
 In order to apply configuration, config file must be updated and kubelet restarted.
-See the [Set Kubelet parameters via a config file](/docs/tasks/administer-cluster/kubelet-config-file/)
+See the [Set Kubelet parameters via a config file](/docs/kubernetes/en/tasks/administer-cluster/kubelet-config-file/)
 for information.
 
 Please note, the `DynamicKubeletConfig` feature gate cannot be set on a kubelet

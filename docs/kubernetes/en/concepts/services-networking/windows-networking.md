@@ -19,7 +19,7 @@ This page provides an overview to networking specific to the Windows operating s
 ## Container networking on Windows {#networking}
 
 Networking for Windows containers is exposed through
-[CNI plugins](/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/).
+[CNI plugins](/docs/kubernetes/en/concepts/extend-kubernetes/compute-storage-net/network-plugins/).
 Windows containers function similarly to virtual machines in regards to
 networking. Each container has a virtual network adapter (vNIC) which is connected
 to a Hyper-V virtual switch (vSwitch). The Host Networking Service (HNS) and the

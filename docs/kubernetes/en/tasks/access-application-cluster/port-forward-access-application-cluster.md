@@ -209,5 +209,5 @@ The support for UDP protocol is tracked in
 
 ## {{% heading "whatsnext" %}}
 
-Learn more about [kubectl port-forward](/docs/reference/generated/kubectl/kubectl-commands/#port-forward).
+Learn more about [kubectl port-forward](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#port-forward).
 

@@ -12,8 +12,8 @@ weight: 20
 *Node Problem Detector* is a daemon for monitoring and reporting about a node's health.
 You can run Node Problem Detector as a `DaemonSet` or as a standalone daemon.
 Node Problem Detector collects information about node problems from various daemons
-and reports these conditions to the API server as [NodeCondition](/docs/concepts/architecture/nodes/#condition)
-and [Event](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#event-v1-core).
+and reports these conditions to the API server as [NodeCondition](/docs/kubernetes/en/concepts/architecture/nodes/#condition)
+and [Event](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#event-v1-core).
 
 To learn how to install and use Node Problem Detector, see
 [Node Problem Detector project documentation](https://github.com/kubernetes/node-problem-detector).
@@ -71,7 +71,7 @@ directory `/etc/kubernetes/addons/node-problem-detector` on a control plane node
 The [default configuration](https://github.com/kubernetes/node-problem-detector/tree/v0.1/config)
 is embedded when building the Docker image of Node Problem Detector.
 
-However, you can use a [`ConfigMap`](/docs/tasks/configure-pod-container/configure-pod-configmap/)
+However, you can use a [`ConfigMap`](/docs/kubernetes/en/tasks/configure-pod-container/configure-pod-configmap/)
 to overwrite the configuration:
 
 1. Change the configuration files in `config/`

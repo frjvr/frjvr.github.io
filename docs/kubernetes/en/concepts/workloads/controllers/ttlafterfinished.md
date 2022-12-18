@@ -22,7 +22,7 @@ have finished execution. TTL controller only handles
 The TTL-after-finished controller is only supported for Jobs. A cluster operator can use this feature to clean
 up finished Jobs (either `Complete` or `Failed`) automatically by specifying the
 `.spec.ttlSecondsAfterFinished` field of a Job, as in this
-[example](/docs/concepts/workloads/controllers/job/#clean-up-finished-jobs-automatically).
+[example](/docs/kubernetes/en/concepts/workloads/controllers/job/#clean-up-finished-jobs-automatically).
 The TTL-after-finished controller will assume that a job is eligible to be cleaned up
 TTL seconds after the job has finished, in other words, when the TTL has expired. When the
 TTL-after-finished controller cleans up a job, it will delete it cascadingly, that is to say it will delete
@@ -37,11 +37,11 @@ The TTL seconds can be set at any time. Here are some examples for setting the
 * Set this field of existing, already finished jobs, to adopt this new
   feature.
 * Use a
-  [mutating admission webhook](/docs/reference/access-authn-authz/extensible-admission-controllers/#admission-webhooks)
+  [mutating admission webhook](/docs/kubernetes/en/reference/access-authn-authz/extensible-admission-controllers/#admission-webhooks)
   to set this field dynamically at job creation time. Cluster administrators can
   use this to enforce a TTL policy for finished jobs.
 * Use a
-  [mutating admission webhook](/docs/reference/access-authn-authz/extensible-admission-controllers/#admission-webhooks)
+  [mutating admission webhook](/docs/kubernetes/en/reference/access-authn-authz/extensible-admission-controllers/#admission-webhooks)
   to set this field dynamically after the job has finished, and choose
   different TTL values based on job status, labels, etc.
 
@@ -69,7 +69,7 @@ very small. Please be aware of this risk when setting a non-zero TTL.
 
 ## {{% heading "whatsnext" %}}
 
-* [Clean up Jobs automatically](/docs/concepts/workloads/controllers/job/#clean-up-finished-jobs-automatically)
+* [Clean up Jobs automatically](/docs/kubernetes/en/concepts/workloads/controllers/job/#clean-up-finished-jobs-automatically)
 
 * [Design doc](https://github.com/kubernetes/enhancements/blob/master/keps/sig-apps/592-ttl-after-finish/README.md)
 

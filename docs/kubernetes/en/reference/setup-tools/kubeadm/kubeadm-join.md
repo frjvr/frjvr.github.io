@@ -55,7 +55,7 @@ Some phases have unique flags, so if you want to have a look at the list of avai
 kubeadm join phase kubelet-start --help
 ```
 
-Similar to the [kubeadm init phase](/docs/reference/setup-tools/kubeadm/kubeadm-init/#init-phases)
+Similar to the [kubeadm init phase](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-init/#init-phases)
 command, `kubeadm join phase` allows you to skip a list of phases using the `--skip-phases` flag.
 
 For example:
@@ -153,7 +153,7 @@ kubeadm join --token abcdef.1234567890abcdef --discovery-token-unsafe-skip-ca-ve
 This provides an out-of-band way to establish a root of trust between the control-plane node
 and bootstrapping nodes. Consider using this mode if you are building automated provisioning
 using kubeadm. The format of the discovery file is a regular Kubernetes
-[kubeconfig](/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) file.
+[kubeconfig](/docs/kubernetes/en/tasks/access-application-cluster/configure-access-multiple-clusters/) file.
 
 In case the discovery file does not contain credentials, the TLS discovery token will be used.
 
@@ -286,16 +286,16 @@ contain a `JoinConfiguration` structure. Mixing `--config` with others flags may
 allowed in some cases.
 
 The default configuration can be printed out using the
-[kubeadm config print](/docs/reference/setup-tools/kubeadm/kubeadm-config/#cmd-config-print) command.
+[kubeadm config print](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-config/#cmd-config-print) command.
 
 If your configuration is not using the latest version it is **recommended** that you migrate using
-the [kubeadm config migrate](/docs/reference/setup-tools/kubeadm/kubeadm-config/#cmd-config-migrate) command.
+the [kubeadm config migrate](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-config/#cmd-config-migrate) command.
 
 For more information on the fields and usage of the configuration you can navigate to our
-[API reference](/docs/reference/config-api/kubeadm-config.v1beta3/).
+[API reference](/docs/kubernetes/en/reference/config-api/kubeadm-config.v1beta3/).
 
 ## {{% heading "whatsnext" %}}
 
-* [kubeadm init](/docs/reference/setup-tools/kubeadm/kubeadm-init/) to bootstrap a Kubernetes control-plane node.
-* [kubeadm token](/docs/reference/setup-tools/kubeadm/kubeadm-token/) to manage tokens for `kubeadm join`.
-* [kubeadm reset](/docs/reference/setup-tools/kubeadm/kubeadm-reset/) to revert any changes made to this host by `kubeadm init` or `kubeadm join`.
+* [kubeadm init](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-init/) to bootstrap a Kubernetes control-plane node.
+* [kubeadm token](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-token/) to manage tokens for `kubeadm join`.
+* [kubeadm reset](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-reset/) to revert any changes made to this host by `kubeadm init` or `kubeadm join`.

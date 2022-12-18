@@ -153,8 +153,8 @@ and no more. This is known as the "Principle of Least Privilege."
 
 Role-based access control (RBAC) is commonly used to enforce authorization in the Kubernetes
 control plane, for both users and workloads (service accounts).
-[Roles](/docs/reference/access-authn-authz/rbac/#role-and-clusterrole) and
-[RoleBindings](/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) are
+[Roles](/docs/kubernetes/en/reference/access-authn-authz/rbac/#role-and-clusterrole) and
+[RoleBindings](/docs/kubernetes/en/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) are
 Kubernetes objects that are used at a namespace level to enforce access control in your
 application; similar objects exist for authorizing access to cluster-level objects, though these
 are less useful for multi-tenant clusters.
@@ -172,7 +172,7 @@ fine-grained policies where necessary.
 ### Quotas
 
 Kubernetes workloads consume node resources, like CPU and memory.  In a multi-tenant environment,
-you can use [Resource Quotas](/docs/concepts/policy/resource-quotas/) to manage resource usage of
+you can use [Resource Quotas](/docs/kubernetes/en/concepts/policy/resource-quotas/) to manage resource usage of
 tenant workloads.  For the multiple teams use case, where tenants have access to the Kubernetes
 API, you can use resource quotas to limit the number of API resources (for example: the number of
 Pods, or the number of ConfigMaps) that a tenant can create. Limits on object count ensure
@@ -212,7 +212,7 @@ network traffic is unencrypted. This can lead to security vulnerabilities where 
 accidentally or maliciously sent to an unintended destination, or is intercepted by a workload on
 a compromised node.
 
-Pod-to-pod communication can be controlled using [Network Policies](/docs/concepts/services-networking/network-policies/),
+Pod-to-pod communication can be controlled using [Network Policies](/docs/kubernetes/en/concepts/services-networking/network-policies/),
 which restrict communication between pods using namespace labels or IP address ranges.
 In a multi-tenant environment where strict network isolation between tenants is required, starting
 with a default policy that denies communication between pods is recommended with another rule that
@@ -229,7 +229,7 @@ In addition, some of these tools allow you to enforce a consistent set of namesp
 your cluster, ensuring that they are a trusted basis for your policies.
 
 {{< warning >}}
-Network policies require a [CNI plugin](/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#cni)
+Network policies require a [CNI plugin](/docs/kubernetes/en/concepts/extend-kubernetes/compute-storage-net/network-plugins/#cni)
 that supports the implementation of network policies. Otherwise, NetworkPolicy resources will be ignored.
 {{< /warning >}}
 
@@ -243,21 +243,21 @@ However, they can be significantly more complex to manage and may not be appropr
 ### Storage isolation
 
 Kubernetes offers several types of volumes that can be used as persistent storage for workloads.
-For security and data-isolation, [dynamic volume provisioning](/docs/concepts/storage/dynamic-provisioning/)
+For security and data-isolation, [dynamic volume provisioning](/docs/kubernetes/en/concepts/storage/dynamic-provisioning/)
 is recommended and volume types that use node resources should be avoided.
 
-[StorageClasses](/docs/concepts/storage/storage-classes/) allow you to describe custom "classes"
+[StorageClasses](/docs/kubernetes/en/concepts/storage/storage-classes/) allow you to describe custom "classes"
 of storage offered by your cluster, based on quality-of-service levels, backup policies, or custom
 policies determined by the cluster administrators.
 
-Pods can request storage using a [PersistentVolumeClaim](/docs/concepts/storage/persistent-volumes/).
+Pods can request storage using a [PersistentVolumeClaim](/docs/kubernetes/en/concepts/storage/persistent-volumes/).
 A PersistentVolumeClaim is a namespaced resource, which enables isolating portions of the storage
 system and dedicating it to tenants within the shared Kubernetes cluster.
 However, it is important to note that a PersistentVolume is a cluster-wide resource and has a
 lifecycle independent of workloads and namespaces.
 
 For example, you can configure a separate StorageClass for each tenant and use this to strengthen isolation.
-If a StorageClass is shared, you should set a [reclaim policy of `Delete`](/docs/concepts/storage/storage-classes/#reclaim-policy)
+If a StorageClass is shared, you should set a [reclaim policy of `Delete`](/docs/kubernetes/en/concepts/storage/storage-classes/#reclaim-policy)
 to ensure that a PersistentVolume cannot be reused across different namespaces.
 
 ### Sandboxing containers
@@ -320,7 +320,7 @@ corresponding toleration can run on them. A mutating webhook could then be used 
 add tolerations and node affinities to pods deployed into tenant namespaces so that they run on a
 specific set of nodes designated for that tenant.
 
-Node isolation can be implemented using an [pod node selectors](/docs/concepts/scheduling-eviction/assign-pod-node/)
+Node isolation can be implemented using an [pod node selectors](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node/)
 or a [Virtual Kubelet](https://github.com/virtual-kubelet).
 
 ## Additional Considerations
@@ -329,7 +329,7 @@ This section discusses other Kubernetes constructs and patterns that are relevan
 
 ### API Priority and Fairness
 
-[API priority and fairness](/docs/concepts/cluster-administration/flow-control/) is a Kubernetes
+[API priority and fairness](/docs/kubernetes/en/concepts/cluster-administration/flow-control/) is a Kubernetes
 feature that allows you to assign a priority to certain pods running within the cluster.
 When an application calls the Kubernetes API, the API server evaluates the priority assigned to pod.
 Calls from pods with higher priority are fulfilled before those with a lower priority.
@@ -353,11 +353,11 @@ service that they paid for. Let’s start by looking at networking QoS.
 Typically, all pods on a node share a network interface. Without network QoS, some pods may
 consume an unfair share of the available bandwidth at the expense of other pods.
 The Kubernetes [bandwidth plugin](https://www.cni.dev/plugins/current/meta/bandwidth/) creates an
-[extended resource](/docs/concepts/configuration/manage-resources-containers/#extended-resources)
+[extended resource](/docs/kubernetes/en/concepts/configuration/manage-resources-containers/#extended-resources)
 for networking that allows you to use Kubernetes resources constructs, i.e. requests/limits, to
 apply rate limits to pods by using Linux tc queues.
 Be aware that the plugin is considered experimental as per the
-[Network Plugins](/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#support-traffic-shaping)
+[Network Plugins](/docs/kubernetes/en/concepts/extend-kubernetes/compute-storage-net/network-plugins/#support-traffic-shaping)
 documentation and should be thoroughly tested before use in production environments.
 
 For storage QoS, you will likely want to create different storage classes or profiles with
@@ -366,7 +366,7 @@ tier of service that is optimized for different workloads such IO, redundancy, o
 Additional logic might be necessary to allow the tenant to associate the appropriate storage
 profile with their workload.
 
-Finally, there’s [pod priority and preemption](/docs/concepts/scheduling-eviction/pod-priority-preemption/)
+Finally, there’s [pod priority and preemption](/docs/kubernetes/en/concepts/scheduling-eviction/pod-priority-preemption/)
 where you can assign priority values to pods. When scheduling pods, the scheduler will try
 evicting pods with lower priority when there are insufficient resources to schedule pods that are
 assigned a higher priority. If you have a use case where tenants have different service tiers in a
@@ -395,7 +395,7 @@ that supports multiple tenants.
 
 ### Operators
 
-[Operators](/docs/concepts/extend-kubernetes/operator/) are Kubernetes controllers that manage
+[Operators](/docs/kubernetes/en/concepts/extend-kubernetes/operator/) are Kubernetes controllers that manage
 applications. Operators can simplify the management of multiple instances of an application, like
 a database service, which makes them a common building block in the multi-consumer (SaaS)
 multi-tenancy use case.

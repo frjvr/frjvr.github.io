@@ -37,12 +37,12 @@ kubectl create configmap <map-name> <data-source>
 
 where \<map-name> is the name you want to assign to the ConfigMap and \<data-source> is the directory, file, or literal value to draw the data from.
 The name of a ConfigMap object must be a valid
-[DNS subdomain name](/docs/concepts/overview/working-with-objects/names#dns-subdomain-names).
+[DNS subdomain name](/docs/kubernetes/en/concepts/overview/working-with-objects/names#dns-subdomain-names).
 
 When you are creating a ConfigMap based on a file, the key in the \<data-source> defaults to the basename of the file, and the value defaults to the file content.
 
-You can use [`kubectl describe`](/docs/reference/generated/kubectl/kubectl-commands/#describe) or
-[`kubectl get`](/docs/reference/generated/kubectl/kubectl-commands/#get) to retrieve information
+You can use [`kubectl describe`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#describe) or
+[`kubectl get`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#get) to retrieve information
 about a ConfigMap.
 
 #### Create ConfigMaps from directories
@@ -621,7 +621,7 @@ Like before, all previous files in the `/etc/config/` directory will be deleted.
 ### Project keys to specific paths and file permissions
 
 You can project keys to specific paths and specific permissions on a per-file
-basis. The [Secrets](/docs/concepts/configuration/secret/#using-secrets-as-files-from-a-pod) user guide explains the syntax.
+basis. The [Secrets](/docs/kubernetes/en/concepts/configuration/secret/#using-secrets-as-files-from-a-pod) user guide explains the syntax.
 
 
 
@@ -629,10 +629,10 @@ basis. The [Secrets](/docs/concepts/configuration/secret/#using-secrets-as-files
 
 ## Understanding ConfigMaps and Pods
 
-The ConfigMap API resource stores configuration data as key-value pairs. The data can be consumed in pods or provide the configurations for system components such as controllers. ConfigMap is similar to [Secrets](/docs/concepts/configuration/secret/), but provides a means of working with strings that don't contain sensitive information. Users and system components alike can store configuration data in ConfigMap.
+The ConfigMap API resource stores configuration data as key-value pairs. The data can be consumed in pods or provide the configurations for system components such as controllers. ConfigMap is similar to [Secrets](/docs/kubernetes/en/concepts/configuration/secret/), but provides a means of working with strings that don't contain sensitive information. Users and system components alike can store configuration data in ConfigMap.
 
 {{< note >}}
-ConfigMaps should reference properties files, not replace them. Think of the ConfigMap as representing something similar to the Linux `/etc` directory and its contents. For example, if you create a [Kubernetes Volume](/docs/concepts/storage/volumes/) from a ConfigMap, each data item in the ConfigMap is represented by an individual file in the volume.
+ConfigMaps should reference properties files, not replace them. Think of the ConfigMap as representing something similar to the Linux `/etc` directory and its contents. For example, if you create a [Kubernetes Volume](/docs/kubernetes/en/concepts/storage/volumes/) from a ConfigMap, each data item in the ConfigMap is represented by an individual file in the volume.
 {{< /note >}}
 
 The ConfigMap's `data` field contains the configuration data. As shown in the example below, this can be simple -- like individual properties defined using `--from-literal` -- or complex -- like configuration files or JSON blobs defined using `--from-file`.
@@ -742,9 +742,9 @@ ConfigMap. As a result, the total delay from the moment when the ConfigMap is up
 kubelet sync period (1 minute by default) + TTL of ConfigMaps cache (1 minute by default) in kubelet.
 
 {{< note >}}
-A container using a ConfigMap as a [subPath](/docs/concepts/storage/volumes/#using-subpath) volume will not receive ConfigMap updates.
+A container using a ConfigMap as a [subPath](/docs/kubernetes/en/concepts/storage/volumes/#using-subpath) volume will not receive ConfigMap updates.
 {{< /note >}}
 
 ## {{% heading "whatsnext" %}}
 
-* Follow a real world example of [Configuring Redis using a ConfigMap](/docs/tutorials/configuration/configure-redis-using-configmap/).
+* Follow a real world example of [Configuring Redis using a ConfigMap](/docs/kubernetes/en/tutorials/configuration/configure-redis-using-configmap/).

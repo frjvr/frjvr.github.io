@@ -2,7 +2,7 @@
 title: CronJob
 id: cronjob
 date: 2018-04-12
-full_link: /docs/concepts/workloads/controllers/cron-jobs/
+full_link: /docs/kubernetes/en/concepts/workloads/controllers/cron-jobs/
 short_description: >
   A repeating task (a Job) that runs on a regular schedule.
 
@@ -11,7 +11,7 @@ tags:
 - core-object
 - workload
 ---
- Manages a [Job](/docs/concepts/workloads/controllers/job/) that runs on a periodic schedule.
+ Manages a [Job](/docs/kubernetes/en/concepts/workloads/controllers/job/) that runs on a periodic schedule.
 
 <!--more-->
 

@@ -53,7 +53,7 @@ resources for use by the operating system and other facilities outside of Pods
 and their containers.
 
 PID limiting is a an important sibling to [compute
-resource](/docs/concepts/configuration/manage-resources-containers/) requests
+resource](/docs/kubernetes/en/concepts/configuration/manage-resources-containers/) requests
 and limits. However, you specify it in a different way: rather than defining a
 Pod's resource limit in the `.spec` for a Pod, you configure the limit as a
 setting on the kubelet. Pod-defined PID limits are not currently supported.
@@ -80,13 +80,13 @@ specify this limit at the node level, rather than configuring it as a resource
 limit for a particular Pod. Each Node can have a different PID limit.  
 To configure the limit, you can specify the command line parameter `--pod-max-pids`
 to the kubelet, or set `PodPidsLimit` in the kubelet
-[configuration file](/docs/tasks/administer-cluster/kubelet-config-file/).
+[configuration file](/docs/kubernetes/en/tasks/administer-cluster/kubelet-config-file/).
 
 ## PID based eviction
 
 You can configure kubelet to start terminating a Pod when it is misbehaving and consuming abnormal amount of resources.
 This feature is called eviction. You can
-[Configure Out of Resource Handling](/docs/concepts/scheduling-eviction/node-pressure-eviction/)
+[Configure Out of Resource Handling](/docs/kubernetes/en/concepts/scheduling-eviction/node-pressure-eviction/)
 for various eviction signals.
 Use `pid.available` eviction signal to configure the threshold for number of PIDs used by Pod.
 You can set soft and hard eviction policies.
@@ -107,5 +107,5 @@ when one Pod is misbehaving.
 - Refer to the [PID Limiting enhancement document](https://github.com/kubernetes/enhancements/blob/097b4d8276bc9564e56adf72505d43ce9bc5e9e8/keps/sig-node/20190129-pid-limiting.md) for more information.
 - For historical context, read
   [Process ID Limiting for Stability Improvements in Kubernetes 1.14](/blog/2019/04/15/process-id-limiting-for-stability-improvements-in-kubernetes-1.14/).
-- Read [Managing Resources for Containers](/docs/concepts/configuration/manage-resources-containers/).
-- Learn how to [Configure Out of Resource Handling](/docs/concepts/scheduling-eviction/node-pressure-eviction/).
+- Read [Managing Resources for Containers](/docs/kubernetes/en/concepts/configuration/manage-resources-containers/).
+- Learn how to [Configure Out of Resource Handling](/docs/kubernetes/en/concepts/scheduling-eviction/node-pressure-eviction/).

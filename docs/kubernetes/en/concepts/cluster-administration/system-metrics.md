@@ -130,7 +130,7 @@ The responsibility for collecting accelerator metrics now belongs to the vendor 
 kubelet. Vendors must provide a container that collects metrics and exposes them to the metrics
 service (for example, Prometheus).
 
-The [`DisableAcceleratorUsageMetrics` feature gate](/docs/reference/command-line-tools-reference/feature-gates/)
+The [`DisableAcceleratorUsageMetrics` feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/)
 disables metrics collected by the kubelet, with a
 [timeline for enabling this feature by default](https://github.com/kubernetes/enhancements/tree/411e51027db842355bd489691af897afc1a41a5e/keps/sig-node/1867-disable-accelerator-usage-metrics#graduation-criteria).
 
@@ -168,7 +168,7 @@ of all running pods. These metrics can be used to build capacity planning dashbo
 current or historical scheduling limits, quickly identify workloads that cannot schedule due to
 lack of resources, and compare actual usage to the pod's request.
 
-The kube-scheduler identifies the resource [requests and limits](/docs/concepts/configuration/manage-resources-containers/)
+The kube-scheduler identifies the resource [requests and limits](/docs/kubernetes/en/concepts/configuration/manage-resources-containers/)
 configured for each Pod; when either a request or limit is non-zero, the kube-scheduler reports a
 metrics timeseries. The time series is labelled by:
 
@@ -222,5 +222,5 @@ Here is an example:
 * Read about the [Prometheus text format](https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md#text-based-format)
   for metrics
 * See the list of [stable Kubernetes metrics](https://github.com/kubernetes/kubernetes/blob/master/test/instrumentation/testdata/stable-metrics-list.yaml)
-* Read about the [Kubernetes deprecation policy](/docs/reference/using-api/deprecation-policy/#deprecating-a-feature-or-behavior)
+* Read about the [Kubernetes deprecation policy](/docs/kubernetes/en/reference/using-api/deprecation-policy/#deprecating-a-feature-or-behavior)
 

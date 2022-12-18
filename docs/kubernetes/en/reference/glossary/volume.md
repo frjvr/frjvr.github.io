@@ -2,7 +2,7 @@
 title: Volume
 id: volume
 date: 2018-04-12
-full_link: /docs/concepts/storage/volumes/
+full_link: /docs/kubernetes/en/concepts/storage/volumes/
 short_description: >
   A directory containing data, accessible to the containers in a pod.
 
@@ -17,4 +17,4 @@ tags:
 
 A Kubernetes volume lives as long as the Pod that encloses it. Consequently, a volume outlives any containers that run within the Pod, and data in the volume is preserved across container restarts.
 
-See [storage](/docs/concepts/storage/) for more information.
+See [storage](/docs/kubernetes/en/concepts/storage/) for more information.

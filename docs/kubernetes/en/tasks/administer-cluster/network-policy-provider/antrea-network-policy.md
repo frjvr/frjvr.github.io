@@ -11,7 +11,7 @@ For background on Project Antrea, read the [Introduction to Antrea](https://antr
 ## {{% heading "prerequisites" %}}
 
 You need to have a Kubernetes cluster. Follow the
-[kubeadm getting started guide](/docs/reference/setup-tools/kubeadm/) to bootstrap one.
+[kubeadm getting started guide](/docs/kubernetes/en/reference/setup-tools/kubeadm/) to bootstrap one.
 
 <!-- steps -->
 
@@ -21,4 +21,4 @@ Follow [Getting Started](https://github.com/vmware-tanzu/antrea/blob/main/docs/g
 
 ## {{% heading "whatsnext" %}}
 
-Once your cluster is running, you can follow the [Declare Network Policy](/docs/tasks/administer-cluster/declare-network-policy/) to try out Kubernetes NetworkPolicy.
+Once your cluster is running, you can follow the [Declare Network Policy](/docs/kubernetes/en/tasks/administer-cluster/declare-network-policy/) to try out Kubernetes NetworkPolicy.

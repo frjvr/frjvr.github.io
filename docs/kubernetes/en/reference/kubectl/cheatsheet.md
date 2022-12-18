@@ -48,7 +48,7 @@ Appending `--all-namespaces` happens frequently enough where you should be aware
 ## Kubectl context and configuration
 
 Set which Kubernetes cluster `kubectl` communicates with and modifies configuration
-information. See [Authenticating Across Clusters with kubeconfig](/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) documentation for
+information. See [Authenticating Across Clusters with kubeconfig](/docs/kubernetes/en/tasks/access-application-cluster/configure-access-multiple-clusters/) documentation for
 detailed config file information.
 
 ```bash
@@ -401,7 +401,7 @@ kubectl taint nodes foo dedicated=special-user:NoSchedule
 
 ### Resource types
 
-List all supported resource types along with their shortnames, [API group](/docs/concepts/overview/kubernetes-api/#api-groups-and-versioning), whether they are [namespaced](/docs/concepts/overview/working-with-objects/namespaces), and [Kind](/docs/concepts/overview/working-with-objects/kubernetes-objects):
+List all supported resource types along with their shortnames, [API group](/docs/kubernetes/en/concepts/overview/kubernetes-api/#api-groups-and-versioning), whether they are [namespaced](/docs/kubernetes/en/concepts/overview/working-with-objects/namespaces), and [Kind](/docs/kubernetes/en/concepts/overview/working-with-objects/kubernetes-objects):
 
 ```bash
 kubectl api-resources
@@ -427,8 +427,8 @@ Output format | Description
 `-o=custom-columns=<spec>` | Print a table using a comma separated list of custom columns
 `-o=custom-columns-file=<filename>` | Print a table using the custom columns template in the `<filename>` file
 `-o=json`     | Output a JSON formatted API object
-`-o=jsonpath=<template>` | Print the fields defined in a [jsonpath](/docs/reference/kubectl/jsonpath) expression
-`-o=jsonpath-file=<filename>` | Print the fields defined by the [jsonpath](/docs/reference/kubectl/jsonpath) expression in the `<filename>` file
+`-o=jsonpath=<template>` | Print the fields defined in a [jsonpath](/docs/kubernetes/en/reference/kubectl/jsonpath) expression
+`-o=jsonpath-file=<filename>` | Print the fields defined by the [jsonpath](/docs/kubernetes/en/reference/kubectl/jsonpath) expression in the `<filename>` file
 `-o=name`     | Print only the resource name and nothing else
 `-o=wide`     | Output in the plain-text format with any additional information, and for pods, the node name is included
 `-o=yaml`     | Output a YAML formatted API object
@@ -449,7 +449,7 @@ kubectl get pods -A -o=custom-columns='DATA:spec.containers[?(@.image!="registry
 kubectl get pods -A -o=custom-columns='DATA:metadata.*'
 ```
 
-More examples in the kubectl [reference documentation](/docs/reference/kubectl/#custom-columns).
+More examples in the kubectl [reference documentation](/docs/kubernetes/en/reference/kubectl/#custom-columns).
 
 ### Kubectl output verbosity and debugging
 
@@ -470,10 +470,10 @@ Verbosity | Description
 
 ## {{% heading "whatsnext" %}}
 
-* Read the [kubectl overview](/docs/reference/kubectl/) and learn about [JsonPath](/docs/reference/kubectl/jsonpath).
+* Read the [kubectl overview](/docs/kubernetes/en/reference/kubectl/) and learn about [JsonPath](/docs/kubernetes/en/reference/kubectl/jsonpath).
 
-* See [kubectl](/docs/reference/kubectl/kubectl/) options.
+* See [kubectl](/docs/kubernetes/en/reference/kubectl/kubectl/) options.
 
-* Also read [kubectl Usage Conventions](/docs/reference/kubectl/conventions/) to understand how to use kubectl in reusable scripts.
+* Also read [kubectl Usage Conventions](/docs/kubernetes/en/reference/kubectl/conventions/) to understand how to use kubectl in reusable scripts.
 
 * See more community [kubectl cheatsheets](https://github.com/dennyzhang/cheatsheet-kubernetes-A4).

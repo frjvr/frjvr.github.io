@@ -20,7 +20,7 @@ this pattern fits more realistic use cases.
 ## {{% heading "prerequisites" %}}
 
 You should be familiar with the basic,
-non-parallel, use of [Job](/docs/concepts/workloads/controllers/job/).
+non-parallel, use of [Job](/docs/kubernetes/en/concepts/workloads/controllers/job/).
 
 {{< include "task-tutorial-prereqs.md" >}}
 
@@ -164,7 +164,7 @@ kubectl delete job -l jobgroup=jobexample
 
 In the [first example](#create-jobs-based-on-a-template), each instance of the template had one
 parameter, and that parameter was also used in the Job's name. However,
-[names](/docs/concepts/overview/working-with-objects/names/#names) are restricted
+[names](/docs/kubernetes/en/concepts/overview/working-with-objects/names/#names) are restricted
 to contain only certain characters.
 
 This slightly more complex example uses the
@@ -286,7 +286,7 @@ you can check on all Pods for these templated Jobs with a single command.
 {{< note >}}
 The label key `jobgroup` is not special or reserved.
 You can pick your own labelling scheme.
-There are [recommended labels](/docs/concepts/overview/working-with-objects/common-labels/#labels)
+There are [recommended labels](/docs/kubernetes/en/concepts/overview/working-with-objects/common-labels/#labels)
 that you can use if you wish.
 {{< /note >}}
 
@@ -302,10 +302,10 @@ If you plan to create a large number of Job objects, you may find that:
   on Jobs: the API server permanently rejects some of your requests
   when you create a great deal of work in one batch.
 
-There are other [job patterns](/docs/concepts/workloads/controllers/job/#job-patterns)
+There are other [job patterns](/docs/kubernetes/en/concepts/workloads/controllers/job/#job-patterns)
 that you can use to process large amounts of work without creating very many Job
 objects.
 
-You could also consider writing your own [controller](/docs/concepts/architecture/controller/)
+You could also consider writing your own [controller](/docs/kubernetes/en/concepts/architecture/controller/)
 to manage Job objects automatically.
 

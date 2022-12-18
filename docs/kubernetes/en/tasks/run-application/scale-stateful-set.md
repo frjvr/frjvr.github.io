@@ -22,7 +22,7 @@ This task shows how to scale a StatefulSet. Scaling a StatefulSet refers to incr
 * StatefulSets are only available in Kubernetes version 1.5 or later.
   To check your version of Kubernetes, run `kubectl version`.
 
-* Not all stateful applications scale nicely. If you are unsure about whether to scale your StatefulSets, see [StatefulSet concepts](/docs/concepts/workloads/controllers/statefulset/) or [StatefulSet tutorial](/docs/tutorials/stateful-application/basic-stateful-set/) for further information.
+* Not all stateful applications scale nicely. If you are unsure about whether to scale your StatefulSets, see [StatefulSet concepts](/docs/kubernetes/en/concepts/workloads/controllers/statefulset/) or [StatefulSet tutorial](/docs/kubernetes/en/tutorials/stateful-application/basic-stateful-set/) for further information.
 
 * You should perform scaling only when you are confident that your stateful application
   cluster is completely healthy.
@@ -49,7 +49,7 @@ kubectl scale statefulsets <stateful-set-name> --replicas=<new-replicas>
 
 ### Make in-place updates on your StatefulSets
 
-Alternatively, you can do [in-place updates](/docs/concepts/cluster-administration/manage-deployment/#in-place-updates-of-resources) on your StatefulSets.
+Alternatively, you can do [in-place updates](/docs/kubernetes/en/concepts/cluster-administration/manage-deployment/#in-place-updates-of-resources) on your StatefulSets.
 
 If your StatefulSet was initially created with `kubectl apply`,
 update `.spec.replicas` of the StatefulSet manifests, and then do a `kubectl apply`:
@@ -96,6 +96,6 @@ completely healthy.
 ## {{% heading "whatsnext" %}}
 
 
-* Learn more about [deleting a StatefulSet](/docs/tasks/run-application/delete-stateful-set/).
+* Learn more about [deleting a StatefulSet](/docs/kubernetes/en/tasks/run-application/delete-stateful-set/).
 
 

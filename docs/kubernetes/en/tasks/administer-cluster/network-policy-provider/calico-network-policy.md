@@ -50,6 +50,6 @@ To get a local single-host Calico cluster in fifteen minutes using kubeadm, refe
 
 ## {{% heading "whatsnext" %}}
 
-Once your cluster is running, you can follow the [Declare Network Policy](/docs/tasks/administer-cluster/declare-network-policy/) to try out Kubernetes NetworkPolicy.
+Once your cluster is running, you can follow the [Declare Network Policy](/docs/kubernetes/en/tasks/administer-cluster/declare-network-policy/) to try out Kubernetes NetworkPolicy.
 
 

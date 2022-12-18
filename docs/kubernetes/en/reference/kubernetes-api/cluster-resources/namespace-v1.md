@@ -62,7 +62,7 @@ NamespaceSpec describes the attributes on a Namespace.
 
 - **finalizers** ([]string)
 
-  Finalizers is an opaque list of values that must be empty to permanently remove object from storage. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
+  Finalizers is an opaque list of values that must be empty to permanently remove object from storage. More info: https://kubernetes.io/docs/kubernetes/en/tasks/administer-cluster/namespaces/
 
 
 
@@ -105,7 +105,7 @@ NamespaceStatus is information about the current status of a Namespace.
 
 - **phase** (string)
 
-  Phase is the current lifecycle phase of the namespace. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
+  Phase is the current lifecycle phase of the namespace. More info: https://kubernetes.io/docs/kubernetes/en/tasks/administer-cluster/namespaces/
   
   
 
@@ -131,7 +131,7 @@ NamespaceList is a list of Namespaces.
 
 - **items** ([]<a href="{{< ref "../cluster-resources/namespace-v1#Namespace" >}}">Namespace</a>), required
 
-  Items is the list of Namespace objects in the list. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+  Items is the list of Namespace objects in the list. More info: https://kubernetes.io/docs/kubernetes/en/concepts/overview/working-with-objects/namespaces/
 
 
 

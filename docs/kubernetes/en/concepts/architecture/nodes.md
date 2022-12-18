@@ -19,7 +19,7 @@ and contains the services necessary to run
 Typically you have several nodes in a cluster; in a learning or resource-limited
 environment, you might have only one node.
 
-The [components](/docs/concepts/overview/components/#node-components) on a node include the
+The [components](/docs/kubernetes/en/concepts/overview/components/#node-components) on a node include the
 {{< glossary_tooltip text="kubelet" term_id="kubelet" >}}, a
 {{< glossary_tooltip text="container runtime" term_id="container-runtime" >}}, and the
 {{< glossary_tooltip text="kube-proxy" term_id="kube-proxy" >}}.
@@ -65,11 +65,11 @@ delete the Node object to stop that health checking.
 {{< /note >}}
 
 The name of a Node object must be a valid
-[DNS subdomain name](/docs/concepts/overview/working-with-objects/names#dns-subdomain-names).
+[DNS subdomain name](/docs/kubernetes/en/concepts/overview/working-with-objects/names#dns-subdomain-names).
 
 ### Node name uniqueness
 
-The [name](/docs/concepts/overview/working-with-objects/names#names) identifies a Node. Two Nodes
+The [name](/docs/kubernetes/en/concepts/overview/working-with-objects/names#names) identifies a Node. Two Nodes
 cannot have the same name at the same time. Kubernetes also assumes that a resource with the same
 name is the same object. In case of a Node, it is implicitly assumed that an instance using the
 same name will have the same state (e.g. network settings, root disk contents)
@@ -96,11 +96,11 @@ For self-registration, the kubelet is started with the following options:
 - `--node-ip` - IP address of the node.
 - `--node-labels` - {{< glossary_tooltip text="Labels" term_id="label" >}} to add when registering the node
   in the cluster (see label restrictions enforced by the
-  [NodeRestriction admission plugin](/docs/reference/access-authn-authz/admission-controllers/#noderestriction)).
+  [NodeRestriction admission plugin](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/#noderestriction)).
 - `--node-status-update-frequency` - Specifies how often kubelet posts its node status to the API server.
 
-When the [Node authorization mode](/docs/reference/access-authn-authz/node/) and
-[NodeRestriction admission plugin](/docs/reference/access-authn-authz/admission-controllers/#noderestriction)
+When the [Node authorization mode](/docs/kubernetes/en/reference/access-authn-authz/node/) and
+[NodeRestriction admission plugin](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/#noderestriction)
 are enabled, kubelets are only authorized to create/modify their own Node resource.
 
 {{< note >}}
@@ -142,7 +142,7 @@ To mark a Node unschedulable, run:
 kubectl cordon $NODENAME
 ```
 
-See [Safely Drain a Node](/docs/tasks/administer-cluster/safely-drain-node/)
+See [Safely Drain a Node](/docs/kubernetes/en/tasks/administer-cluster/safely-drain-node/)
 for more details.
 
 {{< note >}}
@@ -236,13 +236,13 @@ all the Pod objects running on the node to be deleted from the API server and fr
 names.
 
 When problems occur on nodes, the Kubernetes control plane automatically creates
-[taints](/docs/concepts/scheduling-eviction/taint-and-toleration/) that match the conditions
+[taints](/docs/kubernetes/en/concepts/scheduling-eviction/taint-and-toleration/) that match the conditions
 affecting the node.
 The scheduler takes the Node's taints into consideration when assigning a Pod to a Node.
 Pods can also have {{< glossary_tooltip text="tolerations" term_id="toleration" >}} that let
 them run on a Node even though it has a specific taint.
 
-See [Taint Nodes by Condition](/docs/concepts/scheduling-eviction/taint-and-toleration/#taint-nodes-by-condition)
+See [Taint Nodes by Condition](/docs/kubernetes/en/concepts/scheduling-eviction/taint-and-toleration/#taint-nodes-by-condition)
 for more details.
 
 ### Capacity and Allocatable {#capacity}
@@ -255,7 +255,7 @@ Node has. The allocatable block indicates the amount of resources on a
 Node that is available to be consumed by normal Pods.
 
 You may read more about capacity and allocatable resources while learning how
-to [reserve compute resources](/docs/tasks/administer-cluster/reserve-compute-resources/#node-allocatable)
+to [reserve compute resources](/docs/kubernetes/en/tasks/administer-cluster/reserve-compute-resources/#node-allocatable)
 on a Node.
 
 ### Info
@@ -274,7 +274,7 @@ availability of each node, and to take action when failures are detected.
 For nodes there are two forms of heartbeats:
 
 * updates to the `.status` of a Node
-* [Lease](/docs/reference/kubernetes-api/cluster-resources/lease-v1/) objects
+* [Lease](/docs/kubernetes/en/reference/kubernetes-api/cluster-resources/lease-v1/) objects
   within the `kube-node-lease`
   {{< glossary_tooltip term_id="namespace" text="namespace">}}.
   Each Node has an associated Lease object.
@@ -316,7 +316,7 @@ responsible for:
   in the Node's `.status` field. In this case the node controller sets the
   `Ready` condition to `Unknown`.
 - If a node remains unreachable: triggering
-  [API-initiated eviction](/docs/concepts/scheduling-eviction/api-eviction/)
+  [API-initiated eviction](/docs/kubernetes/en/concepts/scheduling-eviction/api-eviction/)
   for all of the Pods on the unreachable node. By default, the node controller
   waits 5 minutes between marking the node as `Unknown` and submitting
   the first eviction request.
@@ -381,7 +381,7 @@ processes running outside of the kubelet's control.
 
 {{< note >}}
 If you want to explicitly reserve resources for non-Pod processes, see
-[reserve resources for system daemons](/docs/tasks/administer-cluster/reserve-compute-resources/#system-reserved).
+[reserve resources for system daemons](/docs/kubernetes/en/tasks/administer-cluster/reserve-compute-resources/#system-reserved).
 {{< /note >}}
 
 ## Node topology
@@ -389,9 +389,9 @@ If you want to explicitly reserve resources for non-Pod processes, see
 {{< feature-state state="beta" for_k8s_version="v1.18" >}}
 
 If you have enabled the `TopologyManager`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/), then
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/), then
 the kubelet can use topology hints when making resource assignment decisions.
-See [Control Topology Management Policies on a Node](/docs/tasks/administer-cluster/topology-manager/)
+See [Control Topology Management Policies on a Node](/docs/kubernetes/en/tasks/administer-cluster/topology-manager/)
 for more information.
 
 ## Graceful node shutdown {#graceful-node-shutdown}
@@ -401,7 +401,7 @@ for more information.
 The kubelet attempts to detect node system shutdown and terminates pods running on the node.
 
 Kubelet ensures that pods follow the normal
-[pod termination process](/docs/concepts/workloads/pods/pod-lifecycle/#pod-termination)
+[pod termination process](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#pod-termination)
 during the node shutdown.
 
 The Graceful node shutdown feature depends on systemd since it takes advantage of
@@ -409,7 +409,7 @@ The Graceful node shutdown feature depends on systemd since it takes advantage o
 delay the node shutdown with a given duration.
 
 Graceful node shutdown is controlled with the `GracefulNodeShutdown`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/) which is
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) which is
 enabled by default in 1.21.
 
 Note that by default, both configuration options described below,
@@ -421,26 +421,26 @@ set to non-zero values.
 During a graceful shutdown, kubelet terminates pods in two phases:
 
 1. Terminate regular pods running on the node.
-2. Terminate [critical pods](/docs/tasks/administer-cluster/guaranteed-scheduling-critical-addon-pods/#marking-pod-as-critical)
+2. Terminate [critical pods](/docs/kubernetes/en/tasks/administer-cluster/guaranteed-scheduling-critical-addon-pods/#marking-pod-as-critical)
    running on the node.
 
 Graceful node shutdown feature is configured with two
-[`KubeletConfiguration`](/docs/tasks/administer-cluster/kubelet-config-file/) options:
+[`KubeletConfiguration`](/docs/kubernetes/en/tasks/administer-cluster/kubelet-config-file/) options:
 
 * `shutdownGracePeriod`:
   * Specifies the total duration that the node should delay the shutdown by. This is the total
     grace period for pod termination for both regular and
-    [critical pods](/docs/tasks/administer-cluster/guaranteed-scheduling-critical-addon-pods/#marking-pod-as-critical).
+    [critical pods](/docs/kubernetes/en/tasks/administer-cluster/guaranteed-scheduling-critical-addon-pods/#marking-pod-as-critical).
 * `shutdownGracePeriodCriticalPods`:
   * Specifies the duration used to terminate
-    [critical pods](/docs/tasks/administer-cluster/guaranteed-scheduling-critical-addon-pods/#marking-pod-as-critical)
+    [critical pods](/docs/kubernetes/en/tasks/administer-cluster/guaranteed-scheduling-critical-addon-pods/#marking-pod-as-critical)
     during a node shutdown. This value should be less than `shutdownGracePeriod`.
 
 For example, if `shutdownGracePeriod=30s`, and
 `shutdownGracePeriodCriticalPods=10s`, kubelet will delay the node shutdown by
 30 seconds. During the shutdown, the first 20 (30-10) seconds would be reserved
 for gracefully terminating normal pods, and the last 10 seconds would be
-reserved for terminating [critical pods](/docs/tasks/administer-cluster/guaranteed-scheduling-critical-addon-pods/#marking-pod-as-critical).
+reserved for terminating [critical pods](/docs/kubernetes/en/tasks/administer-cluster/guaranteed-scheduling-critical-addon-pods/#marking-pod-as-critical).
 
 {{< note >}}
 When pods were evicted during the graceful node shutdown, they are marked as shutdown.
@@ -478,7 +478,7 @@ these pods will be stuck in terminating status on the shutdown node forever.
 
 To mitigate the above situation, a  user can manually add the taint `node.kubernetes.io/out-of-service` with either `NoExecute`
 or `NoSchedule` effect to a Node marking it out-of-service. 
-If the `NodeOutOfServiceVolumeDetach`[feature gate](/docs/reference/command-line-tools-reference/feature-gates/)
+If the `NodeOutOfServiceVolumeDetach`[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/)
 is enabled on `kube-controller-manager`, and a Node is marked out-of-service with this taint, the
 pods on the node will be forcefully deleted if there are no matching tolerations on it and volume
 detach operations for the pods terminating on the node will happen immediately. This allows the
@@ -507,7 +507,7 @@ of pods during shutdown, graceful node shutdown honors the PriorityClass for
 Pods, provided that you enabled this feature in your cluster. The feature
 allows cluster administers to explicitly define the ordering of pods
 during graceful node shutdown based on
-[priority classes](/docs/concepts/scheduling-eviction/pod-priority-preemption/#priorityclass).
+[priority classes](/docs/kubernetes/en/concepts/scheduling-eviction/pod-priority-preemption/#priorityclass).
 
 The [Graceful Node Shutdown](#graceful-node-shutdown) feature, as described
 above, shuts down pods in two phases, non-critical pods, followed by critical
@@ -521,7 +521,7 @@ particular priority class of pods. The kubelet can be configured with the exact
 phases and shutdown time per phase.
 
 Assuming the following custom pod
-[priority classes](/docs/concepts/scheduling-eviction/pod-priority-preemption/#priorityclass)
+[priority classes](/docs/kubernetes/en/concepts/scheduling-eviction/pod-priority-preemption/#priorityclass)
 in a cluster,
 
 |Pod priority class name|Pod priority class value|
@@ -531,7 +531,7 @@ in a cluster,
 |`custom-class-c`         | 1000                   |
 |`regular/unset`          | 0                      |
 
-Within the [kubelet configuration](/docs/reference/config-api/kubelet-config.v1beta1/#kubelet-config-k8s-io-v1beta1-KubeletConfiguration)
+Within the [kubelet configuration](/docs/kubernetes/en/reference/config-api/kubelet-config.v1beta1/#kubelet-config-k8s-io-v1beta1-KubeletConfiguration)
 the settings for `shutdownGracePeriodByPodPriority` could look like:
 
 |Pod priority class value|Shutdown period|
@@ -581,9 +581,9 @@ If this feature is enabled and no configuration is provided, then no ordering
 action will be taken.
 
 Using this feature requires enabling the `GracefulNodeShutdownBasedOnPodPriority`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/)
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/)
 , and setting `ShutdownGracePeriodByPodPriority` in the
-[kubelet config](/docs/reference/config-api/kubelet-config.v1beta1/)
+[kubelet config](/docs/kubernetes/en/reference/config-api/kubelet-config.v1beta1/)
 to the desired configuration containing the pod priority class values and
 their respective shutdown periods.
 
@@ -606,7 +606,7 @@ onwards, swap memory support can be enabled on a per-node basis.
 
 To enable swap on a node, the `NodeSwap` feature gate must be enabled on
 the kubelet, and the `--fail-swap-on` command line flag or `failSwapOn`
-[configuration setting](/docs/reference/config-api/kubelet-config.v1beta1/#kubelet-config-k8s-io-v1beta1-KubeletConfiguration)
+[configuration setting](/docs/kubernetes/en/reference/config-api/kubelet-config.v1beta1/#kubelet-config-k8s-io-v1beta1-KubeletConfiguration)
 must be set to false.
 
 {{< warning >}}
@@ -646,9 +646,9 @@ see [KEP-2400](https://github.com/kubernetes/enhancements/issues/2400) and its
 
 ## {{% heading "whatsnext" %}}
 
-* Learn about the [components](/docs/concepts/overview/components/#node-components) that make up a node.
-* Read the [API definition for Node](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#node-v1-core).
+* Learn about the [components](/docs/kubernetes/en/concepts/overview/components/#node-components) that make up a node.
+* Read the [API definition for Node](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#node-v1-core).
 * Read the [Node](https://git.k8s.io/design-proposals-archive/architecture/architecture.md#the-kubernetes-node)
   section of the architecture design document.
-* Read about [taints and tolerations](/docs/concepts/scheduling-eviction/taint-and-toleration/).
+* Read about [taints and tolerations](/docs/kubernetes/en/concepts/scheduling-eviction/taint-and-toleration/).
 

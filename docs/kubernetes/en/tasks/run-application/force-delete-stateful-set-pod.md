@@ -25,7 +25,7 @@ This page shows how to delete Pods which are part of a {{< glossary_tooltip text
 
 ## StatefulSet considerations
 
-In normal operation of a StatefulSet, there is **never** a need to force delete a StatefulSet Pod. The [StatefulSet controller](/docs/concepts/workloads/controllers/statefulset/) is responsible for creating, scaling and deleting members of the StatefulSet. It tries to ensure that the specified number of Pods from ordinal 0 through N-1 are alive and ready. StatefulSet ensures that, at any time, there is at most one Pod with a given identity running in a cluster. This is referred to as *at most one* semantics provided by a StatefulSet.
+In normal operation of a StatefulSet, there is **never** a need to force delete a StatefulSet Pod. The [StatefulSet controller](/docs/kubernetes/en/concepts/workloads/controllers/statefulset/) is responsible for creating, scaling and deleting members of the StatefulSet. It tries to ensure that the specified number of Pods from ordinal 0 through N-1 are alive and ready. StatefulSet ensures that, at any time, there is at most one Pod with a given identity running in a cluster. This is referred to as *at most one* semantics provided by a StatefulSet.
 
 Manual force deletion should be undertaken with caution, as it has the potential to violate the at most one semantics inherent to StatefulSet. StatefulSets may be used to run distributed and clustered applications which have a need for a stable network identity and stable storage. These applications often have configuration which relies on an ensemble of a fixed number of members with fixed identities. Having multiple members with the same identity can be disastrous and may lead to data loss (e.g. split brain scenario in quorum-based systems).
 
@@ -41,17 +41,17 @@ For the above to lead to graceful termination, the Pod **must not** specify a
 `pod.Spec.TerminationGracePeriodSeconds` of 0. The practice of setting a
 `pod.Spec.TerminationGracePeriodSeconds` of 0 seconds is unsafe and strongly discouraged
 for StatefulSet Pods. Graceful deletion is safe and will ensure that the Pod
-[shuts down gracefully](/docs/concepts/workloads/pods/pod-lifecycle/#pod-termination)
+[shuts down gracefully](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#pod-termination)
 before the kubelet deletes the name from the apiserver.
 
 A Pod is not deleted automatically when a node is unreachable.
 The Pods running on an unreachable Node enter the 'Terminating' or 'Unknown' state after a
-[timeout](/docs/concepts/architecture/nodes/#condition).
+[timeout](/docs/kubernetes/en/concepts/architecture/nodes/#condition).
 Pods may also enter these states when the user attempts graceful deletion of a Pod
 on an unreachable Node.
 The only ways in which a Pod in such a state can be removed from the apiserver are as follows:
 
-* The Node object is deleted (either by you, or by the [Node Controller](/docs/concepts/architecture/nodes/#node-controller)).
+* The Node object is deleted (either by you, or by the [Node Controller](/docs/kubernetes/en/concepts/architecture/nodes/#node-controller)).
 * The kubelet on the unresponsive Node starts responding, kills the Pod and removes the entry from the apiserver.
 * Force deletion of the Pod by the user.
 
@@ -90,6 +90,6 @@ Always perform force deletion of StatefulSet Pods carefully and with complete kn
 ## {{% heading "whatsnext" %}}
 
 
-Learn more about [debugging a StatefulSet](/docs/tasks/debug/debug-application/debug-statefulset/).
+Learn more about [debugging a StatefulSet](/docs/kubernetes/en/tasks/debug/debug-application/debug-statefulset/).
 
 

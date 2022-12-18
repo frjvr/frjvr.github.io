@@ -164,7 +164,7 @@ You can also see the patch strategy in the
 <!-- for editors: intentionally use yaml instead of json here, to prevent syntax highlight error. -->
 
 And you can see the patch strategy in the
-[Kubernetes API documentation](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core).
+[Kubernetes API documentation](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core).
 
 Create a file named `patch-file-tolerations.yaml` that has this content:
 
@@ -390,7 +390,7 @@ You can also see the `retainKeys` strategy in the [OpenApi spec](https://raw.git
 <!-- for editors: intentionally use yaml instead of json here, to prevent syntax highlight error. -->
 
 And you can see the `retainKeys` strategy in the
-[Kubernetes API documentation](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#deploymentspec-v1-apps).
+[Kubernetes API documentation](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#deploymentspec-v1-apps).
 
 ### Alternate forms of the kubectl patch command
 
@@ -516,12 +516,12 @@ particular subresource, the API server returns a 404 Not Found error.
 In this exercise, you used `kubectl patch` to change the live configuration
 of a Deployment object. You did not change the configuration file that you originally used to
 create the Deployment object. Other commands for updating API objects include
-[kubectl annotate](/docs/reference/generated/kubectl/kubectl-commands/#annotate),
-[kubectl edit](/docs/reference/generated/kubectl/kubectl-commands/#edit),
-[kubectl replace](/docs/reference/generated/kubectl/kubectl-commands/#replace),
-[kubectl scale](/docs/reference/generated/kubectl/kubectl-commands/#scale),
+[kubectl annotate](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#annotate),
+[kubectl edit](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#edit),
+[kubectl replace](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#replace),
+[kubectl scale](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#scale),
 and
-[kubectl apply](/docs/reference/generated/kubectl/kubectl-commands/#apply).
+[kubectl apply](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#apply).
 
 
 {{< note >}}
@@ -532,9 +532,9 @@ Strategic merge patch is not supported for custom resources.
 ## {{% heading "whatsnext" %}}
 
 
-* [Kubernetes Object Management](/docs/concepts/overview/working-with-objects/object-management/)
-* [Managing Kubernetes Objects Using Imperative Commands](/docs/tasks/manage-kubernetes-objects/imperative-command/)
-* [Imperative Management of Kubernetes Objects Using Configuration Files](/docs/tasks/manage-kubernetes-objects/imperative-config/)
-* [Declarative Management of Kubernetes Objects Using Configuration Files](/docs/tasks/manage-kubernetes-objects/declarative-config/)
+* [Kubernetes Object Management](/docs/kubernetes/en/concepts/overview/working-with-objects/object-management/)
+* [Managing Kubernetes Objects Using Imperative Commands](/docs/kubernetes/en/tasks/manage-kubernetes-objects/imperative-command/)
+* [Imperative Management of Kubernetes Objects Using Configuration Files](/docs/kubernetes/en/tasks/manage-kubernetes-objects/imperative-config/)
+* [Declarative Management of Kubernetes Objects Using Configuration Files](/docs/kubernetes/en/tasks/manage-kubernetes-objects/declarative-config/)
 
 

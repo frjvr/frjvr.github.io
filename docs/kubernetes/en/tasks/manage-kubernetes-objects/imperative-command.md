@@ -12,7 +12,7 @@ explains how those commands are organized and how to use them to manage live obj
 
 ## {{% heading "prerequisites" %}}
 
-Install [`kubectl`](/docs/tasks/tools/).
+Install [`kubectl`](/docs/kubernetes/en/tasks/tools/).
 
 {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
 
@@ -28,7 +28,7 @@ The `kubectl` tool supports three kinds of object management:
 * Imperative object configuration
 * Declarative object configuration
 
-See [Kubernetes Object Management](/docs/concepts/overview/working-with-objects/object-management/)
+See [Kubernetes Object Management](/docs/kubernetes/en/concepts/overview/working-with-objects/object-management/)
 for a discussion of the advantages and disadvantage of each kind of object management.
 
 ## How to create objects
@@ -165,9 +165,9 @@ kubectl create --edit -f /tmp/srv.yaml
 ## {{% heading "whatsnext" %}}
 
 
-* [Imperative Management of Kubernetes Objects Using Configuration Files](/docs/tasks/manage-kubernetes-objects/imperative-config/)
-* [Declarative Management of Kubernetes Objects Using Configuration Files](/docs/tasks/manage-kubernetes-objects/declarative-config/)
-* [Kubectl Command Reference](/docs/reference/generated/kubectl/kubectl-commands/)
-* [Kubernetes API Reference](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/)
+* [Imperative Management of Kubernetes Objects Using Configuration Files](/docs/kubernetes/en/tasks/manage-kubernetes-objects/imperative-config/)
+* [Declarative Management of Kubernetes Objects Using Configuration Files](/docs/kubernetes/en/tasks/manage-kubernetes-objects/declarative-config/)
+* [Kubectl Command Reference](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/)
+* [Kubernetes API Reference](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/)
 
 

@@ -16,7 +16,7 @@ _provided your cluster runs in a supported environment and is configured with
 the correct cloud load balancer provider package_.
 
 You can also use an {{< glossary_tooltip term_id="ingress" >}} in place of Service.
-For more information, check the [Ingress](/docs/concepts/services-networking/ingress/)
+For more information, check the [Ingress](/docs/kubernetes/en/concepts/services-networking/ingress/)
 documentation.
 
 ## {{% heading "prerequisites" %}}
@@ -72,7 +72,7 @@ resource (in the case of the example above, a
 {{< glossary_tooltip text="Deployment" term_id="deployment" >}} named `example`).
 
 For more information, including optional flags, refer to the
-[`kubectl expose` reference](/docs/reference/generated/kubectl/kubectl-commands/#expose).
+[`kubectl expose` reference](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#expose).
 
 ## Finding your IP address
 
@@ -198,6 +198,6 @@ balancer, the control plane looks up that external IP address and populates it i
 
 ## {{% heading "whatsnext" %}}
 
-* Follow the [Connecting Applications with Services](/docs/tutorials/services/connect-applications-service/) tutorial
-* Read about [Service](/docs/concepts/services-networking/service/)
-* Read about [Ingress](/docs/concepts/services-networking/ingress/)
+* Follow the [Connecting Applications with Services](/docs/kubernetes/en/tutorials/services/connect-applications-service/) tutorial
+* Read about [Service](/docs/kubernetes/en/concepts/services-networking/service/)
+* Read about [Ingress](/docs/kubernetes/en/concepts/services-networking/ingress/)

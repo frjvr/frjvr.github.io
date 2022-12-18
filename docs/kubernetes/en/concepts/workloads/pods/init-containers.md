@@ -32,9 +32,9 @@ If a Pod's init container fails, the kubelet repeatedly restarts that init conta
 However, if the Pod has a `restartPolicy` of Never, and an init container fails during startup of that Pod, Kubernetes treats the overall Pod as failed.
 
 To specify an init container for a Pod, add the `initContainers` field into
-the [Pod specification](/docs/reference/kubernetes-api/workload-resources/pod-v1/#PodSpec),
+the [Pod specification](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/pod-v1/#PodSpec),
 as an array of `container` items (similar to the app `containers` field and its contents).
-See [Container](/docs/reference/kubernetes-api/workload-resources/pod-v1/#Container) in the
+See [Container](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/pod-v1/#Container) in the
 API reference for more details.
 
 The status of the init containers is returned in `.status.initContainerStatuses`
@@ -331,6 +331,6 @@ Kubernetes, consult the documentation for the version you are using.
 
 ## {{% heading "whatsnext" %}}
 
-* Read about [creating a Pod that has an init container](/docs/tasks/configure-pod-container/configure-pod-initialization/#create-a-pod-that-has-an-init-container)
-* Learn how to [debug init containers](/docs/tasks/debug/debug-application/debug-init-containers/)
+* Read about [creating a Pod that has an init container](/docs/kubernetes/en/tasks/configure-pod-container/configure-pod-initialization/#create-a-pod-that-has-an-init-container)
+* Learn how to [debug init containers](/docs/kubernetes/en/tasks/debug/debug-application/debug-init-containers/)
 

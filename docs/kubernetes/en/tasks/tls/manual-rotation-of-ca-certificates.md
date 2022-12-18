@@ -13,9 +13,9 @@ This page shows how to manually rotate the certificate authority (CA) certificat
 
 
 - For more information about authentication in Kubernetes, see
-  [Authenticating](/docs/reference/access-authn-authz/authentication).
+  [Authenticating](/docs/kubernetes/en/reference/access-authn-authz/authentication).
 - For more information about best practices for CA certificates, see
-  [Single root CA](/docs/setup/best-practices/certificates/#single-root-ca).
+  [Single root CA](/docs/kubernetes/en/setup/best-practices/certificates/#single-root-ca).
 
 <!-- steps -->
 
@@ -70,7 +70,7 @@ Configurations with a single API server will experience unavailability while the
    respectively.
 
    For information about creating certificates for individual user accounts, see
-   [Configure certificates for user accounts](/docs/setup/best-practices/certificates/#configure-certificates-for-user-accounts).
+   [Configure certificates for user accounts](/docs/kubernetes/en/setup/best-practices/certificates/#configure-certificates-for-user-accounts).
 
    Additionally, update the `certificate-authority-data` section in the kubeconfig files,
    respectively with Base64-encoded old and new certificate authority data
@@ -85,7 +85,7 @@ Configurations with a single API server will experience unavailability while the
 1. Follow the steps below in a rolling fashion.
 
    1. Restart any other
-      [aggregated API servers](/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/) or
+      [aggregated API servers](/docs/kubernetes/en/concepts/extend-kubernetes/api-extension/apiserver-aggregation/) or
       webhook handlers to trust the new CA certificates.
 
    1. Restart the kubelet by update the file against `clientCAFile` in kubelet configuration and
@@ -110,8 +110,8 @@ Configurations with a single API server will experience unavailability while the
 
       {{< note >}}
       To generate certificates and private keys for your cluster using the `openssl` command line tool,
-      see [Certificates (`openssl`)](/docs/tasks/administer-cluster/certificates/#openssl).
-      You can also use [`cfssl`](/docs/tasks/administer-cluster/certificates/#cfssl).
+      see [Certificates (`openssl`)](/docs/kubernetes/en/tasks/administer-cluster/certificates/#openssl).
+      You can also use [`cfssl`](/docs/kubernetes/en/tasks/administer-cluster/certificates/#cfssl).
       {{< /note >}}
 
     1. Annotate any DaemonSets and Deployments to trigger pod replacement in a safer rolling fashion.
@@ -129,7 +129,7 @@ Configurations with a single API server will experience unavailability while the
 
       {{< note >}}
       To limit the number of concurrent disruptions that your application experiences,
-      see [configure pod disruption budget](/docs/tasks/run-application/configure-pdb/).
+      see [configure pod disruption budget](/docs/kubernetes/en/tasks/run-application/configure-pdb/).
       {{< /note >}}
 
         Depending on how you use StatefulSets you may also need to perform similar rolling replacement.
@@ -149,7 +149,7 @@ Configurations with a single API server will experience unavailability while the
 
     1. Check the logs from control plane components, along with the kubelet and the kube-proxy.
        Ensure those components are not reporting any TLS errors; see
-       [looking at the logs](/docs/tasks/debug/debug-cluster/#looking-at-logs) for more details.
+       [looking at the logs](/docs/kubernetes/en/tasks/debug/debug-cluster/#looking-at-logs) for more details.
 
     1. Validate logs from any aggregated api servers and pods using in-cluster config.
 

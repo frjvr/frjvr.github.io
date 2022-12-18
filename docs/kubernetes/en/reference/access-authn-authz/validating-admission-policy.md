@@ -40,7 +40,7 @@ If a `ValidatingAdmissionPolicy` does not need to be configured via parameters, 
 
 ## {{% heading "prerequisites" %}}
 
-- Ensure the `ValidatingAdmissionPolicy` [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) is enabled.
+- Ensure the `ValidatingAdmissionPolicy` [feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) is enabled.
 - Ensure that the `admissionregistration.k8s.io/v1alpha1` API is enabled.
 
 ## Getting Started with Validating Admission Policy

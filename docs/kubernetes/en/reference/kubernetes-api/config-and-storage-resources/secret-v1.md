@@ -56,7 +56,7 @@ Secret holds secret data of a certain type. The total bytes of the values in the
 
 - **type** (string)
 
-  Used to facilitate programmatic handling of secret data. More info: https://kubernetes.io/docs/concepts/configuration/secret/#secret-types
+  Used to facilitate programmatic handling of secret data. More info: https://kubernetes.io/docs/kubernetes/en/concepts/configuration/secret/#secret-types
 
 
 
@@ -80,7 +80,7 @@ SecretList is a list of Secret.
 
 - **items** ([]<a href="{{< ref "../config-and-storage-resources/secret-v1#Secret" >}}">Secret</a>), required
 
-  Items is a list of secret objects. More info: https://kubernetes.io/docs/concepts/configuration/secret
+  Items is a list of secret objects. More info: https://kubernetes.io/docs/kubernetes/en/concepts/configuration/secret
 
 
 

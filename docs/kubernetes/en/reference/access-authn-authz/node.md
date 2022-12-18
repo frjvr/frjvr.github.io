@@ -34,7 +34,7 @@ Write operations:
 
 Auth-related operations:
 
-* read/write access to the [CertificateSigningRequests API](/docs/reference/access-authn-authz/certificate-signing-requests/) for TLS bootstrapping
+* read/write access to the [CertificateSigningRequests API](/docs/kubernetes/en/reference/access-authn-authz/certificate-signing-requests/) for TLS bootstrapping
 * the ability to create TokenReviews and SubjectAccessReviews for delegated authentication/authorization checks
 
 In future releases, the node authorizer may add or remove permissions to ensure kubelets
@@ -43,14 +43,14 @@ have the minimal set of permissions required to operate correctly.
 In order to be authorized by the Node authorizer, kubelets must use a credential that identifies them as 
 being in the `system:nodes` group, with a username of `system:node:<nodeName>`.
 This group and user name format match the identity created for each kubelet as part of 
-[kubelet TLS bootstrapping](/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/).
+[kubelet TLS bootstrapping](/docs/kubernetes/en/reference/access-authn-authz/kubelet-tls-bootstrapping/).
 
-The value of `<nodeName>` **must** match precisely the name of the node as registered by the kubelet. By default, this is the host name as provided by `hostname`, or overridden via the [kubelet option](/docs/reference/command-line-tools-reference/kubelet/) `--hostname-override`. However, when using the `--cloud-provider` kubelet option, the specific hostname may be determined by the cloud provider, ignoring the local `hostname` and the `--hostname-override` option. 
-For specifics about how the kubelet determines the hostname, see the [kubelet options reference](/docs/reference/command-line-tools-reference/kubelet/).
+The value of `<nodeName>` **must** match precisely the name of the node as registered by the kubelet. By default, this is the host name as provided by `hostname`, or overridden via the [kubelet option](/docs/kubernetes/en/reference/command-line-tools-reference/kubelet/) `--hostname-override`. However, when using the `--cloud-provider` kubelet option, the specific hostname may be determined by the cloud provider, ignoring the local `hostname` and the `--hostname-override` option. 
+For specifics about how the kubelet determines the hostname, see the [kubelet options reference](/docs/kubernetes/en/reference/command-line-tools-reference/kubelet/).
 
 To enable the Node authorizer, start the apiserver with `--authorization-mode=Node`.
 
-To limit the API objects kubelets are able to write, enable the [NodeRestriction](/docs/reference/access-authn-authz/admission-controllers#noderestriction) admission plugin by starting the apiserver with `--enable-admission-plugins=...,NodeRestriction,...`
+To limit the API objects kubelets are able to write, enable the [NodeRestriction](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers#noderestriction) admission plugin by starting the apiserver with `--enable-admission-plugins=...,NodeRestriction,...`
 
 ## Migration considerations
 
@@ -73,7 +73,7 @@ since the default node identifier implementation would not consider that a node 
 
 ### Upgrades from previous versions using RBAC
 
-Upgraded pre-1.7 clusters using [RBAC](/docs/reference/access-authn-authz/rbac/) will continue functioning as-is because the `system:nodes` group binding will already exist.
+Upgraded pre-1.7 clusters using [RBAC](/docs/kubernetes/en/reference/access-authn-authz/rbac/) will continue functioning as-is because the `system:nodes` group binding will already exist.
 
 If a cluster admin wishes to start using the `Node` authorizer and `NodeRestriction` admission plugin
 to limit node access to the API, that can be done non-disruptively:
@@ -85,7 +85,7 @@ to limit node access to the API, that can be done non-disruptively:
 
 ### RBAC Node Permissions
 
-In 1.6, the `system:node` cluster role was automatically bound to the `system:nodes` group when using the [RBAC Authorization mode](/docs/reference/access-authn-authz/rbac/).
+In 1.6, the `system:node` cluster role was automatically bound to the `system:nodes` group when using the [RBAC Authorization mode](/docs/kubernetes/en/reference/access-authn-authz/rbac/).
 
 In 1.7, the automatic binding of the `system:nodes` group to the `system:node` role is deprecated
 because the node authorizer accomplishes the same purpose with the benefit of additional restrictions

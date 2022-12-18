@@ -47,7 +47,7 @@ satisfied by any existing volume that meets the requirements,
 or by a dynamic provisioner.
 
 Note: The password is defined in the config yaml, and this is insecure. See
-[Kubernetes Secrets](/docs/concepts/configuration/secret/)
+[Kubernetes Secrets](/docs/kubernetes/en/concepts/configuration/secret/)
 for a secure solution.
 
 {{< codenew file="application/mysql/mysql-deployment.yaml" >}}
@@ -164,7 +164,7 @@ specific to stateful apps:
 * Don't scale the app. This setup is for single-instance apps
   only. The underlying PersistentVolume can only be mounted to one
   Pod. For clustered stateful apps, see the
-  [StatefulSet documentation](/docs/concepts/workloads/controllers/statefulset/).
+  [StatefulSet documentation](/docs/kubernetes/en/concepts/workloads/controllers/statefulset/).
 * Use `strategy:` `type: Recreate` in the Deployment configuration
   YAML file. This instructs Kubernetes to _not_ use rolling
   updates. Rolling updates will not work, as you cannot have more than
@@ -194,13 +194,13 @@ underlying resource upon deleting the PersistentVolume.
 ## {{% heading "whatsnext" %}}
 
 
-* Learn more about [Deployment objects](/docs/concepts/workloads/controllers/deployment/).
+* Learn more about [Deployment objects](/docs/kubernetes/en/concepts/workloads/controllers/deployment/).
 
-* Learn more about [Deploying applications](/docs/tasks/run-application/run-stateless-application-deployment/)
+* Learn more about [Deploying applications](/docs/kubernetes/en/tasks/run-application/run-stateless-application-deployment/)
 
-* [kubectl run documentation](/docs/reference/generated/kubectl/kubectl-commands/#run)
+* [kubectl run documentation](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#run)
 
-* [Volumes](/docs/concepts/storage/volumes/) and [Persistent Volumes](/docs/concepts/storage/persistent-volumes/)
+* [Volumes](/docs/kubernetes/en/concepts/storage/volumes/) and [Persistent Volumes](/docs/kubernetes/en/concepts/storage/persistent-volumes/)
 
 
 

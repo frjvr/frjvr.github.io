@@ -19,7 +19,7 @@ aspects.
 By default, kubeadm runs a local etcd instance on each control plane node.
 It is also possible to treat the etcd cluster as external and provision
 etcd instances on separate hosts. The differences between the two approaches are covered in the
-[Options for Highly Available topology](/docs/setup/production-environment/tools/kubeadm/ha-topology) page.
+[Options for Highly Available topology](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/ha-topology) page.
 
 This task walks through the process of creating a high availability external
 etcd cluster of three members that can be used by kubeadm during cluster creation.
@@ -30,10 +30,10 @@ etcd cluster of three members that can be used by kubeadm during cluster creatio
   document assumes these default ports. However, they are configurable through
   the kubeadm config file.
 * Each host must have systemd and a bash compatible shell installed.
-* Each host must [have a container runtime, kubelet, and kubeadm installed](/docs/setup/production-environment/tools/kubeadm/install-kubeadm/).
+* Each host must [have a container runtime, kubelet, and kubeadm installed](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/install-kubeadm/).
 * Each host should have access to the Kubernetes container image registry (`registry.k8s.io`) or list/pull the required etcd image using
 `kubeadm config images list/pull`. This guide will set up etcd instances as
-[static pods](/docs/tasks/configure-pod-container/static-pod/) managed by a kubelet.
+[static pods](/docs/kubernetes/en/tasks/configure-pod-container/static-pod/) managed by a kubelet.
 * Some infrastructure to copy files between hosts. For example `ssh` and `scp`
   can satisfy this requirement.
 
@@ -53,7 +53,7 @@ this example.
 {{< note >}}
 The examples below use IPv4 addresses but you can also configure kubeadm, the kubelet and etcd
 to use IPv6 addresses. Dual-stack is supported by some Kubernetes options, but not by etcd. For more details
-on Kubernetes dual-stack support see [Dual-stack support with kubeadm](/docs/setup/production-environment/tools/kubeadm/dual-stack-support/).
+on Kubernetes dual-stack support see [Dual-stack support with kubeadm](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/dual-stack-support/).
 {{< /note >}}
 
 1. Configure the kubelet to be a service manager for etcd.
@@ -296,5 +296,5 @@ on Kubernetes dual-stack support see [Dual-stack support with kubeadm](/docs/set
 
 Once you have an etcd cluster with 3 working members, you can continue setting up a
 highly available control plane using the
-[external etcd method with kubeadm](/docs/setup/production-environment/tools/kubeadm/high-availability/).
+[external etcd method with kubeadm](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/high-availability/).
 

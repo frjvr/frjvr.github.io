@@ -14,7 +14,7 @@ weight: 20
 
 {{< feature-state for_k8s_version="v1.25" state="stable" >}}
 
-The Kubernetes [Pod Security Standards](/docs/concepts/security/pod-security-standards/) define
+The Kubernetes [Pod Security Standards](/docs/kubernetes/en/concepts/security/pod-security-standards/) define
 different isolation levels for Pods. These standards let you define how you want to restrict the
 behavior of pods in a clear, consistent fashion.
 
@@ -33,10 +33,10 @@ If you are running a different version of Kubernetes, consult the documentation 
 ## Pod Security levels
 
 Pod Security admission places requirements on a Pod's [Security
-Context](/docs/tasks/configure-pod-container/security-context/) and other related fields according
+Context](/docs/kubernetes/en/tasks/configure-pod-container/security-context/) and other related fields according
 to the three levels defined by the [Pod Security
-Standards](/docs/concepts/security/pod-security-standards): `privileged`, `baseline`, and
-`restricted`. Refer to the [Pod Security Standards](/docs/concepts/security/pod-security-standards)
+Standards](/docs/kubernetes/en/concepts/security/pod-security-standards): `privileged`, `baseline`, and
+`restricted`. Refer to the [Pod Security Standards](/docs/kubernetes/en/concepts/security/pod-security-standards)
 page for an in-depth look at those requirements.
 
 ## Pod Security Admission labels for namespaces
@@ -52,7 +52,7 @@ takes if a potential violation is detected:
 Mode | Description
 :---------|:------------
 **enforce** | Policy violations will cause the pod to be rejected.
-**audit** | Policy violations will trigger the addition of an audit annotation to the event recorded in the [audit log](/docs/tasks/debug/debug-cluster/audit/), but are otherwise allowed.
+**audit** | Policy violations will trigger the addition of an audit annotation to the event recorded in the [audit log](/docs/kubernetes/en/tasks/debug/debug-cluster/audit/), but are otherwise allowed.
 **warn** | Policy violations will trigger a user-facing warning, but are otherwise allowed.
 {{< /table >}}
 
@@ -75,12 +75,12 @@ pod-security.kubernetes.io/<MODE>: <LEVEL>
 pod-security.kubernetes.io/<MODE>-version: <VERSION>
 ```
 
-Check out [Enforce Pod Security Standards with Namespace Labels](/docs/tasks/configure-pod-container/enforce-standards-namespace-labels) to see example usage.
+Check out [Enforce Pod Security Standards with Namespace Labels](/docs/kubernetes/en/tasks/configure-pod-container/enforce-standards-namespace-labels) to see example usage.
 
 ## Workload resources and Pod templates
 
 Pods are often created indirectly, by creating a [workload
-object](/docs/concepts/workloads/controllers/) such as a {{< glossary_tooltip
+object](/docs/kubernetes/en/concepts/workloads/controllers/) such as a {{< glossary_tooltip
 term_id="deployment" >}} or {{< glossary_tooltip term_id="job">}}. The workload object defines a
 _Pod template_ and a {{< glossary_tooltip term_id="controller" text="controller" >}} for the
 workload resource creates Pods based on that template. To help catch violations early, both the
@@ -92,7 +92,7 @@ applied to workload resources, only to the resulting pod objects.
 You can define _exemptions_ from pod security enforcement in order to allow the creation of pods that
 would have otherwise been prohibited due to the policy associated with a given namespace.
 Exemptions can be statically configured in the
-[Admission Controller configuration](/docs/tasks/configure-pod-container/enforce-standards-admission-controller/#configure-the-admission-controller).
+[Admission Controller configuration](/docs/kubernetes/en/tasks/configure-pod-container/enforce-standards-admission-controller/#configure-the-admission-controller).
 
 Exemptions must be explicitly enumerated. Requests meeting exemption criteria are _ignored_ by the
 Admission Controller (all `enforce`, `audit` and `warn` behaviors are skipped). Exemption dimensions include:
@@ -127,8 +127,8 @@ current policy level:
 
 ## {{% heading "whatsnext" %}}
 
-- [Pod Security Standards](/docs/concepts/security/pod-security-standards)
-- [Enforcing Pod Security Standards](/docs/setup/best-practices/enforcing-pod-security-standards)
-- [Enforce Pod Security Standards by Configuring the Built-in Admission Controller](/docs/tasks/configure-pod-container/enforce-standards-admission-controller)
-- [Enforce Pod Security Standards with Namespace Labels](/docs/tasks/configure-pod-container/enforce-standards-namespace-labels)
-- [Migrate from PodSecurityPolicy to the Built-In PodSecurity Admission Controller](/docs/tasks/configure-pod-container/migrate-from-psp)
+- [Pod Security Standards](/docs/kubernetes/en/concepts/security/pod-security-standards)
+- [Enforcing Pod Security Standards](/docs/kubernetes/en/setup/best-practices/enforcing-pod-security-standards)
+- [Enforce Pod Security Standards by Configuring the Built-in Admission Controller](/docs/kubernetes/en/tasks/configure-pod-container/enforce-standards-admission-controller)
+- [Enforce Pod Security Standards with Namespace Labels](/docs/kubernetes/en/tasks/configure-pod-container/enforce-standards-namespace-labels)
+- [Migrate from PodSecurityPolicy to the Built-In PodSecurity Admission Controller](/docs/kubernetes/en/tasks/configure-pod-container/migrate-from-psp)

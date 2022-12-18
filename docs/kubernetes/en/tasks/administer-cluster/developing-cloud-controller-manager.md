@@ -39,6 +39,6 @@ controller manager as your starting point.
 
 ### In tree
 
-For in-tree cloud providers, you can run the in-tree cloud controller manager as a {{< glossary_tooltip term_id="daemonset" >}} in your cluster. See [Cloud Controller Manager Administration](/docs/tasks/administer-cluster/running-cloud-controller/) for more details.
+For in-tree cloud providers, you can run the in-tree cloud controller manager as a {{< glossary_tooltip term_id="daemonset" >}} in your cluster. See [Cloud Controller Manager Administration](/docs/kubernetes/en/tasks/administer-cluster/running-cloud-controller/) for more details.
 
 

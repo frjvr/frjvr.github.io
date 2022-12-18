@@ -47,7 +47,7 @@ are not subject to the `--max-requests-inflight` limit.
 
 The API Priority and Fairness feature is controlled by a feature gate
 and is enabled by default.  See [Feature
-Gates](/docs/reference/command-line-tools-reference/feature-gates/)
+Gates](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/)
 for a general explanation of feature gates and how to enable and
 disable them.  The name of the feature gate for APF is
 "APIPriorityAndFairness".  This feature also involves an {{<
@@ -179,10 +179,10 @@ server.
 ## Resources
 
 The flow control API involves two kinds of resources.
-[PriorityLevelConfigurations](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#prioritylevelconfiguration-v1beta2-flowcontrol-apiserver-k8s-io)
+[PriorityLevelConfigurations](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#prioritylevelconfiguration-v1beta2-flowcontrol-apiserver-k8s-io)
 define the available priority levels, the share of the available concurrency
 budget that each can handle, and allow for fine-tuning queuing behavior.
-[FlowSchemas](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#flowschema-v1beta2-flowcontrol-apiserver-k8s-io)
+[FlowSchemas](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#flowschema-v1beta2-flowcontrol-apiserver-k8s-io)
 are used to classify individual inbound requests, matching each to a
 single PriorityLevelConfiguration.  There is also a `v1alpha1` version
 of the same API group, and it has the same Kinds with the same syntax and

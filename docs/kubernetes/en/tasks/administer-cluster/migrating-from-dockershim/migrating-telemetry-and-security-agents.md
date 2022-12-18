@@ -34,7 +34,7 @@ components. Other data, such as container metrics, is not the responsibility of
 the container runtime. Early telemetry agents needed to query the container
 runtime *and* Kubernetes to report an accurate picture. Over time, Kubernetes
 gained the ability to support multiple runtimes, and now supports any runtime
-that is compatible with the [container runtime interface](/docs/concepts/architecture/cri/).
+that is compatible with the [container runtime interface](/docs/kubernetes/en/concepts/architecture/cri/).
 
 Some telemetry agents rely specifically on Docker Engine tooling. For example, an agent
 might run a command such as

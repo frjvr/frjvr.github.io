@@ -1,7 +1,7 @@
 ---
 id: pod-disruption
 title: Pod Disruption
-full_link: /docs/concepts/workloads/pods/disruptions/
+full_link: /docs/kubernetes/en/concepts/workloads/pods/disruptions/
 date: 2021-05-12
 short_description: >
   The process by which Pods on Nodes are terminated either voluntarily or involuntarily.
@@ -14,7 +14,7 @@ tags:
  - operation
 ---
 
-[Pod disruption](/docs/concepts/workloads/pods/disruptions/) is the process by which 
+[Pod disruption](/docs/kubernetes/en/concepts/workloads/pods/disruptions/) is the process by which 
 Pods on Nodes are terminated either voluntarily or involuntarily. 
 
 <!--more--> 

@@ -113,7 +113,7 @@ When creating control plane nodes of version N + 1, the content should be deploy
 
 Create a new control plane node of version N + 1 with the updated `cloud-controller-manager` manifest, and with the `--cloud-provider` flag set to `external` for `kube-controller-manager`. `kube-controller-manager` of version N + 1 MUST NOT have Leader Migration enabled because, with an external cloud provider, it does not run the migrated controllers anymore, and thus it is not involved in the migration.
 
-Please refer to [Cloud Controller Manager Administration](/docs/tasks/administer-cluster/running-cloud-controller/) for more detail on how to deploy `cloud-controller-manager`.
+Please refer to [Cloud Controller Manager Administration](/docs/kubernetes/en/tasks/administer-cluster/running-cloud-controller/) for more detail on how to deploy `cloud-controller-manager`.
 
 ### Upgrade Control Plane
 

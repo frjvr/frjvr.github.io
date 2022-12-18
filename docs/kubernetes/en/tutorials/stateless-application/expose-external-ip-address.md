@@ -11,10 +11,10 @@ external IP address.
 
 ## {{% heading "prerequisites" %}}
 
-* Install [kubectl](/docs/tasks/tools/).
+* Install [kubectl](/docs/kubernetes/en/tasks/tools/).
 * Use a cloud provider like Google Kubernetes Engine or Amazon Web Services to
   create a Kubernetes cluster. This tutorial creates an
-  [external load balancer](/docs/tasks/access-application-cluster/create-external-load-balancer/),
+  [external load balancer](/docs/kubernetes/en/tasks/access-application-cluster/create-external-load-balancer/),
   which requires a cloud provider.
 * Configure `kubectl` to communicate with your Kubernetes API server. For instructions, see the
   documentation for your cloud provider.
@@ -79,7 +79,7 @@ external IP address.
 
     {{< note >}}
 
-    The `type=LoadBalancer` service is backed by external cloud providers, which is not covered in this example, please refer to [this page](/docs/concepts/services-networking/service/#loadbalancer) for the details.
+    The `type=LoadBalancer` service is backed by external cloud providers, which is not covered in this example, please refer to [this page](/docs/kubernetes/en/concepts/services-networking/service/#loadbalancer) for the details.
 
     {{< /note >}}
 
@@ -175,4 +175,4 @@ kubectl delete deployment hello-world
 ## {{% heading "whatsnext" %}}
 
 Learn more about
-[connecting applications with services](/docs/tutorials/services/connect-applications-service/).
+[connecting applications with services](/docs/kubernetes/en/tutorials/services/connect-applications-service/).

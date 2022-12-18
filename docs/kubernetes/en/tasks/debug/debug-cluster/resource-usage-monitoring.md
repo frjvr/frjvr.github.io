@@ -11,8 +11,8 @@ weight: 15
 To scale an application and provide a reliable service, you need to
 understand how the application behaves when it is deployed. You can examine
 application performance in a Kubernetes cluster by examining the containers,
-[pods](/docs/concepts/workloads/pods/),
-[services](/docs/concepts/services-networking/service/), and
+[pods](/docs/kubernetes/en/concepts/workloads/pods/),
+[services](/docs/kubernetes/en/concepts/services-networking/service/), and
 the characteristics of the overall cluster. Kubernetes provides detailed
 information about an application's resource usage at each of these levels.
 This information allows you to evaluate your application's performance and
@@ -28,7 +28,7 @@ On new clusters, you can use [resource metrics](#resource-metrics-pipeline) or
 
 The resource metrics pipeline provides a limited set of metrics related to
 cluster components such as the
-[Horizontal Pod Autoscaler](/docs/tasks/run-application/horizontal-pod-autoscale/)
+[Horizontal Pod Autoscaler](/docs/kubernetes/en/tasks/run-application/horizontal-pod-autoscale/)
 controller, as well as the `kubectl top` utility.
 These  metrics are collected by the lightweight, short-term, in-memory 
 [metrics-server](https://github.com/kubernetes-sigs/metrics-server) and
@@ -36,7 +36,7 @@ These  metrics are collected by the lightweight, short-term, in-memory
 
 metrics-server discovers all nodes on the cluster and 
 queries each node's 
-[kubelet](/docs/reference/command-line-tools-reference/kubelet/) for CPU and 
+[kubelet](/docs/kubernetes/en/reference/command-line-tools-reference/kubelet/) for CPU and 
 memory usage. The kubelet acts as a bridge between the Kubernetes master and 
 the nodes, managing the pods and containers running on a machine. The kubelet 
 translates each pod into its constituent containers and fetches individual 
@@ -67,9 +67,9 @@ Full metrics pipeline projects that are not part of the CNCF are outside the sco
 
 Learn about additional debugging tools, including:
 
-* [Logging](/docs/concepts/cluster-administration/logging/)
-* [Monitoring](/docs/tasks/debug/debug-cluster/resource-usage-monitoring/)
-* [Getting into containers via `exec`](/docs/tasks/debug/debug-application/get-shell-running-container/)
-* [Connecting to containers via proxies](/docs/tasks/extend-kubernetes/http-proxy-access-api/)
-* [Connecting to containers via port forwarding](/docs/tasks/access-application-cluster/port-forward-access-application-cluster/)
-* [Inspect Kubernetes node with crictl](/docs/tasks/debug/debug-cluster/crictl/)
+* [Logging](/docs/kubernetes/en/concepts/cluster-administration/logging/)
+* [Monitoring](/docs/kubernetes/en/tasks/debug/debug-cluster/resource-usage-monitoring/)
+* [Getting into containers via `exec`](/docs/kubernetes/en/tasks/debug/debug-application/get-shell-running-container/)
+* [Connecting to containers via proxies](/docs/kubernetes/en/tasks/extend-kubernetes/http-proxy-access-api/)
+* [Connecting to containers via port forwarding](/docs/kubernetes/en/tasks/access-application-cluster/port-forward-access-application-cluster/)
+* [Inspect Kubernetes node with crictl](/docs/kubernetes/en/tasks/debug/debug-cluster/crictl/)

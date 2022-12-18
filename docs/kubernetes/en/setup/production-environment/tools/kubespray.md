@@ -29,7 +29,7 @@ Kubespray provides:
 * Continuous integration tests.
 
 To choose a tool which best fits your use case, read [this comparison](https://github.com/kubernetes-sigs/kubespray/blob/master/docs/comparisons.md) to
-[kubeadm](/docs/reference/setup-tools/kubeadm/) and [kops](/docs/setup/production-environment/tools/kops/).
+[kubeadm](/docs/kubernetes/en/reference/setup-tools/kubeadm/) and [kops](/docs/kubernetes/en/setup/production-environment/tools/kops/).
 
 <!-- body -->
 

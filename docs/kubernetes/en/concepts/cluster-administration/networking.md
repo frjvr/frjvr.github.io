@@ -14,7 +14,7 @@ problems to address:
 1. Highly-coupled container-to-container communications: this is solved by
    {{< glossary_tooltip text="Pods" term_id="pod" >}} and `localhost` communications.
 2. Pod-to-Pod communications: this is the primary focus of this document.
-3. Pod-to-Service communications: this is covered by [Services](/docs/concepts/services-networking/service/).
+3. Pod-to-Service communications: this is covered by [Services](/docs/kubernetes/en/concepts/services-networking/service/).
 4. External-to-Service communications: this is also covered by Services.
 
 <!-- body -->
@@ -30,13 +30,13 @@ insert dynamic port numbers into configuration blocks, services have to know
 how to find each other, etc.  Rather than deal with this, Kubernetes takes a
 different approach.
 
-To learn about the Kubernetes networking model, see [here](/docs/concepts/services-networking/).
+To learn about the Kubernetes networking model, see [here](/docs/kubernetes/en/concepts/services-networking/).
 
 ## How to implement the Kubernetes network model
 
 The network model is implemented by the container runtime on each node. The most common container runtimes use [Container Network Interface](https://github.com/containernetworking/cni) (CNI) plugins to manage their network and security capabilities. Many different CNI plugins exist from many different vendors. Some of these provide only basic features of adding and removing network interfaces, while others provide more sophisticated solutions, such as integration with other container orchestration systems, running multiple CNI plugins, advanced IPAM features etc.
 
-See [this page](/docs/concepts/cluster-administration/addons/#networking-and-network-policy) for a non-exhaustive list of networking addons supported by Kubernetes.
+See [this page](/docs/kubernetes/en/concepts/cluster-administration/addons/#networking-and-network-policy) for a non-exhaustive list of networking addons supported by Kubernetes.
 
 ## {{% heading "whatsnext" %}}
 

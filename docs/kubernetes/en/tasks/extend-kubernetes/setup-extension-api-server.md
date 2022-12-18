@@ -19,7 +19,7 @@ Setting up an extension API server to work with the aggregation layer allows the
 
 {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
 
-* You must [configure the aggregation layer](/docs/tasks/extend-kubernetes/configure-aggregation-layer/) and enable the apiserver flags.
+* You must [configure the aggregation layer](/docs/kubernetes/en/tasks/extend-kubernetes/configure-aggregation-layer/) and enable the apiserver flags.
 
 
 
@@ -52,6 +52,6 @@ indicates that everything worked but you currently have no objects of that resou
 ## {{% heading "whatsnext" %}}
 
 
-* Walk through the steps to [configure the API aggregation layer](/docs/tasks/extend-kubernetes/configure-aggregation-layer/) and enable the apiserver flags.
-* For a high level overview, see [Extending the Kubernetes API with the aggregation layer](/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/).
-* Learn how to [Extend the Kubernetes API using Custom Resource Definitions](/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/).
+* Walk through the steps to [configure the API aggregation layer](/docs/kubernetes/en/tasks/extend-kubernetes/configure-aggregation-layer/) and enable the apiserver flags.
+* For a high level overview, see [Extending the Kubernetes API with the aggregation layer](/docs/kubernetes/en/concepts/extend-kubernetes/api-extension/apiserver-aggregation/).
+* Learn how to [Extend the Kubernetes API using Custom Resource Definitions](/docs/kubernetes/en/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/).

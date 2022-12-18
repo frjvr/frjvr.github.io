@@ -11,8 +11,8 @@ no_list: true
 
 This doc is about cluster troubleshooting; we assume you have already ruled out your application as the root cause of the
 problem you are experiencing. See
-the [application troubleshooting guide](/docs/tasks/debug/debug-application/) for tips on application debugging.
-You may also visit the [troubleshooting overview document](/docs/tasks/debug/) for more information.
+the [application troubleshooting guide](/docs/kubernetes/en/tasks/debug/debug-application/) for tips on application debugging.
+You may also visit the [troubleshooting overview document](/docs/kubernetes/en/tasks/debug/) for more information.
 
 <!-- body -->
 
@@ -295,7 +295,7 @@ This is an incomplete list of things that could go wrong, and how to adjust your
 - Action: Use IaaS providers reliable storage (e.g. GCE PD or AWS EBS volume) for VMs with apiserver+etcd
   - Mitigates: Apiserver backing storage lost
 
-- Action: Use [high-availability](/docs/setup/production-environment/tools/kubeadm/high-availability/) configuration
+- Action: Use [high-availability](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/high-availability/) configuration
   - Mitigates: Control plane node shutdown or control plane components (scheduler, API server, controller-manager) crashing
     - Will tolerate one or more simultaneous node or component failures
   - Mitigates: API server backing storage (i.e., etcd's data directory) lost
@@ -318,12 +318,12 @@ This is an incomplete list of things that could go wrong, and how to adjust your
 ## {{% heading "whatsnext" %}}
 
 * Learn about the metrics available in the
-  [Resource Metrics Pipeline](/docs/tasks/debug/debug-cluster/resource-metrics-pipeline/)
+  [Resource Metrics Pipeline](/docs/kubernetes/en/tasks/debug/debug-cluster/resource-metrics-pipeline/)
 * Discover additional tools for
-  [monitoring resource usage](/docs/tasks/debug/debug-cluster/resource-usage-monitoring/)
+  [monitoring resource usage](/docs/kubernetes/en/tasks/debug/debug-cluster/resource-usage-monitoring/)
 * Use Node Problem Detector to
-  [monitor node health](/docs/tasks/debug/debug-cluster/monitor-node-health/)
-* Use `crictl` to [debug Kubernetes nodes](/docs/tasks/debug/debug-cluster/crictl/)
-* Get more information about [Kubernetes auditing](/docs/tasks/debug/debug-cluster/audit/)
-* Use `telepresence` to [develop and debug services locally](/docs/tasks/debug/debug-cluster/local-debugging/)
+  [monitor node health](/docs/kubernetes/en/tasks/debug/debug-cluster/monitor-node-health/)
+* Use `crictl` to [debug Kubernetes nodes](/docs/kubernetes/en/tasks/debug/debug-cluster/crictl/)
+* Get more information about [Kubernetes auditing](/docs/kubernetes/en/tasks/debug/debug-cluster/audit/)
+* Use `telepresence` to [develop and debug services locally](/docs/kubernetes/en/tasks/debug/debug-cluster/local-debugging/)
 

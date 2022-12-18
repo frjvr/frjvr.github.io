@@ -123,9 +123,9 @@ The **policy/v1beta1** API version of PodDisruptionBudget is no longer served as
 
 PodSecurityPolicy in the **policy/v1beta1** API version is no longer served as of v1.25, and the PodSecurityPolicy admission controller will be removed.
 
-Migrate to [Pod Security Admission](/docs/concepts/security/pod-security-admission/)
-or a [3rd party admission webhook](/docs/reference/access-authn-authz/extensible-admission-controllers/).
-For a migration guide, see [Migrate from PodSecurityPolicy to the Built-In PodSecurity Admission Controller](/docs/tasks/configure-pod-container/migrate-from-psp/).
+Migrate to [Pod Security Admission](/docs/kubernetes/en/concepts/security/pod-security-admission/)
+or a [3rd party admission webhook](/docs/kubernetes/en/reference/access-authn-authz/extensible-admission-controllers/).
+For a migration guide, see [Migrate from PodSecurityPolicy to the Built-In PodSecurity Admission Controller](/docs/kubernetes/en/tasks/configure-pod-container/migrate-from-psp/).
 For more information on the deprecation, see [PodSecurityPolicy Deprecation: Past, Present, and Future](/blog/2021/04/06/podsecuritypolicy-deprecation-past-present-and-future/).
 
 #### RuntimeClass {#runtimeclass-v125}
@@ -168,7 +168,7 @@ The **apiextensions.k8s.io/v1beta1** API version of CustomResourceDefinition is 
     * `spec.additionalPrinterColumns` is removed in v1; use `spec.versions[*].additionalPrinterColumns` instead
     * `spec.conversion.webhookClientConfig` is moved to `spec.conversion.webhook.clientConfig` in v1
     * `spec.conversion.conversionReviewVersions` is moved to `spec.conversion.webhook.conversionReviewVersions` in v1
-    * `spec.versions[*].schema.openAPIV3Schema` is now required when creating v1 CustomResourceDefinition objects, and must be a [structural schema](/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#specifying-a-structural-schema)
+    * `spec.versions[*].schema.openAPIV3Schema` is now required when creating v1 CustomResourceDefinition objects, and must be a [structural schema](/docs/kubernetes/en/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#specifying-a-structural-schema)
     * `spec.preserveUnknownFields: true` is disallowed when creating v1 CustomResourceDefinition objects; it must be specified within schema definitions as `x-kubernetes-preserve-unknown-fields: true`
     * In `additionalPrinterColumns` items, the `JSONPath` field was renamed to `jsonPath` in v1 (fixes [#66531](https://github.com/kubernetes/kubernetes/issues/66531))
 
@@ -203,7 +203,7 @@ The **certificates.k8s.io/v1beta1** API version of CertificateSigningRequest is 
 * All existing persisted objects are accessible via the new API
 * Notable changes in `certificates.k8s.io/v1`:
     * For API clients requesting certificates:
-        * `spec.signerName` is now required (see [known Kubernetes signers](/docs/reference/access-authn-authz/certificate-signing-requests/#kubernetes-signers)), and requests for `kubernetes.io/legacy-unknown` are not allowed to be created via the `certificates.k8s.io/v1` API
+        * `spec.signerName` is now required (see [known Kubernetes signers](/docs/kubernetes/en/reference/access-authn-authz/certificate-signing-requests/#kubernetes-signers)), and requests for `kubernetes.io/legacy-unknown` are not allowed to be created via the `certificates.k8s.io/v1` API
         * `spec.usages` is now required, may not contain duplicate values, and must only contain known usages
     * For API clients approving or signing certificates:
         * `status.conditions` may not contain duplicate types
@@ -361,4 +361,4 @@ to locate use of deprecated APIs.
   `kubectl-convert -f ./my-deployment.yaml --output-version apps/v1`
 
   Note that this may use non-ideal default values. To learn more about a specific
-  resource, check the Kubernetes [API reference](/docs/reference/kubernetes-api/).
+  resource, check the Kubernetes [API reference](/docs/kubernetes/en/reference/kubernetes-api/).

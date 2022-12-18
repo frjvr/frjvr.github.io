@@ -55,7 +55,7 @@ of how each component implements this feature.
 The EndpointSlice controller is responsible for setting hints on EndpointSlices
 when this feature is enabled. The controller allocates a proportional amount of
 endpoints to each zone. This proportion is based on the
-[allocatable](/docs/tasks/administer-cluster/reserve-compute-resources/#node-allocatable)
+[allocatable](/docs/kubernetes/en/tasks/administer-cluster/reserve-compute-resources/#node-allocatable)
 CPU cores for nodes running in that zone. For example, if one zone had 2 CPU
 cores and another zone only had 1 CPU core, the controller would allocate twice
 as many endpoints to the zone with 2 CPU cores.
@@ -159,4 +159,4 @@ zone.
 
 ## {{% heading "whatsnext" %}}
 
-* Follow the [Connecting Applications with Services](/docs/tutorials/services/connect-applications-service/) tutorial
+* Follow the [Connecting Applications with Services](/docs/kubernetes/en/tutorials/services/connect-applications-service/) tutorial

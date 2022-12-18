@@ -22,13 +22,13 @@ It demonstrates how to create, delete, scale, and update the Pods of StatefulSet
 Before you begin this tutorial, you should familiarize yourself with the
 following Kubernetes concepts:
 
-* [Pods](/docs/concepts/workloads/pods/)
-* [Cluster DNS](/docs/concepts/services-networking/dns-pod-service/)
-* [Headless Services](/docs/concepts/services-networking/service/#headless-services)
-* [PersistentVolumes](/docs/concepts/storage/persistent-volumes/)
+* [Pods](/docs/kubernetes/en/concepts/workloads/pods/)
+* [Cluster DNS](/docs/kubernetes/en/concepts/services-networking/dns-pod-service/)
+* [Headless Services](/docs/kubernetes/en/concepts/services-networking/service/#headless-services)
+* [PersistentVolumes](/docs/kubernetes/en/concepts/storage/persistent-volumes/)
 * [PersistentVolume Provisioning](https://github.com/kubernetes/examples/tree/master/staging/persistent-volume-provisioning/)
-* [StatefulSets](/docs/concepts/workloads/controllers/statefulset/)
-* The [kubectl](/docs/reference/kubectl/kubectl/) command line tool
+* [StatefulSets](/docs/kubernetes/en/concepts/workloads/controllers/statefulset/)
+* The [kubectl](/docs/kubernetes/en/reference/kubectl/kubectl/) command line tool
 
 {{< note >}}
 This tutorial assumes that your cluster is configured to dynamically provision
@@ -59,8 +59,8 @@ After this tutorial, you will be familiar with the following.
 
 Begin by creating a StatefulSet using the example below. It is similar to the
 example presented in the
-[StatefulSets](/docs/concepts/workloads/controllers/statefulset/) concept.
-It creates a [headless Service](/docs/concepts/services-networking/service/#headless-services),
+[StatefulSets](/docs/kubernetes/en/concepts/workloads/controllers/statefulset/) concept.
+It creates a [headless Service](/docs/kubernetes/en/concepts/services-networking/service/#headless-services),
 `nginx`, to publish the IP addresses of Pods in the StatefulSet, `web`.
 
 {{< codenew file="application/web/web.yaml" >}}
@@ -68,7 +68,7 @@ It creates a [headless Service](/docs/concepts/services-networking/service/#head
 Download the example above, and save it to a file named `web.yaml`
 
 You will need to use two terminal windows. In the first terminal, use
-[`kubectl get`](/docs/reference/generated/kubectl/kubectl-commands/#get) to watch the creation
+[`kubectl get`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#get) to watch the creation
 of the StatefulSet's Pods.
 
 ```shell
@@ -76,7 +76,7 @@ kubectl get pods -w -l app=nginx
 ```
 
 In the second terminal, use
-[`kubectl apply`](/docs/reference/generated/kubectl/kubectl-commands/#apply) to create the
+[`kubectl apply`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#apply) to create the
 headless Service and StatefulSet defined in `web.yaml`.
 
 ```shell
@@ -128,12 +128,12 @@ web-1     1/1       Running   0         18s
 ```
 
 Notice that the `web-1` Pod is not launched until the `web-0` Pod is
-_Running_ (see [Pod Phase](/docs/concepts/workloads/pods/pod-lifecycle/#pod-phase))
-and _Ready_ (see `type` in [Pod Conditions](/docs/concepts/workloads/pods/pod-lifecycle/#pod-conditions)).
+_Running_ (see [Pod Phase](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#pod-phase))
+and _Ready_ (see `type` in [Pod Conditions](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#pod-conditions)).
 
 {{< note >}}
 To configure the integer ordinal assigned to each Pod in a StatefulSet, see
-[Start ordinal](/docs/concepts/workloads/controllers/statefulset/#start-ordinal).
+[Start ordinal](/docs/kubernetes/en/concepts/workloads/controllers/statefulset/#start-ordinal).
 {{< /note >}}
 
 ## Pods in a StatefulSet
@@ -153,7 +153,7 @@ web-0     1/1       Running   0          1m
 web-1     1/1       Running   0          1m
 ```
 
-As mentioned in the [StatefulSets](/docs/concepts/workloads/controllers/statefulset/)
+As mentioned in the [StatefulSets](/docs/kubernetes/en/concepts/workloads/controllers/statefulset/)
 concept, the Pods in a StatefulSet have a sticky, unique identity. This identity
 is based on a unique ordinal index that is assigned to each Pod by the
 StatefulSet {{< glossary_tooltip term_id="controller" text="controller">}}.  
@@ -163,7 +163,7 @@ Since the `web` StatefulSet has two replicas, it creates two Pods, `web-0` and `
 ### Using Stable Network Identities
 
 Each Pod has a stable hostname based on its ordinal index. Use
-[`kubectl exec`](/docs/reference/generated/kubectl/kubectl-commands/#exec) to execute the
+[`kubectl exec`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#exec) to execute the
 `hostname` command in each Pod:
 
 ```shell
@@ -174,7 +174,7 @@ web-0
 web-1
 ```
 
-Use [`kubectl run`](/docs/reference/generated/kubectl/kubectl-commands/#run) to execute
+Use [`kubectl run`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#run) to execute
 a container that provides the `nslookup` command from the `dnsutils` package.
 Using `nslookup` on the Pods' hostnames, you can examine their in-cluster DNS
 addresses:
@@ -215,7 +215,7 @@ In one terminal, watch the StatefulSet's Pods:
 kubectl get pod -w -l app=nginx
 ```
 In a second terminal, use
-[`kubectl delete`](/docs/reference/generated/kubectl/kubectl-commands/#delete) to delete all
+[`kubectl delete`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#delete) to delete all
 the Pods in the StatefulSet:
 
 ```shell
@@ -403,8 +403,8 @@ mounted to the appropriate mount points.
 
 Scaling a StatefulSet refers to increasing or decreasing the number of replicas.
 This is accomplished by updating the `replicas` field. You can use either
-[`kubectl scale`](/docs/reference/generated/kubectl/kubectl-commands/#scale) or
-[`kubectl patch`](/docs/reference/generated/kubectl/kubectl-commands/#patch) to scale a StatefulSet.
+[`kubectl scale`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#scale) or
+[`kubectl patch`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#patch) to scale a StatefulSet.
 
 ### Scaling Up
 
@@ -849,7 +849,7 @@ In one terminal window, watch the Pods in the StatefulSet.
 kubectl get pods -w -l app=nginx
 ```
 
-Use [`kubectl delete`](/docs/reference/generated/kubectl/kubectl-commands/#delete) to delete the
+Use [`kubectl delete`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#delete) to delete the
 StatefulSet. Make sure to supply the `--cascade=orphan` parameter to the
 command. This parameter tells Kubernetes to only delete the StatefulSet, and to
 not delete any of its Pods.

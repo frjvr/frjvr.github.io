@@ -12,13 +12,13 @@ Pod Security admission (PSA) is enabled by default in v1.23 and later, as it has
 [graduated to beta](/blog/2021/12/09/pod-security-admission-beta/).
 Pod Security
 is an admission controller that carries out checks against the Kubernetes
-[Pod Security Standards](/docs/concepts/security/pod-security-standards/) when new pods are
+[Pod Security Standards](/docs/kubernetes/en/concepts/security/pod-security-standards/) when new pods are
 created. This tutorial shows you how to enforce the `baseline` Pod Security
 Standard at the cluster level which applies a standard configuration
 to all namespaces in a cluster.
 
 To apply Pod Security Standards to specific namespaces, refer to
-[Apply Pod Security Standards at the namespace level](/docs/tutorials/security/ns-level-pss).
+[Apply Pod Security Standards at the namespace level](/docs/kubernetes/en/tutorials/security/ns-level-pss).
 
 If you are running a version of Kubernetes other than v{{< skew currentVersion >}},
 check the documentation for that version.
@@ -28,12 +28,12 @@ check the documentation for that version.
 Install the following on your workstation:
 
 - [KinD](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
-- [kubectl](/docs/tasks/tools/)
+- [kubectl](/docs/kubernetes/en/tasks/tools/)
 
 ## Choose the right Pod Security Standard to apply
 
-[Pod Security Admission](/docs/concepts/security/pod-security-admission/)
-lets you apply built-in [Pod Security Standards](/docs/concepts/security/pod-security-standards/)
+[Pod Security Admission](/docs/kubernetes/en/concepts/security/pod-security-admission/)
+lets you apply built-in [Pod Security Standards](/docs/kubernetes/en/concepts/security/pod-security-standards/)
 with the following modes: `enforce`, `audit`, and `warn`.
 
 To gather information that helps you to choose the Pod Security Standards
@@ -205,8 +205,8 @@ following:
 
     {{< note >}}
     `pod-security.admission.config.k8s.io/v1` configuration requires v1.25+.
-    For v1.23 and v1.24, use [v1beta1](https://v1-24.docs.kubernetes.io/docs/tasks/configure-pod-container/enforce-standards-admission-controller/).
-    For v1.22, use [v1alpha1](https://v1-22.docs.kubernetes.io/docs/tasks/configure-pod-container/enforce-standards-admission-controller/).
+    For v1.23 and v1.24, use [v1beta1](https://v1-24.docs.kubernetes.io/docs/kubernetes/en/tasks/configure-pod-container/enforce-standards-admission-controller/).
+    For v1.22, use [v1alpha1](https://v1-22.docs.kubernetes.io/docs/kubernetes/en/tasks/configure-pod-container/enforce-standards-admission-controller/).
     {{< /note >}}
 
 
@@ -240,7 +240,7 @@ following:
         # default false
         selinuxRelabel: false
         # optional: set propagation mode (None, HostToContainer or Bidirectional)
-        # see https://kubernetes.io/docs/concepts/storage/volumes/#mount-propagation
+        # see https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes/#mount-propagation
         # default None
         propagation: None
     EOF
@@ -330,6 +330,6 @@ created.
   4. Set kubectl context to this new cluster
   5. Create a minimal pod yaml file
   6. Apply this file to create a Pod in the new cluster
-- [Pod Security Admission](/docs/concepts/security/pod-security-admission/)
-- [Pod Security Standards](/docs/concepts/security/pod-security-standards/)
-- [Apply Pod Security Standards at the namespace level](/docs/tutorials/security/ns-level-pss/)
+- [Pod Security Admission](/docs/kubernetes/en/concepts/security/pod-security-admission/)
+- [Pod Security Standards](/docs/kubernetes/en/concepts/security/pod-security-standards/)
+- [Apply Pod Security Standards at the namespace level](/docs/kubernetes/en/tutorials/security/ns-level-pss/)

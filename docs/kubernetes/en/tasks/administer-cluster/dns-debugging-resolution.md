@@ -28,7 +28,7 @@ kube-dns.
 {{< note >}}
 This example creates a pod in the `default` namespace. DNS name resolution for 
 services depends on the namespace of the pod. For more information, review
-[DNS for Services and Pods](/docs/concepts/services-networking/dns-pod-service/#what-things-get-dns-names). 
+[DNS for Services and Pods](/docs/kubernetes/en/concepts/services-networking/dns-pod-service/#what-things-get-dns-names). 
 {{< /note >}}
 
 Use that manifest to create a Pod:
@@ -67,7 +67,7 @@ If the `nslookup` command fails, check the following:
 ### Check the local DNS configuration first
 
 Take a look inside the resolv.conf file.
-(See [Customizing DNS Service](/docs/tasks/administer-cluster/dns-custom-nameservers) and
+(See [Customizing DNS Service](/docs/kubernetes/en/tasks/administer-cluster/dns-custom-nameservers) and
 [Known issues](#known-issues) below for more information)
 
 ```shell
@@ -176,7 +176,7 @@ The service name is `kube-dns` for both CoreDNS and kube-dns deployments.
 
 If you have created the Service or in the case it should be created by default
 but it does not appear, see
-[debugging Services](/docs/tasks/debug/debug-application/debug-service/) for
+[debugging Services](/docs/kubernetes/en/tasks/debug/debug-application/debug-service/) for
 more information.
 
 ### Are DNS endpoints exposed?
@@ -193,7 +193,7 @@ kube-dns   10.180.3.17:53,10.180.3.17:53    1h
 ```
 
 If you do not see the endpoints, see the endpoints section in the
-[debugging Services](/docs/tasks/debug/debug-application/debug-service/) documentation.
+[debugging Services](/docs/kubernetes/en/tasks/debug/debug-application/debug-service/) documentation.
 
 For additional Kubernetes DNS examples, see the
 [cluster-dns examples](https://github.com/kubernetes/examples/tree/master/staging/cluster-dns)
@@ -320,7 +320,7 @@ kubectl exec -i -t dnsutils -- nslookup <service-name>.<namespace>
 ```
 
 To learn more about name resolution, see 
-[DNS for Services and Pods](/docs/concepts/services-networking/dns-pod-service/#what-things-get-dns-names). 
+[DNS for Services and Pods](/docs/kubernetes/en/concepts/services-networking/dns-pod-service/#what-things-get-dns-names). 
 
 ## Known issues
 
@@ -348,6 +348,6 @@ details more information on this.
 
 ## {{% heading "whatsnext" %}}
 
-- See [Autoscaling the DNS Service in a Cluster](/docs/tasks/administer-cluster/dns-horizontal-autoscaling/).
-- Read [DNS for Services and Pods](/docs/concepts/services-networking/dns-pod-service/)
+- See [Autoscaling the DNS Service in a Cluster](/docs/kubernetes/en/tasks/administer-cluster/dns-horizontal-autoscaling/).
+- Read [DNS for Services and Pods](/docs/kubernetes/en/concepts/services-networking/dns-pod-service/)
 

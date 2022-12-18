@@ -11,7 +11,7 @@ This page shows how to configure a Pod to use a Volume for storage.
 A Container's file system lives only as long as the Container does. So when a
 Container terminates and restarts, filesystem changes are lost. For more
 consistent storage that is independent of the Container, you can use a
-[Volume](/docs/concepts/storage/volumes/). This is especially important for stateful
+[Volume](/docs/kubernetes/en/concepts/storage/volumes/). This is especially important for stateful
 applications, such as key-value stores (such as Redis) and databases.
 
 ## {{% heading "prerequisites" %}}
@@ -24,7 +24,7 @@ applications, such as key-value stores (such as Redis) and databases.
 
 In this exercise, you create a Pod that runs one Container. This Pod has a
 Volume of type
-[emptyDir](/docs/concepts/storage/volumes/#emptydir)
+[emptyDir](/docs/kubernetes/en/concepts/storage/volumes/#emptydir)
 that lasts for the life of the Pod, even if the Container terminates and
 restarts. Here is the configuration file for the Pod:
 
@@ -100,7 +100,7 @@ restarts. Here is the configuration file for the Pod:
 
 At this point, the Container has terminated and restarted. This is because the
 Redis Pod has a
-[restartPolicy](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core)
+[restartPolicy](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core)
 of `Always`.
 
 1. Get a shell into the restarted Container:
@@ -125,12 +125,12 @@ of `Always`.
 
 ## {{% heading "whatsnext" %}}
 
-- See [Volume](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#volume-v1-core).
+- See [Volume](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#volume-v1-core).
 
-- See [Pod](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#pod-v1-core).
+- See [Pod](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#pod-v1-core).
 
 - In addition to the local disk storage provided by `emptyDir`, Kubernetes
   supports many different network-attached storage solutions, including PD on
   GCE and EBS on EC2, which are preferred for critical data and will handle
   details such as mounting and unmounting the devices on the nodes. See
-  [Volumes](/docs/concepts/storage/volumes/) for more details.
+  [Volumes](/docs/kubernetes/en/concepts/storage/volumes/) for more details.

@@ -77,6 +77,6 @@ is defined or not. This can be seen from the `ESCAPED_REFERENCE` case above.
 ## {{% heading "whatsnext" %}}
 
 
-* Learn more about [environment variables](/docs/tasks/inject-data-application/environment-variable-expose-pod-information/).
-* See [EnvVarSource](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#envvarsource-v1-core).
+* Learn more about [environment variables](/docs/kubernetes/en/tasks/inject-data-application/environment-variable-expose-pod-information/).
+* See [EnvVarSource](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#envvarsource-v1-core).
 

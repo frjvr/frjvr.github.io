@@ -219,7 +219,7 @@ Services, these values might be the same.
 If you have deployed any Network Policy Ingress rules which may affect incoming
 traffic to `hostnames-*` Pods, these need to be reviewed.
 
-Please refer to [Network Policies](/docs/concepts/services-networking/network-policies/) for more details.
+Please refer to [Network Policies](/docs/kubernetes/en/concepts/services-networking/network-policies/) for more details.
 
 ## Does the Service work by DNS name?
 
@@ -442,7 +442,7 @@ they are running fine and not crashing.
 
 The "RESTARTS" column says that these pods are not crashing frequently or being
 restarted.  Frequent restarts could lead to intermittent connectivity issues.
-If the restart count is high, read more about how to [debug pods](/docs/tasks/debug/debug-application/debug-pods).
+If the restart count is high, read more about how to [debug pods](/docs/kubernetes/en/tasks/debug/debug-application/debug-pods).
 
 Inside the Kubernetes system is a control loop which evaluates the selector of
 every Service and saves the results into a corresponding Endpoints object.
@@ -628,7 +628,7 @@ This might sound unlikely, but it does happen and it is supposed to work.
 This can happen when the network is not properly configured for "hairpin"
 traffic, usually when `kube-proxy` is running in `iptables` mode and Pods
 are connected with bridge network. The `Kubelet` exposes a `hairpin-mode`
-[flag](/docs/reference/command-line-tools-reference/kubelet/) that allows endpoints of a Service to loadbalance
+[flag](/docs/kubernetes/en/reference/command-line-tools-reference/kubelet/) that allows endpoints of a Service to loadbalance
 back to themselves if they try to access their own Service VIP. The
 `hairpin-mode` flag must either be set to `hairpin-veth` or
 `promiscuous-bridge`.
@@ -700,7 +700,7 @@ Contact us on
 
 ## {{% heading "whatsnext" %}}
 
-Visit the [troubleshooting overview document](/docs/tasks/debug/)
+Visit the [troubleshooting overview document](/docs/kubernetes/en/tasks/debug/)
 for more information.
 
 

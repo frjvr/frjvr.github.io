@@ -88,7 +88,7 @@ example: `registry-url/image-name@sha256:45b23dee08af5e43a7fea6c4cf9c25ccf269ee1
 .
 
 For more information, please refer
-to [Image Pull Policy](/docs/concepts/containers/images/#image-pull-policy)
+to [Image Pull Policy](/docs/kubernetes/en/concepts/containers/images/#image-pull-policy)
 section.
 
 ## Verifying Image Signatures with Admission Controller

@@ -2,7 +2,7 @@
 title: Disruption
 id: disruption
 date: 2019-09-10
-full_link: /docs/concepts/workloads/pods/disruptions/
+full_link: /docs/kubernetes/en/concepts/workloads/pods/disruptions/
 short_description: >
   An event that leads to Pod(s) going out of service
 aka:
@@ -22,4 +22,4 @@ Kubernetes terms that a _voluntary disruption_. If a Pod goes offline
 because of a Node failure, or an outage affecting a wider failure zone,
 Kubernetes terms that an _involuntary disruption_.
 
-See [Disruptions](/docs/concepts/workloads/pods/disruptions/) for more information.
+See [Disruptions](/docs/kubernetes/en/concepts/workloads/pods/disruptions/) for more information.

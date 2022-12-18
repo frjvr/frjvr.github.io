@@ -10,54 +10,54 @@ content_type: concept
 
 This section of the Kubernetes documentation contains tutorials.
 A tutorial shows how to accomplish a goal that is larger than a single
-[task](/docs/tasks/). Typically a tutorial has several sections,
+[task](/docs/kubernetes/en/tasks/). Typically a tutorial has several sections,
 each of which has a sequence of steps.
 Before walking through each tutorial, you may want to bookmark the
-[Standardized Glossary](/docs/reference/glossary/) page for later references.
+[Standardized Glossary](/docs/kubernetes/en/reference/glossary/) page for later references.
 
 <!-- body -->
 
 ## Basics
 
-* [Kubernetes Basics](/docs/tutorials/kubernetes-basics/) is an in-depth interactive tutorial that helps you understand the Kubernetes system and try out some basic Kubernetes features.
+* [Kubernetes Basics](/docs/kubernetes/en/tutorials/kubernetes-basics/) is an in-depth interactive tutorial that helps you understand the Kubernetes system and try out some basic Kubernetes features.
 
 * [Introduction to Kubernetes (edX)](https://www.edx.org/course/introduction-kubernetes-linuxfoundationx-lfs158x#)
 
-* [Hello Minikube](/docs/tutorials/hello-minikube/)
+* [Hello Minikube](/docs/kubernetes/en/tutorials/hello-minikube/)
 
 ## Configuration
 
-* [Example: Configuring a Java Microservice](/docs/tutorials/configuration/configure-java-microservice/)
+* [Example: Configuring a Java Microservice](/docs/kubernetes/en/tutorials/configuration/configure-java-microservice/)
 
-* [Configuring Redis Using a ConfigMap](/docs/tutorials/configuration/configure-redis-using-configmap/)
+* [Configuring Redis Using a ConfigMap](/docs/kubernetes/en/tutorials/configuration/configure-redis-using-configmap/)
 
 ## Stateless Applications
 
-* [Exposing an External IP Address to Access an Application in a Cluster](/docs/tutorials/stateless-application/expose-external-ip-address/)
+* [Exposing an External IP Address to Access an Application in a Cluster](/docs/kubernetes/en/tutorials/stateless-application/expose-external-ip-address/)
 
-* [Example: Deploying PHP Guestbook application with Redis](/docs/tutorials/stateless-application/guestbook/)
+* [Example: Deploying PHP Guestbook application with Redis](/docs/kubernetes/en/tutorials/stateless-application/guestbook/)
 
 ## Stateful Applications
 
-* [StatefulSet Basics](/docs/tutorials/stateful-application/basic-stateful-set/)
+* [StatefulSet Basics](/docs/kubernetes/en/tutorials/stateful-application/basic-stateful-set/)
 
-* [Example: WordPress and MySQL with Persistent Volumes](/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/)
+* [Example: WordPress and MySQL with Persistent Volumes](/docs/kubernetes/en/tutorials/stateful-application/mysql-wordpress-persistent-volume/)
 
-* [Example: Deploying Cassandra with Stateful Sets](/docs/tutorials/stateful-application/cassandra/)
+* [Example: Deploying Cassandra with Stateful Sets](/docs/kubernetes/en/tutorials/stateful-application/cassandra/)
 
-* [Running ZooKeeper, A CP Distributed System](/docs/tutorials/stateful-application/zookeeper/)
+* [Running ZooKeeper, A CP Distributed System](/docs/kubernetes/en/tutorials/stateful-application/zookeeper/)
 
 ## Services
 
-* [Connecting Applications with Services](/docs/tutorials/services/connect-applications-service/)
-* [Using Source IP](/docs/tutorials/services/source-ip/)
+* [Connecting Applications with Services](/docs/kubernetes/en/tutorials/services/connect-applications-service/)
+* [Using Source IP](/docs/kubernetes/en/tutorials/services/source-ip/)
 
 ## Security
 
-* [Apply Pod Security Standards at Cluster level](/docs/tutorials/security/cluster-level-pss/)
-* [Apply Pod Security Standards at Namespace level](/docs/tutorials/security/ns-level-pss/)
-* [AppArmor](/docs/tutorials/security/apparmor/)
-* [seccomp](/docs/tutorials/security/seccomp/)
+* [Apply Pod Security Standards at Cluster level](/docs/kubernetes/en/tutorials/security/cluster-level-pss/)
+* [Apply Pod Security Standards at Namespace level](/docs/kubernetes/en/tutorials/security/ns-level-pss/)
+* [AppArmor](/docs/kubernetes/en/tutorials/security/apparmor/)
+* [seccomp](/docs/kubernetes/en/tutorials/security/seccomp/)
 ## {{% heading "whatsnext" %}}
 
 If you would like to write a tutorial, see

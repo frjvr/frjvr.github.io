@@ -29,7 +29,7 @@ The control plane's components make global decisions about the cluster (for exam
 Control plane components can be run on any machine in the cluster. However,
 for simplicity, set up scripts typically start all control plane components on
 the same machine, and do not run user containers on this machine. See
-[Creating Highly Available clusters with kubeadm](/docs/setup/production-environment/tools/kubeadm/high-availability/)
+[Creating Highly Available clusters with kubeadm](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/high-availability/)
 for an example control plane setup that runs across multiple machines.
 
 ### kube-apiserver
@@ -98,11 +98,11 @@ to implement cluster features. Because these are providing cluster-level feature
 for addons belong within the `kube-system` namespace.
 
 Selected addons are described below; for an extended list of available addons, please
-see [Addons](/docs/concepts/cluster-administration/addons/).
+see [Addons](/docs/kubernetes/en/concepts/cluster-administration/addons/).
 
 ### DNS
 
-While the other addons are not strictly required, all Kubernetes clusters should have [cluster DNS](/docs/concepts/services-networking/dns-pod-service/), as many examples rely on it.
+While the other addons are not strictly required, all Kubernetes clusters should have [cluster DNS](/docs/kubernetes/en/concepts/services-networking/dns-pod-service/), as many examples rely on it.
 
 Cluster DNS is a DNS server, in addition to the other DNS server(s) in your environment, which serves DNS records for Kubernetes services.
 
@@ -110,22 +110,22 @@ Containers started by Kubernetes automatically include this DNS server in their 
 
 ### Web UI (Dashboard)
 
-[Dashboard](/docs/tasks/access-application-cluster/web-ui-dashboard/) is a general purpose, web-based UI for Kubernetes clusters. It allows users to manage and troubleshoot applications running in the cluster, as well as the cluster itself.
+[Dashboard](/docs/kubernetes/en/tasks/access-application-cluster/web-ui-dashboard/) is a general purpose, web-based UI for Kubernetes clusters. It allows users to manage and troubleshoot applications running in the cluster, as well as the cluster itself.
 
 ### Container Resource Monitoring
 
-[Container Resource Monitoring](/docs/tasks/debug/debug-cluster/resource-usage-monitoring/) records generic time-series metrics
+[Container Resource Monitoring](/docs/kubernetes/en/tasks/debug/debug-cluster/resource-usage-monitoring/) records generic time-series metrics
 about containers in a central database, and provides a UI for browsing that data.
 
 ### Cluster-level Logging
 
-A [cluster-level logging](/docs/concepts/cluster-administration/logging/) mechanism is responsible for
+A [cluster-level logging](/docs/kubernetes/en/concepts/cluster-administration/logging/) mechanism is responsible for
 saving container logs to a central log store with search/browsing interface.
 
 
 ## {{% heading "whatsnext" %}}
 
-* Learn about [Nodes](/docs/concepts/architecture/nodes/)
-* Learn about [Controllers](/docs/concepts/architecture/controller/)
-* Learn about [kube-scheduler](/docs/concepts/scheduling-eviction/kube-scheduler/)
+* Learn about [Nodes](/docs/kubernetes/en/concepts/architecture/nodes/)
+* Learn about [Controllers](/docs/kubernetes/en/concepts/architecture/controller/)
+* Learn about [kube-scheduler](/docs/kubernetes/en/concepts/scheduling-eviction/kube-scheduler/)
 * Read etcd's official [documentation](https://etcd.io/docs/)

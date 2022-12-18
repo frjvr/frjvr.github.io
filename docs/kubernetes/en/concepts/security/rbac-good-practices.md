@@ -16,7 +16,7 @@ users, the cluster administrator understands the areas where privilege escalatio
 to reduce the risk of excessive access leading to security incidents.
 
 The good practices laid out here should be read in conjunction with the general
-[RBAC documentation](/docs/reference/access-authn-authz/rbac/#restrictions-on-role-creation-or-update).
+[RBAC documentation](/docs/kubernetes/en/reference/access-authn-authz/rbac/#restrictions-on-role-creation-or-update).
 
 <!-- body -->
 
@@ -36,7 +36,7 @@ some general rules that can be applied are :
    which are created in the future.
  - Administrators should not use `cluster-admin` accounts except where specifically needed. 
    Providing a low privileged account with
-   [impersonation rights](/docs/reference/access-authn-authz/authentication/#user-impersonation)
+   [impersonation rights](/docs/kubernetes/en/reference/access-authn-authz/authentication/#user-impersonation)
    can avoid accidental modification of cluster resources.
  - Avoid adding users to the `system:masters` group. Any user who is a member of this group 
    bypasses all RBAC rights checks and will always have unrestricted superuser access, which cannot be 
@@ -53,9 +53,9 @@ In cases where a workload requires powerful permissions, consider the following 
  - Limit the number of nodes running powerful pods. Ensure that any DaemonSets you run
   are necessary and are run with least privilege to limit the blast radius of container escapes.
  - Avoid running powerful pods alongside untrusted or publicly-exposed ones. Consider using 
-   [Taints and Toleration](/docs/concepts/scheduling-eviction/taint-and-toleration/),
-   [NodeAffinity](/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity), or
-   [PodAntiAffinity](/docs/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity)
+   [Taints and Toleration](/docs/kubernetes/en/concepts/scheduling-eviction/taint-and-toleration/),
+   [NodeAffinity](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node/#node-affinity), or
+   [PodAntiAffinity](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity)
    to ensure pods don't run alongside untrusted or less-trusted Pods. Pay especial attention to
    situations where less-trustworthy Pods are not meeting the **Restricted** Pod Security Standard.
 
@@ -70,7 +70,7 @@ to harden cluster rights exist:
   access to anyone who can contact the API server at a network level.
 - Avoid the default auto-mounting of service account tokens by setting
   `automountServiceAccountToken: false`. For more details, see
-  [using default service account token](/docs/tasks/configure-pod-container/configure-service-account/#use-the-default-service-account-to-access-the-api-server).
+  [using default service account token](/docs/kubernetes/en/tasks/configure-pod-container/configure-service-account/#use-the-default-service-account-to-access-the-api-server).
   Setting this value for a Pod will overwrite the service account setting, workloads
   which require service account tokens can still mount them.
 
@@ -100,10 +100,10 @@ includes the contents of all Secrets.
 ### Workload creation
 
 Permission to create workloads (either Pods, or
-[workload resources](/docs/concepts/workloads/controllers/) that manage Pods) in a namespace
+[workload resources](/docs/kubernetes/en/concepts/workloads/controllers/) that manage Pods) in a namespace
 implicitly grants access to many other resources in that namespace, such as Secrets, ConfigMaps, and
 PersistentVolumes that can be mounted in Pods. Additionally, since Pods can run as any
-[ServiceAccount](/docs/reference/access-authn-authz/service-accounts-admin/), granting permission
+[ServiceAccount](/docs/kubernetes/en/reference/access-authn-authz/service-accounts-admin/), granting permission
 to create workloads also implicitly grants the API access levels of any service account in that
 namespace.
 
@@ -111,7 +111,7 @@ Users who can run privileged Pods can use that access to gain node access and po
 further elevate their privileges. Where you do not fully trust a user or other principal
 with the ability to create suitably secure and isolated Pods, you should enforce either the
 **Baseline** or **Restricted** Pod Security Standard.
-You can use [Pod Security admission](/docs/concepts/security/pod-security-admission/)
+You can use [Pod Security admission](/docs/kubernetes/en/concepts/security/pod-security-admission/)
 or other (third party) mechanisms to implement that enforcement.
 
 For these reasons, namespaces should be used to separate resources requiring different levels of
@@ -121,7 +121,7 @@ considered weak.
 
 ### Persistent volume creation
 
-As noted in the [PodSecurityPolicy](/docs/concepts/security/pod-security-policy/#volumes-and-file-systems)
+As noted in the [PodSecurityPolicy](/docs/kubernetes/en/concepts/security/pod-security-policy/#volumes-and-file-systems)
 documentation, access to create PersistentVolumes can allow for escalation of access to the underlying host.
 Where access to persistent storage is required trusted administrators should create 
 PersistentVolumes, and constrained users should use PersistentVolumeClaims to access that storage.
@@ -136,7 +136,7 @@ granting rights to this resource.
 ### Escalate verb
 
 Generally, the RBAC system prevents users from creating clusterroles with more rights than the user possesses. 
-The exception to this is the `escalate` verb. As noted in the [RBAC documentation](/docs/reference/access-authn-authz/rbac/#restrictions-on-role-creation-or-update),
+The exception to this is the `escalate` verb. As noted in the [RBAC documentation](/docs/kubernetes/en/reference/access-authn-authz/rbac/#restrictions-on-role-creation-or-update),
 users with this right can effectively escalate their privileges.
 
 ### Bind verb
@@ -180,9 +180,9 @@ specifically relevant in multi-tenant clusters if semi-trusted or untrusted user
 are allowed limited access to a system.
 
 One option for mitigation of this issue would be to use
-[resource quotas](/docs/concepts/policy/resource-quotas/#object-count-quota)
+[resource quotas](/docs/kubernetes/en/concepts/policy/resource-quotas/#object-count-quota)
 to limit the quantity of objects which can be created.
 
 ## {{% heading "whatsnext" %}}
 
-* To learn more about RBAC, see the [RBAC documentation](/docs/reference/access-authn-authz/rbac/).
+* To learn more about RBAC, see the [RBAC documentation](/docs/kubernetes/en/reference/access-authn-authz/rbac/).

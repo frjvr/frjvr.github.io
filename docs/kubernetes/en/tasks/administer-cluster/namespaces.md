@@ -12,7 +12,7 @@ This page shows how to view, work in, and delete {{< glossary_tooltip text="name
 
 ## {{% heading "prerequisites" %}}
 
-* Have an [existing Kubernetes cluster](/docs/setup/).
+* Have an [existing Kubernetes cluster](/docs/kubernetes/en/setup/).
 * You have a basic understanding of Kubernetes {{< glossary_tooltip text="Pods" term_id="pod" >}}, {{< glossary_tooltip term_id="service" text="Services" >}}, and {{< glossary_tooltip text="Deployments" term_id="deployment" >}}.
 
 
@@ -78,7 +78,7 @@ A namespace can be in one of two phases:
    * `Active` the namespace is in use
    * `Terminating` the namespace is being deleted, and can not be used for new objects
 
-For more details, see [Namespace](/docs/reference/kubernetes-api/cluster-resources/namespace-v1/)
+For more details, see [Namespace](/docs/kubernetes/en/reference/kubernetes-api/cluster-resources/namespace-v1/)
 in the API reference.
 
 ## Creating a new namespace
@@ -108,7 +108,7 @@ in the API reference.
     ``` 
 
 The name of your namespace must be a valid
-[DNS label](/docs/concepts/overview/working-with-objects/names#dns-label-names).
+[DNS label](/docs/kubernetes/en/concepts/overview/working-with-objects/names#dns-label-names).
 
 There's an optional field `finalizers`, which allows observables to purge resources whenever the namespace is deleted. Keep in mind that if you specify a nonexistent finalizer, the namespace will be created but will get stuck in the `Terminating` state if the user tries to delete it.
 
@@ -268,7 +268,7 @@ Kubernetes _namespaces_ help different projects, teams, or customers to share a 
 
 It does this by providing the following:
 
-1. A scope for [Names](/docs/concepts/overview/working-with-objects/names/).
+1. A scope for [Names](/docs/kubernetes/en/concepts/overview/working-with-objects/names/).
 2. A mechanism to attach authorization and policy to a subsection of the cluster.
 
 Use of multiple namespaces is optional.
@@ -301,7 +301,7 @@ Use cases include:
 
 ## Understanding namespaces and DNS
 
-When you create a [Service](/docs/concepts/services-networking/service/), it creates a corresponding [DNS entry](/docs/concepts/services-networking/dns-pod-service/).
+When you create a [Service](/docs/kubernetes/en/concepts/services-networking/service/), it creates a corresponding [DNS entry](/docs/kubernetes/en/concepts/services-networking/dns-pod-service/).
 This entry is of the form `<service-name>.<namespace-name>.svc.cluster.local`, which means
 that if a container uses `<service-name>` it will resolve to the service which
 is local to a namespace.  This is useful for using the same configuration across
@@ -312,8 +312,8 @@ across namespaces, you need to use the fully qualified domain name (FQDN).
 
 ## {{% heading "whatsnext" %}}
 
-* Learn more about [setting the namespace preference](/docs/concepts/overview/working-with-objects/namespaces/#setting-the-namespace-preference).
-* Learn more about [setting the namespace for a request](/docs/concepts/overview/working-with-objects/namespaces/#setting-the-namespace-for-a-request)
+* Learn more about [setting the namespace preference](/docs/kubernetes/en/concepts/overview/working-with-objects/namespaces/#setting-the-namespace-preference).
+* Learn more about [setting the namespace for a request](/docs/kubernetes/en/concepts/overview/working-with-objects/namespaces/#setting-the-namespace-for-a-request)
 * See [namespaces design](https://git.k8s.io/design-proposals-archive/architecture/namespaces.md).
 
 

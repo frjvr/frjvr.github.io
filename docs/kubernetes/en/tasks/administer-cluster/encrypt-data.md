@@ -26,7 +26,7 @@ This page shows how to enable and configure encryption of secret data at rest.
 The `kube-apiserver` process accepts an argument `--encryption-provider-config`
 that controls how API data is encrypted in etcd.
 The configuration is provided as an API named
-[`EncryptionConfiguration`](/docs/reference/config-api/apiserver-encryption.v1/). `--encryption-provider-config-automatic-reload` boolean argument determines if the file set by `--encryption-provider-config` should be automatically reloaded if the disk contents change. This enables key rotation without API server restarts. An example configuration is provided below.
+[`EncryptionConfiguration`](/docs/kubernetes/en/reference/config-api/apiserver-encryption.v1/). `--encryption-provider-config-automatic-reload` boolean argument determines if the file set by `--encryption-provider-config` should be automatically reloaded if the disk contents change. This enables key rotation without API server restarts. An example configuration is provided below.
 
 {{< caution >}}
 **IMPORTANT:** For high-availability configurations (with two or more control plane nodes), the
@@ -84,7 +84,7 @@ data. If no provider can read the stored data due to a mismatch in format or sec
 is returned which prevents clients from accessing that resource.
 
 For more detailed information about the `EncryptionConfiguration` struct, please refer to the
-[encryption configuration API](/docs/reference/config-api/apiserver-encryption.v1/).
+[encryption configuration API](/docs/kubernetes/en/reference/config-api/apiserver-encryption.v1/).
 
 {{< caution >}}
 If any resource is not readable via the encryption config (because keys were changed),
@@ -101,7 +101,7 @@ Name | Encryption | Strength | Speed | Key Length | Other Considerations
 `secretbox` | XSalsa20 and Poly1305 | Strong | Faster | 32-byte | A newer standard and may not be considered acceptable in environments that require high levels of review.
 `aesgcm` | AES-GCM with random nonce | Must be rotated every 200k writes | Fastest | 16, 24, or 32-byte | Is not recommended for use except when an automated key rotation scheme is implemented.
 `aescbc` | AES-CBC with [PKCS#7](https://datatracker.ietf.org/doc/html/rfc2315) padding | Weak | Fast | 32-byte | Not recommended due to CBC's vulnerability to padding oracle attacks.
-`kms` | Uses envelope encryption scheme: Data is encrypted by data encryption keys (DEKs) using AES-CBC with [PKCS#7](https://datatracker.ietf.org/doc/html/rfc2315) padding (prior to v1.25), using AES-GCM starting from v1.25, DEKs are encrypted by key encryption keys (KEKs) according to configuration in Key Management Service (KMS) | Strongest | Fast | 32-bytes |  The recommended choice for using a third party tool for key management. Simplifies key rotation, with a new DEK generated for each encryption, and KEK rotation controlled by the user. [Configure the KMS provider](/docs/tasks/administer-cluster/kms-provider/)
+`kms` | Uses envelope encryption scheme: Data is encrypted by data encryption keys (DEKs) using AES-CBC with [PKCS#7](https://datatracker.ietf.org/doc/html/rfc2315) padding (prior to v1.25), using AES-GCM starting from v1.25, DEKs are encrypted by key encryption keys (KEKs) according to configuration in Key Management Service (KMS) | Strongest | Fast | 32-bytes |  The recommended choice for using a third party tool for key management. Simplifies key rotation, with a new DEK generated for each encryption, and KEK rotation controlled by the user. [Configure the KMS provider](/docs/kubernetes/en/tasks/administer-cluster/kms-provider/)
 
 Each provider supports multiple keys - the keys are tried in order for decryption, and if the provider
 is the first provider, the first key is used for encryption.
@@ -259,7 +259,7 @@ program to retrieve the contents of your secret data.
    ```
 
    The output should contain `mykey: bXlkYXRh`, with contents of `mydata` encoded, check
-   [decoding a Secret](/docs/tasks/configmap-secret/managing-secret-using-kubectl/#decoding-secret)
+   [decoding a Secret](/docs/kubernetes/en/tasks/configmap-secret/managing-secret-using-kubectl/#decoding-secret)
    to completely decode the Secret.
 
 ## Ensure all Secrets are encrypted
@@ -321,4 +321,4 @@ kubectl get secrets --all-namespaces -o json | kubectl replace -f -
 
 ## {{% heading "whatsnext" %}}
 
-* Learn more about the [EncryptionConfiguration configuration API (v1)](/docs/reference/config-api/apiserver-encryption.v1/).
+* Learn more about the [EncryptionConfiguration configuration API (v1)](/docs/kubernetes/en/reference/config-api/apiserver-encryption.v1/).

@@ -19,7 +19,7 @@ This page shows how to assign extended resources to a Container.
 {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
 
 Before you do this exercise, do the exercise in
-[Advertise Extended Resources for a Node](/docs/tasks/administer-cluster/extended-resource-node/).
+[Advertise Extended Resources for a Node](/docs/kubernetes/en/tasks/administer-cluster/extended-resource-node/).
 That will configure one of your Nodes to advertise a dongle resource.
 
 
@@ -135,11 +135,11 @@ kubectl delete pod extended-resource-demo-2
 
 ### For application developers
 
-* [Assign Memory Resources to Containers and Pods](/docs/tasks/configure-pod-container/assign-memory-resource/)
-* [Assign CPU Resources to Containers and Pods](/docs/tasks/configure-pod-container/assign-cpu-resource/)
+* [Assign Memory Resources to Containers and Pods](/docs/kubernetes/en/tasks/configure-pod-container/assign-memory-resource/)
+* [Assign CPU Resources to Containers and Pods](/docs/kubernetes/en/tasks/configure-pod-container/assign-cpu-resource/)
 
 ### For cluster administrators
 
-* [Advertise Extended Resources for a Node](/docs/tasks/administer-cluster/extended-resource-node/)
+* [Advertise Extended Resources for a Node](/docs/kubernetes/en/tasks/administer-cluster/extended-resource-node/)
 
 

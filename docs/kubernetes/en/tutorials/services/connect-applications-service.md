@@ -52,7 +52,7 @@ kubectl get pods -l run=my-nginx -o custom-columns=POD_IP:.status.podIPs
 You should be able to ssh into any node in your cluster and use a tool such as `curl` to make queries against both IPs. Note that the containers are *not* using port 80 on the node, nor are there any special NAT rules to route traffic to the pod. This means you can run multiple nginx pods on the same node all using the same `containerPort`, and access them from any other pod or node in your cluster using the assigned IP address for the Service. If you want to arrange for a specific port on the host Node to be forwarded to backing Pods, you can - but the networking model should mean that you do not need to do so.
 
 
-You can read more about the [Kubernetes Networking Model](/docs/concepts/cluster-administration/networking/#the-kubernetes-network-model) if you're curious.
+You can read more about the [Kubernetes Networking Model](/docs/kubernetes/en/concepts/cluster-administration/networking/#the-kubernetes-network-model) if you're curious.
 
 ## Creating a Service
 
@@ -78,7 +78,7 @@ with the `run: my-nginx` label, and expose it on an abstracted Service port
 (`targetPort`: is the port the container accepts traffic on, `port`: is the
 abstracted Service port, which can be any port other pods use to access the
 Service).
-View [Service](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#service-v1-core)
+View [Service](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#service-v1-core)
 API object to see the list of supported fields in service definition.
 Check your Service:
 
@@ -129,7 +129,7 @@ my-nginx-7vzhx   IPv4          80      10.244.2.5,10.244.3.4   21s
 You should now be able to curl the nginx Service on `<CLUSTER-IP>:<PORT>` from
 any node in your cluster. Note that the Service IP is completely virtual, it
 never hits the wire. If you're curious about how this works you can read more
-about the [service proxy](/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies).
+about the [service proxy](/docs/kubernetes/en/concepts/services-networking/service/#virtual-ips-and-service-proxies).
 
 ## Accessing the Service
 
@@ -139,7 +139,7 @@ and DNS. The former works out of the box while the latter requires the
 {{< note >}}
 If the service environment variables are not desired (because possible clashing with expected program ones,
 too many variables to process, only using DNS, etc) you can disable this mode by setting the `enableServiceLinks`
-flag to `false` on the [pod spec](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#pod-v1-core).
+flag to `false` on the [pod spec](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#pod-v1-core).
 {{< /note >}}
 
 
@@ -204,7 +204,7 @@ kube-dns   ClusterIP   10.0.0.10    <none>        53/UDP,53/TCP   8m
 ```
 
 The rest of this section will assume you have a Service with a long lived IP
-(my-nginx), and a DNS server that has assigned a name to that IP. Here we use the CoreDNS cluster addon (application name `kube-dns`), so you can talk to the Service from any pod in your cluster using standard methods (e.g. `gethostbyname()`). If CoreDNS isn't running, you can enable it referring to the [CoreDNS README](https://github.com/coredns/deployment/tree/master/kubernetes) or [Installing CoreDNS](/docs/tasks/administer-cluster/coredns/#installing-coredns). Let's run another curl application to test this:
+(my-nginx), and a DNS server that has assigned a name to that IP. Here we use the CoreDNS cluster addon (application name `kube-dns`), so you can talk to the Service from any pod in your cluster using standard methods (e.g. `gethostbyname()`). If CoreDNS isn't running, you can enable it referring to the [CoreDNS README](https://github.com/coredns/deployment/tree/master/kubernetes) or [Installing CoreDNS](/docs/kubernetes/en/tasks/administer-cluster/coredns/#installing-coredns). Let's run another curl application to test this:
 
 ```shell
 kubectl run curl --image=radial/busyboxplus:curl -i --tty
@@ -231,7 +231,7 @@ Till now we have only accessed the nginx server from within the cluster. Before 
 
 * Self signed certificates for https (unless you already have an identity certificate)
 * An nginx server configured to use the certificates
-* A [secret](/docs/concepts/configuration/secret/) that makes the certificates accessible to pods
+* A [secret](/docs/kubernetes/en/concepts/configuration/secret/) that makes the certificates accessible to pods
 
 You can acquire all these from the [nginx https example](https://github.com/kubernetes/examples/tree/master/staging/https-nginx/). This requires having go and make tools installed. If you don't want to install those, then follow the manual steps later. In short:
 
@@ -427,8 +427,8 @@ LoadBalancer Ingress:   a320587ffd19711e5a37606cf4a74574-1142138393.us-east-1.el
 ## {{% heading "whatsnext" %}}
 
 
-* Learn more about [Using a Service to Access an Application in a Cluster](/docs/tasks/access-application-cluster/service-access-application-cluster/)
-* Learn more about [Connecting a Front End to a Back End Using a Service](/docs/tasks/access-application-cluster/connecting-frontend-backend/)
-* Learn more about [Creating an External Load Balancer](/docs/tasks/access-application-cluster/create-external-load-balancer/)
+* Learn more about [Using a Service to Access an Application in a Cluster](/docs/kubernetes/en/tasks/access-application-cluster/service-access-application-cluster/)
+* Learn more about [Connecting a Front End to a Back End Using a Service](/docs/kubernetes/en/tasks/access-application-cluster/connecting-frontend-backend/)
+* Learn more about [Creating an External Load Balancer](/docs/kubernetes/en/tasks/access-application-cluster/create-external-load-balancer/)
 
 

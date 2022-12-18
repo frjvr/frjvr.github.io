@@ -175,11 +175,11 @@ future.
 
 Dynamic resource allocation is an *alpha feature* and only enabled when the
 `DynamicResourceAllocation` [feature
-gate](/docs/reference/command-line-tools-reference/feature-gates/) and the
+gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) and the
 `resource.k8s.io/v1alpha1` {{< glossary_tooltip text="API group"
 term_id="api-group" >}} are enabled. For details on that, see the
 `--feature-gates` and `--runtime-config` [kube-apiserver
-parameters](/docs/reference/command-line-tools-reference/kube-apiserver/).
+parameters](/docs/kubernetes/en/reference/command-line-tools-reference/kube-apiserver/).
 kube-scheduler, kube-controller-manager and kubelet also need the feature gate.
 
 A quick check whether a Kubernetes cluster supports the feature is to list

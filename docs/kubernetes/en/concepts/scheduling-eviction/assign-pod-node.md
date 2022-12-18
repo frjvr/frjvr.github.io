@@ -15,7 +15,7 @@ You can constrain a {{< glossary_tooltip text="Pod" term_id="pod" >}} so that it
 _restricted_ to run on particular {{< glossary_tooltip text="node(s)" term_id="node" >}},
 or to _prefer_ to run on particular nodes.
 There are several ways to do this and the recommended approaches all use
-[label selectors](/docs/concepts/overview/working-with-objects/labels/) to facilitate the selection.
+[label selectors](/docs/kubernetes/en/concepts/overview/working-with-objects/labels/) to facilitate the selection.
 Often, you do not need to set any such constraints; the
 {{< glossary_tooltip text="scheduler" term_id="kube-scheduler" >}}  will automatically do a reasonable placement
 (for example, spreading your Pods across nodes so as not place Pods on a node with insufficient free resources).
@@ -36,8 +36,8 @@ specific Pods:
 ## Node labels {#built-in-node-labels}
 
 Like many other Kubernetes objects, nodes have
-[labels](/docs/concepts/overview/working-with-objects/labels/). You can [attach labels manually](/docs/tasks/configure-pod-container/assign-pods-nodes/#add-a-label-to-a-node).
-Kubernetes also populates a standard set of labels on all nodes in a cluster. See [Well-Known Labels, Annotations and Taints](/docs/reference/labels-annotations-taints/)
+[labels](/docs/kubernetes/en/concepts/overview/working-with-objects/labels/). You can [attach labels manually](/docs/kubernetes/en/tasks/configure-pod-container/assign-pods-nodes/#add-a-label-to-a-node).
+Kubernetes also populates a standard set of labels on all nodes in a cluster. See [Well-Known Labels, Annotations and Taints](/docs/kubernetes/en/reference/labels-annotations-taints/)
 for a list of common node labels.
 
 {{<note>}}
@@ -57,13 +57,13 @@ If you use labels for node isolation, choose label keys that the {{<glossary_too
 cannot modify. This prevents a compromised node from setting those labels on
 itself so that the scheduler schedules workloads onto the compromised node.
 
-The [`NodeRestriction` admission plugin](/docs/reference/access-authn-authz/admission-controllers/#noderestriction)
+The [`NodeRestriction` admission plugin](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/#noderestriction)
 prevents the kubelet from setting or modifying labels with a
 `node-restriction.kubernetes.io/` prefix. 
 
 To make use of that label prefix for node isolation:
 
-1. Ensure you are using the [Node authorizer](/docs/reference/access-authn-authz/node/) and have _enabled_ the `NodeRestriction` admission plugin.
+1. Ensure you are using the [Node authorizer](/docs/kubernetes/en/reference/access-authn-authz/node/) and have _enabled_ the `NodeRestriction` admission plugin.
 2. Add labels with the `node-restriction.kubernetes.io/` prefix to your nodes, and use those labels in your [node selectors](#nodeselector).
    For example, `example.com.node-restriction.kubernetes.io/fips=true` or `example.com.node-restriction.kubernetes.io/pci-dss=true`.
 
@@ -75,7 +75,7 @@ You can add the `nodeSelector` field to your Pod specification and specify the
 Kubernetes only schedules the Pod onto nodes that have each of the labels you
 specify. 
 
-See [Assign Pods to Nodes](/docs/tasks/configure-pod-container/assign-pods-nodes) for more
+See [Assign Pods to Nodes](/docs/kubernetes/en/tasks/configure-pod-container/assign-pods-nodes) for more
 information.
 
 ## Affinity and anti-affinity
@@ -137,7 +137,7 @@ interpreting the rules. You can use `In`, `NotIn`, `Exists`, `DoesNotExist`,
 `Gt` and `Lt`.
 
 `NotIn` and `DoesNotExist` allow you to define node anti-affinity behavior.
-Alternatively, you can use [node taints](/docs/concepts/scheduling-eviction/taint-and-toleration/) 
+Alternatively, you can use [node taints](/docs/kubernetes/en/concepts/scheduling-eviction/taint-and-toleration/) 
 to repel Pods from specific nodes.
 
 {{<note>}}
@@ -153,7 +153,7 @@ term in `nodeSelectorTerms`, then the Pod can be scheduled onto a node only
 if all the expressions are satisfied (expressions are ANDed).
 {{</note>}}
 
-See [Assign Pods to Nodes using Node Affinity](/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/)
+See [Assign Pods to Nodes using Node Affinity](/docs/kubernetes/en/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/)
 for more information.
 
 #### Node affinity weight
@@ -187,10 +187,10 @@ must have existing nodes with the `kubernetes.io/os=linux` label.
 
 {{< feature-state for_k8s_version="v1.20" state="beta" >}}
 
-When configuring multiple [scheduling profiles](/docs/reference/scheduling/config/#multiple-profiles), you can associate
+When configuring multiple [scheduling profiles](/docs/kubernetes/en/reference/scheduling/config/#multiple-profiles), you can associate
 a profile with a node affinity, which is useful if a profile only applies to a specific set of nodes.
-To do so, add an `addedAffinity` to the `args` field of the [`NodeAffinity` plugin](/docs/reference/scheduling/config/#scheduling-plugins)
-in the [scheduler configuration](/docs/reference/scheduling/config/). For example:
+To do so, add an `addedAffinity` to the `args` field of the [`NodeAffinity` plugin](/docs/kubernetes/en/reference/scheduling/config/#scheduling-plugins)
+in the [scheduler configuration](/docs/kubernetes/en/reference/scheduling/config/). For example:
 
 ```yaml
 apiVersion: kubescheduler.config.k8s.io/v1beta3
@@ -222,7 +222,7 @@ unexpected to them. Use node labels that have a clear correlation to the
 scheduler profile name.
 
 {{< note >}}
-The DaemonSet controller, which [creates Pods for DaemonSets](/docs/concepts/workloads/controllers/daemonset/#scheduled-by-default-scheduler),
+The DaemonSet controller, which [creates Pods for DaemonSets](/docs/kubernetes/en/concepts/workloads/controllers/daemonset/#scheduled-by-default-scheduler),
 does not support scheduling profiles. When the DaemonSet controller creates
 Pods, the default Kubernetes scheduler places those Pods and honors any
 `nodeAffinity` rules in the DaemonSet controller.
@@ -240,7 +240,7 @@ is already running one or more Pods that meet rule Y", where X is a topology
 domain like node, rack, cloud provider zone or region, or similar and Y is the
 rule Kubernetes tries to satisfy.
 
-You express these rules (Y) as [label selectors](/docs/concepts/overview/working-with-objects/labels/#label-selectors)
+You express these rules (Y) as [label selectors](/docs/kubernetes/en/concepts/overview/working-with-objects/labels/#label-selectors)
 with an optional associated list of namespaces. Pods are namespaced objects in
 Kubernetes, so Pod labels also implicitly have namespaces. Any label selectors
 for Pod labels should specify the namespaces in which Kubernetes should look for those
@@ -248,7 +248,7 @@ labels.
 
 You express the topology domain (X) using a `topologyKey`, which is the key for
 the node label that the system uses to denote the domain. For examples, see
-[Well-Known Labels, Annotations and Taints](/docs/reference/labels-annotations-taints/).
+[Well-Known Labels, Annotations and Taints](/docs/kubernetes/en/reference/labels-annotations-taints/).
 
 {{< note >}}
 Inter-pod affinity and anti-affinity require substantial amount of
@@ -439,7 +439,7 @@ The overall effect is that each cache instance is likely to be accessed by a sin
 is running on the same node. This approach aims to minimize both skew (imbalanced load) and latency.
 
 You might have other reasons to use Pod anti-affinity.
-See the [ZooKeeper tutorial](/docs/tutorials/stateful-application/zookeeper/#tolerating-node-failure)
+See the [ZooKeeper tutorial](/docs/kubernetes/en/tutorials/stateful-application/zookeeper/#tolerating-node-failure)
 for an example of a StatefulSet configured with anti-affinity for high
 availability, using the same technique as this example.
 
@@ -484,17 +484,17 @@ are spread across your cluster among failure-domains such as regions, zones, nod
 topology domains that you define. You might do this to improve performance, expected availability, or
 overall utilization.
 
-Read [Pod topology spread constraints](/docs/concepts/scheduling-eviction/topology-spread-constraints/)
+Read [Pod topology spread constraints](/docs/kubernetes/en/concepts/scheduling-eviction/topology-spread-constraints/)
 to learn more about how these work.
 
 ## {{% heading "whatsnext" %}}
 
-* Read more about [taints and tolerations](/docs/concepts/scheduling-eviction/taint-and-toleration/) .
+* Read more about [taints and tolerations](/docs/kubernetes/en/concepts/scheduling-eviction/taint-and-toleration/) .
 * Read the design docs for [node affinity](https://git.k8s.io/design-proposals-archive/scheduling/nodeaffinity.md)
   and for [inter-pod affinity/anti-affinity](https://git.k8s.io/design-proposals-archive/scheduling/podaffinity.md).
-* Learn about how the [topology manager](/docs/tasks/administer-cluster/topology-manager/) takes part in node-level
+* Learn about how the [topology manager](/docs/kubernetes/en/tasks/administer-cluster/topology-manager/) takes part in node-level
   resource allocation decisions. 
-* Learn how to use [nodeSelector](/docs/tasks/configure-pod-container/assign-pods-nodes/).
-* Learn how to use [affinity and anti-affinity](/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/).
+* Learn how to use [nodeSelector](/docs/kubernetes/en/tasks/configure-pod-container/assign-pods-nodes/).
+* Learn how to use [affinity and anti-affinity](/docs/kubernetes/en/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/).
 
 

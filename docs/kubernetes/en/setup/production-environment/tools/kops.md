@@ -20,7 +20,7 @@ It uses a tool called [`kOps`](https://github.com/kubernetes/kops).
 
 ## {{% heading "prerequisites" %}}
 
-* You must have [kubectl](/docs/tasks/tools/) installed.
+* You must have [kubectl](/docs/kubernetes/en/tasks/tools/) installed.
 
 * You must [install](https://github.com/kubernetes/kops#installing) `kops` on a 64-bit (AMD64 and Intel 64) device architecture.
 
@@ -212,7 +212,7 @@ for production clusters!
 
 ### Explore other add-ons
 
-See the [list of add-ons](/docs/concepts/cluster-administration/addons/) to explore other add-ons, including tools for logging, monitoring, network policy, visualization, and control of your Kubernetes cluster.
+See the [list of add-ons](/docs/kubernetes/en/concepts/cluster-administration/addons/) to explore other add-ons, including tools for logging, monitoring, network policy, visualization, and control of your Kubernetes cluster.
 
 ## Cleanup
 
@@ -220,7 +220,7 @@ See the [list of add-ons](/docs/concepts/cluster-administration/addons/) to expl
 
 ## {{% heading "whatsnext" %}}
 
-* Learn more about Kubernetes [concepts](/docs/concepts/) and [`kubectl`](/docs/reference/kubectl/).
+* Learn more about Kubernetes [concepts](/docs/kubernetes/en/concepts/) and [`kubectl`](/docs/kubernetes/en/reference/kubectl/).
 * Learn more about `kOps` [advanced usage](https://kops.sigs.k8s.io/) for tutorials, best practices and advanced configuration options.
 * Follow `kOps` community discussions on Slack: [community discussions](https://github.com/kubernetes/kops#other-ways-to-communicate-with-the-contributors).
 * Contribute to `kOps` by addressing or raising an issue [GitHub Issues](https://github.com/kubernetes/kops/issues).

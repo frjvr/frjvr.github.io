@@ -8,27 +8,27 @@ weight: 70
 {{<glossary_definition term_id="garbage-collection" length="short">}} This
 allows the clean up of resources like the following:
 
-  * [Terminated pods](/docs/concepts/workloads/pods/pod-lifecycle/#pod-garbage-collection)
-  * [Completed Jobs](/docs/concepts/workloads/controllers/ttlafterfinished/)
+  * [Terminated pods](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#pod-garbage-collection)
+  * [Completed Jobs](/docs/kubernetes/en/concepts/workloads/controllers/ttlafterfinished/)
   * [Objects without owner references](#owners-dependents)
   * [Unused containers and container images](#containers-images)
-  * [Dynamically provisioned PersistentVolumes with a StorageClass reclaim policy of Delete](/docs/concepts/storage/persistent-volumes/#delete)
-  * [Stale or expired CertificateSigningRequests (CSRs)](/docs/reference/access-authn-authz/certificate-signing-requests/#request-signing-process)
+  * [Dynamically provisioned PersistentVolumes with a StorageClass reclaim policy of Delete](/docs/kubernetes/en/concepts/storage/persistent-volumes/#delete)
+  * [Stale or expired CertificateSigningRequests (CSRs)](/docs/kubernetes/en/reference/access-authn-authz/certificate-signing-requests/#request-signing-process)
   * {{<glossary_tooltip text="Nodes" term_id="node">}} deleted in the following scenarios:
-    * On a cloud when the cluster uses a [cloud controller manager](/docs/concepts/architecture/cloud-controller/)
+    * On a cloud when the cluster uses a [cloud controller manager](/docs/kubernetes/en/concepts/architecture/cloud-controller/)
     * On-premises when the cluster uses an addon similar to a cloud controller
       manager
-  * [Node Lease objects](/docs/concepts/architecture/nodes/#heartbeats)
+  * [Node Lease objects](/docs/kubernetes/en/concepts/architecture/nodes/#heartbeats)
 
 ## Owners and dependents {#owners-dependents}
 
-Many objects in Kubernetes link to each other through [*owner references*](/docs/concepts/overview/working-with-objects/owners-dependents/). 
+Many objects in Kubernetes link to each other through [*owner references*](/docs/kubernetes/en/concepts/overview/working-with-objects/owners-dependents/). 
 Owner references tell the control plane which objects are dependent on others.
 Kubernetes uses owner references to give the control plane, and other API
 clients, the opportunity to clean up related resources before deleting an
 object. In most cases, Kubernetes manages owner references automatically.
 
-Ownership is different from the [labels and selectors](/docs/concepts/overview/working-with-objects/labels/)
+Ownership is different from the [labels and selectors](/docs/kubernetes/en/concepts/overview/working-with-objects/labels/)
 mechanism that some resources also use. For example, consider a
 {{<glossary_tooltip text="Service" term_id="service">}} that creates
 `EndpointSlice` objects. The Service uses *labels* to allow the control plane to
@@ -89,7 +89,7 @@ Kubernetes API.
 
 During foreground cascading deletion, the only dependents that block owner
 deletion are those that have the `ownerReference.blockOwnerDeletion=true` field.
-See [Use foreground cascading deletion](/docs/tasks/administer-cluster/use-cascading-deletion/#use-foreground-cascading-deletion)
+See [Use foreground cascading deletion](/docs/kubernetes/en/tasks/administer-cluster/use-cascading-deletion/#use-foreground-cascading-deletion)
 to learn more.
 
 ### Background cascading deletion {#background-deletion}
@@ -99,14 +99,14 @@ object immediately and the controller cleans up the dependent objects in
 the background. By default, Kubernetes uses background cascading deletion unless
 you manually use foreground deletion or choose to orphan the dependent objects.
 
-See [Use background cascading deletion](/docs/tasks/administer-cluster/use-cascading-deletion/#use-background-cascading-deletion)
+See [Use background cascading deletion](/docs/kubernetes/en/tasks/administer-cluster/use-cascading-deletion/#use-background-cascading-deletion)
 to learn more.
 
 ### Orphaned dependents
 
 When Kubernetes deletes an owner object, the dependents left behind are called
 *orphan* objects. By default, Kubernetes deletes dependent objects. To learn how
-to override this behaviour, see [Delete owner objects and orphan dependents](/docs/tasks/administer-cluster/use-cascading-deletion/#set-orphan-deletion-policy).
+to override this behaviour, see [Delete owner objects and orphan dependents](/docs/kubernetes/en/tasks/administer-cluster/use-cascading-deletion/#set-orphan-deletion-policy).
 
 ## Garbage collection of unused containers and images {#containers-images}
 
@@ -116,9 +116,9 @@ minute. You should avoid using external garbage collection tools, as these can
 break the kubelet behavior and remove containers that should exist. 
 
 To configure options for unused container and image garbage collection, tune the
-kubelet using a [configuration file](/docs/tasks/administer-cluster/kubelet-config-file/)
+kubelet using a [configuration file](/docs/kubernetes/en/tasks/administer-cluster/kubelet-config-file/)
 and change the parameters related to garbage collection using the
-[`KubeletConfiguration`](/docs/reference/config-api/kubelet-config.v1beta1/#kubelet-config-k8s-io-v1beta1-KubeletConfiguration)
+[`KubeletConfiguration`](/docs/kubernetes/en/reference/config-api/kubelet-config.v1beta1/#kubelet-config-k8s-io-v1beta1-KubeletConfiguration)
 resource type.
 
 ### Container image lifecycle
@@ -171,13 +171,13 @@ You can tune garbage collection of resources by configuring options specific to
 the controllers managing those resources. The following pages show you how to
 configure garbage collection:
 
-  * [Configuring cascading deletion of Kubernetes objects](/docs/tasks/administer-cluster/use-cascading-deletion/)
-  * [Configuring cleanup of finished Jobs](/docs/concepts/workloads/controllers/ttlafterfinished/)
+  * [Configuring cascading deletion of Kubernetes objects](/docs/kubernetes/en/tasks/administer-cluster/use-cascading-deletion/)
+  * [Configuring cleanup of finished Jobs](/docs/kubernetes/en/concepts/workloads/controllers/ttlafterfinished/)
   
-<!-- * [Configuring unused container and image garbage collection](/docs/tasks/administer-cluster/reconfigure-kubelet/) -->
+<!-- * [Configuring unused container and image garbage collection](/docs/kubernetes/en/tasks/administer-cluster/reconfigure-kubelet/) -->
 
 ## {{% heading "whatsnext" %}}
 
-* Learn more about [ownership of Kubernetes objects](/docs/concepts/overview/working-with-objects/owners-dependents/).
-* Learn more about Kubernetes [finalizers](/docs/concepts/overview/working-with-objects/finalizers/).
-* Learn about the [TTL controller](/docs/concepts/workloads/controllers/ttlafterfinished/) (beta) that cleans up finished Jobs.
+* Learn more about [ownership of Kubernetes objects](/docs/kubernetes/en/concepts/overview/working-with-objects/owners-dependents/).
+* Learn more about Kubernetes [finalizers](/docs/kubernetes/en/concepts/overview/working-with-objects/finalizers/).
+* Learn about the [TTL controller](/docs/kubernetes/en/concepts/workloads/controllers/ttlafterfinished/) (beta) that cleans up finished Jobs.

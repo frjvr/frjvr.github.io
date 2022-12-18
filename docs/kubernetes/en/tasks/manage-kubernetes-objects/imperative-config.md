@@ -13,7 +13,7 @@ This document explains how to define and manage objects using configuration file
 ## {{% heading "prerequisites" %}}
 
 
-Install [`kubectl`](/docs/tasks/tools/).
+Install [`kubectl`](/docs/kubernetes/en/tasks/tools/).
 
 {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
 
@@ -29,13 +29,13 @@ The `kubectl` tool supports three kinds of object management:
 * Imperative object configuration
 * Declarative object configuration
 
-See [Kubernetes Object Management](/docs/concepts/overview/working-with-objects/object-management/)
+See [Kubernetes Object Management](/docs/kubernetes/en/concepts/overview/working-with-objects/object-management/)
 for a discussion of the advantages and disadvantage of each kind of object management.
 
 ## How to create objects
 
 You can use `kubectl create -f` to create an object from a configuration file.
-Refer to the [kubernetes API reference](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/)
+Refer to the [kubernetes API reference](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/)
 for details.
 
 * `kubectl create -f <filename|url>`
@@ -160,9 +160,9 @@ template:
 ## {{% heading "whatsnext" %}}
 
 
-* [Managing Kubernetes Objects Using Imperative Commands](/docs/tasks/manage-kubernetes-objects/imperative-command/)
-* [Declarative Management of Kubernetes Objects Using Configuration Files](/docs/tasks/manage-kubernetes-objects/declarative-config/)
-* [Kubectl Command Reference](/docs/reference/generated/kubectl/kubectl-commands/)
-* [Kubernetes API Reference](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/)
+* [Managing Kubernetes Objects Using Imperative Commands](/docs/kubernetes/en/tasks/manage-kubernetes-objects/imperative-command/)
+* [Declarative Management of Kubernetes Objects Using Configuration Files](/docs/kubernetes/en/tasks/manage-kubernetes-objects/declarative-config/)
+* [Kubectl Command Reference](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/)
+* [Kubernetes API Reference](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/)
 
 

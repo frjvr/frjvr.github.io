@@ -162,7 +162,7 @@ Whether and how garbage collection will be performed. Either this field or Orpha
 
 ## resourceVersion {#resourceVersion}
 
-resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/kubernetes/en/reference/using-api/api-concepts/#resource-versions for details.
 
 Defaults to unset
 
@@ -174,7 +174,7 @@ Defaults to unset
 
 ## resourceVersionMatch {#resourceVersionMatch}
 
-resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/kubernetes/en/reference/using-api/api-concepts/#resource-versions for details.
 
 Defaults to unset
 

@@ -36,7 +36,7 @@ the username from the common name field in the 'subject' of the cert (e.g.,
 "/CN=bob"). From there, the role based access control (RBAC) sub-system would
 determine whether the user is authorized to perform a specific operation on a
 resource. For more details, refer to the normal users topic in
-[certificate request](/docs/reference/access-authn-authz/certificate-signing-requests/#normal-user)
+[certificate request](/docs/kubernetes/en/reference/access-authn-authz/certificate-signing-requests/#normal-user)
 for more details about this.
 
 In contrast, service accounts are users managed by the Kubernetes API. They are
@@ -64,7 +64,7 @@ with the request:
 * Extra fields: a map of strings to list of strings which holds additional information authorizers may find useful.
 
 All values are opaque to the authentication system and only hold significance
-when interpreted by an [authorizer](/docs/reference/access-authn-authz/authorization/).
+when interpreted by an [authorizer](/docs/kubernetes/en/reference/access-authn-authz/authorization/).
 
 You can enable multiple authentication methods at once. You should usually use at least two methods:
 
@@ -99,7 +99,7 @@ openssl req -new -key jbeda.pem -out jbeda-csr.pem -subj "/CN=jbeda/O=app1/O=app
 
 This would create a CSR for the username "jbeda", belonging to two groups, "app1" and "app2".
 
-See [Managing Certificates](/docs/tasks/administer-cluster/certificates/) for how to generate a client cert.
+See [Managing Certificates](/docs/kubernetes/en/tasks/administer-cluster/certificates/) for how to generate a client cert.
 
 ### Static Token File
 
@@ -162,7 +162,7 @@ bootstrapping.  The user names and group can be used (and are used by `kubeadm`)
 to craft the appropriate authorization policies to support bootstrapping a
 cluster.
 
-Please see [Bootstrap Tokens](/docs/reference/access-authn-authz/bootstrap-tokens/) for in depth
+Please see [Bootstrap Tokens](/docs/kubernetes/en/reference/access-authn-authz/bootstrap-tokens/) for in depth
 documentation on the Bootstrap Token authenticator and controllers along with
 how to manage these tokens with `kubeadm`.
 
@@ -179,7 +179,7 @@ different files. If unspecified, --tls-private-key-file is used.
 
 Service accounts are usually created automatically by the API server and
 associated with pods running in the cluster through the `ServiceAccount`
-[Admission Controller](/docs/reference/access-authn-authz/admission-controllers/). Bearer tokens are
+[Admission Controller](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/). Bearer tokens are
 mounted into pods at well-known locations, and allow in-cluster processes to
 talk to the API server. Accounts may be explicitly associated with pods using the
 `serviceAccountName` field of a `PodSpec`.
@@ -422,7 +422,7 @@ Webhook authentication is a hook for verifying bearer tokens.
 * `--authentication-token-webhook-version` determines whether to use `authentication.k8s.io/v1beta1` or `authentication.k8s.io/v1` 
   `TokenReview` objects to send/receive information from the webhook. Defaults to `v1beta1`.
 
-The configuration file uses the [kubeconfig](/docs/concepts/configuration/organize-cluster-access-kubeconfig/)
+The configuration file uses the [kubeconfig](/docs/kubernetes/en/concepts/configuration/organize-cluster-access-kubeconfig/)
 file format. Within the file, `clusters` refers to the remote service and
 `users` refers to the API server webhook. An example would be:
 
@@ -457,7 +457,7 @@ contexts:
 When a client attempts to authenticate with the API server using a bearer token as discussed [above](#putting-a-bearer-token-in-a-request),
 the authentication webhook POSTs a JSON-serialized `TokenReview` object containing the token to the remote service.
 
-Note that webhook API objects are subject to the same [versioning compatibility rules](/docs/concepts/overview/kubernetes-api/) as other Kubernetes API objects.
+Note that webhook API objects are subject to the same [versioning compatibility rules](/docs/kubernetes/en/concepts/overview/kubernetes-api/) as other Kubernetes API objects.
 Implementers should check the `apiVersion` field of the request to ensure correct deserialization,
 and **must** respond with a `TokenReview` object of the same version as the request.
 
@@ -874,7 +874,7 @@ To authenticate against the API:
 
 ### Configuration
 
-Credential plugins are configured through [kubectl config files](/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)
+Credential plugins are configured through [kubectl config files](/docs/kubernetes/en/tasks/access-application-cluster/configure-access-multiple-clusters/)
 as part of the user fields.
 
 {{< tabs name="exec_plugin_kubeconfig_example_1" >}}
@@ -1056,7 +1056,7 @@ to the plugin. Plugins should use the `spec.interactive` field of the input
 determine if `stdin` has been provided. A plugin's `stdin` requirements (i.e., whether
 `stdin` is optional, strictly required, or never used in order for the plugin
 to run successfully) is declared via the `user.exec.interactiveMode` field in the
-[kubeconfig](/docs/concepts/configuration/organize-cluster-access-kubeconfig/) (see table
+[kubeconfig](/docs/kubernetes/en/concepts/configuration/organize-cluster-access-kubeconfig/) (see table
 below for valid values). The `user.exec.interactiveMode` field is optional in `client.authentication.k8s.io/v1beta1`
 and required in `client.authentication.k8s.io/v1`.
 
@@ -1069,7 +1069,7 @@ and required in `client.authentication.k8s.io/v1`.
 {{< /table >}}
 
 To use bearer token credentials, the plugin returns a token in the status of the
-[`ExecCredential`](/docs/reference/config-api/client-authentication.v1beta1/#client-authentication-k8s-io-v1beta1-ExecCredential)
+[`ExecCredential`](/docs/kubernetes/en/reference/config-api/client-authentication.v1beta1/#client-authentication-k8s-io-v1beta1-ExecCredential)
 
 {{< tabs name="exec_plugin_ExecCredential_example_1" >}}
 {{% tab name="client.authentication.k8s.io/v1" %}}
@@ -1170,7 +1170,7 @@ Presence or absence of an expiry has the following impact:
 {{< /tabs >}}
 
 To enable the exec plugin to obtain cluster-specific information, set `provideClusterInfo` on the `user.exec`
-field in the [kubeconfig](/docs/concepts/configuration/organize-cluster-access-kubeconfig/).
+field in the [kubeconfig](/docs/kubernetes/en/concepts/configuration/organize-cluster-access-kubeconfig/).
 The plugin will then be supplied this cluster-specific information in the `KUBERNETES_EXEC_INFO` environment variable.
 Information from this environment variable can be used to perform cluster-specific
 credential acquisition logic.
@@ -1337,11 +1337,11 @@ status:
 {{< /tabs >}}
 
 This feature is extremely useful when a complicated authentication flow is used in a Kubernetes cluster, 
-for example, if you use [webhook token authentication](/docs/reference/access-authn-authz/authentication/#webhook-token-authentication) or [authenticating proxy](/docs/reference/access-authn-authz/authentication/#authenticating-proxy).
+for example, if you use [webhook token authentication](/docs/kubernetes/en/reference/access-authn-authz/authentication/#webhook-token-authentication) or [authenticating proxy](/docs/kubernetes/en/reference/access-authn-authz/authentication/#authenticating-proxy).
 
 {{< note >}}
 The Kubernetes API server fills the `userInfo` after all authentication mechanisms are applied,
-including [impersonation](/docs/reference/access-authn-authz/authentication/#user-impersonation).
+including [impersonation](/docs/kubernetes/en/reference/access-authn-authz/authentication/#user-impersonation).
 If you, or an authentication proxy, make a SelfSubjectReview using impersonation,
 you see the user details and properties for the user that was impersonated.
 {{< /note >}}
@@ -1351,7 +1351,7 @@ By default, all authenticated users can create `SelfSubjectReview` objects when 
 {{< note >}}
 You can only make `SelfSubjectReview` requests if:
 * the `APISelfSubjectReview`
-  [feature gate](/docs/reference/command-line-tools-reference/feature-gates/)
+  [feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/)
   is enabled for your cluster
 * the API server for your cluster has the `authentication.k8s.io/v1alpha1`
   {{< glossary_tooltip term_id="api-group" text="API group" >}}
@@ -1362,6 +1362,6 @@ You can only make `SelfSubjectReview` requests if:
 
 ## {{% heading "whatsnext" %}}
 
-* Read the [client authentication reference (v1beta1)](/docs/reference/config-api/client-authentication.v1beta1/)
-* Read the [client authentication reference (v1)](/docs/reference/config-api/client-authentication.v1/)
+* Read the [client authentication reference (v1beta1)](/docs/kubernetes/en/reference/config-api/client-authentication.v1beta1/)
+* Read the [client authentication reference (v1)](/docs/kubernetes/en/reference/config-api/client-authentication.v1/)
 

@@ -29,10 +29,10 @@ telling the Kubernetes system what you want your cluster's workload to look like
 cluster's *desired state*.
 
 To work with Kubernetes objects--whether to create, modify, or delete them--you'll need to use the
-[Kubernetes API](/docs/concepts/overview/kubernetes-api/). When you use the `kubectl` command-line
+[Kubernetes API](/docs/kubernetes/en/concepts/overview/kubernetes-api/). When you use the `kubectl` command-line
 interface, for example, the CLI makes the necessary Kubernetes API calls for you. You can also use
 the Kubernetes API directly in your own programs using one of the
-[Client Libraries](/docs/reference/using-api/client-libraries/).
+[Client Libraries](/docs/kubernetes/en/reference/using-api/client-libraries/).
 
 ### Object spec and status
 
@@ -75,7 +75,7 @@ Here's an example `.yaml` file that shows the required fields and object spec fo
 {{< codenew file="application/deployment.yaml" >}}
 
 One way to create a Deployment using a `.yaml` file like the one above is to use the
-[`kubectl apply`](/docs/reference/generated/kubectl/kubectl-commands#apply) command
+[`kubectl apply`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands#apply) command
 in the `kubectl` command-line interface, passing the `.yaml` file as an argument. Here's an example:
 
 ```shell
@@ -98,18 +98,18 @@ In the `.yaml` file for the Kubernetes object you want to create, you'll need to
 * `spec` - What state you desire for the object
 
 The precise format of the object `spec` is different for every Kubernetes object, and contains
-nested fields specific to that object. The [Kubernetes API Reference](/docs/reference/kubernetes-api/)
+nested fields specific to that object. The [Kubernetes API Reference](/docs/kubernetes/en/reference/kubernetes-api/)
 can help you find the spec format for all of the objects you can create using Kubernetes.
 
-For example, see the [`spec` field](/docs/reference/kubernetes-api/workload-resources/pod-v1/#PodSpec)
+For example, see the [`spec` field](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/pod-v1/#PodSpec)
 for the Pod API reference.
 For each Pod, the `.spec` field specifies the pod and its desired state (such as the container image name for
 each container within that pod).
 Another example of an object specification is the
-[`spec` field](/docs/reference/kubernetes-api/workload-resources/stateful-set-v1/#StatefulSetSpec)
+[`spec` field](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/stateful-set-v1/#StatefulSetSpec)
 for the StatefulSet API. For StatefulSet, the `.spec` field specifies the StatefulSet and
 its desired state.
-Within the `.spec` of a StatefulSet is a [template](/docs/concepts/workloads/pods/#pod-templates)
+Within the `.spec` of a StatefulSet is a [template](/docs/kubernetes/en/concepts/workloads/pods/#pod-templates)
 for Pod objects. That template describes Pods that the StatefulSet controller will create in order to
 satisfy the StatefulSet specification.
 Different kinds of object can also have different `.status`; again, the API reference pages
@@ -119,8 +119,8 @@ detail the structure of that `.status` field, and its content for each different
 
 Learn more about the following:
 
-* [Pods](/docs/concepts/workloads/pods/) which are the most important basic Kubernetes objects.
-* [Deployment](/docs/concepts/workloads/controllers/deployment/) objects.
-* [Controllers](/docs/concepts/architecture/controller/) in Kubernetes.
-* [Kubernetes API overview](/docs/reference/using-api/) which explains some more API concepts.
-* [kubectl](/docs/reference/kubectl/) and [kubectl commands](/docs/reference/generated/kubectl/kubectl-commands).
+* [Pods](/docs/kubernetes/en/concepts/workloads/pods/) which are the most important basic Kubernetes objects.
+* [Deployment](/docs/kubernetes/en/concepts/workloads/controllers/deployment/) objects.
+* [Controllers](/docs/kubernetes/en/concepts/architecture/controller/) in Kubernetes.
+* [Kubernetes API overview](/docs/kubernetes/en/reference/using-api/) which explains some more API concepts.
+* [kubectl](/docs/kubernetes/en/reference/kubectl/) and [kubectl commands](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands).

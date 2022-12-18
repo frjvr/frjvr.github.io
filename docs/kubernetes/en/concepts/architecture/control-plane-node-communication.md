@@ -24,16 +24,16 @@ Kubernetes has a "hub-and-spoke" API pattern. All API usage from nodes (or the p
 terminates at the API server. None of the other control plane components are designed to expose
 remote services. The API server is configured to listen for remote connections on a secure HTTPS
 port (typically 443) with one or more forms of client
-[authentication](/docs/reference/access-authn-authz/authentication/) enabled.
-One or more forms of [authorization](/docs/reference/access-authn-authz/authorization/) should be
-enabled, especially if [anonymous requests](/docs/reference/access-authn-authz/authentication/#anonymous-requests)
-or [service account tokens](/docs/reference/access-authn-authz/authentication/#service-account-tokens)
+[authentication](/docs/kubernetes/en/reference/access-authn-authz/authentication/) enabled.
+One or more forms of [authorization](/docs/kubernetes/en/reference/access-authn-authz/authorization/) should be
+enabled, especially if [anonymous requests](/docs/kubernetes/en/reference/access-authn-authz/authentication/#anonymous-requests)
+or [service account tokens](/docs/kubernetes/en/reference/access-authn-authz/authentication/#service-account-tokens)
 are allowed.
 
 Nodes should be provisioned with the public root certificate for the cluster such that they can
 connect securely to the API server along with valid client credentials. A good approach is that the
 client credentials provided to the kubelet are in the form of a client certificate. See
-[kubelet TLS bootstrapping](/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/)
+[kubelet TLS bootstrapping](/docs/kubernetes/en/reference/access-authn-authz/kubelet-tls-bootstrapping/)
 for automated provisioning of kubelet client certificates.
 
 Pods that wish to connect to the API server can do so securely by leveraging a service account so
@@ -75,7 +75,7 @@ required to avoid connecting over an
 untrusted or public network.
 
 
-Finally, [Kubelet authentication and/or authorization](/docs/reference/access-authn-authz/kubelet-authn-authz/)
+Finally, [Kubelet authentication and/or authorization](/docs/kubernetes/en/reference/access-authn-authz/kubelet-authn-authz/)
 should be enabled to secure the kubelet API.
 
 ### API server to nodes, pods, and services
@@ -114,6 +114,6 @@ connections.
 After enabling the Konnectivity service, all control plane to nodes traffic goes through these
 connections.
 
-Follow the [Konnectivity service task](/docs/tasks/extend-kubernetes/setup-konnectivity/) to set
+Follow the [Konnectivity service task](/docs/kubernetes/en/tasks/extend-kubernetes/setup-konnectivity/) to set
 up the Konnectivity service in your cluster.
 

@@ -10,7 +10,7 @@ card:
   weight: 30
   title: "Stateless Example: PHP Guestbook with Redis"
 min-kubernetes-server-version: v1.14
-source: https://cloud.google.com/kubernetes-engine/docs/tutorials/guestbook
+source: https://cloud.google.com/kubernetes-engine/docs/kubernetes/en/tutorials/guestbook
 ---
 
 <!-- overview -->
@@ -82,7 +82,7 @@ The manifest file, included below, specifies a Deployment controller that runs a
 ### Creating the Redis leader Service
 
 The guestbook application needs to communicate to the Redis to write its data.
-You need to apply a [Service](/docs/concepts/services-networking/service/) to
+You need to apply a [Service](/docs/kubernetes/en/concepts/services-networking/service/) to
 proxy the traffic to the Redis Pod. A Service defines a policy to access the
 Pods.
 
@@ -156,7 +156,7 @@ and meet traffic demands by adding a few Redis followers, or replicas.
 
 The guestbook application needs to communicate with the Redis followers to
 read data. To make the Redis followers discoverable, you must set up another
-[Service](/docs/concepts/services-networking/service/).
+[Service](/docs/kubernetes/en/concepts/services-networking/service/).
 
 {{< codenew file="application/guestbook/redis-follower-service.yaml" >}}
 
@@ -237,7 +237,7 @@ jQuery-Ajax-based UX.
 
 The `Redis` Services you applied is only accessible within the Kubernetes
 cluster because the default type for a Service is
-[ClusterIP](/docs/concepts/services-networking/service/#publishing-services-service-types).
+[ClusterIP](/docs/kubernetes/en/concepts/services-networking/service/#publishing-services-service-types).
 `ClusterIP` provides a single IP address for the set of Pods the Service is
 pointing to. This IP address is accessible only within the cluster.
 
@@ -416,7 +416,7 @@ labels to delete multiple resources with one command.
 
 ## {{% heading "whatsnext" %}}
 
-* Complete the [Kubernetes Basics](/docs/tutorials/kubernetes-basics/) Interactive Tutorials
-* Use Kubernetes to create a blog using [Persistent Volumes for MySQL and Wordpress](/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/#visit-your-new-wordpress-blog)
-* Read more about [connecting applications with services](/docs/tutorials/services/connect-applications-service/)
-* Read more about [Managing Resources](/docs/concepts/cluster-administration/manage-deployment/#using-labels-effectively)
+* Complete the [Kubernetes Basics](/docs/kubernetes/en/tutorials/kubernetes-basics/) Interactive Tutorials
+* Use Kubernetes to create a blog using [Persistent Volumes for MySQL and Wordpress](/docs/kubernetes/en/tutorials/stateful-application/mysql-wordpress-persistent-volume/#visit-your-new-wordpress-blog)
+* Read more about [connecting applications with services](/docs/kubernetes/en/tutorials/services/connect-applications-service/)
+* Read more about [Managing Resources](/docs/kubernetes/en/concepts/cluster-administration/manage-deployment/#using-labels-effectively)

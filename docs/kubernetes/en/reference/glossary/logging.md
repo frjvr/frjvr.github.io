@@ -2,7 +2,7 @@
 title: Logging
 id: logging
 date: 2019-04-04
-full_link: /docs/concepts/cluster-administration/logging/
+full_link: /docs/kubernetes/en/concepts/cluster-administration/logging/
 short_description: >
   Logs are the list of events that are logged by cluster or application.
 

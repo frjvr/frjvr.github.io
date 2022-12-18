@@ -158,7 +158,7 @@ For example: in Centos, you can do this using the tuned toolset.
 Memory pressure at the node level leads to System OOMs which affects the entire
 node and all pods running on it. Nodes can go offline temporarily until memory
 has been reclaimed. To avoid (or reduce the probability of) system OOMs kubelet
-provides [out of resource](/docs/concepts/scheduling-eviction/node-pressure-eviction/)
+provides [out of resource](/docs/kubernetes/en/concepts/scheduling-eviction/node-pressure-eviction/)
 management. Evictions are
 supported for `memory` and `ephemeral-storage` only. By reserving some memory via
 `--eviction-hard` flag, the `kubelet` attempts to evict pods whenever memory
@@ -176,7 +176,7 @@ The scheduler treats 'Allocatable' as the available `capacity` for pods.
 `kubelet` enforce 'Allocatable' across pods by default. Enforcement is performed
 by evicting pods whenever the overall usage across all pods exceeds
 'Allocatable'. More details on eviction policy can be found
-on the [node pressure eviction](/docs/concepts/scheduling-eviction/node-pressure-eviction/)
+on the [node pressure eviction](/docs/kubernetes/en/concepts/scheduling-eviction/node-pressure-eviction/)
 page. This enforcement is controlled by
 specifying `pods` value to the kubelet flag `--enforce-node-allocatable`.
 
@@ -189,7 +189,7 @@ respectively.
 ## General Guidelines
 
 System daemons are expected to be treated similar to 
-[Guaranteed pods](/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-guaranteed). 
+[Guaranteed pods](/docs/kubernetes/en/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-guaranteed). 
 System daemons can burst within their bounding control groups and this behavior needs
 to be managed as part of kubernetes deployments. For example, `kubelet` should
 have its own control group and share `kube-reserved` resources with the

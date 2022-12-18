@@ -23,12 +23,12 @@ The Kubernetes API lets you query and manipulate the state of API objects in Kub
 (for example: Pods, Namespaces, ConfigMaps, and Events).
 
 Most operations can be performed through the
-[kubectl](/docs/reference/kubectl/) command-line interface or other
+[kubectl](/docs/kubernetes/en/reference/kubectl/) command-line interface or other
 command-line tools, such as
-[kubeadm](/docs/reference/setup-tools/kubeadm/), which in turn use the
+[kubeadm](/docs/kubernetes/en/reference/setup-tools/kubeadm/), which in turn use the
 API. However, you can also access the API directly using REST calls.
 
-Consider using one of the [client libraries](/docs/reference/using-api/client-libraries/)
+Consider using one of the [client libraries](/docs/kubernetes/en/reference/using-api/client-libraries/)
 if you are writing an application using the Kubernetes API.
 
 <!-- body -->
@@ -87,7 +87,7 @@ packages that define the API objects.
 Kubernetes {{< param "version" >}} offers beta support for publishing its APIs as OpenAPI v3; this is a
 beta feature that is enabled by default.
 You can disable the beta feature by turning off the
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/) named `OpenAPIV3`
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) named `OpenAPIV3`
 for the kube-apiserver component.
 
 A discovery endpoint `/openapi/v3` is provided to see a list of all
@@ -170,8 +170,8 @@ and behavior, and to enable controlling access to end-of-life and/or
 experimental APIs.
 
 To make it easier to evolve and to extend its API, Kubernetes implements
-[API groups](/docs/reference/using-api/#api-groups) that can be
-[enabled or disabled](/docs/reference/using-api/#enabling-or-disabling).
+[API groups](/docs/kubernetes/en/reference/using-api/#api-groups) that can be
+[enabled or disabled](/docs/kubernetes/en/reference/using-api/#enabling-or-disabling).
 
 API resources are distinguished by their API group, resource type, namespace
 (for namespaced resources), and name. The API server handles the conversion between
@@ -194,7 +194,7 @@ compatibility for a length of time so that other projects have an opportunity to
 
 In general, new API resources and new resource fields can be added often and frequently.
 Elimination of resources or fields requires following the
-[API deprecation policy](/docs/reference/using-api/deprecation-policy/).
+[API deprecation policy](/docs/kubernetes/en/reference/using-api/deprecation-policy/).
 
 Kubernetes makes a strong commitment to maintain compatibility for official Kubernetes APIs
 once they reach general availability (GA), typically at API version `v1`. Additionally,
@@ -213,7 +213,7 @@ for Kubernetes when upgrading your cluster, in case the API did change in incomp
 ways that require deleting all existing alpha objects prior to upgrade.
 {{< /note >}}
 
-Refer to [API versions reference](/docs/reference/using-api/#api-versioning)
+Refer to [API versions reference](/docs/kubernetes/en/reference/using-api/#api-versioning)
 for more details on the API version level definitions.
 
 
@@ -222,18 +222,18 @@ for more details on the API version level definitions.
 
 The Kubernetes API can be extended in one of two ways:
 
-1. [Custom resources](/docs/concepts/extend-kubernetes/api-extension/custom-resources/)
+1. [Custom resources](/docs/kubernetes/en/concepts/extend-kubernetes/api-extension/custom-resources/)
    let you declaratively define how the API server should provide your chosen resource API.
 1. You can also extend the Kubernetes API by implementing an
-   [aggregation layer](/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/).
+   [aggregation layer](/docs/kubernetes/en/concepts/extend-kubernetes/api-extension/apiserver-aggregation/).
 
 ## {{% heading "whatsnext" %}}
 
 - Learn how to extend the Kubernetes API by adding your own
-  [CustomResourceDefinition](/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/).
-- [Controlling Access To The Kubernetes API](/docs/concepts/security/controlling-access/) describes
+  [CustomResourceDefinition](/docs/kubernetes/en/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/).
+- [Controlling Access To The Kubernetes API](/docs/kubernetes/en/concepts/security/controlling-access/) describes
   how the cluster manages authentication and authorization for API access.
 - Learn about API endpoints, resource types and samples by reading
-  [API Reference](/docs/reference/kubernetes-api/).
+  [API Reference](/docs/kubernetes/en/reference/kubernetes-api/).
 - Learn about what constitutes a compatible change, and how to change the API, from
   [API changes](https://git.k8s.io/community/contributors/devel/sig-architecture/api_changes.md#readme).

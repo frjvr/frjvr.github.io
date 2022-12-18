@@ -252,27 +252,27 @@ kubectl delete namespace qos-example
 
 ### For app developers
 
-* [Assign Memory Resources to Containers and Pods](/docs/tasks/configure-pod-container/assign-memory-resource/)
+* [Assign Memory Resources to Containers and Pods](/docs/kubernetes/en/tasks/configure-pod-container/assign-memory-resource/)
 
-* [Assign CPU Resources to Containers and Pods](/docs/tasks/configure-pod-container/assign-cpu-resource/)
+* [Assign CPU Resources to Containers and Pods](/docs/kubernetes/en/tasks/configure-pod-container/assign-cpu-resource/)
 
 ### For cluster administrators
 
-* [Configure Default Memory Requests and Limits for a Namespace](/docs/tasks/administer-cluster/manage-resources/memory-default-namespace/)
+* [Configure Default Memory Requests and Limits for a Namespace](/docs/kubernetes/en/tasks/administer-cluster/manage-resources/memory-default-namespace/)
 
-* [Configure Default CPU Requests and Limits for a Namespace](/docs/tasks/administer-cluster/manage-resources/cpu-default-namespace/)
+* [Configure Default CPU Requests and Limits for a Namespace](/docs/kubernetes/en/tasks/administer-cluster/manage-resources/cpu-default-namespace/)
 
-* [Configure Minimum and Maximum Memory Constraints for a Namespace](/docs/tasks/administer-cluster/manage-resources/memory-constraint-namespace/)
+* [Configure Minimum and Maximum Memory Constraints for a Namespace](/docs/kubernetes/en/tasks/administer-cluster/manage-resources/memory-constraint-namespace/)
 
-* [Configure Minimum and Maximum CPU Constraints for a Namespace](/docs/tasks/administer-cluster/manage-resources/cpu-constraint-namespace/)
+* [Configure Minimum and Maximum CPU Constraints for a Namespace](/docs/kubernetes/en/tasks/administer-cluster/manage-resources/cpu-constraint-namespace/)
 
-* [Configure Memory and CPU Quotas for a Namespace](/docs/tasks/administer-cluster/manage-resources/quota-memory-cpu-namespace/)
+* [Configure Memory and CPU Quotas for a Namespace](/docs/kubernetes/en/tasks/administer-cluster/manage-resources/quota-memory-cpu-namespace/)
 
-* [Configure a Pod Quota for a Namespace](/docs/tasks/administer-cluster/manage-resources/quota-pod-namespace/)
+* [Configure a Pod Quota for a Namespace](/docs/kubernetes/en/tasks/administer-cluster/manage-resources/quota-pod-namespace/)
 
-* [Configure Quotas for API Objects](/docs/tasks/administer-cluster/quota-api-object/)
+* [Configure Quotas for API Objects](/docs/kubernetes/en/tasks/administer-cluster/quota-api-object/)
 
-* [Control Topology Management policies on a node](/docs/tasks/administer-cluster/topology-manager/)
+* [Control Topology Management policies on a node](/docs/kubernetes/en/tasks/administer-cluster/topology-manager/)
 
 
 

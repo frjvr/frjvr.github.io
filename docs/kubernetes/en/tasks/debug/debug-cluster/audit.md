@@ -26,7 +26,7 @@ Auditing allows cluster administrators to answer the following questions:
 <!-- body -->
 
 Audit records begin their lifecycle inside the
-[kube-apiserver](/docs/reference/command-line-tools-reference/kube-apiserver/)
+[kube-apiserver](/docs/kubernetes/en/reference/command-line-tools-reference/kube-apiserver/)
 component. Each request on each stage
 of its execution generates an audit event, which is then pre-processed according to
 a certain policy and written to a backend. The policy determines what's recorded
@@ -47,9 +47,9 @@ Each request can be recorded with an associated _stage_. The defined stages are:
 
 {{< note >}}
 The configuration of an
-[Audit Event configuration](/docs/reference/config-api/apiserver-audit.v1/#audit-k8s-io-v1-Event)
+[Audit Event configuration](/docs/kubernetes/en/reference/config-api/apiserver-audit.v1/#audit-k8s-io-v1-Event)
 is different from the
-[Event](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#event-v1-core)
+[Event](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#event-v1-core)
 API object.
 {{< /note >}}
 
@@ -61,7 +61,7 @@ Memory consumption depends on the audit logging configuration.
 
 Audit policy defines rules about what events should be recorded and what data
 they should include. The audit policy object structure is defined in the
-[`audit.k8s.io` API group](/docs/reference/config-api/apiserver-audit.v1/#audit-k8s-io-v1-Policy).
+[`audit.k8s.io` API group](/docs/kubernetes/en/reference/config-api/apiserver-audit.v1/#audit-k8s-io-v1-Policy).
 When an event is processed, it's
 compared against the list of rules in order. The first matching rule sets the
 _audit level_ of the event. The defined audit levels are:
@@ -97,7 +97,7 @@ If you're crafting your own audit profile, you can use the audit profile for Goo
 [configure-helper.sh](https://github.com/kubernetes/kubernetes/blob/master/cluster/gce/gci/configure-helper.sh)
 script, which generates an audit policy file. You can see most of the audit policy file by looking directly at the script.
 
-You can also refer to the [`Policy` configuration reference](/docs/reference/config-api/apiserver-audit.v1/#audit-k8s-io-v1-Policy)
+You can also refer to the [`Policy` configuration reference](/docs/kubernetes/en/reference/config-api/apiserver-audit.v1/#audit-k8s-io-v1-Policy)
 for details about the fields defined.
 
 ## Audit backends
@@ -109,7 +109,7 @@ Out of the box, the kube-apiserver provides two backends:
 - Webhook backend, which sends events to an external HTTP API
 
 In all cases, audit events follow a structure defined by the Kubernetes API in the
-[`audit.k8s.io` API group](/docs/reference/config-api/apiserver-audit.v1/#audit-k8s-io-v1-Event).
+[`audit.k8s.io` API group](/docs/kubernetes/en/reference/config-api/apiserver-audit.v1/#audit-k8s-io-v1-Event).
 
 {{< note >}}
 In case of patches, request body is a JSON array with patch operations, not a JSON object
@@ -185,7 +185,7 @@ a webhook audit backend using the following kube-apiserver flags:
 
 - `--audit-webhook-config-file` specifies the path to a file with a webhook
   configuration. The webhook configuration is effectively a specialized
-  [kubeconfig](/docs/tasks/access-application-cluster/configure-access-multiple-clusters).
+  [kubeconfig](/docs/kubernetes/en/tasks/access-application-cluster/configure-access-multiple-clusters).
 - `--audit-webhook-initial-backoff` specifies the amount of time to wait after the first failed
   request before retrying. Subsequent requests are retried with exponential backoff.
 
@@ -250,8 +250,8 @@ By default truncate is disabled in both `webhook` and `log`, a cluster administr
 
 ## {{% heading "whatsnext" %}}
 
-* Learn about [Mutating webhook auditing annotations](/docs/reference/access-authn-authz/extensible-admission-controllers/#mutating-webhook-auditing-annotations).
-* Learn more about [`Event`](/docs/reference/config-api/apiserver-audit.v1/#audit-k8s-io-v1-Event)
-  and the [`Policy`](/docs/reference/config-api/apiserver-audit.v1/#audit-k8s-io-v1-Policy)
+* Learn about [Mutating webhook auditing annotations](/docs/kubernetes/en/reference/access-authn-authz/extensible-admission-controllers/#mutating-webhook-auditing-annotations).
+* Learn more about [`Event`](/docs/kubernetes/en/reference/config-api/apiserver-audit.v1/#audit-k8s-io-v1-Event)
+  and the [`Policy`](/docs/kubernetes/en/reference/config-api/apiserver-audit.v1/#audit-k8s-io-v1-Policy)
   resource types by reading the Audit configuration reference.
 

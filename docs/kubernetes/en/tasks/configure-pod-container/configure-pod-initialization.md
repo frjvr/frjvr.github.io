@@ -82,10 +82,10 @@ The output shows that nginx is serving the web page that was written by the init
 
 
 * Learn more about
-[communicating between Containers running in the same Pod](/docs/tasks/access-application-cluster/communicate-containers-same-pod-shared-volume/).
-* Learn more about [Init Containers](/docs/concepts/workloads/pods/init-containers/).
-* Learn more about [Volumes](/docs/concepts/storage/volumes/).
-* Learn more about [Debugging Init Containers](/docs/tasks/debug/debug-application/debug-init-containers/)
+[communicating between Containers running in the same Pod](/docs/kubernetes/en/tasks/access-application-cluster/communicate-containers-same-pod-shared-volume/).
+* Learn more about [Init Containers](/docs/kubernetes/en/concepts/workloads/pods/init-containers/).
+* Learn more about [Volumes](/docs/kubernetes/en/concepts/storage/volumes/).
+* Learn more about [Debugging Init Containers](/docs/kubernetes/en/tasks/debug/debug-application/debug-init-containers/)
 
 
 

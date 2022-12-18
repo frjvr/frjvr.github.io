@@ -12,9 +12,9 @@ weight: 30
 Each object in your cluster has a [_Name_](#names) that is unique for that type of resource.
 Every Kubernetes object also has a [_UID_](#uids) that is unique across your whole cluster.
 
-For example, you can only have one Pod named `myapp-1234` within the same [namespace](/docs/concepts/overview/working-with-objects/namespaces/), but you can have one Pod and one Deployment that are each named `myapp-1234`.
+For example, you can only have one Pod named `myapp-1234` within the same [namespace](/docs/kubernetes/en/concepts/overview/working-with-objects/namespaces/), but you can have one Pod and one Deployment that are each named `myapp-1234`.
 
-For non-unique user-provided attributes, Kubernetes provides [labels](/docs/concepts/overview/working-with-objects/labels/) and [annotations](/docs/concepts/overview/working-with-objects/annotations/).
+For non-unique user-provided attributes, Kubernetes provides [labels](/docs/kubernetes/en/concepts/overview/working-with-objects/labels/) and [annotations](/docs/kubernetes/en/concepts/overview/working-with-objects/annotations/).
 
 
 
@@ -99,5 +99,5 @@ UUIDs are standardized as ISO/IEC 9834-8 and as ITU-T X.667.
 
 ## {{% heading "whatsnext" %}}
 
-* Read about [labels](/docs/concepts/overview/working-with-objects/labels/) and [annotations](/docs/concepts/overview/working-with-objects/annotations/) in Kubernetes.
+* Read about [labels](/docs/kubernetes/en/concepts/overview/working-with-objects/labels/) and [annotations](/docs/kubernetes/en/concepts/overview/working-with-objects/annotations/) in Kubernetes.
 * See the [Identifiers and Names in Kubernetes](https://git.k8s.io/design-proposals-archive/architecture/identifiers.md) design document.

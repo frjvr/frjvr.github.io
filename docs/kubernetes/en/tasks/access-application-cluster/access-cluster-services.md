@@ -17,8 +17,8 @@ This page shows how to connect to services running on the Kubernetes cluster.
 
 ## Accessing services running on the cluster
 
-In Kubernetes, [nodes](/docs/concepts/architecture/nodes/),
-[pods](/docs/concepts/workloads/pods/) and [services](/docs/concepts/services-networking/service/) all have
+In Kubernetes, [nodes](/docs/kubernetes/en/concepts/architecture/nodes/),
+[pods](/docs/kubernetes/en/concepts/workloads/pods/) and [services](/docs/kubernetes/en/concepts/services-networking/service/) all have
 their own IPs.  In many cases, the node IPs, pod IPs, and some service IPs on a cluster will not be
 routable, so they will not be reachable from a machine outside the cluster,
 such as your desktop machine.
@@ -29,8 +29,8 @@ You have several options for connecting to nodes, pods and services from outside
 
   - Access services through public IPs.
     - Use a service with type `NodePort` or `LoadBalancer` to make the service reachable outside
-      the cluster.  See the [services](/docs/concepts/services-networking/service/) and
-      [kubectl expose](/docs/reference/generated/kubectl/kubectl-commands/#expose) documentation.
+      the cluster.  See the [services](/docs/kubernetes/en/concepts/services-networking/service/) and
+      [kubectl expose](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#expose) documentation.
     - Depending on your cluster environment, this may only expose the service to your corporate network,
       or it may expose it to the internet.  Think about whether the service being exposed is secure.
       Does it do its own authentication?
@@ -46,7 +46,7 @@ You have several options for connecting to nodes, pods and services from outside
     - Only works for HTTP/HTTPS.
     - Described [here](#manually-constructing-apiserver-proxy-urls).
   - Access from a node or pod in the cluster.
-    - Run a pod, and then connect to a shell in it using [kubectl exec](/docs/reference/generated/kubectl/kubectl-commands/#exec).
+    - Run a pod, and then connect to a shell in it using [kubectl exec](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#exec).
       Connect to other nodes, pods, and services from that shell.
     - Some clusters may allow you to ssh to a node in the cluster. From there you may be able to
       access cluster services. This is a non-standard method, and will work on some clusters but
@@ -78,7 +78,7 @@ at `https://192.0.2.1/api/v1/namespaces/kube-system/services/elasticsearch-loggi
 `http://localhost:8080/api/v1/namespaces/kube-system/services/elasticsearch-logging/proxy/`.
 
 {{< note >}}
-See [Access Clusters Using the Kubernetes API](/docs/tasks/administer-cluster/access-cluster-api/#accessing-the-cluster-api) for how to pass credentials or use kubectl proxy.
+See [Access Clusters Using the Kubernetes API](/docs/kubernetes/en/tasks/administer-cluster/access-cluster-api/#accessing-the-cluster-api) for how to pass credentials or use kubectl proxy.
 {{< /note >}}
 
 #### Manually constructing apiserver proxy URLs

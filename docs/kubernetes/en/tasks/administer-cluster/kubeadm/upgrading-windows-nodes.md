@@ -9,7 +9,7 @@ weight: 40
 
 {{< feature-state for_k8s_version="v1.18" state="beta" >}}
 
-This page explains how to upgrade a Windows node [created with kubeadm](/docs/tasks/administer-cluster/kubeadm/adding-windows-nodes).
+This page explains how to upgrade a Windows node [created with kubeadm](/docs/kubernetes/en/tasks/administer-cluster/kubeadm/adding-windows-nodes).
 
 
 
@@ -18,7 +18,7 @@ This page explains how to upgrade a Windows node [created with kubeadm](/docs/ta
  
 {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
 * Familiarize yourself with [the process for upgrading the rest of your kubeadm
-cluster](/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade). You will want to
+cluster](/docs/kubernetes/en/tasks/administer-cluster/kubeadm/kubeadm-upgrade). You will want to
 upgrade the control plane nodes before upgrading your Windows nodes.
 
 

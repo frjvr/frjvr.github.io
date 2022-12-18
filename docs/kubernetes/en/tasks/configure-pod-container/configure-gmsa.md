@@ -18,7 +18,7 @@ You need to have a Kubernetes cluster and the `kubectl` command-line tool must b
 
 ### Install the GMSACredentialSpec CRD
 
-A [CustomResourceDefinition](/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/)(CRD) for GMSA credential spec resources needs to be configured on the cluster to define the custom resource type `GMSACredentialSpec`. Download the GMSA CRD [YAML](https://github.com/kubernetes-sigs/windows-gmsa/blob/master/admission-webhook/deploy/gmsa-crd.yml) and save it as gmsa-crd.yaml.
+A [CustomResourceDefinition](/docs/kubernetes/en/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/)(CRD) for GMSA credential spec resources needs to be configured on the cluster to define the custom resource type `GMSACredentialSpec`. Download the GMSA CRD [YAML](https://github.com/kubernetes-sigs/windows-gmsa/blob/master/admission-webhook/deploy/gmsa-crd.yml) and save it as gmsa-crd.yaml.
 Next, install the CRD with `kubectl apply -f gmsa-crd.yaml`
 
 ### Install webhooks to validate GMSA users

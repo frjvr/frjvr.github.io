@@ -23,7 +23,7 @@ You need to have a Kubernetes cluster and the kubectl command-line tool must be 
 
 ## Set the Username for a Pod
 
-To specify the username with which to execute the Pod's container processes, include the `securityContext` field ([PodSecurityContext](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podsecuritycontext-v1-core)) in the Pod specification, and within it, the `windowsOptions` ([WindowsSecurityContextOptions](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#windowssecuritycontextoptions-v1-core)) field containing the `runAsUserName` field.
+To specify the username with which to execute the Pod's container processes, include the `securityContext` field ([PodSecurityContext](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#podsecuritycontext-v1-core)) in the Pod specification, and within it, the `windowsOptions` ([WindowsSecurityContextOptions](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#windowssecuritycontextoptions-v1-core)) field containing the `runAsUserName` field.
 
 The Windows security context options that you specify for a Pod apply to all Containers and init Containers in the Pod.
 
@@ -63,7 +63,7 @@ ContainerUser
 
 ## Set the Username for a Container
 
-To specify the username with which to execute a Container's processes, include the `securityContext` field ([SecurityContext](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#securitycontext-v1-core)) in the Container manifest, and within it, the `windowsOptions` ([WindowsSecurityContextOptions](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#windowssecuritycontextoptions-v1-core)) field containing the `runAsUserName` field.
+To specify the username with which to execute a Container's processes, include the `securityContext` field ([SecurityContext](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#securitycontext-v1-core)) in the Container manifest, and within it, the `windowsOptions` ([WindowsSecurityContextOptions](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#windowssecuritycontextoptions-v1-core)) field containing the `runAsUserName` field.
 
 The Windows security context options that you specify for a Container apply only to that individual Container, and they override the settings made at the Pod level.
 
@@ -120,7 +120,7 @@ For more information about these limtations, check [here](https://support.micros
 ## {{% heading "whatsnext" %}}
 
 
-* [Guide for scheduling Windows containers in Kubernetes](/docs/concepts/windows/user-guide/)
-* [Managing Workload Identity with Group Managed Service Accounts (GMSA)](/docs/concepts/windows/user-guide/#managing-workload-identity-with-group-managed-service-accounts)
-* [Configure GMSA for Windows pods and containers](/docs/tasks/configure-pod-container/configure-gmsa/)
+* [Guide for scheduling Windows containers in Kubernetes](/docs/kubernetes/en/concepts/windows/user-guide/)
+* [Managing Workload Identity with Group Managed Service Accounts (GMSA)](/docs/kubernetes/en/concepts/windows/user-guide/#managing-workload-identity-with-group-managed-service-accounts)
+* [Configure GMSA for Windows pods and containers](/docs/kubernetes/en/tasks/configure-pod-container/configure-gmsa/)
 

@@ -37,7 +37,7 @@ The admission controllers in Kubernetes {{< skew currentVersion >}} consist of t
 administrator. In that list, there are two special controllers:
 MutatingAdmissionWebhook and ValidatingAdmissionWebhook.  These execute the
 mutating and validating (respectively)
-[admission control webhooks](/docs/reference/access-authn-authz/extensible-admission-controllers/#admission-webhooks)
+[admission control webhooks](/docs/kubernetes/en/reference/access-authn-authz/extensible-admission-controllers/#admission-webhooks)
 which are configured in the API.
 
 ## Admission control phases
@@ -108,7 +108,7 @@ CertificateApproval, CertificateSigning, CertificateSubjectRestriction, DefaultI
 {{< note >}}
 The [`ValidatingAdmissionPolicy`](#validatingadmissionpolicy) admission plugin is enabled
 by default, but is only active if you enable the the `ValidatingAdmissionPolicy`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/) **and**
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) **and**
 the `admissionregistration.k8s.io/v1alpha1` API.
 {{< note >}}
 
@@ -143,7 +143,7 @@ This admission controller observes requests to approve CertificateSigningRequest
 authorization checks to ensure the approving user has permission to **approve** certificate requests with the
 `spec.signerName` requested on the CertificateSigningRequest resource.
 
-See [Certificate Signing Requests](/docs/reference/access-authn-authz/certificate-signing-requests/) for more
+See [Certificate Signing Requests](/docs/kubernetes/en/reference/access-authn-authz/certificate-signing-requests/) for more
 information on the permissions required to perform different actions on CertificateSigningRequest resources.
 
 ### CertificateSigning {#certificatesigning}
@@ -152,7 +152,7 @@ This admission controller observes updates to the `status.certificate` field of 
 and performs an additional authorization checks to ensure the signing user has permission to **sign** certificate
 requests with the `spec.signerName` requested on the CertificateSigningRequest resource.
 
-See [Certificate Signing Requests](/docs/reference/access-authn-authz/certificate-signing-requests/) for more
+See [Certificate Signing Requests](/docs/kubernetes/en/reference/access-authn-authz/certificate-signing-requests/) for more
 information on the permissions required to perform different actions on CertificateSigningRequest resources.
 
 ### CertificateSubjectRestriction {#certificatesubjectrestriction}
@@ -174,7 +174,7 @@ must revisit their `IngressClass` objects and mark only one as default (with the
 "ingressclass.kubernetes.io/is-default-class").  This admission controller ignores any `Ingress`
 updates; it acts only on creation.
 
-See the [Ingress](/docs/concepts/services-networking/ingress/) documentation for more about ingress
+See the [Ingress](/docs/kubernetes/en/concepts/services-networking/ingress/) documentation for more about ingress
 classes and how to mark one as default.
 
 ### DefaultStorageClass {#defaultstorageclass}
@@ -189,7 +189,7 @@ class is marked as default, it rejects any creation of `PersistentVolumeClaim` w
 must revisit their `StorageClass` objects and mark only one as default.
 This admission controller ignores any `PersistentVolumeClaim` updates; it acts only on creation.
 
-See [persistent volume](/docs/concepts/storage/persistent-volumes/) documentation about persistent volume claims and
+See [persistent volume](/docs/kubernetes/en/concepts/storage/persistent-volumes/) documentation about persistent volume claims and
 storage classes and how to mark a storage class as default.
 
 ### DefaultTolerationSeconds {#defaulttolerationseconds}
@@ -259,7 +259,7 @@ limits:
     burst: 50
 ```
 
-See the [EventRateLimit Config API (v1alpha1)](/docs/reference/config-api/apiserver-eventratelimit.v1alpha1/)
+See the [EventRateLimit Config API (v1alpha1)](/docs/kubernetes/en/reference/config-api/apiserver-eventratelimit.v1alpha1/)
 for more details.
 
 This admission controller is disabled by default.
@@ -268,7 +268,7 @@ This admission controller is disabled by default.
 
 This plug-in facilitates creation of dedicated nodes with extended resources.
 If operators want to create dedicated nodes with extended resources (like GPUs, FPGAs etc.), they are expected to
-[taint the node](/docs/concepts/scheduling-eviction/taint-and-toleration/#example-use-cases) with the extended resource
+[taint the node](/docs/kubernetes/en/concepts/scheduling-eviction/taint-and-toleration/#example-use-cases) with the extended resource
 name as the key. This admission controller, if enabled, automatically
 adds tolerations for such taints to pods requesting extended resources, so users don't have to manually
 add these tolerations.
@@ -327,7 +327,7 @@ plugins:
 ```
 
 The ImagePolicyWebhook config file must reference a
-[kubeconfig](/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)
+[kubeconfig](/docs/kubernetes/en/tasks/access-application-cluster/configure-access-multiple-clusters/)
 formatted file which sets up the connection to the backend.
 It is required that the backend communicate over TLS.
 
@@ -351,7 +351,7 @@ users:
 ```
 
 For additional HTTP configuration, refer to the
-[kubeconfig](/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) documentation.
+[kubeconfig](/docs/kubernetes/en/tasks/access-application-cluster/configure-access-multiple-clusters/) documentation.
 
 #### Request payloads
 
@@ -420,7 +420,7 @@ To disallow access, the service would return:
 ```
 
 For further documentation refer to the
-[`imagepolicy.v1alpha1` API](/docs/reference/config-api/imagepolicy.v1alpha1/).
+[`imagepolicy.v1alpha1` API](/docs/kubernetes/en/reference/config-api/imagepolicy.v1alpha1/).
 
 #### Extending with Annotations
 
@@ -453,8 +453,8 @@ enforce those constraints. LimitRanger can also be used to apply default resourc
 that don't specify any; currently, the default LimitRanger applies a 0.1 CPU requirement to all
 Pods in the `default` namespace.
 
-See the [LimitRange API reference](/docs/reference/kubernetes-api/policy-resources/limit-range-v1/)
-and the [example of LimitRange](/docs/tasks/administer-cluster/manage-resources/memory-default-namespace/)
+See the [LimitRange API reference](/docs/kubernetes/en/reference/kubernetes-api/policy-resources/limit-range-v1/)
+and the [example of LimitRange](/docs/kubernetes/en/tasks/administer-cluster/manage-resources/memory-default-namespace/)
 for more details.
 
 ### MutatingAdmissionWebhook {#mutatingadmissionwebhook}
@@ -576,7 +576,7 @@ parameters:
 allowVolumeExpansion: true
 ```
 
-For more information about persistent volume claims, see [PersistentVolumeClaims](/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims).
+For more information about persistent volume claims, see [PersistentVolumeClaims](/docs/kubernetes/en/concepts/storage/persistent-volumes/#persistentvolumeclaims).
 
 ### PersistentVolumeLabel {#persistentvolumelabel}
 
@@ -666,9 +666,9 @@ admission plugin, which allows preventing pods from running on specifically tain
 This is the replacement for the deprecated [PodSecurityPolicy](#podsecuritypolicy) admission controller
 defined in the next section. This admission controller acts on creation and modification of the pod and
 determines if it should be admitted based on the requested security context and the 
-[Pod Security Standards](/docs/concepts/security/pod-security-standards/).
+[Pod Security Standards](/docs/kubernetes/en/concepts/security/pod-security-standards/).
 
-See the [Pod Security Admission documentation](/docs/concepts/security/pod-security-admission/)
+See the [Pod Security Admission documentation](/docs/kubernetes/en/concepts/security/pod-security-admission/)
 for more information.
 
 ### PodSecurityPolicy {#podsecuritypolicy}
@@ -678,7 +678,7 @@ for more information.
 This admission controller acts on creation and modification of the pod and determines if it should be admitted
 based on the requested security context and the available Pod Security Policies.
 
-See also the [PodSecurityPolicy](/docs/concepts/security/pod-security-policy/) documentation
+See also the [PodSecurityPolicy](/docs/kubernetes/en/concepts/security/pod-security-policy/) documentation
 for more information.
 
 ### PodTolerationRestriction {#podtolerationrestriction}
@@ -726,12 +726,12 @@ any of the constraints enumerated in the `ResourceQuota` object in a `Namespace`
 using `ResourceQuota` objects in your Kubernetes deployment, you MUST use this admission
 controller to enforce quota constraints.
 
-See the [ResourceQuota API reference](/docs/reference/kubernetes-api/policy-resources/resource-quota-v1/)
-and the [example of Resource Quota](/docs/concepts/policy/resource-quotas/) for more details.
+See the [ResourceQuota API reference](/docs/kubernetes/en/reference/kubernetes-api/policy-resources/resource-quota-v1/)
+and the [example of Resource Quota](/docs/kubernetes/en/concepts/policy/resource-quotas/) for more details.
 
 ### RuntimeClass {#runtimeclass}
 
-If you define a RuntimeClass with [Pod overhead](/docs/concepts/scheduling-eviction/pod-overhead/)
+If you define a RuntimeClass with [Pod overhead](/docs/kubernetes/en/concepts/scheduling-eviction/pod-overhead/)
 configured, this admission controller checks incoming Pods.
 When enabled, this admission controller rejects any Pod create requests
 that have the overhead already set.
@@ -739,27 +739,27 @@ For Pods that have a RuntimeClass configured and selected in their `.spec`,
 this admission controller sets `.spec.overhead` in the Pod based on the value
 defined in the corresponding RuntimeClass.
 
-See also [Pod Overhead](/docs/concepts/scheduling-eviction/pod-overhead/)
+See also [Pod Overhead](/docs/kubernetes/en/concepts/scheduling-eviction/pod-overhead/)
 for more information.
 
 ### SecurityContextDeny {#securitycontextdeny}
 
 This admission controller will deny any Pod that attempts to set certain escalating
-[SecurityContext](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#securitycontext-v1-core)
+[SecurityContext](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#securitycontext-v1-core)
 fields, as shown in the
-[Configure a Security Context for a Pod or Container](/docs/tasks/configure-pod-container/security-context/)
+[Configure a Security Context for a Pod or Container](/docs/kubernetes/en/tasks/configure-pod-container/security-context/)
 task.
-If you don't use [Pod Security admission](/docs/concepts/security/pod-security-admission/),
-[PodSecurityPolicies](/docs/concepts/security/pod-security-policy/), nor any external enforcement mechanism,
+If you don't use [Pod Security admission](/docs/kubernetes/en/concepts/security/pod-security-admission/),
+[PodSecurityPolicies](/docs/kubernetes/en/concepts/security/pod-security-policy/), nor any external enforcement mechanism,
 then you could use this admission controller to restrict the set of values a security context can take.
 
-See [Pod Security Standards](/docs/concepts/security/pod-security-standards/) for more context on restricting
+See [Pod Security Standards](/docs/kubernetes/en/concepts/security/pod-security-standards/) for more context on restricting
 pod privileges.
 
 ### ServiceAccount {#serviceaccount}
 
 This admission controller implements automation for
-[serviceAccounts](/docs/tasks/configure-pod-container/configure-service-account/).
+[serviceAccounts](/docs/kubernetes/en/tasks/configure-pod-container/configure-service-account/).
 The Kubernetes project strongly recommends enabling this admission controller.
 You should enable this admission controller if you intend to make any use of Kubernetes
 `ServiceAccount` objects.
@@ -771,7 +771,7 @@ finalizers to newly created Persistent Volume Claims (PVCs) or Persistent Volume
 In case a user deletes a PVC or PV the PVC or PV is not removed until the finalizer is removed
 from the PVC or PV by PVC or PV Protection Controller.
 Refer to the
-[Storage Object in Use Protection](/docs/concepts/storage/persistent-volumes/#storage-object-in-use-protection)
+[Storage Object in Use Protection](/docs/kubernetes/en/concepts/storage/persistent-volumes/#storage-object-in-use-protection)
 for more detailed information.
 
 ### TaintNodesByCondition {#taintnodesbycondition}
@@ -783,7 +783,7 @@ conditions.
 
 ### ValidatingAdmissionPolicy {#validatingadmissionpolicy}
 
-[This admission controller](/docs/reference/access-authn-authz/validating-admission-policy/) implements the CEL validation for incoming matched requests. 
+[This admission controller](/docs/kubernetes/en/reference/access-authn-authz/validating-admission-policy/) implements the CEL validation for incoming matched requests. 
 It is enabled when both feature gate `validatingadmissionpolicy` and `admissionregistration.k8s.io/v1alpha1` group/version are enabled.
 If any of the ValidatingAdmissionPolicy fails, the request fails.
 
@@ -805,7 +805,7 @@ group/version via the `--runtime-config` flag.
 ## Is there a recommended set of admission controllers to use?
 
 Yes. The recommended admission controllers are enabled by default
-(shown [here](/docs/reference/command-line-tools-reference/kube-apiserver/#options)),
+(shown [here](/docs/kubernetes/en/reference/command-line-tools-reference/kube-apiserver/#options)),
 so you do not need to explicitly specify them.
 You can enable additional admission controllers beyond the default set using the
 `--enable-admission-plugins` flag (**order doesn't matter**).

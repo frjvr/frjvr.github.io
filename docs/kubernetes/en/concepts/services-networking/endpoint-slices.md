@@ -17,7 +17,7 @@ description: >-
 
 Kubernetes' _EndpointSlice_ API provides a way to track network endpoints
 within a Kubernetes cluster. EndpointSlices offer a more scalable and extensible
-alternative to [Endpoints](/docs/concepts/services-networking/service/#endpoints).
+alternative to [Endpoints](/docs/kubernetes/en/concepts/services-networking/service/#endpoints).
 
 <!-- body -->
 
@@ -31,7 +31,7 @@ references to all the Pods that match the Service selector. EndpointSlices group
 network endpoints together by unique combinations of protocol, port number, and
 Service name.
 The name of a EndpointSlice object must be a valid
-[DNS subdomain name](/docs/concepts/overview/working-with-objects/names#dns-subdomain-names).
+[DNS subdomain name](/docs/kubernetes/en/concepts/overview/working-with-objects/names#dns-subdomain-names).
 
 As an example, here's a sample EndpointSlice object, that's owned by the `example`
 Kubernetes Service.
@@ -272,6 +272,6 @@ networking and topology-aware routing.
 
 ## {{% heading "whatsnext" %}}
 
-* Follow the [Connecting Applications with Services](/docs/tutorials/services/connect-applications-service/) tutorial
-* Read the [API reference](/docs/reference/kubernetes-api/service-resources/endpoint-slice-v1/) for the EndpointSlice API
-* Read the [API reference](/docs/reference/kubernetes-api/service-resources/endpoints-v1/) for the Endpoints API
+* Follow the [Connecting Applications with Services](/docs/kubernetes/en/tutorials/services/connect-applications-service/) tutorial
+* Read the [API reference](/docs/kubernetes/en/reference/kubernetes-api/service-resources/endpoint-slice-v1/) for the EndpointSlice API
+* Read the [API reference](/docs/kubernetes/en/reference/kubernetes-api/service-resources/endpoints-v1/) for the Endpoints API

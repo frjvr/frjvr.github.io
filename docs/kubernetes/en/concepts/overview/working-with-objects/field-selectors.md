@@ -4,13 +4,13 @@ content_type: concept
 weight: 70
 ---
 
-_Field selectors_ let you [select Kubernetes resources](/docs/concepts/overview/working-with-objects/kubernetes-objects) based on the value of one or more resource fields. Here are some examples of field selector queries:
+_Field selectors_ let you [select Kubernetes resources](/docs/kubernetes/en/concepts/overview/working-with-objects/kubernetes-objects) based on the value of one or more resource fields. Here are some examples of field selector queries:
 
 * `metadata.name=my-service`
 * `metadata.namespace!=default`
 * `status.phase=Pending`
 
-This `kubectl` command selects all Pods for which the value of the [`status.phase`](/docs/concepts/workloads/pods/pod-lifecycle/#pod-phase) field is `Running`:
+This `kubectl` command selects all Pods for which the value of the [`status.phase`](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#pod-phase) field is `Running`:
 
 ```shell
 kubectl get pods --field-selector status.phase=Running
@@ -41,7 +41,7 @@ kubectl get services  --all-namespaces --field-selector metadata.namespace!=defa
 
 ## Chained selectors
 
-As with [label](/docs/concepts/overview/working-with-objects/labels) and other selectors, field selectors can be chained together as a comma-separated list. This `kubectl` command selects all Pods for which the `status.phase` does not equal `Running` and the `spec.restartPolicy` field equals `Always`:
+As with [label](/docs/kubernetes/en/concepts/overview/working-with-objects/labels) and other selectors, field selectors can be chained together as a comma-separated list. This `kubectl` command selects all Pods for which the `status.phase` does not equal `Running` and the `spec.restartPolicy` field equals `Always`:
 
 ```shell
 kubectl get pods --field-selector=status.phase!=Running,spec.restartPolicy=Always

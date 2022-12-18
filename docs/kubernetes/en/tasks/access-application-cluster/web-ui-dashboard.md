@@ -74,7 +74,7 @@ or X.509 certificate-based authentication.
 When you access Dashboard on an empty cluster, you'll see the welcome page.
 This page contains a link to this document as well as a button to deploy your first application.
 In addition, you can view which system applications are running by default in the `kube-system`
-[namespace](/docs/tasks/administer-cluster/namespaces/) of your cluster, for example the Dashboard itself.
+[namespace](/docs/kubernetes/en/tasks/administer-cluster/namespaces/) of your cluster, for example the Dashboard itself.
 
 ![Kubernetes Dashboard welcome page](/images/docs/ui-dashboard-zerostate.png)
 
@@ -90,27 +90,27 @@ Click the **CREATE** button in the upper right corner of any page to begin.
 The deploy wizard expects that you provide the following information:
 
 - **App name** (mandatory): Name for your application.
-  A [label](/docs/concepts/overview/working-with-objects/labels/) with the name will be
+  A [label](/docs/kubernetes/en/concepts/overview/working-with-objects/labels/) with the name will be
   added to the Deployment and Service, if any, that will be deployed.
 
-  The application name must be unique within the selected Kubernetes [namespace](/docs/tasks/administer-cluster/namespaces/).
+  The application name must be unique within the selected Kubernetes [namespace](/docs/kubernetes/en/tasks/administer-cluster/namespaces/).
   It must start with a lowercase character, and end with a lowercase character or a number,
   and contain only lowercase letters, numbers and dashes (-). It is limited to 24 characters.
   Leading and trailing spaces are ignored.
 
 - **Container image** (mandatory):
-  The URL of a public Docker [container image](/docs/concepts/containers/images/) on any registry,
+  The URL of a public Docker [container image](/docs/kubernetes/en/concepts/containers/images/) on any registry,
   or a private image (commonly hosted on the Google Container Registry or Docker Hub).
   The container image specification must end with a colon.
 
 - **Number of pods** (mandatory): The target number of Pods you want your application to be deployed in.
   The value must be a positive integer.
 
-  A [Deployment](/docs/concepts/workloads/controllers/deployment/) will be created to
+  A [Deployment](/docs/kubernetes/en/concepts/workloads/controllers/deployment/) will be created to
   maintain the desired number of Pods across your cluster.
 
 - **Service** (optional): For some parts of your application (e.g. frontends) you may want to expose a
-  [Service](/docs/concepts/services-networking/service/) onto an external,
+  [Service](/docs/kubernetes/en/concepts/services-networking/service/) onto an external,
   maybe public IP address outside of your cluster (external Service).
 
   {{< note >}}
@@ -128,10 +128,10 @@ The deploy wizard expects that you provide the following information:
 If needed, you can expand the **Advanced options** section where you can specify more settings:
 
 - **Description**: The text you enter here will be added as an
-  [annotation](/docs/concepts/overview/working-with-objects/annotations/)
+  [annotation](/docs/kubernetes/en/concepts/overview/working-with-objects/annotations/)
   to the Deployment and displayed in the application's details.
 
-- **Labels**: Default [labels](/docs/concepts/overview/working-with-objects/labels/) to be used
+- **Labels**: Default [labels](/docs/kubernetes/en/concepts/overview/working-with-objects/labels/) to be used
   for your application are application name and version.
   You can specify additional labels to be applied to the Deployment, Service (if any), and Pods,
   such as release, environment, tier, partition, and release track.
@@ -146,7 +146,7 @@ If needed, you can expand the **Advanced options** section where you can specify
   ```
 
 - **Namespace**: Kubernetes supports multiple virtual clusters backed by the same physical cluster.
-  These virtual clusters are called [namespaces](/docs/tasks/administer-cluster/namespaces/).
+  These virtual clusters are called [namespaces](/docs/kubernetes/en/tasks/administer-cluster/namespaces/).
   They let you partition resources into logically named groups.
 
   Dashboard offers all available namespaces in a dropdown list, and allows you to create a new namespace.
@@ -159,32 +159,32 @@ If needed, you can expand the **Advanced options** section where you can specify
 
 - **Image Pull Secret**:
   In case the specified Docker container image is private, it may require
-  [pull secret](/docs/concepts/configuration/secret/) credentials.
+  [pull secret](/docs/kubernetes/en/concepts/configuration/secret/) credentials.
 
   Dashboard offers all available secrets in a dropdown list, and allows you to create a new secret.
   The secret name must follow the DNS domain name syntax, for example `new.image-pull.secret`.
   The content of a secret must be base64-encoded and specified in a
-  [`.dockercfg`](/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod) file.
+  [`.dockercfg`](/docs/kubernetes/en/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod) file.
   The secret name may consist of a maximum of 253 characters.
 
   In case the creation of the image pull secret is successful, it is selected by default. If the creation fails, no secret is applied.
 
 - **CPU requirement (cores)** and **Memory requirement (MiB)**:
-  You can specify the minimum [resource limits](/docs/tasks/administer-cluster/manage-resources/memory-default-namespace/)
+  You can specify the minimum [resource limits](/docs/kubernetes/en/tasks/administer-cluster/manage-resources/memory-default-namespace/)
   for the container. By default, Pods run with unbounded CPU and memory limits.
 
 - **Run command** and **Run command arguments**:
   By default, your containers run the specified Docker image's default
-  [entrypoint command](/docs/tasks/inject-data-application/define-command-argument-container/).
+  [entrypoint command](/docs/kubernetes/en/tasks/inject-data-application/define-command-argument-container/).
   You can use the command options and arguments to override the default.
 
 - **Run as privileged**: This setting determines whether processes in
-  [privileged containers](/docs/concepts/workloads/pods/#privileged-mode-for-containers)
+  [privileged containers](/docs/kubernetes/en/concepts/workloads/pods/#privileged-mode-for-containers)
   are equivalent to processes running as root on the host.
   Privileged containers can make use of capabilities like manipulating the network stack and accessing devices.
 
 - **Environment variables**: Kubernetes exposes Services through
-  [environment variables](/docs/tasks/inject-data-application/environment-variable-expose-pod-information/).
+  [environment variables](/docs/kubernetes/en/tasks/inject-data-application/environment-variable-expose-pod-information/).
   You can compose environment variable or pass arguments to your commands using the values of environment variables.
   They can be used in applications to find a Service.
   Values can reference other variables using the `$(VAR_NAME)` syntax.
@@ -193,7 +193,7 @@ If needed, you can expand the **Advanced options** section where you can specify
 
 Kubernetes supports declarative configuration.
 In this style, all configuration is stored in manifests (YAML or JSON configuration files).
-The manifests use Kubernetes [API](/docs/concepts/overview/kubernetes-api/) resource schemas.
+The manifests use Kubernetes [API](/docs/kubernetes/en/concepts/overview/kubernetes-api/) resource schemas.
 
 As an alternative to specifying application details in the deploy wizard,
 you can define your application in one or more manifests, and upload the files using Dashboard.

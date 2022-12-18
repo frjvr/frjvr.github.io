@@ -62,7 +62,7 @@ resource allocation decisions.
 ### Enable the Topology Manager feature
 
 Support for the Topology Manager requires `TopologyManager`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/) to be enabled.
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) to be enabled.
 It is enabled by default starting with Kubernetes 1.18.
 
 ## Topology Manager Scopes and Policies
@@ -85,13 +85,13 @@ Details on the various `scopes` and `policies` available today can be found belo
 {{< note >}}
 To align CPU resources with other requested resources in a Pod Spec, the CPU Manager should be
 enabled and proper CPU Manager policy should be configured on a Node.
-See [control CPU Management Policies](/docs/tasks/administer-cluster/cpu-management-policies/).
+See [control CPU Management Policies](/docs/kubernetes/en/tasks/administer-cluster/cpu-management-policies/).
 {{< /note >}}
 
 {{< note >}}
 To align memory (and hugepages) resources with other requested resources in a Pod Spec, the Memory
 Manager should be enabled and proper Memory Manager policy should be configured on a Node. Examine
-[Memory Manager](/docs/tasks/administer-cluster/memory-manager/) documentation.
+[Memory Manager](/docs/kubernetes/en/tasks/administer-cluster/memory-manager/) documentation.
 {{< /note >}}
 
 ### Topology Manager Scopes
@@ -129,7 +129,7 @@ alignments produced by the Topology Manager on different occasions:
 * all containers can be and are allocated to a shared set of NUMA nodes.
 
 The total amount of particular resource demanded for the entire pod is calculated according to
-[effective requests/limits](/docs/concepts/workloads/pods/init-containers/#resources) formula, and
+[effective requests/limits](/docs/kubernetes/en/concepts/workloads/pods/init-containers/#resources) formula, and
 thus, this total value is equal to the maximum of:
 
 * the sum of all app container requests,
@@ -216,7 +216,7 @@ that have the `Topology Affinity` error.
 ### Topology manager policy options
 
 Support for the Topology Manager policy options requires `TopologyManagerPolicyOptions`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/) to be enabled.
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) to be enabled.
 
 You can toggle groups of options on and off based upon their maturity level using the following feature gates:
 * `TopologyManagerPolicyBetaOptions` default disabled. Enable to show beta-level options. Currently there are no beta-level options.

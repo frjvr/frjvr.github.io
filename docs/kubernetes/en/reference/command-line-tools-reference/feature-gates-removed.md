@@ -13,8 +13,8 @@ However, a GA'ed or a deprecated feature gate is still recognized by the corresp
 components although they are unable to cause any behavior differences in a cluster.
 
 For feature gates that are still recognized by the Kubernetes components, please refer to
-the [Alpha/Beta feature gate table](/docs/reference/command-line-tools/reference/feature-gates/#feature-gates-for-alpha-or-beta-features)
-or the [Graduated/Deprecated feature gate table](/docs/reference/command-line-tools/reference/feature-gates/#feature-gates-for-graduated-or-deprecated-features)
+the [Alpha/Beta feature gate table](/docs/kubernetes/en/reference/command-line-tools/reference/feature-gates/#feature-gates-for-alpha-or-beta-features)
+or the [Graduated/Deprecated feature gate table](/docs/kubernetes/en/reference/command-line-tools/reference/feature-gates/#feature-gates-for-graduated-or-deprecated-features)
 
 ### Feature gates that are removed
 
@@ -306,17 +306,17 @@ In the following table:
 
 - `Accelerators`: Provided an early form of plugin to enable Nvidia GPU support when using
   Docker Engine; no longer available. See
-  [Device Plugins](/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/) for
+  [Device Plugins](/docs/kubernetes/en/concepts/extend-kubernetes/compute-storage-net/device-plugins/) for
   an alternative.
 
 - `AffinityInAnnotations`: Enable setting
-  [Pod affinity or anti-affinity](/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity).
+  [Pod affinity or anti-affinity](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity).
 
 - `AllowExtTrafficLocalEndpoints`: Enable a service to route external requests to node local endpoints.
 
 - `AttachVolumeLimit`: Enable volume plugins to report limits on number of volumes
   that can be attached to a node.
-  See [dynamic volume limits](/docs/concepts/storage/storage-limits/#dynamic-volume-limits)
+  See [dynamic volume limits](/docs/kubernetes/en/concepts/storage/storage-limits/#dynamic-volume-limits)
   for more details.
 
 - `BalanceAttachedNodeVolumes`: Include volume count on node to be considered for
@@ -324,7 +324,7 @@ In the following table:
   memory utilization, and volume count is favored by the scheduler while making decisions.
 
 - `BlockVolume`: Enable the definition and consumption of raw block devices in Pods.
-  See [Raw Block Volume Support](/docs/concepts/storage/persistent-volumes/#raw-block-volume-support)
+  See [Raw Block Volume Support](/docs/kubernetes/en/concepts/storage/persistent-volumes/#raw-block-volume-support)
   for more details.
 
 - `BoundServiceAccountTokenVolume`: Migrate ServiceAccount volumes to use a projected volume
@@ -339,11 +339,11 @@ In the following table:
   The default max size of a log file is 10MB and the default max number of
   log files allowed for a container is 5.
   These values can be configured in the kubelet config.
-  See [logging at node level](/docs/concepts/cluster-administration/logging/#logging-at-the-node-level)
+  See [logging at node level](/docs/kubernetes/en/concepts/cluster-administration/logging/#logging-at-the-node-level)
   for more details.
 
 - `CSIBlockVolume`: Enable external CSI volume drivers to support block storage.
-  See [`csi` raw block volume support](/docs/concepts/storage/volumes/#csi-raw-block-volume-support)
+  See [`csi` raw block volume support](/docs/kubernetes/en/concepts/storage/volumes/#csi-raw-block-volume-support)
   for more details.
 
 - `CSIDriverRegistry`: Enable all logic related to the CSIDriver API object in
@@ -418,7 +418,7 @@ In the following table:
 
 - `ConfigurableFSGroupPolicy`: Allows user to configure volume permission change policy
   for fsGroups when mounting a volume in a Pod. See
-  [Configure volume permission and ownership change policy for Pods](/docs/tasks/configure-pod-container/security-context/#configure-volume-permission-and-ownership-change-policy-for-pods)
+  [Configure volume permission and ownership change policy for Pods](/docs/kubernetes/en/tasks/configure-pod-container/security-context/#configure-volume-permission-and-ownership-change-policy-for-pods)
   for more details.
 
 - `CronJobControllerV2`: Use an alternative implementation of the
@@ -426,7 +426,7 @@ In the following table:
   version 1 of the same controller is selected.
 
 - `CustomPodDNS`: Enable customizing the DNS settings for a Pod using its `dnsConfig` property.
-  Check [Pod's DNS Config](/docs/concepts/services-networking/dns-pod-service/#pods-dns-config)
+  Check [Pod's DNS Config](/docs/kubernetes/en/concepts/services-networking/dns-pod-service/#pods-dns-config)
   for more details.
 
 - `CustomResourceDefaulting`: Enable CRD support for default values in OpenAPI v3 validation schemas.
@@ -434,13 +434,13 @@ In the following table:
 - `CustomResourcePublishOpenAPI`: Enables publishing of CRD OpenAPI specs.
 
 - `CustomResourceSubresources`: Enable `/status` and `/scale` subresources
-  on resources created from [CustomResourceDefinition](/docs/concepts/extend-kubernetes/api-extension/custom-resources/).
+  on resources created from [CustomResourceDefinition](/docs/kubernetes/en/concepts/extend-kubernetes/api-extension/custom-resources/).
 
 - `CustomResourceValidation`: Enable schema based validation on resources created from
-  [CustomResourceDefinition](/docs/concepts/extend-kubernetes/api-extension/custom-resources/).
+  [CustomResourceDefinition](/docs/kubernetes/en/concepts/extend-kubernetes/api-extension/custom-resources/).
 
 - `CustomResourceWebhookConversion`: Enable webhook-based conversion
-  on resources created from [CustomResourceDefinition](/docs/concepts/extend-kubernetes/api-extension/custom-resources/).
+  on resources created from [CustomResourceDefinition](/docs/kubernetes/en/concepts/extend-kubernetes/api-extension/custom-resources/).
 
 - `DynamicAuditing`: Used to enable dynamic auditing before v1.19.
 
@@ -449,7 +449,7 @@ In the following table:
   This feature was superseded by the `VolumeScheduling` feature  in v1.12.
 
 - `DynamicVolumeProvisioning`: Enable the
-  [dynamic provisioning](/docs/concepts/storage/dynamic-provisioning/) of persistent volumes to Pods.
+  [dynamic provisioning](/docs/kubernetes/en/concepts/storage/dynamic-provisioning/) of persistent volumes to Pods.
 
 - `EnableAggregatedDiscoveryTimeout`: Enable the five second
   timeout on aggregated discovery calls.
@@ -458,20 +458,20 @@ In the following table:
   nodes when scheduling Pods.
 
 - `EndpointSlice`: Enables EndpointSlices for more scalable and extensible
-   network endpoints. See [Enabling EndpointSlices](/docs/concepts/services-networking/endpoint-slices/).
+   network endpoints. See [Enabling EndpointSlices](/docs/kubernetes/en/concepts/services-networking/endpoint-slices/).
 
 - `EndpointSliceNodeName`: Enables EndpointSlice `nodeName` field.
 
 - `EndpointSliceProxying`: When enabled, kube-proxy running
    on Linux will use EndpointSlices as the primary data source instead of
    Endpoints, enabling scalability and performance improvements. See
-   [Enabling Endpoint Slices](/docs/concepts/services-networking/endpoint-slices/).
+   [Enabling Endpoint Slices](/docs/kubernetes/en/concepts/services-networking/endpoint-slices/).
 
 - `EvenPodsSpread`: Enable pods to be scheduled evenly across topology domains. See
-  [Pod Topology Spread Constraints](/docs/concepts/scheduling-eviction/topology-spread-constraints/).
+  [Pod Topology Spread Constraints](/docs/kubernetes/en/concepts/scheduling-eviction/topology-spread-constraints/).
 
 - `ExperimentalCriticalPodAnnotation`: Enable annotating specific pods as *critical*
-  so that their [scheduling is guaranteed](/docs/tasks/administer-cluster/guaranteed-scheduling-critical-addon-pods/).
+  so that their [scheduling is guaranteed](/docs/kubernetes/en/tasks/administer-cluster/guaranteed-scheduling-critical-addon-pods/).
   This feature is deprecated by Pod Priority and Preemption as of v1.13.
 
 - `ExternalPolicyForExternalIP`: Fix a bug where ExternalTrafficPolicy is not
@@ -482,19 +482,19 @@ In the following table:
 - `GenericEphemeralVolume`: Enables ephemeral, inline volumes that support all features
   of normal volumes (can be provided by third-party storage vendors, storage capacity tracking,
   restore from snapshot, etc.).
-  See [Ephemeral Volumes](/docs/concepts/storage/ephemeral-volumes/).
+  See [Ephemeral Volumes](/docs/kubernetes/en/concepts/storage/ephemeral-volumes/).
 
 - `HugePageStorageMediumSize`: Enable support for multiple sizes pre-allocated
-  [huge pages](/docs/tasks/manage-hugepages/scheduling-hugepages/).
+  [huge pages](/docs/kubernetes/en/tasks/manage-hugepages/scheduling-hugepages/).
 
 - `HugePages`: Enable the allocation and consumption of pre-allocated
-  [huge pages](/docs/tasks/manage-hugepages/scheduling-hugepages/).
+  [huge pages](/docs/kubernetes/en/tasks/manage-hugepages/scheduling-hugepages/).
 
 - `HyperVContainer`: Enable
   [Hyper-V isolation](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/hyperv-container)
   for Windows containers.
 
-- `IPv6DualStack`: Enable [dual stack](/docs/concepts/services-networking/dual-stack/)
+- `IPv6DualStack`: Enable [dual stack](/docs/kubernetes/en/concepts/services-networking/dual-stack/)
   support for IPv6.
 
 - `ImmutableEphemeralVolumes`: Allows for marking individual Secrets and ConfigMaps as
@@ -509,11 +509,11 @@ In the following table:
 
 - `KubeletConfigFile`: Enable loading kubelet configuration from
   a file specified using a config file.
-  See [setting kubelet parameters via a config file](/docs/tasks/administer-cluster/kubelet-config-file/)
+  See [setting kubelet parameters via a config file](/docs/kubernetes/en/tasks/administer-cluster/kubelet-config-file/)
   for more details.
 
 - `KubeletPluginsWatcher`: Enable probe-based plugin watcher utility to enable kubelet
-  to discover plugins such as [CSI volume drivers](/docs/concepts/storage/volumes/#csi).
+  to discover plugins such as [CSI volume drivers](/docs/kubernetes/en/concepts/storage/volumes/#csi).
 
 - `LegacyNodeRoleBehavior`: When disabled, legacy behavior in service load balancers and
   node disruption will ignore the `node-role.kubernetes.io/master` label in favor of the
@@ -522,7 +522,7 @@ In the following table:
 - `MountContainers`: Enable using utility containers on host as the volume mounter.
 
 - `MountPropagation`: Enable sharing volume mounted by one container to other containers or pods.
-  For more details, please see [mount propagation](/docs/concepts/storage/volumes/#mount-propagation).
+  For more details, please see [mount propagation](/docs/kubernetes/en/concepts/storage/volumes/#mount-propagation).
 
 - `NamespaceDefaultLabelName`: Configure the API Server to set an immutable
   {{< glossary_tooltip text="label" term_id="label" >}} `kubernetes.io/metadata.name`
@@ -539,21 +539,21 @@ In the following table:
 - `PersistentLocalVolumes`: Enable the usage of `local` volume type in Pods.
   Pod affinity has to be specified if requesting a `local` volume.
 
-- `PodDisruptionBudget`: Enable the [PodDisruptionBudget](/docs/tasks/run-application/configure-pdb/) feature.
+- `PodDisruptionBudget`: Enable the [PodDisruptionBudget](/docs/kubernetes/en/tasks/run-application/configure-pdb/) feature.
 
-- `PodOverhead`: Enable the [PodOverhead](/docs/concepts/scheduling-eviction/pod-overhead/)
+- `PodOverhead`: Enable the [PodOverhead](/docs/kubernetes/en/concepts/scheduling-eviction/pod-overhead/)
   feature to account for pod overheads.
 
 - `PodPriority`: Enable the descheduling and preemption of Pods based on their
-  [priorities](/docs/concepts/scheduling-eviction/pod-priority-preemption/).
+  [priorities](/docs/kubernetes/en/concepts/scheduling-eviction/pod-priority-preemption/).
 
 - `PodReadinessGates`: Enable the setting of `PodReadinessGate` field for extending
-  Pod readiness evaluation. See [Pod readiness gate](/docs/concepts/workloads/pods/pod-lifecycle/#pod-readiness-gate)
+  Pod readiness evaluation. See [Pod readiness gate](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#pod-readiness-gate)
   for more details.
 
 - `PodShareProcessNamespace`: Enable the setting of `shareProcessNamespace` in a Pod for sharing
   a single process namespace between containers running in a pod.  More details can be found in
-  [Share Process Namespace between Containers in a Pod](/docs/tasks/configure-pod-container/share-process-namespace/).
+  [Share Process Namespace between Containers in a Pod](/docs/kubernetes/en/tasks/configure-pod-container/share-process-namespace/).
 
 - `RequestManagement`: Enables managing request concurrency with prioritization and fairness
   at each API server. Deprecated by `APIPriorityAndFairness` since 1.17.
@@ -573,12 +573,12 @@ In the following table:
   for more details.
 
 - `RotateKubeletClientCertificate`: Enable the rotation of the client TLS certificate on the kubelet.
-  See [kubelet configuration](/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/#kubelet-configuration)
+  See [kubelet configuration](/docs/kubernetes/en/reference/access-authn-authz/kubelet-tls-bootstrapping/#kubelet-configuration)
   for more details.
 
 - `RunAsGroup`: Enable control over the primary group ID set on the init processes of containers.
 
-- `RuntimeClass`: Enable the [RuntimeClass](/docs/concepts/containers/runtime-class/) feature for
+- `RuntimeClass`: Enable the [RuntimeClass](/docs/kubernetes/en/concepts/containers/runtime-class/) feature for
   selecting container runtime configurations.
 
 - `SCTPSupport`: Enables the _SCTP_ `protocol` value in Pod, Service, Endpoints, EndpointSlice,
@@ -592,7 +592,7 @@ In the following table:
 
 - `ServiceAccountIssuerDiscovery`: Enable OIDC discovery endpoints (issuer and JWKS URLs) for the
   service account issuer in the API server. See
-  [Configure Service Accounts for Pods](/docs/tasks/configure-pod-container/configure-service-account/#service-account-issuer-discovery)
+  [Configure Service Accounts for Pods](/docs/kubernetes/en/tasks/configure-pod-container/configure-service-account/#service-account-issuer-discovery)
   for more details.
 
 - `ServiceAppProtocol`: Enables the `appProtocol` field on Services and Endpoints.
@@ -603,13 +603,13 @@ In the following table:
   A node is eligible for exclusion if labelled with "`node.kubernetes.io/exclude-from-external-load-balancers`".
 
 - `ServiceTopology`: Enable service to route traffic based upon the Node topology of the cluster.
-  See [ServiceTopology](/docs/concepts/services-networking/service-topology/) for more details.
+  See [ServiceTopology](/docs/kubernetes/en/concepts/services-networking/service-topology/) for more details.
 
 - `SetHostnameAsFQDN`: Enable the ability of setting Fully Qualified Domain Name(FQDN) as the
   hostname of a pod. See
-  [Pod's `setHostnameAsFQDN` field](/docs/concepts/services-networking/dns-pod-service/#pod-sethostnameasfqdn-field).
+  [Pod's `setHostnameAsFQDN` field](/docs/kubernetes/en/concepts/services-networking/dns-pod-service/#pod-sethostnameasfqdn-field).
 
-- `StartupProbe`: Enable the [startup](/docs/concepts/workloads/pods/pod-lifecycle/#when-should-you-use-a-startup-probe)
+- `StartupProbe`: Enable the [startup](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#when-should-you-use-a-startup-probe)
   probe in the kubelet.
 
 - `StorageObjectInUseProtection`: Postpone the deletion of PersistentVolume or
@@ -620,7 +620,7 @@ In the following table:
   `attach` and `port-forward` requests.
 
 - `SupportIPVSProxyMode`: Enable providing in-cluster service load balancing using IPVS.
-  See [service proxies](/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies) for more details.
+  See [service proxies](/docs/kubernetes/en/concepts/services-networking/service/#virtual-ips-and-service-proxies) for more details.
 
 - `SupportNodePidsLimit`: Enable the support to limiting PIDs on the Node.  The parameter
   `pid=<number>` in the `--system-reserved` and `--kube-reserved` options can be specified to
@@ -630,22 +630,22 @@ In the following table:
 - `SupportPodPidsLimit`: Enable the support to limiting PIDs in Pods.
 
 - `Sysctls`: Enable support for namespaced kernel parameters (sysctls) that can be set for each
-  pod. See [sysctls](/docs/tasks/administer-cluster/sysctl-cluster/) for more details.
+  pod. See [sysctls](/docs/kubernetes/en/tasks/administer-cluster/sysctl-cluster/) for more details.
 
-- `TTLAfterFinished`: Allow a [TTL controller](/docs/concepts/workloads/controllers/ttlafterfinished/)
+- `TTLAfterFinished`: Allow a [TTL controller](/docs/kubernetes/en/concepts/workloads/controllers/ttlafterfinished/)
   to clean up resources after they finish execution.
 
 - `TaintBasedEvictions`: Enable evicting pods from nodes based on taints on Nodes and tolerations
-  on Pods.  See [taints and tolerations](/docs/concepts/scheduling-eviction/taint-and-toleration/)
+  on Pods.  See [taints and tolerations](/docs/kubernetes/en/concepts/scheduling-eviction/taint-and-toleration/)
   for more details.
 
 - `TaintNodesByCondition`: Enable automatic tainting nodes based on
-  [node conditions](/docs/concepts/architecture/nodes/#condition).
+  [node conditions](/docs/kubernetes/en/concepts/architecture/nodes/#condition).
 
 - `TokenRequest`: Enable the `TokenRequest` endpoint on service account resources.
 
 - `TokenRequestProjection`: Enable the injection of service account tokens into a Pod through a
-  [`projected` volume](/docs/concepts/storage/volumes/#projected).
+  [`projected` volume](/docs/kubernetes/en/concepts/storage/volumes/#projected).
 
 - `ValidateProxyRedirects`: This flag controls whether the API server should validate that redirects
   are only followed to the same host. Only used if the `StreamingProxyRedirects` flag is enabled.
@@ -654,7 +654,7 @@ In the following table:
 
 - `VolumeScheduling`: Enable volume topology aware scheduling and make the PersistentVolumeClaim
   (PVC) binding aware of scheduling decisions. It also enables the usage of
-  [`local`](/docs/concepts/storage/volumes/#local) volume type when used together with the
+  [`local`](/docs/kubernetes/en/concepts/storage/volumes/#local) volume type when used together with the
   `PersistentLocalVolumes` feature gate.
 
 - `VolumeSnapshotDataSource`: Enable volume snapshot data source support.
@@ -669,11 +669,11 @@ In the following table:
 - `WindowsEndpointSliceProxying`: When enabled, kube-proxy running on Windows will use
   EndpointSlices as the primary data source instead of Endpoints, enabling scalability and
   performance improvements. See
-  [Enabling Endpoint Slices](/docs/concepts/services-networking/endpoint-slices/).
+  [Enabling Endpoint Slices](/docs/kubernetes/en/concepts/services-networking/endpoint-slices/).
 
 - `WindowsGMSA`: Enables passing of GMSA credential specs from pods to container runtimes.
 
 - `WindowsRunAsUserName` : Enable support for running applications in Windows containers with as a
-  non-default user. See [Configuring RunAsUserName](/docs/tasks/configure-pod-container/configure-runasusername)
+  non-default user. See [Configuring RunAsUserName](/docs/kubernetes/en/tasks/configure-pod-container/configure-runasusername)
   for more details.
 

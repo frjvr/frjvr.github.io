@@ -302,6 +302,6 @@ done.
 
 You can use the `certificates.k8s.io` API to provision
 x509 certificates to use for authentication as documented
-in the [Managing TLS in a cluster](/docs/tasks/tls/managing-tls-in-a-cluster)
+in the [Managing TLS in a cluster](/docs/kubernetes/en/tasks/tls/managing-tls-in-a-cluster)
 task page.
 

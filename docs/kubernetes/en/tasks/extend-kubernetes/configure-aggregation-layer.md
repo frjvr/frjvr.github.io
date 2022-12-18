@@ -10,7 +10,7 @@ weight: 10
 
 <!-- overview -->
 
-Configuring the [aggregation layer](/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/) allows the Kubernetes apiserver to be extended with additional APIs, which are not part of the core Kubernetes APIs.
+Configuring the [aggregation layer](/docs/kubernetes/en/concepts/extend-kubernetes/api-extension/apiserver-aggregation/) allows the Kubernetes apiserver to be extended with additional APIs, which are not part of the core Kubernetes APIs.
 
 ## {{% heading "prerequisites" %}}
 
@@ -106,7 +106,7 @@ A request to an API path that is served by an extension apiserver begins the sam
 
 The user communicates with the Kubernetes apiserver, requesting access to the path. The Kubernetes apiserver uses standard authentication and authorization configured with the Kubernetes apiserver to authenticate the user and authorize access to the specific path.
 
-For an overview of authenticating to a Kubernetes cluster, see ["Authenticating to a Cluster"](/docs/reference/access-authn-authz/authentication/). For an overview of authorization of access to Kubernetes cluster resources, see ["Authorization Overview"](/docs/reference/access-authn-authz/authorization/).
+For an overview of authenticating to a Kubernetes cluster, see ["Authenticating to a Cluster"](/docs/kubernetes/en/reference/access-authn-authz/authentication/). For an overview of authorization of access to Kubernetes cluster resources, see ["Authorization Overview"](/docs/kubernetes/en/reference/access-authn-authz/authorization/).
 
 Everything to this point has been standard Kubernetes API requests, authentication and authorization.
 
@@ -176,7 +176,7 @@ In order to have permission to retrieve the configmap, an extension apiserver re
 
 ### Extension Apiserver Authorizes the Request
 
-The extension apiserver now can validate that the user/group retrieved from the headers are authorized to execute the given request. It does so by sending a standard [SubjectAccessReview](/docs/reference/access-authn-authz/authorization/) request to the Kubernetes apiserver. 
+The extension apiserver now can validate that the user/group retrieved from the headers are authorized to execute the given request. It does so by sending a standard [SubjectAccessReview](/docs/kubernetes/en/reference/access-authn-authz/authorization/) request to the Kubernetes apiserver. 
 
 In order for the extension apiserver to be authorized itself to submit the `SubjectAccessReview` request to the Kubernetes apiserver, it needs the correct permissions. Kubernetes includes a default `ClusterRole` named `system:auth-delegator` that has the appropriate permissions. It can be granted to the extension apiserver's service account.
 
@@ -206,7 +206,7 @@ The Kubernetes apiserver has two client CA options:
 
 Each of these functions independently and can conflict with each other, if not used correctly.
 
-* `--client-ca-file`: When a request arrives to the Kubernetes apiserver, if this option is enabled, the Kubernetes apiserver checks the certificate of the request. If it is signed by one of the CA certificates in the file referenced by `--client-ca-file`, then the request is treated as a legitimate request, and the user is the value of the common name `CN=`, while the group is the organization `O=`. See the [documentation on TLS authentication](/docs/reference/access-authn-authz/authentication/#x509-client-certs).
+* `--client-ca-file`: When a request arrives to the Kubernetes apiserver, if this option is enabled, the Kubernetes apiserver checks the certificate of the request. If it is signed by one of the CA certificates in the file referenced by `--client-ca-file`, then the request is treated as a legitimate request, and the user is the value of the common name `CN=`, while the group is the organization `O=`. See the [documentation on TLS authentication](/docs/kubernetes/en/reference/access-authn-authz/authentication/#x509-client-certs).
 * `--requestheader-client-ca-file`: When a request arrives to the Kubernetes apiserver, if this option is enabled, the Kubernetes apiserver checks the certificate of the request. If it is signed by one of the CA certificates in the file reference by `--requestheader-client-ca-file`, then the request is treated as a potentially legitimate request. The Kubernetes apiserver then checks if the common name `CN=` is one of the names in the list provided by `--requestheader-allowed-names`. If the name is allowed, the request is approved; if it is not, the request is not.
 
 If _both_ `--client-ca-file` and `--requestheader-client-ca-file` are provided, then the request first checks the `--requestheader-client-ca-file` CA and then the `--client-ca-file`. Normally, different CAs, either root CAs or intermediate CAs, are used for each of these options; regular client requests match against `--client-ca-file`, while aggregation requests match against `--requestheader-client-ca-file`. However, if both use the _same_ CA, then client requests that normally would pass via `--client-ca-file` will fail, because the CA will match the CA in `--requestheader-client-ca-file`, but the common name `CN=` will **not** match one of the acceptable common names in `--requestheader-allowed-names`. This can cause your kubelets and other control plane components, as well as end-users, to be unable to authenticate to the Kubernetes apiserver.
@@ -246,7 +246,7 @@ spec:
 ```
 
 The name of an APIService object must be a valid
-[path segment name](/docs/concepts/overview/working-with-objects/names#path-segment-names).
+[path segment name](/docs/kubernetes/en/concepts/overview/working-with-objects/names#path-segment-names).
 
 #### Contacting the extension apiserver
 
@@ -276,6 +276,6 @@ spec:
 
 ## {{% heading "whatsnext" %}}
 
-* [Set up an extension api-server](/docs/tasks/extend-kubernetes/setup-extension-api-server/) to work with the aggregation layer.
-* For a high level overview, see [Extending the Kubernetes API with the aggregation layer](/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/).
-* Learn how to [Extend the Kubernetes API Using Custom Resource Definitions](/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/).
+* [Set up an extension api-server](/docs/kubernetes/en/tasks/extend-kubernetes/setup-extension-api-server/) to work with the aggregation layer.
+* For a high level overview, see [Extending the Kubernetes API with the aggregation layer](/docs/kubernetes/en/concepts/extend-kubernetes/api-extension/apiserver-aggregation/).
+* Learn how to [Extend the Kubernetes API Using Custom Resource Definitions](/docs/kubernetes/en/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/).

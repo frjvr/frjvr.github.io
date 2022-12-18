@@ -2,7 +2,7 @@
 title: UID
 id: uid
 date: 2018-04-12
-full_link: /docs/concepts/overview/working-with-objects/names
+full_link: /docs/kubernetes/en/concepts/overview/working-with-objects/names
 short_description: >
   A Kubernetes systems-generated string to uniquely identify objects.
 

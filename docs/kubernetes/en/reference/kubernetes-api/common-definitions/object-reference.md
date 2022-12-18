@@ -44,11 +44,11 @@ ObjectReference contains enough information to let you inspect or modify the ref
 
 - **name** (string)
 
-  Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+  Name of the referent. More info: https://kubernetes.io/docs/kubernetes/en/concepts/overview/working-with-objects/names/#names
 
 - **namespace** (string)
 
-  Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+  Namespace of the referent. More info: https://kubernetes.io/docs/kubernetes/en/concepts/overview/working-with-objects/namespaces/
 
 - **resourceVersion** (string)
 
@@ -56,7 +56,7 @@ ObjectReference contains enough information to let you inspect or modify the ref
 
 - **uid** (string)
 
-  UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+  UID of the referent. More info: https://kubernetes.io/docs/kubernetes/en/concepts/overview/working-with-objects/names/#uids
 
 
 

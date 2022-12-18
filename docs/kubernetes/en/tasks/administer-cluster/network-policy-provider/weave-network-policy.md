@@ -13,7 +13,7 @@ This page shows how to use Weave Net for NetworkPolicy.
 ## {{% heading "prerequisites" %}}
 
 You need to have a Kubernetes cluster. Follow the
-[kubeadm getting started guide](/docs/reference/setup-tools/kubeadm/) to bootstrap one.
+[kubeadm getting started guide](/docs/kubernetes/en/reference/setup-tools/kubeadm/) to bootstrap one.
 
 <!-- steps -->
 
@@ -51,7 +51,7 @@ Each Node has a weave Pod, and all Pods are `Running` and `2/2 READY`. (`2/2` me
 ## {{% heading "whatsnext" %}}
 
 Once you have installed the Weave Net addon, you can follow the
-[Declare Network Policy](/docs/tasks/administer-cluster/declare-network-policy/)
+[Declare Network Policy](/docs/kubernetes/en/tasks/administer-cluster/declare-network-policy/)
 to try out Kubernetes NetworkPolicy. If you have any question, contact us at
 [#weave-community on Slack or Weave User Group](https://github.com/weaveworks/weave#getting-help).
 

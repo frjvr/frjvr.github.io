@@ -22,7 +22,7 @@ be consumed by resources in that namespace.
 
 Resource quotas work like this:
 
-- Different teams work in different namespaces. This can be enforced with [RBAC](/docs/reference/access-authn-authz/rbac/).
+- Different teams work in different namespaces. This can be enforced with [RBAC](/docs/kubernetes/en/reference/access-authn-authz/rbac/).
 
 - The administrator creates one ResourceQuota for each namespace.
 
@@ -36,7 +36,7 @@ Resource quotas work like this:
   requests or limits for those values; otherwise, the quota system may reject pod creation.  Hint: Use
   the `LimitRanger` admission controller to force defaults for pods that make no compute resource requirements.
 
-  See the [walkthrough](/docs/tasks/administer-cluster/manage-resources/quota-memory-cpu-namespace/)
+  See the [walkthrough](/docs/kubernetes/en/tasks/administer-cluster/manage-resources/quota-memory-cpu-namespace/)
   for an example of how to avoid this problem.
 
 {{< note >}}
@@ -47,12 +47,12 @@ you, and other clients, **must** specify either `requests` or `limits` for that 
 for every new Pod you submit. If you don't, the control plane may reject admission
 for that Pod.
 - For other resources: ResourceQuota works and will ignore pods in the namespace without setting a limit or request for that resource. It means that you can create a new pod without limit/request ephemeral storage if the resource quota limits the ephemeral storage of this namespace.
-You can use a [LimitRange](/docs/concepts/policy/limit-range/) to automatically set
+You can use a [LimitRange](/docs/kubernetes/en/concepts/policy/limit-range/) to automatically set
 a default request for these resources.
 {{< /note >}}
 
 The name of a ResourceQuota object must be a valid
-[DNS subdomain name](/docs/concepts/overview/working-with-objects/names#dns-subdomain-names).
+[DNS subdomain name](/docs/kubernetes/en/concepts/overview/working-with-objects/names#dns-subdomain-names).
 
 Examples of policies that could be created using namespaces and quotas are:
 
@@ -79,7 +79,7 @@ ResourceQuota in that namespace.
 ## Compute Resource Quota
 
 You can limit the total sum of
-[compute resources](/docs/concepts/configuration/manage-resources-containers/)
+[compute resources](/docs/kubernetes/en/concepts/configuration/manage-resources-containers/)
 that can be requested in a given namespace.
 
 The following resource types are supported:
@@ -97,7 +97,7 @@ The following resource types are supported:
 ### Resource Quota For Extended Resources
 
 In addition to the resources mentioned above, in release 1.10, quota support for
-[extended resources](/docs/concepts/configuration/manage-resources-containers/#extended-resources) is added.
+[extended resources](/docs/kubernetes/en/concepts/configuration/manage-resources-containers/#extended-resources) is added.
 
 As overcommit is not allowed for extended resources, it makes no sense to specify both `requests`
 and `limits` for the same extended resource in a quota. So for extended resources, only quota items
@@ -113,16 +113,16 @@ See [Viewing and Setting Quotas](#viewing-and-setting-quotas) for more detail in
 
 ## Storage Resource Quota
 
-You can limit the total sum of [storage resources](/docs/concepts/storage/persistent-volumes/) that can be requested in a given namespace.
+You can limit the total sum of [storage resources](/docs/kubernetes/en/concepts/storage/persistent-volumes/) that can be requested in a given namespace.
 
 In addition, you can limit consumption of storage resources based on associated storage-class.
 
 | Resource Name | Description |
 | --------------------- | ----------------------------------------------------------- |
 | `requests.storage` | Across all persistent volume claims, the sum of storage requests cannot exceed this value. |
-| `persistentvolumeclaims` | The total number of [PersistentVolumeClaims](/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims) that can exist in the namespace. |
+| `persistentvolumeclaims` | The total number of [PersistentVolumeClaims](/docs/kubernetes/en/concepts/storage/persistent-volumes/#persistentvolumeclaims) that can exist in the namespace. |
 | `<storage-class-name>.storageclass.storage.k8s.io/requests.storage` | Across all persistent volume claims associated with the `<storage-class-name>`, the sum of storage requests cannot exceed this value. |
-| `<storage-class-name>.storageclass.storage.k8s.io/persistentvolumeclaims` | Across all persistent volume claims associated with the storage-class-name, the total number of [persistent volume claims](/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims) that can exist in the namespace. |
+| `<storage-class-name>.storageclass.storage.k8s.io/persistentvolumeclaims` | Across all persistent volume claims associated with the storage-class-name, the total number of [persistent volume claims](/docs/kubernetes/en/concepts/storage/persistent-volumes/#persistentvolumeclaims) that can exist in the namespace. |
 
 For example, if an operator wants to quota storage with `gold` storage class separate from `bronze` storage class, the operator can
 define a quota as follows:
@@ -141,7 +141,7 @@ In release 1.8, quota support for local ephemeral storage is added as an alpha f
 {{< note >}}
 When using a CRI container runtime, container logs will count against the ephemeral storage quota.
 This can result in the unexpected eviction of pods that have exhausted their storage quotas.
-Refer to [Logging Architecture](/docs/concepts/cluster-administration/logging/) for details.
+Refer to [Logging Architecture](/docs/kubernetes/en/concepts/cluster-administration/logging/) for details.
 {{< /note >}}
 
 ## Object Count Quota
@@ -180,7 +180,7 @@ The following types are supported:
 | Resource Name | Description |
 | ------------------------------- | ------------------------------------------------- |
 | `configmaps` | The total number of ConfigMaps that can exist in the namespace. |
-| `persistentvolumeclaims` | The total number of [PersistentVolumeClaims](/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims) that can exist in the namespace. |
+| `persistentvolumeclaims` | The total number of [PersistentVolumeClaims](/docs/kubernetes/en/concepts/storage/persistent-volumes/#persistentvolumeclaims) that can exist in the namespace. |
 | `pods` | The total number of Pods in a non-terminal state that can exist in the namespace.  A pod is in a terminal state if `.status.phase in (Failed, Succeeded)` is true.  |
 | `replicationcontrollers` | The total number of ReplicationControllers that can exist in the namespace. |
 | `resourcequotas` | The total number of ResourceQuotas that can exist in the namespace. |
@@ -208,8 +208,8 @@ Resources specified on the quota outside of the allowed set results in a validat
 | `NotTerminating` | Match pods where `.spec.activeDeadlineSeconds is nil` |
 | `BestEffort` | Match pods that have best effort quality of service. |
 | `NotBestEffort` | Match pods that do not have best effort quality of service. |
-| `PriorityClass` | Match pods that references the specified [priority class](/docs/concepts/scheduling-eviction/pod-priority-preemption). |
-| `CrossNamespacePodAffinity` | Match pods that have cross-namespace pod [(anti)affinity terms](/docs/concepts/scheduling-eviction/assign-pod-node). |
+| `PriorityClass` | Match pods that references the specified [priority class](/docs/kubernetes/en/concepts/scheduling-eviction/pod-priority-preemption). |
+| `CrossNamespacePodAffinity` | Match pods that have cross-namespace pod [(anti)affinity terms](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node). |
 
 The `BestEffort` scope restricts a quota to tracking the following resource:
 
@@ -264,7 +264,7 @@ specified.
 
 {{< feature-state for_k8s_version="v1.17" state="stable" >}}
 
-Pods can be created at a specific [priority](/docs/concepts/scheduling-eviction/pod-priority-preemption/#pod-priority).
+Pods can be created at a specific [priority](/docs/kubernetes/en/concepts/scheduling-eviction/pod-priority-preemption/#pod-priority).
 You can control a pod's consumption of system resources based on a pod's priority, by using the `scopeSelector`
 field in the quota spec.
 
@@ -710,6 +710,6 @@ and it is to be created in a namespace other than `kube-system`.
 ## {{% heading "whatsnext" %}}
 
 - See [ResourceQuota design doc](https://git.k8s.io/design-proposals-archive/resource-management/admission_control_resource_quota.md) for more information.
-- See a [detailed example for how to use resource quota](/docs/tasks/administer-cluster/quota-api-object/).
+- See a [detailed example for how to use resource quota](/docs/kubernetes/en/tasks/administer-cluster/quota-api-object/).
 - Read [Quota support for priority class design doc](https://git.k8s.io/design-proposals-archive/scheduling/pod-priority-resourcequota.md).
 - See [LimitedResources](https://github.com/kubernetes/kubernetes/pull/36765)

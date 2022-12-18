@@ -38,7 +38,7 @@ During the registration, the device plugin needs to send:
 * The name of its Unix socket.
 * The Device Plugin API version against which it was built.
 * The `ResourceName` it wants to advertise. Here `ResourceName` needs to follow the
-  [extended resource naming scheme](/docs/concepts/configuration/manage-resources-containers/#extended-resources)
+  [extended resource naming scheme](/docs/kubernetes/en/concepts/configuration/manage-resources-containers/#extended-resources)
   as `vendor-domain/resourcetype`.
   (For example, an NVIDIA GPU is advertised as `nvidia.com/gpu`.)
 
@@ -50,7 +50,7 @@ and reports two healthy devices on a node, the node status is updated
 to advertise that the node has 2 "Foo" devices installed and available.
 
 Then, users can request devices as part of a Pod specification
-(see [`container`](/docs/reference/kubernetes-api/workload-resources/pod-v1/#Container)).
+(see [`container`](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/pod-v1/#Container)).
 Requesting extended resources is similar to how you manage requests and limits for
 other resources, with the following differences:
 * Extended resources are only supported as integer resources and cannot be overcommitted.
@@ -158,7 +158,7 @@ The canonical directory `/var/lib/kubelet/device-plugins` requires privileged ac
 so a device plugin must run in a privileged security context.
 If you're deploying a device plugin as a DaemonSet, `/var/lib/kubelet/device-plugins`
 must be mounted as a {{< glossary_tooltip term_id="volume" >}}
-in the plugin's [PodSpec](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core).
+in the plugin's [PodSpec](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core).
 
 If you choose the DaemonSet approach you can rely on Kubernetes to: place the device plugin's
 Pod onto Nodes, to restart the daemon Pod after failure, and to help automate upgrades.
@@ -175,7 +175,7 @@ guaranteed to be non-breaking.
 {{< note >}}
 Although the Device Manager component of Kubernetes is a generally available feature,
 the _device plugin API_ is not stable. For information on the device plugin API and
-version compatibility, read [Device Plugin API versions](/docs/reference/node/device-plugin-api-versions/).
+version compatibility, read [Device Plugin API versions](/docs/kubernetes/en/reference/node/device-plugin-api-versions/).
 {{< /note >}}
 
 As a project, Kubernetes recommends that device plugin developers:
@@ -281,7 +281,7 @@ GetAllocatableResources provides information on resources initially available on
 It provides more information than kubelet exports to APIServer.
 
 {{< note >}}
-`GetAllocatableResources` should only be used to evaluate [allocatable](/docs/tasks/administer-cluster/reserve-compute-resources/#node-allocatable)
+`GetAllocatableResources` should only be used to evaluate [allocatable](/docs/kubernetes/en/tasks/administer-cluster/reserve-compute-resources/#node-allocatable)
 resources on a node. If the goal is to evaluate free/unallocated resources it should be used in
 conjunction with the List() endpoint. The result obtained by `GetAllocatableResources` would remain
 the same unless the underlying resources exposed to kubelet change. This happens rarely but when
@@ -304,7 +304,7 @@ message AllocatableResourcesResponse {
 
 Starting from Kubernetes v1.23, the `GetAllocatableResources` is enabled by default.
 You can disable it by turning off the `KubeletPodResourcesGetAllocatable`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/).
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/).
 
 Preceding Kubernetes v1.23, to enable this feature `kubelet` must be started with the following flag:
 
@@ -315,7 +315,7 @@ Preceding Kubernetes v1.23, to enable this feature `kubelet` must be started wit
 `ContainerDevices` do expose the topology information declaring to which NUMA cells the device is
 affine.  The NUMA cells are identified using a opaque integer ID, which value is consistent to
 what device plugins report
-[when they register themselves to the kubelet](/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/#device-plugin-integration-with-the-topology-manager).
+[when they register themselves to the kubelet](/docs/kubernetes/en/concepts/extend-kubernetes/compute-storage-net/device-plugins/#device-plugin-integration-with-the-topology-manager).
 
 The gRPC service is served over a unix socket at `/var/lib/kubelet/pod-resources/kubelet.sock`.
 Monitoring agents for device plugin resources can be deployed as a daemon, or as a DaemonSet.
@@ -323,10 +323,10 @@ The canonical directory `/var/lib/kubelet/pod-resources` requires privileged acc
 agents must run in a privileged security context.  If a device monitoring agent is running as a
 DaemonSet, `/var/lib/kubelet/pod-resources` must be mounted as a
 {{< glossary_tooltip term_id="volume" >}} in the device monitoring agent's
-[PodSpec](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core).
+[PodSpec](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core).
 
 Support for the `PodResourcesLister service` requires `KubeletPodResources`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/) to be enabled.
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) to be enabled.
 It is enabled by default starting with Kubernetes 1.15 and is v1 since Kubernetes 1.20.
 
 ## Device plugin integration with the Topology Manager
@@ -384,11 +384,11 @@ Here are some examples of device plugin implementations:
 
 ## {{% heading "whatsnext" %}}
 
-* Learn about [scheduling GPU resources](/docs/tasks/manage-gpus/scheduling-gpus/) using device
+* Learn about [scheduling GPU resources](/docs/kubernetes/en/tasks/manage-gpus/scheduling-gpus/) using device
   plugins
-* Learn about [advertising extended resources](/docs/tasks/administer-cluster/extended-resource-node/)
+* Learn about [advertising extended resources](/docs/kubernetes/en/tasks/administer-cluster/extended-resource-node/)
   on a node
-* Learn about the [Topology Manager](/docs/tasks/administer-cluster/topology-manager/)
+* Learn about the [Topology Manager](/docs/kubernetes/en/tasks/administer-cluster/topology-manager/)
 * Read about using [hardware acceleration for TLS ingress](/blog/2019/04/24/hardware-accelerated-ssl/tls-termination-in-ingress-controllers-using-kubernetes-device-plugins-and-runtimeclass/)
   with Kubernetes
 

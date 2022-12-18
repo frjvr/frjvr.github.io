@@ -32,7 +32,7 @@ LocalObjectReference contains enough information to let you locate the reference
 
 - **name** (string)
 
-  Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+  Name of the referent. More info: https://kubernetes.io/docs/kubernetes/en/concepts/overview/working-with-objects/names/#names
 
 
 

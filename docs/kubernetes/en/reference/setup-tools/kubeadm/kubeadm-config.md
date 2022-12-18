@@ -22,11 +22,11 @@ will try to default them on runtime by examining the host.
 {{< /note >}}
 
 For more information on `init` and `join` navigate to
-[Using kubeadm init with a configuration file](/docs/reference/setup-tools/kubeadm/kubeadm-init/#config-file)
-or [Using kubeadm join with a configuration file](/docs/reference/setup-tools/kubeadm/kubeadm-join/#config-file).
+[Using kubeadm init with a configuration file](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-init/#config-file)
+or [Using kubeadm join with a configuration file](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-join/#config-file).
 
 For more information on using the kubeadm configuration API navigate to
-[Customizing components with the kubeadm API](/docs/setup/production-environment/tools/kubeadm/control-plane-flags).
+[Customizing components with the kubeadm API](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/control-plane-flags).
 
 You can use `kubeadm config migrate` to convert your old configuration files that contain a deprecated
 API version to a newer, supported API version.
@@ -61,4 +61,4 @@ that kubeadm requires.
 
 ## {{% heading "whatsnext" %}}
 
-* [kubeadm upgrade](/docs/reference/setup-tools/kubeadm/kubeadm-upgrade/) to upgrade a Kubernetes cluster to a newer version
+* [kubeadm upgrade](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-upgrade/) to upgrade a Kubernetes cluster to a newer version

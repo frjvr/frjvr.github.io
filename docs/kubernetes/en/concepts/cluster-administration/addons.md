@@ -31,7 +31,7 @@ This page lists some of the available add-ons and links to their respective inst
 * [Nodus](https://github.com/akraino-edge-stack/icn-nodus) is an OVN based CNI controller plugin to provide cloud native based Service function chaining(SFC).
 * [NSX-T](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/index.html) Container Plug-in (NCP) provides integration between VMware NSX-T and container orchestrators such as Kubernetes, as well as integration between NSX-T and container-based CaaS/PaaS platforms such as Pivotal Container Service (PKS) and OpenShift.
 * [Nuage](https://github.com/nuagenetworks/nuage-kubernetes/blob/v5.1.1-1/docs/kubernetes-1-installation.rst) is an SDN platform that provides policy-based networking between Kubernetes Pods and non-Kubernetes environments with visibility and security monitoring.
-* [Romana](https://github.com/romana) is a Layer 3 networking solution for pod networks that also supports the [NetworkPolicy](/docs/concepts/services-networking/network-policies/) API.
+* [Romana](https://github.com/romana) is a Layer 3 networking solution for pod networks that also supports the [NetworkPolicy](/docs/kubernetes/en/concepts/services-networking/network-policies/) API.
 * [Weave Net](https://www.weave.works/docs/net/latest/kubernetes/kube-addon/) provides networking and network policy, will carry on working on both sides of a network partition, and does not require an external database.
 
 ## Service Discovery
@@ -49,8 +49,8 @@ This page lists some of the available add-ons and links to their respective inst
 * The
   [node problem detector](https://github.com/kubernetes/node-problem-detector)
   runs on Linux nodes and reports system issues as either
-  [Events](/docs/reference/kubernetes-api/cluster-resources/event-v1/) or
-  [Node conditions](/docs/concepts/architecture/nodes/#condition).
+  [Events](/docs/kubernetes/en/reference/kubernetes-api/cluster-resources/event-v1/) or
+  [Node conditions](/docs/kubernetes/en/concepts/architecture/nodes/#condition).
 
 ## Legacy Add-ons
 

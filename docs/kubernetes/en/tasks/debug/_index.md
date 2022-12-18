@@ -14,9 +14,9 @@ no_list: true
 Sometimes things go wrong. This guide is aimed at making them right. It has
 two sections:
 
-* [Debugging your application](/docs/tasks/debug/debug-application/) - Useful
+* [Debugging your application](/docs/kubernetes/en/tasks/debug/debug-application/) - Useful
   for users who are deploying code into Kubernetes and wondering why it is not working.
-* [Debugging your cluster](/docs/tasks/debug/debug-cluster/) - Useful
+* [Debugging your cluster](/docs/kubernetes/en/tasks/debug/debug-cluster/) - Useful
   for cluster administrators and people whose Kubernetes cluster is unhappy.
 
 You should also check the known issues for the [release](https://github.com/kubernetes/kubernetes/releases)
@@ -32,14 +32,14 @@ ways for you to get help from the Kubernetes community.
 ### Questions
 
 The documentation on this site has been structured to provide answers to a wide
-range of questions. [Concepts](/docs/concepts/) explain the Kubernetes
-architecture and how each component works, while [Setup](/docs/setup/) provides
-practical instructions for getting started. [Tasks](/docs/tasks/) show how to
-accomplish commonly used tasks, and [Tutorials](/docs/tutorials/) are more
+range of questions. [Concepts](/docs/kubernetes/en/concepts/) explain the Kubernetes
+architecture and how each component works, while [Setup](/docs/kubernetes/en/setup/) provides
+practical instructions for getting started. [Tasks](/docs/kubernetes/en/tasks/) show how to
+accomplish commonly used tasks, and [Tutorials](/docs/kubernetes/en/tutorials/) are more
 comprehensive walkthroughs of real-world, industry-specific, or end-to-end
-development scenarios. The [Reference](/docs/reference/) section provides
-detailed documentation on the [Kubernetes API](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/)
-and command-line interfaces (CLIs), such as [`kubectl`](/docs/reference/kubectl/).
+development scenarios. The [Reference](/docs/kubernetes/en/reference/) section provides
+detailed documentation on the [Kubernetes API](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/)
+and command-line interfaces (CLIs), such as [`kubectl`](/docs/kubernetes/en/reference/kubectl/).
 
 ## Help! My question isn't covered!  I need help now!
 

@@ -10,7 +10,7 @@ weight: 10
 
 kubeadm does not support automated ways of reconfiguring components that
 were deployed on managed nodes. One way of automating this would be
-by using a custom [operator](/docs/concepts/extend-kubernetes/operator/).
+by using a custom [operator](/docs/kubernetes/en/concepts/extend-kubernetes/operator/).
 
 To modify the components configuration you must manually edit associated cluster
 objects and files on disk.
@@ -60,7 +60,7 @@ component configuration and avoid introducing typos and YAML indentation mistake
 #### Updating the `ClusterConfiguration`
 
 During cluster creation and upgrade, kubeadm writes its
-[`ClusterConfiguration`](/docs/reference/config-api/kubeadm-config.v1beta3/)
+[`ClusterConfiguration`](/docs/kubernetes/en/reference/config-api/kubeadm-config.v1beta3/)
 in a ConfigMap called `kubeadm-config` in the `kube-system` namespace.
 
 To change a particular option in the `ClusterConfiguration` you can edit the ConfigMap with this command:
@@ -115,7 +115,7 @@ Try doing these changes one node at a time to leave the cluster without downtime
 #### Updating the `KubeletConfiguration`
 
 During cluster creation and upgrade, kubeadm writes its
-[`KubeletConfiguration`](/docs/reference/config-api/kubelet-config.v1beta1/)
+[`KubeletConfiguration`](/docs/kubernetes/en/reference/config-api/kubelet-config.v1beta1/)
 in a ConfigMap called `kubelet-config` in the `kube-system` namespace.
 
 You can edit the ConfigMap with this command:
@@ -153,7 +153,7 @@ This means that node local configuration must be applied either by flags in
 #### Updating the `KubeProxyConfiguration`
 
 During cluster creation and upgrade, kubeadm writes its
-[`KubeProxyConfiguration`](/docs/reference/config-api/kube-proxy-config.v1alpha1/)
+[`KubeProxyConfiguration`](/docs/kubernetes/en/reference/config-api/kube-proxy-config.v1alpha1/)
 in a ConfigMap in the `kube-system` namespace called `kube-proxy`.
 
 This ConfigMap is used by the `kube-proxy` DaemonSet in the `kube-system` namespace.
@@ -243,7 +243,7 @@ kubectl edit no <node-name>
 
 During `kubeadm upgrade` the contents of such a Node might get overwritten.
 If you would like to persist your modifications to the Node object after upgrade,
-you can prepare a [kubectl patch](/docs/tasks/manage-kubernetes-objects/update-api-object-kubectl-patch/)
+you can prepare a [kubectl patch](/docs/kubernetes/en/tasks/manage-kubernetes-objects/update-api-object-kubectl-patch/)
 and apply it to the Node object:
 
 ```shell
@@ -254,7 +254,7 @@ kubectl patch no <node-name> --patch-file <patch-file>
 
 The main source of control plane configuration is the `ClusterConfiguration`
 object stored in the cluster. To extend the static Pod manifests configuration,
-[patches](/docs/setup/production-environment/tools/kubeadm/control-plane-flags/#patches) can be used.
+[patches](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/control-plane-flags/#patches) can be used.
 
 These patch files must remain as files on the control plane nodes to ensure that
 they can be used by the `kubeadm upgrade ... --patches <directory>`.
@@ -276,7 +276,7 @@ A kubelet restart will be required after changing `/var/lib/kubelet/config.conf`
 
 ## {{% heading "whatsnext" %}}
 
-- [Upgrading kubeadm clusters](/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade)
-- [Customizing components with the kubeadm API](/docs/setup/production-environment/tools/kubeadm/control-plane-flags)
-- [Certificate management with kubeadm](/docs/tasks/administer-cluster/kubeadm/kubeadm-certs)
-- [Find more about kubeadm set-up](/docs/reference/setup-tools/kubeadm/)
+- [Upgrading kubeadm clusters](/docs/kubernetes/en/tasks/administer-cluster/kubeadm/kubeadm-upgrade)
+- [Customizing components with the kubeadm API](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/control-plane-flags)
+- [Certificate management with kubeadm](/docs/kubernetes/en/tasks/administer-cluster/kubeadm/kubeadm-certs)
+- [Find more about kubeadm set-up](/docs/kubernetes/en/reference/setup-tools/kubeadm/)

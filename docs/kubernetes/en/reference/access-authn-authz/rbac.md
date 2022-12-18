@@ -30,7 +30,7 @@ kube-apiserver --authorization-mode=Example,RBAC --other-options --more-options
 
 The RBAC API declares four kinds of Kubernetes object: _Role_, _ClusterRole_,
 _RoleBinding_ and _ClusterRoleBinding_. You can
-[describe objects](/docs/concepts/overview/working-with-objects/kubernetes-objects/#understanding-kubernetes-objects),
+[describe objects](/docs/kubernetes/en/concepts/overview/working-with-objects/kubernetes-objects/#understanding-kubernetes-objects),
 or amend them, using tools such as `kubectl`, just like any other Kubernetes object.
 
 {{< caution >}}
@@ -110,7 +110,7 @@ rules:
 ```
 
 The name of a Role or a ClusterRole object must be a valid
-[path segment name](/docs/concepts/overview/working-with-objects/names#path-segment-names).
+[path segment name](/docs/kubernetes/en/concepts/overview/working-with-objects/names#path-segment-names).
 
 ### RoleBinding and ClusterRoleBinding
 
@@ -126,7 +126,7 @@ If you want to bind a ClusterRole to all the namespaces in your cluster, you use
 ClusterRoleBinding.
 
 The name of a RoleBinding or ClusterRoleBinding object must be a valid
-[path segment name](/docs/concepts/overview/working-with-objects/names#path-segment-names).
+[path segment name](/docs/kubernetes/en/concepts/overview/working-with-objects/names#path-segment-names).
 
 #### RoleBinding examples {#rolebinding-example}
 
@@ -304,7 +304,7 @@ rules:
 {{< caution >}}
 Using wildcards in resource and verb entries could result in overly permissive access being granted to sensitive resources.
 For instance, if a new resource type is added, or a new subresource is added, or a new custom verb is checked, the wildcard entry automatically grants access, which may be undesirable.
-The [principle of least privilege](/docs/concepts/security/rbac-good-practices/#least-privilege) should be employed, using specific resources and verbs to ensure only the permissions required for the workload to function correctly are applied. 
+The [principle of least privilege](/docs/kubernetes/en/concepts/security/rbac-good-practices/#least-privilege) should be employed, using specific resources and verbs to ensure only the permissions required for the workload to function correctly are applied. 
 {{< /caution >}}
 
 
@@ -490,7 +490,7 @@ Subjects can be groups, users or
 Kubernetes represents usernames as strings.
 These can be: plain names, such as "alice"; email-style names, like "bob@example.com";
 or numeric user IDs represented as a string.  It is up to you as a cluster administrator
-to configure the [authentication modules](/docs/reference/access-authn-authz/authentication/)
+to configure the [authentication modules](/docs/kubernetes/en/reference/access-authn-authz/authentication/)
 so that authentication produces usernames in the format you want.
 
 {{< caution >}}
@@ -505,7 +505,7 @@ In Kubernetes, Authenticator modules provide group information.
 Groups, like users, are represented as strings, and that string has no format requirements,
 other than that the prefix `system:` is reserved.
 
-[ServiceAccounts](/docs/tasks/configure-pod-container/configure-service-account/) have names prefixed
+[ServiceAccounts](/docs/kubernetes/en/tasks/configure-pod-container/configure-service-account/) have names prefixed
 with `system:serviceaccount:`, and belong to groups that have names prefixed with `system:serviceaccounts:`.
 
 {{< note >}}
@@ -771,7 +771,7 @@ The permissions required by individual controllers are detailed in the <a href="
 <td>None</td>
 <td>Allows access to resources required by the kubelet, <b>including read access to all secrets, and write access to all pod status objects</b>.
 
-You should use the <a href="/docs/reference/access-authn-authz/node/">Node authorizer</a> and <a href="/docs/reference/access-authn-authz/admission-controllers/#noderestriction">NodeRestriction admission plugin</a> instead of the <tt>system:node</tt> role, and allow granting API access to kubelets based on the Pods scheduled to run on them.
+You should use the <a href="/docs/kubernetes/en/reference/access-authn-authz/node/">Node authorizer</a> and <a href="/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/#noderestriction">NodeRestriction admission plugin</a> instead of the <tt>system:node</tt> role, and allow granting API access to kubelets based on the Pods scheduled to run on them.
 
 The <tt>system:node</tt> role only exists for compatibility with Kubernetes clusters upgraded from versions prior to v1.8.
 </td>
@@ -815,7 +815,7 @@ This is commonly used by add-on API servers for unified authentication and autho
 <tr>
 <td><b>system:kube-dns</b></td>
 <td><b>kube-dns</b> service account in the <b>kube-system</b> namespace</td>
-<td>Role for the <a href="/docs/concepts/services-networking/dns-pod-service/">kube-dns</a> component.</td>
+<td>Role for the <a href="/docs/kubernetes/en/concepts/services-networking/dns-pod-service/">kube-dns</a> component.</td>
 </tr>
 <tr>
 <td><b>system:kubelet-api-admin</b></td>
@@ -826,7 +826,7 @@ This is commonly used by add-on API servers for unified authentication and autho
 <td><b>system:node-bootstrapper</b></td>
 <td>None</td>
 <td>Allows access to the resources required to perform
-<a href="/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/">kubelet TLS bootstrapping</a>.</td>
+<a href="/docs/kubernetes/en/reference/access-authn-authz/kubelet-tls-bootstrapping/">kubelet TLS bootstrapping</a>.</td>
 </tr>
 <tr>
 <td><b>system:node-problem-detector</b></td>
@@ -836,7 +836,7 @@ This is commonly used by add-on API servers for unified authentication and autho
 <tr>
 <td><b>system:persistent-volume-provisioner</b></td>
 <td>None</td>
-<td>Allows access to the resources required by most <a href="/docs/concepts/storage/persistent-volumes/#dynamic">dynamic volume provisioners</a>.</td>
+<td>Allows access to the resources required by most <a href="/docs/kubernetes/en/concepts/storage/persistent-volumes/#dynamic">dynamic volume provisioners</a>.</td>
 </tr>
 <tr>
 <td><b>system:monitoring</b></td>
@@ -1153,7 +1153,7 @@ In order from most secure to least secure, the approaches are:
       --namespace=my-namespace
     ```
 
-    Many [add-ons](/docs/concepts/cluster-administration/addons/) run as the
+    Many [add-ons](/docs/kubernetes/en/concepts/cluster-administration/addons/) run as the
     "default" service account in the `kube-system` namespace.
     To allow those add-ons to run with super-user access, grant cluster-admin
     permissions to the "default" service account in the `kube-system` namespace.
@@ -1245,7 +1245,7 @@ Here are two approaches for managing this transition:
 ### Parallel authorizers
 
 Run both the RBAC and ABAC authorizers, and specify a policy file that contains
-the [legacy ABAC policy](/docs/reference/access-authn-authz/abac/#policy-file-format):
+the [legacy ABAC policy](/docs/kubernetes/en/reference/access-authn-authz/abac/#policy-file-format):
 
 ```
 --authorization-mode=...,RBAC,ABAC --authorization-policy-file=mypolicy.json

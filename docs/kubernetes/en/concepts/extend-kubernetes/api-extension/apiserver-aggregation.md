@@ -16,7 +16,7 @@ The additional APIs can either be ready-made solutions such as a
 [metrics server](https://github.com/kubernetes-sigs/metrics-server), or APIs that you develop yourself.
 
 The aggregation layer is different from
-[Custom Resources](/docs/concepts/extend-kubernetes/api-extension/custom-resources/),
+[Custom Resources](/docs/kubernetes/en/concepts/extend-kubernetes/api-extension/custom-resources/),
 which are a way to make the {{< glossary_tooltip term_id="kube-apiserver" text="kube-apiserver" >}}
 recognise new kinds of object.
 
@@ -46,10 +46,10 @@ let you meet it.
 
 ## {{% heading "whatsnext" %}}
 
-* To get the aggregator working in your environment, [configure the aggregation layer](/docs/tasks/extend-kubernetes/configure-aggregation-layer/).
-* Then, [setup an extension api-server](/docs/tasks/extend-kubernetes/setup-extension-api-server/) to work with the aggregation layer.
-* Read about [APIService](/docs/reference/kubernetes-api/cluster-resources/api-service-v1/) in the API reference
+* To get the aggregator working in your environment, [configure the aggregation layer](/docs/kubernetes/en/tasks/extend-kubernetes/configure-aggregation-layer/).
+* Then, [setup an extension api-server](/docs/kubernetes/en/tasks/extend-kubernetes/setup-extension-api-server/) to work with the aggregation layer.
+* Read about [APIService](/docs/kubernetes/en/reference/kubernetes-api/cluster-resources/api-service-v1/) in the API reference
 
 Alternatively: learn how to
-[extend the Kubernetes API using Custom Resource Definitions](/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/).
+[extend the Kubernetes API using Custom Resource Definitions](/docs/kubernetes/en/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/).
 

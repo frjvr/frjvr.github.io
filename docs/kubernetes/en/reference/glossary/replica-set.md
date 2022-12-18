@@ -2,7 +2,7 @@
 title: ReplicaSet
 id: replica-set
 date: 2018-04-12
-full_link: /docs/concepts/workloads/controllers/replicaset/
+full_link: /docs/kubernetes/en/concepts/workloads/controllers/replicaset/
 short_description: >
  ReplicaSet ensures that a specified number of Pod replicas are running at one time
 

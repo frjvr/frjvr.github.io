@@ -158,7 +158,7 @@ accidentally, or from being stored in a terminal log.
 ## Edit a Secret {#edit-secret}
 
 You can edit an existing `Secret` object unless it is
-[immutable](/docs/concepts/configuration/secret/#secret-immutable). To edit a
+[immutable](/docs/kubernetes/en/concepts/configuration/secret/#secret-immutable). To edit a
 Secret, run the following command:
 
 ```shell
@@ -197,6 +197,6 @@ kubectl delete secret db-user-pass
 
 ## {{% heading "whatsnext" %}}
 
-- Read more about the [Secret concept](/docs/concepts/configuration/secret/)
-- Learn how to [manage Secrets using config file](/docs/tasks/configmap-secret/managing-secret-using-config-file/)
-- Learn how to [manage Secrets using kustomize](/docs/tasks/configmap-secret/managing-secret-using-kustomize/)
+- Read more about the [Secret concept](/docs/kubernetes/en/concepts/configuration/secret/)
+- Learn how to [manage Secrets using config file](/docs/kubernetes/en/tasks/configmap-secret/managing-secret-using-config-file/)
+- Learn how to [manage Secrets using kustomize](/docs/kubernetes/en/tasks/configmap-secret/managing-secret-using-kustomize/)

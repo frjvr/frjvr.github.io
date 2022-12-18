@@ -14,19 +14,19 @@ and kube-proxy you can use `KubeletConfiguration` and `KubeProxyConfiguration`, 
 
 All of these options are possible via the kubeadm configuration API.
 For more details on each field in the configuration you can navigate to our
-[API reference pages](/docs/reference/config-api/kubeadm-config.v1beta3/).
+[API reference pages](/docs/kubernetes/en/reference/config-api/kubeadm-config.v1beta3/).
 
 {{< note >}}
 Customizing the CoreDNS deployment of kubeadm is currently not supported. You must manually
 patch the `kube-system/coredns` {{< glossary_tooltip text="ConfigMap" term_id="configmap" >}}
 and recreate the CoreDNS {{< glossary_tooltip text="Pods" term_id="pod" >}} after that. Alternatively,
 you can skip the default CoreDNS deployment and deploy your own variant.
-For more details on that see [Using init phases with kubeadm](/docs/reference/setup-tools/kubeadm/kubeadm-init/#init-phases).
+For more details on that see [Using init phases with kubeadm](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-init/#init-phases).
 {{< /note >}}
 
 {{< note >}}
 To reconfigure a cluster that has already been created see
-[Reconfiguring a kubeadm cluster](/docs/tasks/administer-cluster/kubeadm/kubeadm-reconfigure).
+[Reconfiguring a kubeadm cluster](/docs/kubernetes/en/tasks/administer-cluster/kubeadm/kubeadm-reconfigure).
 {{< /note >}}
 
 <!-- body -->
@@ -67,7 +67,7 @@ To workaround that you must use [patches](#patches).
 
 ### APIServer flags
 
-For details, see the [reference documentation for kube-apiserver](/docs/reference/command-line-tools-reference/kube-apiserver/).
+For details, see the [reference documentation for kube-apiserver](/docs/kubernetes/en/reference/command-line-tools-reference/kube-apiserver/).
 
 Example usage:
 
@@ -84,7 +84,7 @@ apiServer:
 
 ### ControllerManager flags
 
-For details, see the [reference documentation for kube-controller-manager](/docs/reference/command-line-tools-reference/kube-controller-manager/).
+For details, see the [reference documentation for kube-controller-manager](/docs/kubernetes/en/reference/command-line-tools-reference/kube-controller-manager/).
 
 Example usage:
 
@@ -100,7 +100,7 @@ controllerManager:
 
 ### Scheduler flags
 
-For details, see the [reference documentation for kube-scheduler](/docs/reference/command-line-tools-reference/kube-scheduler/).
+For details, see the [reference documentation for kube-scheduler](/docs/kubernetes/en/reference/command-line-tools-reference/kube-scheduler/).
 
 Example usage:
 
@@ -171,7 +171,7 @@ For example, `kube-apiserver0+merge.yaml` or just `etcd.json`.
 - `target` can be one of `kube-apiserver`, `kube-controller-manager`, `kube-scheduler`, `etcd`
 and `kubeletconfiguration`.
 - `patchtype` can be one of `strategic`, `merge` or `json` and these must match the patching formats
-[supported by kubectl](/docs/tasks/manage-kubernetes-objects/update-api-object-kubectl-patch).
+[supported by kubectl](/docs/kubernetes/en/tasks/manage-kubernetes-objects/update-api-object-kubectl-patch).
 The default `patchtype` is `strategic`.
 - `extension` must be either `json` or `yaml`.
 - `suffix` is an optional string that can be used to determine which patches are applied first
@@ -186,7 +186,7 @@ API structure that can be used for the same purpose.
 
 ## Customizing the kubelet {#kubelet}
 
-To customize the kubelet you can add a [`KubeletConfiguration`](/docs/reference/config-api/kubelet-config.v1beta1/)
+To customize the kubelet you can add a [`KubeletConfiguration`](/docs/kubernetes/en/reference/config-api/kubelet-config.v1beta1/)
 next to the `ClusterConfiguration` or `InitConfiguration` separated by `---` within the same configuration file.
 This file can then be passed to `kubeadm init` and kubeadm will apply the same base `KubeletConfiguration`
 to all nodes in the cluster.
@@ -197,16 +197,16 @@ For applying instance-specific configuration over the base `KubeletConfiguration
 Alternatively, you can use kubelet flags as overrides by passing them in the
 `nodeRegistration.kubeletExtraArgs` field supported by both `InitConfiguration` and `JoinConfiguration`.
 Some kubelet flags are deprecated, so check their status in the
-[kubelet reference documentation](/docs/reference/command-line-tools-reference/kubelet) before using them.
+[kubelet reference documentation](/docs/kubernetes/en/reference/command-line-tools-reference/kubelet) before using them.
 
-For additional details see [Configuring each kubelet in your cluster using kubeadm](/docs/setup/production-environment/tools/kubeadm/kubelet-integration)
+For additional details see [Configuring each kubelet in your cluster using kubeadm](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/kubelet-integration)
 
 ## Customizing kube-proxy
 
 To customize kube-proxy you can pass a `KubeProxyConfiguration` next your `ClusterConfiguration` or
 `InitConfiguration` to `kubeadm init` separated by `---`.
 
-For more details you can navigate to our [API reference pages](/docs/reference/config-api/kubeadm-config.v1beta3/).
+For more details you can navigate to our [API reference pages](/docs/kubernetes/en/reference/config-api/kubeadm-config.v1beta3/).
 
 {{< note >}}
 kubeadm deploys kube-proxy as a {{< glossary_tooltip text="DaemonSet" term_id="daemonset" >}}, which means

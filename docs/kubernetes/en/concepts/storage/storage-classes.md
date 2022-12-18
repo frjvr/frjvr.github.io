@@ -12,8 +12,8 @@ weight: 40
 <!-- overview -->
 
 This document describes the concept of a StorageClass in Kubernetes. Familiarity
-with [volumes](/docs/concepts/storage/volumes/) and
-[persistent volumes](/docs/concepts/storage/persistent-volumes) is suggested.
+with [volumes](/docs/kubernetes/en/concepts/storage/volumes/) and
+[persistent volumes](/docs/kubernetes/en/concepts/storage/persistent-volumes) is suggested.
 
 <!-- body -->
 
@@ -39,7 +39,7 @@ be updated once they are created.
 
 Administrators can specify a default StorageClass only for PVCs that don't
 request any particular class to bind to: see the
-[PersistentVolumeClaim section](/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims)
+[PersistentVolumeClaim section](/docs/kubernetes/en/concepts/storage/persistent-volumes/#persistentvolumeclaims)
 for details.
 
 ```yaml
@@ -148,7 +148,7 @@ the class or PV. If a mount option is invalid, the PV mount fails.
 ### Volume Binding Mode
 
 The `volumeBindingMode` field controls when [volume binding and dynamic
-provisioning](/docs/concepts/storage/persistent-volumes/#provisioning) should occur. When unset, "Immediate" mode is used by default.
+provisioning](/docs/kubernetes/en/concepts/storage/persistent-volumes/#provisioning) should occur. When unset, "Immediate" mode is used by default.
 
 The `Immediate` mode indicates that volume binding and dynamic
 provisioning occurs once the PersistentVolumeClaim is created. For storage
@@ -160,11 +160,11 @@ A cluster administrator can address this issue by specifying the `WaitForFirstCo
 will delay the binding and provisioning of a PersistentVolume until a Pod using the PersistentVolumeClaim is created.
 PersistentVolumes will be selected or provisioned conforming to the topology that is
 specified by the Pod's scheduling constraints. These include, but are not limited to, [resource
-requirements](/docs/concepts/configuration/manage-resources-containers/),
-[node selectors](/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector),
+requirements](/docs/kubernetes/en/concepts/configuration/manage-resources-containers/),
+[node selectors](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node/#nodeselector),
 [pod affinity and
-anti-affinity](/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity),
-and [taints and tolerations](/docs/concepts/scheduling-eviction/taint-and-toleration).
+anti-affinity](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity),
+and [taints and tolerations](/docs/kubernetes/en/concepts/scheduling-eviction/taint-and-toleration).
 
 The following plugins support `WaitForFirstConsumer` with dynamic provisioning:
 
@@ -178,7 +178,7 @@ The following plugins support `WaitForFirstConsumer` with pre-created Persistent
 * [Local](#local)
 
 {{< feature-state state="stable" for_k8s_version="v1.17" >}}
-[CSI volumes](/docs/concepts/storage/volumes/#csi) are also supported with dynamic provisioning
+[CSI volumes](/docs/kubernetes/en/concepts/storage/volumes/#csi) are also supported with dynamic provisioning
 and pre-created PVs, but you'll need to look at the documentation for a specific CSI driver
 to see its supported topology keys and examples.
 
@@ -386,7 +386,7 @@ There are two types of provisioners for vSphere storage classes:
 - [CSI provisioner](#vsphere-provisioner-csi): `csi.vsphere.vmware.com`
 - [vCP provisioner](#vcp-provisioner): `kubernetes.io/vsphere-volume`
 
-In-tree provisioners are [deprecated](/blog/2019/12/09/kubernetes-1-17-feature-csi-migration-beta/#why-are-we-migrating-in-tree-plugins-to-csi). For more information on the CSI provisioner, see [Kubernetes vSphere CSI Driver](https://vsphere-csi-driver.sigs.k8s.io/) and [vSphereVolume CSI migration](/docs/concepts/storage/volumes/#vsphere-csi-migration).
+In-tree provisioners are [deprecated](/blog/2019/12/09/kubernetes-1-17-feature-csi-migration-beta/#why-are-we-migrating-in-tree-plugins-to-csi). For more information on the CSI provisioner, see [Kubernetes vSphere CSI Driver](https://vsphere-csi-driver.sigs.k8s.io/) and [vSphereVolume CSI migration](/docs/kubernetes/en/concepts/storage/volumes/#vsphere-csi-migration).
 
 #### CSI Provisioner {#vsphere-provisioner-csi}
 
@@ -596,8 +596,8 @@ parameters:
 
 During storage provisioning, a secret named by `secretName` is created for the 
 mounting credentials. If the cluster has enabled both 
-[RBAC](/docs/reference/access-authn-authz/rbac/) and 
-[Controller Roles](/docs/reference/access-authn-authz/rbac/#controller-roles),
+[RBAC](/docs/kubernetes/en/reference/access-authn-authz/rbac/) and 
+[Controller Roles](/docs/kubernetes/en/reference/access-authn-authz/rbac/#controller-roles),
 add the `create` permission of resource `secret` for clusterrole
 `system:controller:persistent-volume-binder`.
 

@@ -38,7 +38,7 @@ dependency on Docker:
    - Node startup scripts;
    - Monitoring and security agents installed on nodes directly.
 1. Third-party tools that perform above mentioned privileged operations. See
-   [Migrating telemetry and security agents from dockershim](/docs/tasks/administer-cluster/migrating-from-dockershim/migrating-telemetry-and-security-agents)
+   [Migrating telemetry and security agents from dockershim](/docs/kubernetes/en/tasks/administer-cluster/migrating-from-dockershim/migrating-telemetry-and-security-agents)
    for more information.
 1. Make sure there is no indirect dependencies on dockershim behavior.
    This is an edge case and unlikely to affect your application. Some tooling may be configured
@@ -49,7 +49,7 @@ dependency on Docker:
 
 ## Dependency on Docker explained {#role-of-dockershim}
 
-A [container runtime](/docs/concepts/containers/#container-runtimes) is software that can
+A [container runtime](/docs/kubernetes/en/concepts/containers/#container-runtimes) is software that can
 execute the containers that make up a Kubernetes pod. Kubernetes is responsible for orchestration
 and scheduling of Pods; on each node, the {{< glossary_tooltip text="kubelet" term_id="kubelet" >}}
 uses the container runtime interface as an abstraction so that you can use any compatible
@@ -91,5 +91,5 @@ by Kubernetes.
 
 ## {{% heading "whatsnext" %}}
 
-- Read [Migrating from dockershim](/docs/tasks/administer-cluster/migrating-from-dockershim/) to understand your next steps
+- Read [Migrating from dockershim](/docs/kubernetes/en/tasks/administer-cluster/migrating-from-dockershim/) to understand your next steps
 - Read the [dockershim deprecation FAQ](/blog/2020/12/02/dockershim-faq/) article for more information.

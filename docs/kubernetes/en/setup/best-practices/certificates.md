@@ -9,7 +9,7 @@ weight: 50
 <!-- overview -->
 
 Kubernetes requires PKI certificates for authentication over TLS.
-If you install Kubernetes with [kubeadm](/docs/reference/setup-tools/kubeadm/), the certificates
+If you install Kubernetes with [kubeadm](/docs/kubernetes/en/reference/setup-tools/kubeadm/), the certificates
 that your cluster requires are automatically generated.
 You can also generate your own certificates -- for example, to keep your private keys more secure
 by not storing them on the API server.
@@ -22,7 +22,7 @@ This page explains the certificates that your cluster requires.
 Kubernetes requires PKI for the following operations:
 
 * Client certificates for the kubelet to authenticate to the API server
-* Kubelet [server certificates](/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/#client-and-serving-certificates)
+* Kubelet [server certificates](/docs/kubernetes/en/reference/access-authn-authz/kubelet-tls-bootstrapping/#client-and-serving-certificates)
   for the API server to talk to the kubelets
 * Server certificate for the API server endpoint
 * Client certificates for administrators of the cluster to authenticate to the API server
@@ -30,11 +30,11 @@ Kubernetes requires PKI for the following operations:
 * Client certificate for the API server to talk to etcd
 * Client certificate/kubeconfig for the controller manager to talk to the API server
 * Client certificate/kubeconfig for the scheduler to talk to the API server.
-* Client and server certificates for the [front-proxy](/docs/tasks/extend-kubernetes/configure-aggregation-layer/)
+* Client and server certificates for the [front-proxy](/docs/kubernetes/en/tasks/extend-kubernetes/configure-aggregation-layer/)
 
 {{< note >}}
 `front-proxy` certificates are required only if you run kube-proxy to support
-[an extension API server](/docs/tasks/extend-kubernetes/setup-extension-api-server/).
+[an extension API server](/docs/kubernetes/en/tasks/extend-kubernetes/setup-extension-api-server/).
 {{< /note >}}
 
 etcd also implements mutual TLS to authenticate clients and peers.
@@ -48,9 +48,9 @@ certificates which kubeadm places in `/etc/kubernetes`.
 ## Configure certificates manually
 
 If you don't want kubeadm to generate the required certificates, you can create them using a
-single root CA or by providing all certificates. See [Certificates](/docs/tasks/administer-cluster/certificates/)
+single root CA or by providing all certificates. See [Certificates](/docs/kubernetes/en/tasks/administer-cluster/certificates/)
 for details on creating your own certificate authority. See
-[Certificate Management with kubeadm](/docs/tasks/administer-cluster/kubeadm/kubeadm-certs/)
+[Certificate Management with kubeadm](/docs/kubernetes/en/tasks/administer-cluster/kubeadm/kubeadm-certs/)
 for more on managing certificates.
 
 ### Single root CA
@@ -64,7 +64,7 @@ Required CAs:
 |------------------------|---------------------------|----------------------------------|
 | ca.crt,key             | kubernetes-ca             | Kubernetes general CA            |
 | etcd/ca.crt,key        | etcd-ca                   | For all etcd-related functions   |
-| front-proxy-ca.crt,key | kubernetes-front-proxy-ca | For the [front-end proxy](/docs/tasks/extend-kubernetes/configure-aggregation-layer/) |
+| front-proxy-ca.crt,key | kubernetes-front-proxy-ca | For the [front-end proxy](/docs/kubernetes/en/tasks/extend-kubernetes/configure-aggregation-layer/) |
 
 On top of the above CAs, it is also necessary to get a public/private key pair for service account
 management, `sa.key` and `sa.pub`.
@@ -95,12 +95,12 @@ Required certificates:
 | kube-apiserver-kubelet-client | kubernetes-ca             | system:masters | client           |                                                     |
 | front-proxy-client            | kubernetes-front-proxy-ca |                | client           |                                                     |
 
-[1]: any other IP or DNS name you contact your cluster on (as used by [kubeadm](/docs/reference/setup-tools/kubeadm/)
+[1]: any other IP or DNS name you contact your cluster on (as used by [kubeadm](/docs/kubernetes/en/reference/setup-tools/kubeadm/)
 the load balancer stable IP and/or DNS name, `kubernetes`, `kubernetes.default`, `kubernetes.default.svc`,
 `kubernetes.default.svc.cluster`, `kubernetes.default.svc.cluster.local`)
 
 where `kind` maps to one or more of the x509 key usage, which is also documented in the
-`.spec.usages` of a [CertificateSigningRequest](/docs/reference/kubernetes-api/authentication-resources/certificate-signing-request-v1#CertificateSigningRequest)
+`.spec.usages` of a [CertificateSigningRequest](/docs/kubernetes/en/reference/kubernetes-api/authentication-resources/certificate-signing-request-v1#CertificateSigningRequest)
 type:
 
 | kind   | Key usage                                                                       |
@@ -126,7 +126,7 @@ For kubeadm users only:
 
 ### Certificate paths
 
-Certificates should be placed in a recommended path (as used by [kubeadm](/docs/reference/setup-tools/kubeadm/)).
+Certificates should be placed in a recommended path (as used by [kubeadm](/docs/kubernetes/en/reference/setup-tools/kubeadm/)).
 Paths should be specified using the given argument regardless of location.
 
 | Default CN                   | recommended key path         | recommended cert path       | command                 | key argument                 | cert argument                             |
@@ -194,7 +194,7 @@ You must manually configure these administrator account and service accounts:
 {{< note >}}
 The value of `<nodeName>` for `kubelet.conf` **must** match precisely the value of the node name
 provided by the kubelet as it registers with the apiserver. For further details, read the
-[Node Authorization](/docs/reference/access-authn-authz/node/).
+[Node Authorization](/docs/kubernetes/en/reference/access-authn-authz/node/).
 {{< /note >}}
 
 1. For each config, generate an x509 cert/key pair with the given CN and O.

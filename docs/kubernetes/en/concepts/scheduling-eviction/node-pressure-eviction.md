@@ -16,7 +16,7 @@ During a node-pressure eviction, the kubelet sets the `PodPhase` for the
 selected pods to `Failed`. This terminates the pods. 
 
 Node-pressure eviction is not the same as 
-[API-initiated eviction](/docs/concepts/scheduling-eviction/api-eviction/).
+[API-initiated eviction](/docs/kubernetes/en/concepts/scheduling-eviction/api-eviction/).
 
 The kubelet does not respect your configured `PodDisruptionBudget` or the pod's
 `terminationGracePeriodSeconds`. If you use [soft eviction thresholds](#soft-eviction-thresholds),
@@ -66,7 +66,7 @@ the signal.
 
 The value for `memory.available` is derived from the cgroupfs instead of tools
 like `free -m`. This is important because `free -m` does not work in a
-container, and if users use the [node allocatable](/docs/tasks/administer-cluster/reserve-compute-resources/#node-allocatable)
+container, and if users use the [node allocatable](/docs/kubernetes/en/tasks/administer-cluster/reserve-compute-resources/#node-allocatable)
 feature, out of resource decisions
 are made local to the end user Pod part of the cgroup hierarchy as well as the
 root node. This [script](/examples/admin/resource/memory-available.sh)
@@ -225,7 +225,7 @@ signal below the threshold, the kubelet begins to evict end-user pods.
 The kubelet uses the following parameters to determine the pod eviction order:
 
 1. Whether the pod's resource usage exceeds requests
-1. [Pod Priority](/docs/concepts/scheduling-eviction/pod-priority-preemption/)
+1. [Pod Priority](/docs/kubernetes/en/concepts/scheduling-eviction/pod-priority-preemption/)
 1. The pod's resource usage relative to requests
 
 As a result, kubelet ranks and evicts pods in the following order:
@@ -279,7 +279,7 @@ In some cases, pod eviction only reclaims a small amount of the starved resource
 This can lead to the kubelet repeatedly hitting the configured eviction thresholds
 and triggering multiple evictions. 
 
-You can use the `--eviction-minimum-reclaim` flag or a [kubelet config file](/docs/tasks/administer-cluster/kubelet-config-file/)
+You can use the `--eviction-minimum-reclaim` flag or a [kubelet config file](/docs/kubernetes/en/tasks/administer-cluster/kubelet-config-file/)
 to configure a minimum reclaim amount for each resource. When the kubelet notices
 that a resource is starved, it continues to reclaim that resource until it
 reclaims the quantity you specify. 
@@ -415,8 +415,8 @@ to estimate or measure an optimal memory limit value for that container.
 
 ## {{% heading "whatsnext" %}}
 
-* Learn about [API-initiated Eviction](/docs/concepts/scheduling-eviction/api-eviction/)
-* Learn about [Pod Priority and Preemption](/docs/concepts/scheduling-eviction/pod-priority-preemption/)
-* Learn about [PodDisruptionBudgets](/docs/tasks/run-application/configure-pdb/)
-* Learn about [Quality of Service](/docs/tasks/configure-pod-container/quality-service-pod/) (QoS)
-* Check out the [Eviction API](/docs/reference/generated/kubernetes-api/{{<param "version">}}/#create-eviction-pod-v1-core)
+* Learn about [API-initiated Eviction](/docs/kubernetes/en/concepts/scheduling-eviction/api-eviction/)
+* Learn about [Pod Priority and Preemption](/docs/kubernetes/en/concepts/scheduling-eviction/pod-priority-preemption/)
+* Learn about [PodDisruptionBudgets](/docs/kubernetes/en/tasks/run-application/configure-pdb/)
+* Learn about [Quality of Service](/docs/kubernetes/en/tasks/configure-pod-container/quality-service-pod/) (QoS)
+* Check out the [Eviction API](/docs/kubernetes/en/reference/generated/kubernetes-api/{{<param "version">}}/#create-eviction-pod-v1-core)

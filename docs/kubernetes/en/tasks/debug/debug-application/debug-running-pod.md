@@ -16,7 +16,7 @@ This page explains how to debug Pods running (or crashing) on a Node.
 
 * Your {{< glossary_tooltip text="Pod" term_id="pod" >}} should already be
   scheduled and running. If your Pod is not yet running, start with [Debugging
-  Pods](/docs/tasks/debug/debug-application/).
+  Pods](/docs/kubernetes/en/tasks/debug/debug-application/).
 * For some of the advanced debugging steps you need to know on which Node the
   Pod is running and have shell access to run commands on that Node. You don't
   need that access to run the standard debug steps that use `kubectl`.
@@ -374,7 +374,7 @@ kubectl exec -it cassandra -- sh
 ```
 
 For more details, see [Get a Shell to a Running Container](
-/docs/tasks/debug/debug-application/get-shell-running-container/).
+/docs/kubernetes/en/tasks/debug/debug-application/get-shell-running-container/).
 
 ## Debugging with an ephemeral debug container {#ephemeral-container}
 
@@ -427,7 +427,7 @@ If you don't see a command prompt, try pressing enter.
 This command adds a new busybox container and attaches to it. The `--target`
 parameter targets the process namespace of another container. It's necessary
 here because `kubectl run` does not enable [process namespace sharing](
-/docs/tasks/configure-pod-container/share-process-namespace/) in the pod it
+/docs/kubernetes/en/tasks/configure-pod-container/share-process-namespace/) in the pod it
 creates.
 
 {{< note >}}
@@ -512,7 +512,7 @@ root@myapp-debug:/#
 * The `--share-processes` allows the containers in this Pod to see processes
   from the other containers in the Pod. For more information about how this
   works, see [Share Process Namespace between Containers in a Pod](
-  /docs/tasks/configure-pod-container/share-process-namespace/).
+  /docs/kubernetes/en/tasks/configure-pod-container/share-process-namespace/).
 {{< /note >}}
 
 Don't forget to clean up the debugging Pod when you're finished with it:

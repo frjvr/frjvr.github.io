@@ -72,6 +72,6 @@ A minimum of three hosts for control plane nodes and three hosts for etcd nodes 
 ## {{% heading "whatsnext" %}}
 
 
-- [Set up a highly available cluster with kubeadm](/docs/setup/production-environment/tools/kubeadm/high-availability/)
+- [Set up a highly available cluster with kubeadm](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/high-availability/)
 
 

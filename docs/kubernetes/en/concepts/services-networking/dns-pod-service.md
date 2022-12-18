@@ -76,7 +76,7 @@ depending on the IP family or families of the Service, with a name of the form
 `my-svc.my-namespace.svc.cluster-domain.example`.  This resolves to the cluster IP
 of the Service.
 
-[Headless Services](/docs/concepts/services-networking/service/#headless-services) 
+[Headless Services](/docs/kubernetes/en/concepts/services-networking/service/#headless-services) 
 (without a cluster IP) Services are also assigned DNS A and/or AAAA records,
 with a name of the form `my-svc.my-namespace.svc.cluster-domain.example`.  Unlike normal
 Services, this resolves to the set of IPs of all of the Pods selected by the Service.
@@ -213,7 +213,7 @@ When you set `setHostnameAsFQDN: true` in the Pod spec, the kubelet writes the P
 {{< note >}}
 In Linux, the hostname field of the kernel (the `nodename` field of `struct utsname`) is limited to 64 characters.
 
-If a Pod enables this feature and its FQDN is longer than 64 character, it will fail to start. The Pod will remain in `Pending` status (`ContainerCreating` as seen by `kubectl`) generating error events, such as Failed to construct FQDN from Pod hostname and cluster domain, FQDN `long-FQDN` is too long (64 characters is the max, 70 characters requested). One way of improving user experience for this scenario is to create an [admission webhook controller](/docs/reference/access-authn-authz/extensible-admission-controllers/#admission-webhooks) to control FQDN size when users create top level objects, for example, Deployment.
+If a Pod enables this feature and its FQDN is longer than 64 character, it will fail to start. The Pod will remain in `Pending` status (`ContainerCreating` as seen by `kubectl`) generating error events, such as Failed to construct FQDN from Pod hostname and cluster domain, FQDN `long-FQDN` is too long (64 characters is the max, 70 characters requested). One way of improving user experience for this scenario is to create an [admission webhook controller](/docs/kubernetes/en/reference/access-authn-authz/extensible-admission-controllers/#admission-webhooks) to control FQDN size when users create top level objects, for example, Deployment.
 {{< /note >}}
 
 ### Pod's DNS Policy
@@ -224,13 +224,13 @@ following Pod-specific DNS policies. These policies are specified in the
 
 - "`Default`": The Pod inherits the name resolution configuration from the node
   that the Pods run on.
-  See [related discussion](/docs/tasks/administer-cluster/dns-custom-nameservers)
+  See [related discussion](/docs/kubernetes/en/tasks/administer-cluster/dns-custom-nameservers)
   for more details.
 - "`ClusterFirst`": Any DNS query that does not match the configured cluster
   domain suffix, such as "`www.kubernetes.io`", is forwarded to an upstream
   nameserver by the DNS server. Cluster administrators may have extra
   stub-domain and upstream DNS servers configured.
-  See [related discussion](/docs/tasks/administer-cluster/dns-custom-nameservers)
+  See [related discussion](/docs/kubernetes/en/tasks/administer-cluster/dns-custom-nameservers)
   for details on how DNS queries are handled in those cases.
 - "`ClusterFirstWithHostNet`": For Pods running with hostNetwork, you should
   explicitly set its DNS policy to "`ClusterFirstWithHostNet`". Otherwise, Pods
@@ -363,4 +363,4 @@ this problem.
 ## {{% heading "whatsnext" %}}
 
 For guidance on administering DNS configurations, check
-[Configure DNS Service](/docs/tasks/administer-cluster/dns-custom-nameservers/)
+[Configure DNS Service](/docs/kubernetes/en/tasks/administer-cluster/dns-custom-nameservers/)

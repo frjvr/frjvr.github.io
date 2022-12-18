@@ -118,5 +118,5 @@ This means that the pod will prefer a node that has a `disktype=ssd` label.
 ## {{% heading "whatsnext" %}}
 
 Learn more about
-[Node Affinity](/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity).
+[Node Affinity](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node/#node-affinity).
 

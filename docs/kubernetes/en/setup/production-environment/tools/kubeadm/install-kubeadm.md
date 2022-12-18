@@ -12,7 +12,7 @@ card:
 
 <img src="/images/kubeadm-stacked-color.png" align="right" width="150px"></img>
 This page shows how to install the `kubeadm` toolbox.
-For information on how to create a cluster with kubeadm once you have performed this installation process, see the [Creating a cluster with kubeadm](/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/) page.
+For information on how to create a cluster with kubeadm once you have performed this installation process, see the [Creating a cluster with kubeadm](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/) page.
 
 
 ## {{% heading "prerequisites" %}}
@@ -47,7 +47,7 @@ route, we recommend you add IP route(s) so Kubernetes cluster addresses go via t
 
 ## Check required ports
 These
-[required ports](/docs/reference/ports-and-protocols/)
+[required ports](/docs/kubernetes/en/reference/ports-and-protocols/)
 need to be open in order for Kubernetes components to communicate with each other. You can use tools like netcat to check if a port is open. For example:
 
 ```shell
@@ -73,11 +73,11 @@ container runtime by scanning through a list of known endpoints.
 If multiple or no container runtimes are detected kubeadm will throw an error
 and will request that you specify which one you want to use.
 
-See [container runtimes](/docs/setup/production-environment/container-runtimes/)
+See [container runtimes](/docs/kubernetes/en/setup/production-environment/container-runtimes/)
 for more information.
 
 {{< note >}}
-Docker Engine does not implement the [CRI](/docs/concepts/architecture/cri/)
+Docker Engine does not implement the [CRI](/docs/kubernetes/en/concepts/architecture/cri/)
 which is a requirement for a container runtime to work with Kubernetes.
 For that reason, an additional service [cri-dockerd](https://github.com/Mirantis/cri-dockerd)
 has to be installed. cri-dockerd is a project based on the legacy built-in
@@ -130,18 +130,18 @@ kubelet and the control plane is supported, but the kubelet version may never ex
 server version. For example, the kubelet running 1.7.0 should be fully compatible with a 1.8.0 API server,
 but not vice versa.
 
-For information about installing `kubectl`, see [Install and set up kubectl](/docs/tasks/tools/).
+For information about installing `kubectl`, see [Install and set up kubectl](/docs/kubernetes/en/tasks/tools/).
 
 {{< warning >}}
 These instructions exclude all Kubernetes packages from any system upgrades.
 This is because kubeadm and Kubernetes require
-[special attention to upgrade](/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/).
+[special attention to upgrade](/docs/kubernetes/en/tasks/administer-cluster/kubeadm/kubeadm-upgrade/).
 {{</ warning >}}
 
 For more information on version skews, see:
 
-* Kubernetes [version and version-skew policy](/docs/setup/release/version-skew-policy/)
-* Kubeadm-specific [version skew policy](/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#version-skew-policy)
+* Kubernetes [version and version-skew policy](/docs/kubernetes/en/setup/release/version-skew-policy/)
+* Kubeadm-specific [version skew policy](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#version-skew-policy)
 
 {{< tabs name="k8s_install" >}}
 {{% tab name="Debian-based distributions" %}}
@@ -258,7 +258,7 @@ sudo mkdir -p /etc/systemd/system/kubelet.service.d
 curl -sSL "https://raw.githubusercontent.com/kubernetes/release/${RELEASE_VERSION}/cmd/kubepkg/templates/latest/deb/kubeadm/10-kubeadm.conf" | sed "s:/usr/bin:${DOWNLOAD_DIR}:g" | sudo tee /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 ```
 
-Install `kubectl` by following the instructions on [Install Tools page](/docs/tasks/tools/#kubectl).
+Install `kubectl` by following the instructions on [Install Tools page](/docs/kubernetes/en/tasks/tools/#kubectl).
 
 Enable and start `kubelet`:
 
@@ -269,7 +269,7 @@ systemctl enable --now kubelet
 {{< note >}}
 The Flatcar Container Linux distribution mounts the `/usr` directory as a read-only filesystem.
 Before bootstrapping your cluster, you need to take additional steps to configure a writable directory.
-See the [Kubeadm Troubleshooting guide](/docs/setup/production-environment/tools/kubeadm/troubleshooting-kubeadm/#usr-mounted-read-only/) to learn how to set up a writable directory.
+See the [Kubeadm Troubleshooting guide](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/troubleshooting-kubeadm/#usr-mounted-read-only/) to learn how to set up a writable directory.
 {{< /note >}}
 {{% /tab %}}
 {{< /tabs >}}
@@ -281,19 +281,19 @@ kubeadm to tell it what to do.
 ## Configuring a cgroup driver
 
 Both the container runtime and the kubelet have a property called
-["cgroup driver"](/docs/setup/production-environment/container-runtimes/), which is important
+["cgroup driver"](/docs/kubernetes/en/setup/production-environment/container-runtimes/), which is important
 for the management of cgroups on Linux machines.
 
 {{< warning >}}
 Matching the container runtime and kubelet cgroup drivers is required or otherwise the kubelet process will fail.
 
-See [Configuring a cgroup driver](/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver/) for more details.
+See [Configuring a cgroup driver](/docs/kubernetes/en/tasks/administer-cluster/kubeadm/configure-cgroup-driver/) for more details.
 {{< /warning >}}
 
 ## Troubleshooting
 
-If you are running into difficulties with kubeadm, please consult our [troubleshooting docs](/docs/setup/production-environment/tools/kubeadm/troubleshooting-kubeadm/).
+If you are running into difficulties with kubeadm, please consult our [troubleshooting docs](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/troubleshooting-kubeadm/).
 
 ## {{% heading "whatsnext" %}}
 
-* [Using kubeadm to Create a Cluster](/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)
+* [Using kubeadm to Create a Cluster](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)

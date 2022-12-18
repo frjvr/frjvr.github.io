@@ -27,7 +27,7 @@ Here is an overview of the steps in this example:
 
 
 Be familiar with the basic,
-non-parallel, use of [Job](/docs/concepts/workloads/controllers/job/).
+non-parallel, use of [Job](/docs/kubernetes/en/concepts/workloads/controllers/job/).
 
 {{< include "task-tutorial-prereqs.md" >}}
 
@@ -306,16 +306,16 @@ do not need to modify your "worker" program to be aware that there is a work que
 
 It does require that you run a message queue service.
 If running a queue service is inconvenient, you may
-want to consider one of the other [job patterns](/docs/concepts/workloads/controllers/job/#job-patterns).
+want to consider one of the other [job patterns](/docs/kubernetes/en/concepts/workloads/controllers/job/#job-patterns).
 
 This approach creates a pod for every work item.  If your work items only take a few seconds,
 though, creating a Pod for every work item may add a lot of overhead.  Consider another
-[example](/docs/tasks/job/fine-parallel-processing-work-queue/), that executes multiple work items per Pod.
+[example](/docs/kubernetes/en/tasks/job/fine-parallel-processing-work-queue/), that executes multiple work items per Pod.
 
 In this example, we use the `amqp-consume` utility to read the message
 from the queue and run our actual program.  This has the advantage that you
 do not need to modify your program to be aware of the queue.
-A [different example](/docs/tasks/job/fine-parallel-processing-work-queue/), shows how to
+A [different example](/docs/kubernetes/en/tasks/job/fine-parallel-processing-work-queue/), shows how to
 communicate with the work queue using a client library.
 
 ## Caveats

@@ -60,7 +60,7 @@ your CNI plugins and editing the CNI config files.
 Here's an overview of the typical steps for each node:
 
 1. [Safely drain and cordon the
-node](/docs/tasks/administer-cluster/safely-drain-node/).
+node](/docs/kubernetes/en/tasks/administer-cluster/safely-drain-node/).
 2. After stopping your container runtime and kubelet services, perform the
 following upgrade operations:
   - If you're running CNI plugins, upgrade them to the latest version.

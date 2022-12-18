@@ -27,7 +27,7 @@ due to a node hardware failure or a node reboot).
 You can also use a Job to run multiple Pods in parallel.
 
 If you want to run a Job (either a single task, or several in parallel) on a schedule,
-see [CronJob](/docs/concepts/workloads/controllers/cron-jobs/).
+see [CronJob](/docs/kubernetes/en/concepts/workloads/controllers/cron-jobs/).
 
 <!-- body -->
 
@@ -180,10 +180,10 @@ As with all other Kubernetes config, a Job needs `apiVersion`, `kind`, and `meta
 
 When the control plane creates new Pods for a Job, the `.metadata.name` of the
 Job is part of the basis for naming those Pods.  The name of a Job must be a valid
-[DNS subdomain](/docs/concepts/overview/working-with-objects/names#dns-subdomain-names)
+[DNS subdomain](/docs/kubernetes/en/concepts/overview/working-with-objects/names#dns-subdomain-names)
 value, but this can produce unexpected results for the Pod hostnames.  For best compatibility,
 the name should follow the more restrictive rules for a
-[DNS label](/docs/concepts/overview/working-with-objects/names#dns-label-names).
+[DNS label](/docs/kubernetes/en/concepts/overview/working-with-objects/names#dns-label-names).
 Even when the name is a DNS subdomain, the name must be no longer than 63
 characters.
 
@@ -194,12 +194,12 @@ A Job also needs a [`.spec` section](https://git.k8s.io/community/contributors/d
 The `.spec.template` is the only required field of the `.spec`.
 
 
-The `.spec.template` is a [pod template](/docs/concepts/workloads/pods/#pod-templates). It has exactly the same schema as a {{< glossary_tooltip text="Pod" term_id="pod" >}}, except it is nested and does not have an `apiVersion` or `kind`.
+The `.spec.template` is a [pod template](/docs/kubernetes/en/concepts/workloads/pods/#pod-templates). It has exactly the same schema as a {{< glossary_tooltip text="Pod" term_id="pod" >}}, except it is nested and does not have an `apiVersion` or `kind`.
 
 In addition to required fields for a Pod, a pod template in a Job must specify appropriate
 labels (see [pod selector](#pod-selector)) and an appropriate restart policy.
 
-Only a [`RestartPolicy`](/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy) equal to `Never` or `OnFailure` is allowed.
+Only a [`RestartPolicy`](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#restart-policy) equal to `Never` or `OnFailure` is allowed.
 
 ### Pod selector
 
@@ -273,12 +273,12 @@ Jobs with _fixed completion count_ - that is, jobs that have non null
     When you use an Indexed Job in combination with a
     {{< glossary_tooltip term_id="Service" >}}, Pods within the Job can use
     the deterministic hostnames to address each other via DNS. For more information about
-    how to configure this, see [Job with Pod-to-Pod Communication](/docs/tasks/job/job-with-pod-to-pod-communication/).
+    how to configure this, see [Job with Pod-to-Pod Communication](/docs/kubernetes/en/tasks/job/job-with-pod-to-pod-communication/).
   - From the containerized task, in the environment variable `JOB_COMPLETION_INDEX`.
   
   The Job is considered complete when there is one successfully completed Pod
   for each index. For more information about how to use this mode, see
-  [Indexed Job for Parallel Processing with Static Work Assignment](/docs/tasks/job/indexed-parallel-processing-static/).
+  [Indexed Job for Parallel Processing with Static Work Assignment](/docs/kubernetes/en/tasks/job/indexed-parallel-processing-static/).
   Note that, although rare, more than one Pod could be started for the same
   index, but only one of them will count towards the completion count.
 
@@ -290,7 +290,7 @@ a non-zero exit code, or the container was killed for exceeding a memory limit, 
 happens, and the `.spec.template.spec.restartPolicy = "OnFailure"`, then the Pod stays
 on the node, but the container is re-run.  Therefore, your program needs to handle the case when it is
 restarted locally, or else specify `.spec.template.spec.restartPolicy = "Never"`.
-See [pod lifecycle](/docs/concepts/workloads/pods/pod-lifecycle/#example-states) for more information on `restartPolicy`.
+See [pod lifecycle](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#example-states) for more information on `restartPolicy`.
 
 An entire Pod can also fail, for a number of reasons, such as when the pod is kicked off the node
 (node is upgraded, rebooted, deleted, etc.), or if a container of the Pod fails and the
@@ -310,7 +310,7 @@ sometimes be started twice.
 If you do specify `.spec.parallelism` and `.spec.completions` both greater than 1, then there may be
 multiple pods running at once.  Therefore, your pods must also be tolerant of concurrency.
 
-When the [feature gates](/docs/reference/command-line-tools-reference/feature-gates/)
+When the [feature gates](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/)
 `PodDisruptionConditions` and `JobPodFailurePolicy` are both enabled,
 and the `.spec.podFailurePolicy` field is set, the Job controller does not consider a terminating
 Pod (a pod that has a `.metadata.deletionTimestamp` field set) as a failure until that Pod is
@@ -384,7 +384,7 @@ spec:
       restartPolicy: Never
 ```
 
-Note that both the Job spec and the [Pod template spec](/docs/concepts/workloads/pods/init-containers/#detailed-behavior) within the Job have an `activeDeadlineSeconds` field. Ensure that you set this field at the proper level.
+Note that both the Job spec and the [Pod template spec](/docs/kubernetes/en/concepts/workloads/pods/init-containers/#detailed-behavior) within the Job have an `activeDeadlineSeconds` field. Ensure that you set this field at the proper level.
 
 Keep in mind that the `restartPolicy` applies to the Pod, and not to the Job itself: there is no automatic Job restart once the Job status is `type: Failed`.
 That is, the Job termination mechanisms activated with `.spec.activeDeadlineSeconds` and `.spec.backoffLimit` result in a permanent Job failure that requires manual intervention to resolve.
@@ -394,7 +394,7 @@ That is, the Job termination mechanisms activated with `.spec.activeDeadlineSeco
 Finished Jobs are usually no longer needed in the system. Keeping them around in
 the system will put pressure on the API server. If the Jobs are managed directly
 by a higher level controller, such as
-[CronJobs](/docs/concepts/workloads/controllers/cron-jobs/), the Jobs can be
+[CronJobs](/docs/kubernetes/en/concepts/workloads/controllers/cron-jobs/), the Jobs can be
 cleaned up by CronJobs based on the specified capacity-based cleanup policy.
 
 ### TTL mechanism for finished Jobs
@@ -403,7 +403,7 @@ cleaned up by CronJobs based on the specified capacity-based cleanup policy.
 
 Another way to clean up finished Jobs (either `Complete` or `Failed`)
 automatically is to use a TTL mechanism provided by a
-[TTL controller](/docs/concepts/workloads/controllers/ttlafterfinished/) for
+[TTL controller](/docs/kubernetes/en/concepts/workloads/controllers/ttlafterfinished/) for
 finished resources, by specifying the `.spec.ttlSecondsAfterFinished` field of
 the Job.
 
@@ -444,13 +444,13 @@ such as CronJob) have a default deletion
 policy of `orphanDependents` causing Pods created by an unmanaged Job to be left around
 after that Job is fully deleted.
 Even though the {{< glossary_tooltip text="control plane" term_id="control-plane" >}} eventually
-[garbage collects](/docs/concepts/workloads/pods/pod-lifecycle/#pod-garbage-collection)
+[garbage collects](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#pod-garbage-collection)
 the Pods from a deleted Job after they either fail or complete, sometimes those
 lingering pods may cause cluster performance degradation or in worst case cause the
 cluster to go offline due to this degradation.
 
-You can use [LimitRanges](/docs/concepts/policy/limit-range/) and
-[ResourceQuotas](/docs/concepts/policy/resource-quotas/) to place a
+You can use [LimitRanges](/docs/kubernetes/en/concepts/policy/limit-range/) and
+[ResourceQuotas](/docs/kubernetes/en/concepts/policy/resource-quotas/) to place a
 cap on the amount of resources that a particular namespace can
 consume.
 {{< /note >}}
@@ -509,11 +509,11 @@ Here, `W` is the number of work items.
 | [Job Template Expansion]                        |          1          |     should be 1      |
 | [Job with Pod-to-Pod Communication]             |          W          |         W            |
 
-[Queue with Pod Per Work Item]: /docs/tasks/job/coarse-parallel-processing-work-queue/
-[Queue with Variable Pod Count]: /docs/tasks/job/fine-parallel-processing-work-queue/
-[Indexed Job with Static Work Assignment]: /docs/tasks/job/indexed-parallel-processing-static/
-[Job Template Expansion]: /docs/tasks/job/parallel-processing-expansion/
-[Job with Pod-to-Pod Communication]: /docs/tasks/job/job-with-pod-to-pod-communication/
+[Queue with Pod Per Work Item]: /docs/kubernetes/en/tasks/job/coarse-parallel-processing-work-queue/
+[Queue with Variable Pod Count]: /docs/kubernetes/en/tasks/job/fine-parallel-processing-work-queue/
+[Indexed Job with Static Work Assignment]: /docs/kubernetes/en/tasks/job/indexed-parallel-processing-static/
+[Job Template Expansion]: /docs/kubernetes/en/tasks/job/parallel-processing-expansion/
+[Job with Pod-to-Pod Communication]: /docs/kubernetes/en/tasks/job/job-with-pod-to-pod-communication/
 
 ## Advanced usage
 
@@ -536,7 +536,7 @@ When a Job is resumed from suspension, its `.status.startTime` field will be
 reset to the current time. This means that the `.spec.activeDeadlineSeconds`
 timer will be stopped and reset when a Job is suspended and resumed.
 
-When you suspend a Job, any running Pods that don't have a status of `Completed` will be [terminated](/docs/concepts/workloads/pods/pod-lifecycle/#pod-termination).
+When you suspend a Job, any running Pods that don't have a status of `Completed` will be [terminated](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#pod-termination).
 with a SIGTERM signal. The Pod's graceful termination period will be honored and
 your Pod must handle this signal in this period. This may involve saving
 progress for later or undoing changes. Pods terminated this way will not count
@@ -632,8 +632,8 @@ as soon as the Job was resumed.
 
 {{< note >}}
 In order to use this behavior, you must enable the `JobMutableNodeSchedulingDirectives`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/)
-on the [API server](/docs/reference/command-line-tools-reference/kube-apiserver/).
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/)
+on the [API server](/docs/kubernetes/en/reference/command-line-tools-reference/kube-apiserver/).
 It is enabled by default.
 {{< /note >}}
 
@@ -727,11 +727,11 @@ mismatch.
 
 {{< note >}}
 You can only configure a Pod failure policy for a Job if you have the
-`JobPodFailurePolicy` [feature gate](/docs/reference/command-line-tools-reference/feature-gates/)
+`JobPodFailurePolicy` [feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/)
 enabled in your cluster. Additionally, it is recommended
 to enable the `PodDisruptionConditions` feature gate in order to be able to detect and handle
 Pod disruption conditions in the Pod failure policy (see also:
-[Pod disruption conditions](/docs/concepts/workloads/pods/disruptions#pod-disruption-conditions)). Both feature gates are
+[Pod disruption conditions](/docs/kubernetes/en/concepts/workloads/pods/disruptions#pod-disruption-conditions)). Both feature gates are
 available in Kubernetes {{< skew currentVersion >}}.
 {{< /note >}}
 
@@ -845,11 +845,11 @@ requires only a single Pod.
 
 ### Replication Controller
 
-Jobs are complementary to [Replication Controllers](/docs/concepts/workloads/controllers/replicationcontroller/).
+Jobs are complementary to [Replication Controllers](/docs/kubernetes/en/concepts/workloads/controllers/replicationcontroller/).
 A Replication Controller manages Pods which are not expected to terminate (e.g. web servers), and a Job
 manages Pods that are expected to terminate (e.g. batch tasks).
 
-As discussed in [Pod Lifecycle](/docs/concepts/workloads/pods/pod-lifecycle/), `Job` is *only* appropriate
+As discussed in [Pod Lifecycle](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/), `Job` is *only* appropriate
 for pods with `RestartPolicy` equal to `OnFailure` or `Never`.
 (Note: If `RestartPolicy` is not set, the default value is `Always`.)
 
@@ -868,19 +868,19 @@ object, but maintains complete control over what Pods are created and how work i
 
 ## {{% heading "whatsnext" %}}
 
-* Learn about [Pods](/docs/concepts/workloads/pods).
+* Learn about [Pods](/docs/kubernetes/en/concepts/workloads/pods).
 * Read about different ways of running Jobs:
-   * [Coarse Parallel Processing Using a Work Queue](/docs/tasks/job/coarse-parallel-processing-work-queue/)
-   * [Fine Parallel Processing Using a Work Queue](/docs/tasks/job/fine-parallel-processing-work-queue/)
-   * Use an [indexed Job for parallel processing with static work assignment](/docs/tasks/job/indexed-parallel-processing-static/)
-   * Create multiple Jobs based on a template: [Parallel Processing using Expansions](/docs/tasks/job/parallel-processing-expansion/)
+   * [Coarse Parallel Processing Using a Work Queue](/docs/kubernetes/en/tasks/job/coarse-parallel-processing-work-queue/)
+   * [Fine Parallel Processing Using a Work Queue](/docs/kubernetes/en/tasks/job/fine-parallel-processing-work-queue/)
+   * Use an [indexed Job for parallel processing with static work assignment](/docs/kubernetes/en/tasks/job/indexed-parallel-processing-static/)
+   * Create multiple Jobs based on a template: [Parallel Processing using Expansions](/docs/kubernetes/en/tasks/job/parallel-processing-expansion/)
 * Follow the links within [Clean up finished jobs automatically](#clean-up-finished-jobs-automatically)
   to learn more about how your cluster can clean up completed and / or failed tasks.
 * `Job` is part of the Kubernetes REST API.
   Read the {{< api-reference page="workload-resources/job-v1" >}}
   object definition to understand the API for jobs.
-* Read about [`CronJob`](/docs/concepts/workloads/controllers/cron-jobs/), which you
+* Read about [`CronJob`](/docs/kubernetes/en/concepts/workloads/controllers/cron-jobs/), which you
   can use to define a series of Jobs that will run based on a schedule, similar to
   the UNIX tool `cron`.
 * Practice how to configure handling of retriable and non-retriable pod failures
-  using `podFailurePolicy`, based on the step-by-step [examples](/docs/tasks/job/pod-failure-policy/).
+  using `podFailurePolicy`, based on the step-by-step [examples](/docs/kubernetes/en/tasks/job/pod-failure-policy/).

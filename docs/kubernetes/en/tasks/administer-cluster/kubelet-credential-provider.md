@@ -155,6 +155,6 @@ Some example values of `matchImages` patterns are:
 ## {{% heading "whatsnext" %}}
 
 * Read the details about `CredentialProviderConfig` in the
-  [kubelet configuration API (v1) reference](/docs/reference/config-api/kubelet-config.v1/).
-* Read the [kubelet credential provider API reference (v1)](/docs/reference/config-api/kubelet-credentialprovider.v1/).
+  [kubelet configuration API (v1) reference](/docs/kubernetes/en/reference/config-api/kubelet-config.v1/).
+* Read the [kubelet credential provider API reference (v1)](/docs/kubernetes/en/reference/config-api/kubelet-credentialprovider.v1/).
 

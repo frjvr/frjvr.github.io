@@ -908,7 +908,7 @@ Default: nil</p>
    <p>kubeReserved is a set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs
 that describe resources reserved for kubernetes system components.
 Currently cpu, memory and local storage for root file system are supported.
-See https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+See https://kubernetes.io/docs/kubernetes/en/concepts/configuration/manage-resources-containers/
 for more details.
 Default: nil</p>
 </td>
@@ -1099,7 +1099,7 @@ only 9Gi is available for allocation.
 You can specify a different amount of NUMA node and memory types.
 You can omit this parameter at all, but you should be aware that the amount of
 reserved memory from all NUMA nodes should be equal to the amount of memory specified
-by the <a href="https://kubernetes.io/docs/tasks/administer-cluster/reserve-compute-resources/#node-allocatable">node allocatable</a>.
+by the <a href="https://kubernetes.io/docs/kubernetes/en/tasks/administer-cluster/reserve-compute-resources/#node-allocatable">node allocatable</a>.
 If at least one node allocatable parameter has a non-zero value, you will need
 to specify at least one NUMA node.
 Also, avoid specifying:</p>
@@ -1150,7 +1150,7 @@ Default: 0.8</p>
 </td>
 </tr>
 <tr><td><code>registerWithTaints</code><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#taint-v1-core"><code>[]core/v1.Taint</code></a>
+<a href="https://kubernetes.io/docs/kubernetes/en/reference/generated/kubernetes-api/v1.23/#taint-v1-core"><code>[]core/v1.Taint</code></a>
 </td>
 <td>
    <p>registerWithTaints are an array of taints to add to a node object when
@@ -1210,7 +1210,7 @@ It exists in the kubeletconfig API group because it is classified as a versioned
     
   
 <tr><td><code>source</code><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#nodeconfigsource-v1-core"><code>core/v1.NodeConfigSource</code></a>
+<a href="https://kubernetes.io/docs/kubernetes/en/reference/generated/kubernetes-api/v1.23/#nodeconfigsource-v1-core"><code>core/v1.NodeConfigSource</code></a>
 </td>
 <td>
    <p>source is the source that we are serializing.</p>
@@ -1571,7 +1571,7 @@ and groups corresponding to the Organization in the client certificate.</p>
    <span class="text-muted">No description provided.</span></td>
 </tr>
 <tr><td><code>limits</code> <B>[Required]</B><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcelist-v1-core"><code>core/v1.ResourceList</code></a>
+<a href="https://kubernetes.io/docs/kubernetes/en/reference/generated/kubernetes-api/v1.23/#resourcelist-v1-core"><code>core/v1.ResourceList</code></a>
 </td>
 <td>
    <span class="text-muted">No description provided.</span></td>

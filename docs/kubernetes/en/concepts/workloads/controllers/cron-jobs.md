@@ -27,7 +27,7 @@ that the cron job controller uses.
 {{< /caution >}}
 
 {{< caution >}}
-The [v1 CronJob API](/docs/reference/kubernetes-api/workload-resources/cron-job-v1/)
+The [v1 CronJob API](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/cron-job-v1/)
 does not officially support setting timezone as explained above.
 
 Setting variables such as `CRON_TZ` or `TZ` is not officially supported by the Kubernetes project.
@@ -38,10 +38,10 @@ recommended in a production cluster.
 
 When the control plane creates new Jobs and (indirectly) Pods for a CronJob, the `.metadata.name`
 of the CronJob is part of the basis for naming those Pods.  The name of a CronJob must be a valid
-[DNS subdomain](/docs/concepts/overview/working-with-objects/names#dns-subdomain-names)
+[DNS subdomain](/docs/kubernetes/en/concepts/overview/working-with-objects/names#dns-subdomain-names)
 value, but this can produce unexpected results for the Pod hostnames.  For best compatibility,
 the name should follow the more restrictive rules for a
-[DNS label](/docs/concepts/overview/working-with-objects/names#dns-label-names).
+[DNS label](/docs/kubernetes/en/concepts/overview/working-with-objects/names#dns-label-names).
 Even when the name is a DNS subdomain, the name must be no longer than 52
 characters.  This is because the CronJob controller will automatically append
 11 characters to the name you provide and there is a constraint that the
@@ -62,7 +62,7 @@ This example CronJob manifest prints the current time and a hello message every 
 
 {{< codenew file="application/job/cronjob.yaml" >}}
 
-([Running Automated Tasks with a CronJob](/docs/tasks/job/automated-tasks-with-cron-jobs/)
+([Running Automated Tasks with a CronJob](/docs/kubernetes/en/tasks/job/automated-tasks-with-cron-jobs/)
 takes you through this example in more detail).
 
 ### Cron schedule syntax
@@ -102,7 +102,7 @@ For CronJobs with no time zone specified, the kube-controller-manager interprets
 
 {{< feature-state for_k8s_version="v1.25" state="beta" >}}
 
-If you enable the  `CronJobTimeZone` [feature gate](/docs/reference/command-line-tools-reference/feature-gates/),
+If you enable the  `CronJobTimeZone` [feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/),
 you can specify a time zone for a CronJob (if you don't enable that feature gate, or if you are using a version of
 Kubernetes that does not have experimental time zone support, all CronJobs in your cluster have an unspecified
 timezone).
@@ -153,7 +153,7 @@ the Job in turn is responsible for the management of the Pods it represents.
 Starting with Kubernetes v1.21 the second version of the CronJob controller
 is the default implementation. To disable the default CronJob controller
 and use the original CronJob controller instead, pass the `CronJobControllerV2`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/)
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/)
 flag to the {{< glossary_tooltip term_id="kube-controller-manager" text="kube-controller-manager" >}},
 and set this flag to `false`. For example:
 
@@ -164,16 +164,16 @@ and set this flag to `false`. For example:
 
 ## {{% heading "whatsnext" %}}
 
-* Learn about [Pods](/docs/concepts/workloads/pods/) and
-  [Jobs](/docs/concepts/workloads/controllers/job/), two concepts
+* Learn about [Pods](/docs/kubernetes/en/concepts/workloads/pods/) and
+  [Jobs](/docs/kubernetes/en/concepts/workloads/controllers/job/), two concepts
   that CronJobs rely upon.
 * Read about the [format](https://pkg.go.dev/github.com/robfig/cron/v3#hdr-CRON_Expression_Format)
   of CronJob `.spec.schedule` fields.
 * For instructions on creating and working with CronJobs, and for an example
   of a CronJob manifest,
-  see [Running automated tasks with CronJobs](/docs/tasks/job/automated-tasks-with-cron-jobs/).
+  see [Running automated tasks with CronJobs](/docs/kubernetes/en/tasks/job/automated-tasks-with-cron-jobs/).
 * For instructions to clean up failed or completed jobs automatically,
-  see [Clean up Jobs automatically](/docs/concepts/workloads/controllers/job/#clean-up-finished-jobs-automatically)
+  see [Clean up Jobs automatically](/docs/kubernetes/en/concepts/workloads/controllers/job/#clean-up-finished-jobs-automatically)
 * `CronJob` is part of the Kubernetes REST API.
   Read the {{< api-reference page="workload-resources/cron-job-v1" >}}
   object definition to understand the API for Kubernetes cron jobs.

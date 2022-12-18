@@ -10,7 +10,7 @@ weight: 120
 
 <!-- overview -->
 
-In Kubernetes, [Services](/docs/concepts/services-networking/service/) are an abstract way to expose
+In Kubernetes, [Services](/docs/kubernetes/en/concepts/services-networking/service/) are an abstract way to expose
 an application running on a set of Pods. Services
 can have a cluster-scoped virtual IP address (using a Service of `type: ClusterIP`).
 Clients can connect using that virtual IP address, and Kubernetes then load-balances traffic to that
@@ -143,7 +143,7 @@ pie showData
 
 ## {{% heading "whatsnext" %}}
 
-* Read about [Service External Traffic Policy](/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip)
-* Read about [Connecting Applications with Services](/docs/concepts/services-networking/connect-applications-service/)
-* Read about [Services](/docs/concepts/services-networking/service/)
+* Read about [Service External Traffic Policy](/docs/kubernetes/en/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip)
+* Read about [Connecting Applications with Services](/docs/kubernetes/en/concepts/services-networking/connect-applications-service/)
+* Read about [Services](/docs/kubernetes/en/concepts/services-networking/service/)
 

@@ -37,7 +37,7 @@ profiles that give only the necessary privileges to your container processes.
 ## {{% heading "prerequisites" %}}
 
 In order to complete all steps in this tutorial, you must install
-[kind](/docs/tasks/tools/#kind) and [kubectl](/docs/tasks/tools/#kubectl).
+[kind](/docs/kubernetes/en/tasks/tools/#kind) and [kubectl](/docs/kubernetes/en/tasks/tools/#kubectl).
 
 This tutorial shows some examples that are still beta (since v1.25) and
 others that use only generally available seccomp functionality. You should
@@ -159,10 +159,10 @@ running within kind.
 {{< feature-state state="beta" for_k8s_version="v1.25" >}}
 
 To use seccomp profile defaulting, you must run the kubelet with the `SeccompDefault`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/) enabled
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) enabled
 (this is the default). You must also explicitly enable the defaulting behavior for each
 node where you want to use this with the corresponding `--seccomp-default`
-[command line flag](/docs/reference/command-line-tools-reference/kubelet).
+[command line flag](/docs/kubernetes/en/reference/command-line-tools-reference/kubelet).
 Both have to be enabled simultaneously to use the feature.
 
 If enabled, the kubelet will use the `RuntimeDefault` seccomp profile by default, which is
@@ -201,14 +201,14 @@ in the related Kubernetes Enhancement Proposal (KEP):
 Kubernetes {{< skew currentVersion >}} lets you configure the seccomp profile
 that applies when the spec for a Pod doesn't define a specific seccomp profile.
 This is a beta feature and the corresponding `SeccompDefault` [feature
-gate](/docs/reference/command-line-tools-reference/feature-gates/) is enabled by
+gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) is enabled by
 default. However, you still need to enable this defaulting for each node where
 you would like to use it.
 
 If you are running a Kubernetes {{< skew currentVersion >}} cluster and want to
 enable the feature, either run the kubelet with the `--seccomp-default` command
 line flag, or enable it through the [kubelet configuration
-file](/docs/tasks/administer-cluster/kubelet-config-file/). To enable the
+file](/docs/kubernetes/en/tasks/administer-cluster/kubelet-config-file/). To enable the
 feature gate in [kind](https://kind.sigs.k8s.io), ensure that `kind` provides
 the minimum required Kubernetes version and enables the `SeccompDefault` feature
 [in the kind configuration](https://kind.sigs.k8s.io/docs/user/quick-start/#enable-feature-gates-in-your-cluster):
@@ -500,7 +500,7 @@ or not. You can adopt these defaults for your workload by setting the seccomp
 type in the security context of a pod or container to `RuntimeDefault`.
 
 {{< note >}}
-If you have the `SeccompDefault` [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) enabled, then Pods use the `RuntimeDefault` seccomp profile whenever
+If you have the `SeccompDefault` [feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) enabled, then Pods use the `RuntimeDefault` seccomp profile whenever
 no other seccomp profile is specified. Otherwise, the default is `Unconfined`.
 {{< /note >}}
 

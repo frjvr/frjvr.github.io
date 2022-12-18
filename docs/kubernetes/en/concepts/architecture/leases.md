@@ -20,7 +20,7 @@ namespace. Under the hood, every kubelet heart beat is an UPDATE request to this
 the `spec.renewTime` field for the Lease. The Kubernetes control plane uses the time stamp of this field
 to determine the availability of this `Node`.
 
-See [Node Lease objects](/docs/concepts/architecture/nodes/#heartbeats) for more details.
+See [Node Lease objects](/docs/kubernetes/en/concepts/architecture/nodes/#heartbeats) for more details.
 
 ## Leader Election
 

@@ -34,7 +34,7 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
 - **name** (string), required
 
-  name of the volume. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+  name of the volume. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/kubernetes/en/concepts/overview/working-with-objects/names/#names
 
 
 
@@ -43,14 +43,14 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
 - **persistentVolumeClaim** (PersistentVolumeClaimVolumeSource)
 
-  persistentVolumeClaimVolumeSource represents a reference to a PersistentVolumeClaim in the same namespace. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+  persistentVolumeClaimVolumeSource represents a reference to a PersistentVolumeClaim in the same namespace. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/persistent-volumes#persistentvolumeclaims
 
   <a name="PersistentVolumeClaimVolumeSource"></a>
   *PersistentVolumeClaimVolumeSource references the user's PVC in the same namespace. This volume finds the bound PV and mounts that volume for the pod. A PersistentVolumeClaimVolumeSource is, essentially, a wrapper around another type of volume that is owned by someone else (the system).*
 
   - **persistentVolumeClaim.claimName** (string), required
 
-    claimName is the name of a PersistentVolumeClaim in the same namespace as the pod using this volume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+    claimName is the name of a PersistentVolumeClaim in the same namespace as the pod using this volume. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/persistent-volumes#persistentvolumeclaims
 
   - **persistentVolumeClaim.readOnly** (boolean)
 
@@ -70,7 +70,7 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
   - **configMap.name** (string)
 
-    Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    Name of the referent. More info: https://kubernetes.io/docs/kubernetes/en/concepts/overview/working-with-objects/names/#names
 
   - **configMap.optional** (boolean)
 
@@ -86,7 +86,7 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
 - **secret** (SecretVolumeSource)
 
-  secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+  secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#secret
 
   <a name="SecretVolumeSource"></a>
   *Adapts a Secret into a volume.
@@ -95,7 +95,7 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
   - **secret.secretName** (string)
 
-    secretName is the name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+    secretName is the name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#secret
 
   - **secret.optional** (boolean)
 
@@ -153,7 +153,7 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
       - **projected.sources.configMap.name** (string)
 
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of the referent. More info: https://kubernetes.io/docs/kubernetes/en/concepts/overview/working-with-objects/names/#names
 
       - **projected.sources.configMap.optional** (boolean)
 
@@ -185,7 +185,7 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
       - **projected.sources.secret.name** (string)
 
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of the referent. More info: https://kubernetes.io/docs/kubernetes/en/concepts/overview/working-with-objects/names/#names
 
       - **projected.sources.secret.optional** (boolean)
 
@@ -219,14 +219,14 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
 - **emptyDir** (EmptyDirVolumeSource)
 
-  emptyDir represents a temporary directory that shares a pod's lifetime. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
+  emptyDir represents a temporary directory that shares a pod's lifetime. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#emptydir
 
   <a name="EmptyDirVolumeSource"></a>
   *Represents an empty directory for a pod. Empty directory volumes support ownership management and SELinux relabeling.*
 
   - **emptyDir.medium** (string)
 
-    medium represents what type of storage medium should back this directory. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
+    medium represents what type of storage medium should back this directory. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#emptydir
 
   - **emptyDir.sizeLimit** (<a href="{{< ref "../common-definitions/quantity#Quantity" >}}">Quantity</a>)
 
@@ -234,25 +234,25 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
 - **hostPath** (HostPathVolumeSource)
 
-  hostPath represents a pre-existing file or directory on the host machine that is directly exposed to the container. This is generally used for system agents or other privileged things that are allowed to see the host machine. Most containers will NOT need this. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+  hostPath represents a pre-existing file or directory on the host machine that is directly exposed to the container. This is generally used for system agents or other privileged things that are allowed to see the host machine. Most containers will NOT need this. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#hostpath
 
   <a name="HostPathVolumeSource"></a>
   *Represents a host path mapped into a pod. Host path volumes do not support ownership management or SELinux relabeling.*
 
   - **hostPath.path** (string), required
 
-    path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+    path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#hostpath
 
   - **hostPath.type** (string)
 
-    type for HostPath Volume Defaults to "" More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+    type for HostPath Volume Defaults to "" More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#hostpath
 
 ### Persistent volumes
 
 
 - **awsElasticBlockStore** (AWSElasticBlockStoreVolumeSource)
 
-  awsElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+  awsElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#awselasticblockstore
 
   <a name="AWSElasticBlockStoreVolumeSource"></a>
   *Represents a Persistent Disk resource in AWS.
@@ -261,11 +261,11 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
   - **awsElasticBlockStore.volumeID** (string), required
 
-    volumeID is unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+    volumeID is unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#awselasticblockstore
 
   - **awsElasticBlockStore.fsType** (string)
 
-    fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+    fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#awselasticblockstore
 
   - **awsElasticBlockStore.partition** (int32)
 
@@ -273,7 +273,7 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
   - **awsElasticBlockStore.readOnly** (boolean)
 
-    readOnly value true will force the readOnly setting in VolumeMounts. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+    readOnly value true will force the readOnly setting in VolumeMounts. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#awselasticblockstore
 
 - **azureDisk** (AzureDiskVolumeSource)
 
@@ -518,7 +518,7 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
 - **gcePersistentDisk** (GCEPersistentDiskVolumeSource)
 
-  gcePersistentDisk represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+  gcePersistentDisk represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#gcepersistentdisk
 
   <a name="GCEPersistentDiskVolumeSource"></a>
   *Represents a Persistent Disk resource in Google Compute Engine.
@@ -527,19 +527,19 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
   - **gcePersistentDisk.pdName** (string), required
 
-    pdName is unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+    pdName is unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#gcepersistentdisk
 
   - **gcePersistentDisk.fsType** (string)
 
-    fsType is filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+    fsType is filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#gcepersistentdisk
 
   - **gcePersistentDisk.partition** (int32)
 
-    partition is the partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty). More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+    partition is the partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty). More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#gcepersistentdisk
 
   - **gcePersistentDisk.readOnly** (boolean)
 
-    readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+    readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#gcepersistentdisk
 
 - **iscsi** (ISCSIVolumeSource)
 
@@ -570,7 +570,7 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
   - **iscsi.fsType** (string)
 
-    fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi
+    fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#iscsi
 
   - **iscsi.initiatorName** (string)
 
@@ -594,22 +594,22 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
 - **nfs** (NFSVolumeSource)
 
-  nfs represents an NFS mount on the host that shares a pod's lifetime More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+  nfs represents an NFS mount on the host that shares a pod's lifetime More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#nfs
 
   <a name="NFSVolumeSource"></a>
   *Represents an NFS mount that lasts the lifetime of a pod. NFS volumes do not support ownership management or SELinux relabeling.*
 
   - **nfs.path** (string), required
 
-    path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+    path that is exported by the NFS server. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#nfs
 
   - **nfs.server** (string), required
 
-    server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+    server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#nfs
 
   - **nfs.readOnly** (boolean)
 
-    readOnly here will force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+    readOnly here will force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#nfs
 
 - **photonPersistentDisk** (PhotonPersistentDiskVolumeSource)
 
@@ -693,7 +693,7 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
   - **rbd.fsType** (string)
 
-    fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd
+    fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#rbd
 
   - **rbd.keyring** (string)
 

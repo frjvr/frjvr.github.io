@@ -57,7 +57,7 @@ fail validation.
 		<tr>
 			<td style="white-space: nowrap">HostProcess</td>
 			<td>
-				<p>Windows pods offer the ability to run <a href="/docs/tasks/configure-pod-container/create-hostprocess-pod">HostProcess containers</a> which enables privileged access to the Windows node. Privileged access to the host is disallowed in the baseline policy. {{< feature-state for_k8s_version="v1.23" state="beta" >}}</p>
+				<p>Windows pods offer the ability to run <a href="/docs/kubernetes/en/tasks/configure-pod-container/create-hostprocess-pod">HostProcess containers</a> which enables privileged access to the Windows node. Privileged access to the host is disallowed in the baseline policy. {{< feature-state for_k8s_version="v1.23" state="beta" >}}</p>
 				<p><strong>Restricted Fields</strong></p>
 				<ul>
 					<li><code>spec.securityContext.windowsOptions.hostProcess</code></li>
@@ -445,7 +445,7 @@ mechanism.
 As mechanisms mature, they will be defined below on a per-policy basis. The methods of enforcement
 of individual policies are not defined here.
 
-[**Pod Security Admission Controller**](/docs/concepts/security/pod-security-admission/)
+[**Pod Security Admission Controller**](/docs/kubernetes/en/concepts/security/pod-security-admission/)
 
 - {{< example file="security/podsecurity-privileged.yaml" >}}Privileged namespace{{< /example >}}
 - {{< example file="security/podsecurity-baseline.yaml" >}}Baseline namespace{{< /example >}}
@@ -467,7 +467,7 @@ Kubernetes lets you use nodes that run either Linux or Windows. You can mix both
 node in one cluster.
 Windows in Kubernetes has some limitations and differentiators from Linux-based
 workloads. Specifically, many of the Pod `securityContext` fields
-[have no effect on Windows](/docs/concepts/windows/intro/#compatibility-v1-pod-spec-containers-securitycontext).
+[have no effect on Windows](/docs/kubernetes/en/concepts/windows/intro/#compatibility-v1-pod-spec-containers-securitycontext).
 
 {{< note >}}
 Kubelets prior to v1.24 don't enforce the pod OS field, and if a cluster has nodes on versions earlier than v1.24 the restricted policies should be pinned to a version prior to v1.25.
@@ -499,14 +499,14 @@ SIG Auth may reconsider this position in the future, should a clear need for oth
 
 ### What's the difference between a security profile and a security context?
 
-[Security Contexts](/docs/tasks/configure-pod-container/security-context/) configure Pods and
+[Security Contexts](/docs/kubernetes/en/tasks/configure-pod-container/security-context/) configure Pods and
 Containers at runtime. Security contexts are defined as part of the Pod and container specifications
 in the Pod manifest, and represent parameters to the container runtime.
 
 Security profiles are control plane mechanisms to enforce specific settings in the Security Context,
 as well as other related parameters outside the Security Context. As of July 2021, 
-[Pod Security Policies](/docs/concepts/security/pod-security-policy/) are deprecated in favor of the
-built-in [Pod Security Admission Controller](/docs/concepts/security/pod-security-admission/). 
+[Pod Security Policies](/docs/kubernetes/en/concepts/security/pod-security-policy/) are deprecated in favor of the
+built-in [Pod Security Admission Controller](/docs/kubernetes/en/concepts/security/pod-security-admission/). 
 
 
 ### What about sandboxed Pods?

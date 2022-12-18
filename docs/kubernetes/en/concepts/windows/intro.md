@@ -51,7 +51,7 @@ including:
 
 * HugePages: not supported for Windows containers
 * Privileged containers: not supported for Windows containers.
-  [HostProcess Containers](/docs/tasks/configure-pod-container/create-hostprocess-pod/) offer similar functionality.
+  [HostProcess Containers](/docs/kubernetes/en/tasks/configure-pod-container/create-hostprocess-pod/) offer similar functionality.
 * TerminationGracePeriod: requires containerD
 
 Not all features of shared namespaces are supported. See [API compatibility](#api)
@@ -69,7 +69,7 @@ functionality which are outlined in this section.
 Key Kubernetes elements work the same way in Windows as they do in Linux. This
 section refers to several key workload abstractions and how they map to Windows.
 
-* [Pods](/docs/concepts/workloads/pods/)
+* [Pods](/docs/kubernetes/en/concepts/workloads/pods/)
 
   A Pod is the basic building block of Kubernetes–the smallest and simplest unit in
   the Kubernetes object model that you create or deploy. You may not deploy Windows and
@@ -122,7 +122,7 @@ section refers to several key workload abstractions and how they map to Windows.
     for all containers. If any of these fields is specified, the Pod will
     not be admitted by the API server.
 
-* [Workload resources](/docs/concepts/workloads/controllers/) including:
+* [Workload resources](/docs/kubernetes/en/concepts/workloads/controllers/) including:
   * ReplicaSet
   * Deployment
   * StatefulSet
@@ -131,7 +131,7 @@ section refers to several key workload abstractions and how they map to Windows.
   * CronJob
   * ReplicationController
 * {{< glossary_tooltip text="Services" term_id="service" >}}
-  See [Load balancing and Services](/docs/concepts/services-networking/windows-networking/#load-balancing-and-services) for more details.
+  See [Load balancing and Services](/docs/kubernetes/en/concepts/services-networking/windows-networking/#load-balancing-and-services) for more details.
 
 Pods, workload resources, and Services are critical elements to managing Windows
 workloads on Kubernetes. However, on their own they are not enough to enable
@@ -149,15 +149,15 @@ environment.
 Some kubelet command line options behave differently on Windows, as described below:
 
 * The `--windows-priorityclass` lets you set the scheduling priority of the kubelet process
-  (see [CPU resource management](/docs/concepts/configuration/windows-resource-management/#resource-management-cpu))
+  (see [CPU resource management](/docs/kubernetes/en/concepts/configuration/windows-resource-management/#resource-management-cpu))
 * The `--kube-reserved`, `--system-reserved` , and `--eviction-hard` flags update
-  [NodeAllocatable](/docs/tasks/administer-cluster/reserve-compute-resources/#node-allocatable)
+  [NodeAllocatable](/docs/kubernetes/en/tasks/administer-cluster/reserve-compute-resources/#node-allocatable)
 * Eviction by using `--enforce-node-allocable` is not implemented
 * Eviction by using `--eviction-hard` and `--eviction-soft` are not implemented
 * When running on a Windows node the kubelet does not have memory or CPU
   restrictions. `--kube-reserved` and `--system-reserved` only subtract from `NodeAllocatable`
   and do not guarantee resource provided for workloads.
-  See [Resource Management for Windows nodes](/docs/concepts/configuration/windows-resource-management/#resource-reservation)
+  See [Resource Management for Windows nodes](/docs/kubernetes/en/concepts/configuration/windows-resource-management/#resource-reservation)
   for more information.
 * The `MemoryPressure` Condition is not implemented
 * The kubelet does not take OOM eviction actions
@@ -212,7 +212,7 @@ work between Windows and Linux:
 * `securityContext.capabilities` -
    POSIX capabilities are not implemented on Windows
 * `securityContext.privileged` -
-   Windows doesn't support privileged containers, use [HostProcess Containers](/docs/tasks/configure-pod-container/create-hostprocess-pod/) instead
+   Windows doesn't support privileged containers, use [HostProcess Containers](/docs/kubernetes/en/tasks/configure-pod-container/create-hostprocess-pod/) instead
 * `securityContext.procMount` -
    Windows doesn't have a `/proc` filesystem
 * `securityContext.readOnlyRootFilesystem` -
@@ -224,7 +224,7 @@ work between Windows and Linux:
    this setting will prevent containers from running as `ContainerAdministrator`
    which is the closest equivalent to a root user on Windows.
 * `securityContext.runAsUser` -
-   use [`runAsUserName`](/docs/tasks/configure-pod-container/configure-runasusername)
+   use [`runAsUserName`](/docs/kubernetes/en/tasks/configure-pod-container/configure-runasusername)
    instead
 * `securityContext.seLinuxOptions` -
    not possible on Windows as SELinux is Linux-specific
@@ -238,11 +238,11 @@ work between Windows and Linux:
 The following list documents differences between how Pod specifications work between Windows and Linux:
 
 * `hostIPC` and `hostpid` - host namespace sharing is not possible on Windows
-* `hostNetwork` - [see below](/docs/concepts/windows/intro#compatibility-v1-pod-spec-containers-hostnetwork)
+* `hostNetwork` - [see below](/docs/kubernetes/en/concepts/windows/intro#compatibility-v1-pod-spec-containers-hostnetwork)
 * `dnsPolicy` - setting the Pod `dnsPolicy` to `ClusterFirstWithHostNet` is
    not supported on Windows because host networking is not provided. Pods always
    run with a container network.
-* `podSecurityContext` [see below](/docs/concepts/windows/intro#compatibility-v1-pod-spec-containers-securitycontext)
+* `podSecurityContext` [see below](/docs/kubernetes/en/concepts/windows/intro#compatibility-v1-pod-spec-containers-securitycontext)
 * `shareProcessNamespace` - this is a beta feature, and depends on Linux namespaces
   which are not implemented on Windows. Windows cannot share process namespaces or
   the container's root filesystem. Only the network can be shared.
@@ -274,12 +274,12 @@ This functionality requires a container runtime that supports this functionality
 
 #### Field compatibility for Pod security context {#compatibility-v1-pod-spec-containers-securitycontext}
 
-None of the Pod [`securityContext`](/docs/reference/kubernetes-api/workload-resources/pod-v1/#security-context) fields work on Windows.
+None of the Pod [`securityContext`](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/pod-v1/#security-context) fields work on Windows.
 
 ## Node problem detector
 
 The node problem detector (see
-[Monitor Node Health](/docs/tasks/debug/debug-cluster/monitor-node-health/))
+[Monitor Node Health](/docs/kubernetes/en/tasks/debug/debug-cluster/monitor-node-health/))
 has preliminary support for Windows.
 For more information, visit the project's [GitHub page](https://github.com/kubernetes/node-problem-detector#windows).
 
@@ -323,10 +323,10 @@ The following container runtimes work with Windows:
 You can use {{< glossary_tooltip term_id="containerd" text="ContainerD" >}} 1.4.0+
 as the container runtime for Kubernetes nodes that run Windows.
 
-Learn how to [install ContainerD on a Windows node](/docs/setup/production-environment/container-runtimes/#install-containerd).
+Learn how to [install ContainerD on a Windows node](/docs/kubernetes/en/setup/production-environment/container-runtimes/#install-containerd).
 
 {{< note >}}
-There is a [known limitation](/docs/tasks/configure-pod-container/configure-gmsa/#gmsa-limitations)
+There is a [known limitation](/docs/kubernetes/en/tasks/configure-pod-container/configure-gmsa/#gmsa-limitations)
 when using GMSA with containerd to access Windows network shares, which requires a
 kernel patch.
 {{< /note >}}
@@ -354,12 +354,12 @@ Windows Server LTSC release
 Windows Server SAC release
 :  Windows Server version 20H2
 
-The Kubernetes [version-skew policy](/docs/setup/release/version-skew-policy/) also applies.
+The Kubernetes [version-skew policy](/docs/kubernetes/en/setup/release/version-skew-policy/) also applies.
 
 ## Getting help and troubleshooting {#troubleshooting}
 
 Your main source of help for troubleshooting your Kubernetes cluster should start
-with the [Troubleshooting](/docs/tasks/debug/)
+with the [Troubleshooting](/docs/kubernetes/en/tasks/debug/)
 page.
 
 Some additional, Windows-specific troubleshooting help is included
@@ -382,7 +382,7 @@ troubleshooting ideas prior to creating a ticket.
 
 The kubeadm tool helps you to deploy a Kubernetes cluster, providing the control
 plane to manage the cluster it, and nodes to run your workloads.
-[Adding Windows nodes](/docs/tasks/administer-cluster/kubeadm/adding-windows-nodes/)
+[Adding Windows nodes](/docs/kubernetes/en/tasks/administer-cluster/kubeadm/adding-windows-nodes/)
 explains how to deploy Windows nodes to your cluster using kubeadm.
 
 The Kubernetes [cluster API](https://cluster-api.sigs.k8s.io/) project also provides means to automate deployment of Windows nodes.

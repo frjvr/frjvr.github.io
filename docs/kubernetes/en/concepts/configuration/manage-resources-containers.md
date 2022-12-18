@@ -73,8 +73,8 @@ This is different from the `memory` and `cpu` resources.
 CPU and memory are collectively referred to as *compute resources*, or *resources*. Compute
 resources are measurable quantities that can be requested, allocated, and
 consumed. They are distinct from
-[API resources](/docs/concepts/overview/kubernetes-api/). API resources, such as Pods and
-[Services](/docs/concepts/services-networking/service/) are objects that can be read and modified
+[API resources](/docs/kubernetes/en/concepts/overview/kubernetes-api/). API resources, such as Pods and
+[Services](/docs/kubernetes/en/concepts/services-networking/service/) are objects that can be read and modified
 through the Kubernetes API server.
 
 ## Resource requests and limits of Pod and container
@@ -107,7 +107,7 @@ or a virtual machine running inside a physical machine.
 Fractional requests are allowed. When you define a container with
 `spec.containers[].resources.requests.cpu` set to `0.5`, you are requesting half
 as much CPU time compared to if you asked for `1.0` CPU.
-For CPU resource units, the [quantity](/docs/reference/kubernetes-api/common-definitions/quantity/) expression `0.1` is equivalent to the
+For CPU resource units, the [quantity](/docs/kubernetes/en/reference/kubernetes-api/common-definitions/quantity/) expression `0.1` is equivalent to the
 expression `100m`, which can be read as "one hundred millicpu". Some people say
 "one hundred millicores", and this is understood to mean the same thing.
 
@@ -125,7 +125,7 @@ the milliCPU form; for example, `5m` rather than `0.005`.
 
 Limits and requests for `memory` are measured in bytes. You can express memory as
 a plain integer or as a fixed-point number using one of these
-[quantity](/docs/reference/kubernetes-api/common-definitions/quantity/) suffixes:
+[quantity](/docs/kubernetes/en/reference/kubernetes-api/common-definitions/quantity/) suffixes:
 E, P, T, G, M, k. You can also use the power-of-two equivalents: Ei, Pi, Ti, Gi,
 Mi, Ki. For example, the following represent roughly the same value:
 
@@ -226,11 +226,11 @@ see the [Troubleshooting](#troubleshooting) section.
 ### Monitoring compute & memory resource usage
 
 The kubelet reports the resource usage of a Pod as part of the Pod
-[`status`](/docs/concepts/overview/working-with-objects/kubernetes-objects/#object-spec-and-status).
+[`status`](/docs/kubernetes/en/concepts/overview/working-with-objects/kubernetes-objects/#object-spec-and-status).
 
-If optional [tools for monitoring](/docs/tasks/debug/debug-cluster/resource-usage-monitoring/)
+If optional [tools for monitoring](/docs/kubernetes/en/tasks/debug/debug-cluster/resource-usage-monitoring/)
 are available in your cluster, then Pod resource usage can be retrieved either
-from the [Metrics API](/docs/tasks/debug/debug-cluster/resource-metrics-pipeline/#metrics-api)
+from the [Metrics API](/docs/kubernetes/en/tasks/debug/debug-cluster/resource-metrics-pipeline/#metrics-api)
 directly or from your monitoring tools.
 
 ## Local ephemeral storage
@@ -244,11 +244,11 @@ locally-attached writeable devices or, sometimes, by RAM.
 
 Pods use ephemeral local storage for scratch space, caching, and for logs.
 The kubelet can provide scratch space to Pods using local ephemeral storage to
-mount [`emptyDir`](/docs/concepts/storage/volumes/#emptydir)
+mount [`emptyDir`](/docs/kubernetes/en/concepts/storage/volumes/#emptydir)
  {{< glossary_tooltip term_id="volume" text="volumes" >}} into containers.
 
 The kubelet also uses this kind of storage to hold
-[node-level container logs](/docs/concepts/cluster-administration/logging/#logging-at-the-node-level),
+[node-level container logs](/docs/kubernetes/en/concepts/cluster-administration/logging/#logging-at-the-node-level),
 container images, and the writable layers of running containers.
 
 {{< caution >}}
@@ -271,7 +271,7 @@ The most effective way to configure the kubelet means dedicating this filesystem
 to Kubernetes (kubelet) data.
 
 The kubelet also writes
-[node-level container logs](/docs/concepts/cluster-administration/logging/#logging-at-the-node-level)
+[node-level container logs](/docs/kubernetes/en/concepts/cluster-administration/logging/#logging-at-the-node-level)
 and treats these similarly to ephemeral local storage.
 
 The kubelet writes logs to files inside its configured log directory (`/var/log`
@@ -291,7 +291,7 @@ for other data (for example: system logs not related to Kubernetes); it can even
 be the root filesystem.
 
 The kubelet also writes
-[node-level container logs](/docs/concepts/cluster-administration/logging/#logging-at-the-node-level)
+[node-level container logs](/docs/kubernetes/en/concepts/cluster-administration/logging/#logging-at-the-node-level)
 into the first filesystem, and treats these similarly to ephemeral local storage.
 
 You also use a separate filesystem, backed by a different logical storage device.
@@ -387,7 +387,7 @@ spec:
 When you create a Pod, the Kubernetes scheduler selects a node for the Pod to
 run on. Each node has a maximum amount of local ephemeral storage it can provide for Pods.
 For more information, see
-[Node Allocatable](/docs/tasks/administer-cluster/reserve-compute-resources/#node-allocatable).
+[Node Allocatable](/docs/kubernetes/en/tasks/administer-cluster/reserve-compute-resources/#node-allocatable).
 
 The scheduler ensures that the sum of the resource requests of the scheduled containers is less than the capacity of the node.
 
@@ -476,9 +476,9 @@ whereas directory scans overlook the storage used by deleted files.
 If you want to use project quotas, you should:
 
 * Enable the `LocalStorageCapacityIsolationFSQuotaMonitoring=true`
-  [feature gate](/docs/reference/command-line-tools-reference/feature-gates/)
+  [feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/)
   using the `featureGates` field in the
-  [kubelet configuration](/docs/reference/config-api/kubelet-config.v1beta1/)
+  [kubelet configuration](/docs/kubernetes/en/reference/config-api/kubelet-config.v1beta1/)
   or the `--feature-gates` command line flag.
 
 * Ensure that the root filesystem (or optional runtime filesystem)
@@ -516,7 +516,7 @@ Node-level extended resources are tied to nodes.
 
 ##### Device plugin managed resources
 See [Device
-Plugin](/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/)
+Plugin](/docs/kubernetes/en/concepts/extend-kubernetes/compute-storage-net/device-plugins/)
 for how to advertise device plugin managed resources on each node.
 
 ##### Other resources
@@ -560,7 +560,7 @@ Cluster-level extended resources are not tied to nodes. They are usually managed
 by scheduler extenders, which handle the resource consumption and resource quota.
 
 You can specify the extended resources that are handled by scheduler extenders
-in [scheduler configuration](/docs/reference/config-api/kube-scheduler-config.v1beta3/)
+in [scheduler configuration](/docs/kubernetes/en/reference/config-api/kube-scheduler-config.v1beta3/)
 
 **Example:**
 
@@ -644,7 +644,7 @@ spec:
 
 Process ID (PID) limits allow for the configuration of a kubelet
 to limit the number of PIDs that a given Pod can consume. See
-[PID Limiting](/docs/concepts/policy/pid-limiting/) for information.
+[PID Limiting](/docs/kubernetes/en/concepts/policy/pid-limiting/) for information.
 
 ## Troubleshooting
 
@@ -652,7 +652,7 @@ to limit the number of PIDs that a given Pod can consume. See
 
 If the scheduler cannot find any node where a Pod can fit, the Pod remains
 unscheduled until a place can be found. An
-[Event](/docs/reference/kubernetes-api/cluster-resources/event-v1/) is produced
+[Event](/docs/kubernetes/en/reference/kubernetes-api/cluster-resources/event-v1/) is produced
 each time the scheduler fails to find a place for the Pod. You can use `kubectl`
 to view the events for a Pod; for example:
 
@@ -722,15 +722,15 @@ the node.
 The amount of resources available to Pods is less than the node capacity because
 system daemons use a portion of the available resources. Within the Kubernetes API,
 each Node has a `.status.allocatable` field
-(see [NodeStatus](/docs/reference/kubernetes-api/cluster-resources/node-v1/#NodeStatus)
+(see [NodeStatus](/docs/kubernetes/en/reference/kubernetes-api/cluster-resources/node-v1/#NodeStatus)
 for details).
 
 The `.status.allocatable` field describes the amount of resources that are available
 to Pods on that node (for example: 15 virtual CPUs and 7538 MiB of memory).
 For more information on node allocatable resources in Kubernetes, see
-[Reserve Compute Resources for System Daemons](/docs/tasks/administer-cluster/reserve-compute-resources/).
+[Reserve Compute Resources for System Daemons](/docs/kubernetes/en/tasks/administer-cluster/reserve-compute-resources/).
 
-You can configure [resource quotas](/docs/concepts/policy/resource-quotas/)
+You can configure [resource quotas](/docs/kubernetes/en/concepts/policy/resource-quotas/)
 to limit the total amount of resources that a namespace can consume.
 Kubernetes enforces quotas for objects in particular namespace when there is a
 ResourceQuota in that namespace.
@@ -801,10 +801,10 @@ memory limit (and possibly request) for that container.
 
 ## {{% heading "whatsnext" %}}
 
-* Get hands-on experience [assigning Memory resources to containers and Pods](/docs/tasks/configure-pod-container/assign-memory-resource/).
-* Get hands-on experience [assigning CPU resources to containers and Pods](/docs/tasks/configure-pod-container/assign-cpu-resource/).
-* Read how the API reference defines a [container](/docs/reference/kubernetes-api/workload-resources/pod-v1/#Container)
-  and its [resource requirements](/docs/reference/kubernetes-api/workload-resources/pod-v1/#resources)
+* Get hands-on experience [assigning Memory resources to containers and Pods](/docs/kubernetes/en/tasks/configure-pod-container/assign-memory-resource/).
+* Get hands-on experience [assigning CPU resources to containers and Pods](/docs/kubernetes/en/tasks/configure-pod-container/assign-cpu-resource/).
+* Read how the API reference defines a [container](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/pod-v1/#Container)
+  and its [resource requirements](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/pod-v1/#resources)
 * Read about [project quotas](https://xfs.org/index.php/XFS_FAQ#Q:_Quota:_Do_quotas_work_on_XFS.3F) in XFS
-* Read more about the [kube-scheduler configuration reference (v1beta3)](/docs/reference/config-api/kube-scheduler-config.v1beta3/)
+* Read more about the [kube-scheduler configuration reference (v1beta3)](/docs/kubernetes/en/reference/config-api/kube-scheduler-config.v1beta3/)
 

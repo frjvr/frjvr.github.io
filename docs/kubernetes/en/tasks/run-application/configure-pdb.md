@@ -22,9 +22,9 @@ nodes.
 
 * You are the owner of an application running on a Kubernetes cluster that requires
   high availability.
-* You should know how to deploy [Replicated Stateless Applications](/docs/tasks/run-application/run-stateless-application-deployment/)
-  and/or [Replicated Stateful Applications](/docs/tasks/run-application/run-replicated-stateful-application/).
-* You should have read about [Pod Disruptions](/docs/concepts/workloads/pods/disruptions/).
+* You should know how to deploy [Replicated Stateless Applications](/docs/kubernetes/en/tasks/run-application/run-stateless-application-deployment/)
+  and/or [Replicated Stateful Applications](/docs/kubernetes/en/tasks/run-application/run-replicated-stateful-application/).
+* You should have read about [Pod Disruptions](/docs/kubernetes/en/concepts/workloads/pods/disruptions/).
 * You should confirm with your cluster owner or service provider that they respect
   Pod Disruption Budgets.
 
@@ -55,7 +55,7 @@ specified by one of the built-in Kubernetes controllers:
 In this case, make a note of the controller's `.spec.selector`; the same
 selector goes into the PDBs `.spec.selector`.
 
-From version 1.15 PDBs support custom controllers where the [scale subresource](/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#scale-subresource) is enabled.
+From version 1.15 PDBs support custom controllers where the [scale subresource](/docs/kubernetes/en/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#scale-subresource) is enabled.
 
 You can also use PDBs with pods which are not controlled by one of the above
 controllers, or arbitrary groups of pods, but there are some restrictions,
@@ -240,8 +240,8 @@ These pods are tracked via `.status.currentHealthy` field in the PDB status.
 
 {{< note >}}
 In order to use this behavior, you must enable the `PDBUnhealthyPodEvictionPolicy`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/)
-on the [API server](/docs/reference/command-line-tools-reference/kube-apiserver/).
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/)
+on the [API server](/docs/kubernetes/en/reference/command-line-tools-reference/kube-apiserver/).
 {{< /note >}}
 
 PodDisruptionBudget guarding an application ensures that `.status.currentHealthy` number of pods

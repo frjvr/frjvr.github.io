@@ -12,13 +12,13 @@ runtime cgroup driver for kubeadm clusters.
 ## {{% heading "prerequisites" %}}
 
 You should be familiar with the Kubernetes
-[container runtime requirements](/docs/setup/production-environment/container-runtimes).
+[container runtime requirements](/docs/kubernetes/en/setup/production-environment/container-runtimes).
 
 <!-- steps -->
 
 ## Configuring the container runtime cgroup driver
 
-The [Container runtimes](/docs/setup/production-environment/container-runtimes) page
+The [Container runtimes](/docs/kubernetes/en/setup/production-environment/container-runtimes) page
 explains that the `systemd` driver is recommended for kubeadm based setups instead
 of the `cgroupfs` driver, because kubeadm manages the kubelet as a systemd service.
 
@@ -58,7 +58,7 @@ kubeadm init --config kubeadm-config.yaml
 
 {{< note >}}
 Kubeadm uses the same `KubeletConfiguration` for all nodes in the cluster.
-The `KubeletConfiguration` is stored in a [ConfigMap](/docs/concepts/configuration/configmap)
+The `KubeletConfiguration` is stored in a [ConfigMap](/docs/kubernetes/en/concepts/configuration/configmap)
 object under the `kube-system` namespace.
 
 Executing the sub commands `init`, `join` and `upgrade` would result in kubeadm
@@ -106,14 +106,14 @@ nodes before deleting the old nodes.
 
 For each node in the cluster:
 
-- [Drain the node](/docs/tasks/administer-cluster/safely-drain-node) using `kubectl drain <node-name> --ignore-daemonsets`
+- [Drain the node](/docs/kubernetes/en/tasks/administer-cluster/safely-drain-node) using `kubectl drain <node-name> --ignore-daemonsets`
 - Stop the kubelet using `systemctl stop kubelet`
 - Stop the container runtime
 - Modify the container runtime cgroup driver to `systemd`
 - Set `cgroupDriver: systemd` in `/var/lib/kubelet/config.yaml`
 - Start the container runtime
 - Start the kubelet using `systemctl start kubelet`
-- [Uncordon the node](/docs/tasks/administer-cluster/safely-drain-node) using `kubectl uncordon <node-name>`
+- [Uncordon the node](/docs/kubernetes/en/tasks/administer-cluster/safely-drain-node) using `kubectl uncordon <node-name>`
 
 Execute these steps on nodes one at a time to ensure workloads
 have sufficient time to schedule on different nodes.

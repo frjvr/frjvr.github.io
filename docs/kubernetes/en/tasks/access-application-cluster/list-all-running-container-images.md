@@ -25,7 +25,7 @@ of Containers for each.
 - Format the output to include only the list of Container image names
   using `-o jsonpath={.items[*].spec.containers[*].image}`.  This will recursively parse out the
   `image` field from the returned json.
-  - See the [jsonpath reference](/docs/reference/kubectl/jsonpath/)
+  - See the [jsonpath reference](/docs/kubernetes/en/reference/kubectl/jsonpath/)
     for further information on how to use jsonpath.
 - Format the output using standard tools: `tr`, `sort`, `uniq`
   - Use `tr` to replace spaces with newlines
@@ -92,6 +92,6 @@ kubectl get pods --all-namespaces -o go-template --template="{{range .items}}{{r
 
 ### Reference
 
-* [Jsonpath](/docs/reference/kubectl/jsonpath/) reference guide
+* [Jsonpath](/docs/kubernetes/en/reference/kubectl/jsonpath/) reference guide
 * [Go template](https://golang.org/pkg/text/template/) reference guide
 

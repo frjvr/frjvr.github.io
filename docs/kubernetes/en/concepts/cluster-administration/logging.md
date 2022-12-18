@@ -75,7 +75,7 @@ appending a container name to the command, with a `-c` flag, like so:
 kubectl logs counter -c count
 ```
 
-See the [`kubectl logs` documentation](/docs/reference/generated/kubectl/kubectl-commands#logs) for more details.
+See the [`kubectl logs` documentation](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands#logs) for more details.
 
 ### How nodes handle container logs
 
@@ -101,12 +101,12 @@ If you configure rotation, the kubelet is responsible for rotating container log
 The kubelet sends this information to the container runtime (using CRI),
 and the runtime writes the container logs to the given location.
 
-You can configure two kubelet [configuration settings](/docs/reference/config-api/kubelet-config.v1beta1/#kubelet-config-k8s-io-v1beta1-KubeletConfiguration),
+You can configure two kubelet [configuration settings](/docs/kubernetes/en/reference/config-api/kubelet-config.v1beta1/#kubelet-config-k8s-io-v1beta1-KubeletConfiguration),
 `containerLogMaxSize` and `containerLogMaxFiles`,
-using the [kubelet configuration file](/docs/tasks/administer-cluster/kubelet-config-file/).
+using the [kubelet configuration file](/docs/kubernetes/en/tasks/administer-cluster/kubelet-config-file/).
 These settings let you configure the maximum size for each log file and the maximum number of files allowed for each container respectively.
 
-When you run [`kubectl logs`](/docs/reference/generated/kubectl/kubectl-commands#logs) as in
+When you run [`kubectl logs`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands#logs) as in
 the basic logging example, the kubelet on the node handles the request and
 reads directly from the log file. The kubelet returns the content of the log file.
 
@@ -152,7 +152,7 @@ You can also set a logging directory using the deprecated kubelet command line
 argument `--log-dir`. However, the kubelet always directs your container runtime to
 write logs into directories within `/var/log/pods`.
 
-For more information on `kube-log-runner`, read [System Logs](/docs/concepts/cluster-administration/system-logs/#klog).
+For more information on `kube-log-runner`, read [System Logs](/docs/kubernetes/en/concepts/cluster-administration/system-logs/#klog).
 
 {{% /tab %}}
 {{% tab name="Windows" %}}
@@ -170,7 +170,7 @@ kubelet logs to a directory that you choose.
 However, the kubelet always directs your container runtime to write logs within the
 directory `C:\var\log\pods`.
 
-For more information on `kube-log-runner`, read [System Logs](/docs/concepts/cluster-administration/system-logs/#klog).
+For more information on `kube-log-runner`, read [System Logs](/docs/kubernetes/en/concepts/cluster-administration/system-logs/#klog).
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -321,7 +321,7 @@ by the kubelet.
 {{< /note >}}
 
 Here are two example manifests that you can use to implement a sidecar container with a logging agent.
-The first manifest contains a [`ConfigMap`](/docs/tasks/configure-pod-container/configure-pod-configmap/)
+The first manifest contains a [`ConfigMap`](/docs/kubernetes/en/tasks/configure-pod-container/configure-pod-configmap/)
 to configure fluentd.
 
 {{< codenew file="admin/logging/fluentd-sidecar-config.yaml" >}}
@@ -344,6 +344,6 @@ Cluster-logging that exposes or pushes logs directly from every application is o
 
 ## {{% heading "whatsnext" %}}
 
-* Read about [Kubernetes system logs](/docs/concepts/cluster-administration/system-logs/)
-* Learn about [Traces For Kubernetes System Components](/docs/concepts/cluster-administration/system-traces/)
-* Learn how to [customise the termination message](/docs/tasks/debug/debug-application/determine-reason-pod-failure/#customizing-the-termination-message) that Kubernetes records when a Pod fails
+* Read about [Kubernetes system logs](/docs/kubernetes/en/concepts/cluster-administration/system-logs/)
+* Learn about [Traces For Kubernetes System Components](/docs/kubernetes/en/concepts/cluster-administration/system-traces/)
+* Learn how to [customise the termination message](/docs/kubernetes/en/tasks/debug/debug-application/determine-reason-pod-failure/#customizing-the-termination-message) that Kubernetes records when a Pod fails

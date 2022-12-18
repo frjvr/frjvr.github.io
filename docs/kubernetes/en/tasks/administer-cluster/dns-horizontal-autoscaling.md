@@ -15,7 +15,7 @@ your Kubernetes cluster.
 
 * This guide assumes your nodes use the AMD64 or Intel 64 CPU architecture.
 
-* Make sure [Kubernetes DNS](/docs/concepts/services-networking/dns-pod-service/) is enabled.
+* Make sure [Kubernetes DNS](/docs/kubernetes/en/concepts/services-networking/dns-pod-service/) is enabled.
 
 
 
@@ -231,7 +231,7 @@ patterns: *linear* and *ladder*.
 
 ## {{% heading "whatsnext" %}}
 
-* Read about [Guaranteed Scheduling For Critical Add-On Pods](/docs/tasks/administer-cluster/guaranteed-scheduling-critical-addon-pods/).
+* Read about [Guaranteed Scheduling For Critical Add-On Pods](/docs/kubernetes/en/tasks/administer-cluster/guaranteed-scheduling-critical-addon-pods/).
 * Learn more about the
 [implementation of cluster-proportional-autoscaler](https://github.com/kubernetes-sigs/cluster-proportional-autoscaler).
 

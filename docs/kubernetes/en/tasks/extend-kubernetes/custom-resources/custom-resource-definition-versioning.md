@@ -10,14 +10,14 @@ min-kubernetes-server-version: v1.16
 
 <!-- overview -->
 This page explains how to add versioning information to
-[CustomResourceDefinitions](/docs/reference/kubernetes-api/extend-resources/custom-resource-definition-v1/), to indicate the stability
+[CustomResourceDefinitions](/docs/kubernetes/en/reference/kubernetes-api/extend-resources/custom-resource-definition-v1/), to indicate the stability
 level of your CustomResourceDefinitions or advance your API to a new version with conversion between API representations. It also describes how to upgrade an object from one version to another.
 
 ## {{% heading "prerequisites" %}}
 
 {{< include "task-tutorial-prereqs.md" >}}
 
-You should have an initial understanding of [custom resources](/docs/concepts/extend-kubernetes/api-extension/custom-resources/).
+You should have an initial understanding of [custom resources](/docs/kubernetes/en/concepts/extend-kubernetes/api-extension/custom-resources/).
 
 {{< version-check >}}
 
@@ -388,7 +388,7 @@ spec:
 
 {{< note >}}
 Webhook conversion is available as beta since 1.15, and as alpha since Kubernetes 1.13. The
-`CustomResourceWebhookConversion` feature must be enabled, which is the case automatically for many clusters for beta features. Please refer to the [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) documentation for more information.
+`CustomResourceWebhookConversion` feature must be enabled, which is the case automatically for many clusters for beta features. Please refer to the [feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) documentation for more information.
 {{< /note >}}
 
 The above example has a None conversion between versions which only sets the `apiVersion` field
@@ -425,7 +425,7 @@ The example conversion webhook server leaves the `ClientAuth` field
 which defaults to `NoClientCert`. This means that the webhook server does not
 authenticate the identity of the clients, supposedly API servers. If you need
 mutual TLS or other ways to authenticate the clients, see
-how to [authenticate API servers](/docs/reference/access-authn-authz/extensible-admission-controllers/#authenticate-apiservers).
+how to [authenticate API servers](/docs/kubernetes/en/reference/access-authn-authz/extensible-admission-controllers/#authenticate-apiservers).
 {{< /note >}}
 
 #### Permissible mutations
@@ -438,7 +438,7 @@ which caused the conversion. All other changes are ignored.
 ### Deploy the conversion webhook service
 
 Documentation for deploying the conversion webhook is the same as for the
-[admission webhook example service](/docs/reference/access-authn-authz/extensible-admission-controllers/#deploy_the_admission_webhook_service).
+[admission webhook example service](/docs/kubernetes/en/reference/access-authn-authz/extensible-admission-controllers/#deploy_the_admission_webhook_service).
 The assumption for next sections is that the conversion webhook server is deployed to a service
 named `example-conversion-webhook-server` in `default` namespace and serving traffic on path `/crdconvert`.
 
@@ -1087,7 +1087,7 @@ fetch and update the subresources, `status` and `scale`, for all the API resourc
 support them. This flag is available starting from kubectl version v1.24. Previously, reading
 subresources (like `status`) via kubectl involved using `kubectl --raw`, and updating
 subresources using kubectl was not possible at all. Starting from v1.24, the `kubectl` tool
-can be used to edit or patch the `status` subresource on a CRD object. See [How to patch a Deployment using the subresource flag](/docs/tasks/manage-kubernetes-objects/update-api-object-kubectl-patch/#scale-kubectl-patch).
+can be used to edit or patch the `status` subresource on a CRD object. See [How to patch a Deployment using the subresource flag](/docs/kubernetes/en/tasks/manage-kubernetes-objects/update-api-object-kubectl-patch/#scale-kubectl-patch).
 
 This page is part of the documentation for Kubernetes v{{< skew currentVersion >}}.
 If you are running a different version of Kubernetes, consult the documentation for that release.

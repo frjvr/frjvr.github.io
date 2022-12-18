@@ -2,7 +2,7 @@
 title: Operator pattern
 id: operator-pattern
 date: 2019-05-21
-full_link: /docs/concepts/extend-kubernetes/operator/
+full_link: /docs/kubernetes/en/concepts/extend-kubernetes/operator/
 short_description: >
   A specialized controller used to manage a custom resource
 
@@ -10,7 +10,7 @@ aka:
 tags:
 - architecture
 ---
- The [operator pattern](/docs/concepts/extend-kubernetes/operator/) is a system
+ The [operator pattern](/docs/kubernetes/en/concepts/extend-kubernetes/operator/) is a system
 design that links a {{< glossary_tooltip term_id="controller" >}} to one or more custom
 resources.
 

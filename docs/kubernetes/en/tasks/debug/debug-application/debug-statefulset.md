@@ -32,12 +32,12 @@ kubectl get pods -l app.kubernetes.io/name=MyApp
 ```
 
 If you find that any Pods listed are in `Unknown` or `Terminating` state for an extended period of time,
-refer to the [Deleting StatefulSet Pods](/docs/tasks/run-application/delete-stateful-set/) task for
+refer to the [Deleting StatefulSet Pods](/docs/kubernetes/en/tasks/run-application/delete-stateful-set/) task for
 instructions on how to deal with them.
 You can debug individual Pods in a StatefulSet using the
-[Debugging Pods](/docs/tasks/debug/debug-application/debug-pods/) guide.
+[Debugging Pods](/docs/kubernetes/en/tasks/debug/debug-application/debug-pods/) guide.
 
 ## {{% heading "whatsnext" %}}
 
-Learn more about [debugging an init-container](/docs/tasks/debug/debug-application/debug-init-containers/).
+Learn more about [debugging an init-container](/docs/kubernetes/en/tasks/debug/debug-application/debug-init-containers/).
 

@@ -19,7 +19,7 @@ all nodes, or storage is local to a node to begin with.
 {{< feature-state for_k8s_version="v1.24" state="stable" >}}
 
 This page describes how Kubernetes keeps track of storage capacity and
-how the scheduler uses that information to [schedule Pods](/docs/concepts/scheduling-eviction/) onto nodes
+how the scheduler uses that information to [schedule Pods](/docs/kubernetes/en/concepts/scheduling-eviction/) onto nodes
 that have access to enough storage capacity for the remaining missing
 volumes. Without storage capacity tracking, the scheduler may choose a
 node that doesn't have enough capacity to provision a volume and
@@ -39,12 +39,12 @@ documentation for that version of Kubernetes.
 ## API
 
 There are two API extensions for this feature:
-- [CSIStorageCapacity](/docs/reference/kubernetes-api/config-and-storage-resources/csi-storage-capacity-v1/) objects:
+- [CSIStorageCapacity](/docs/kubernetes/en/reference/kubernetes-api/config-and-storage-resources/csi-storage-capacity-v1/) objects:
   these get produced by a CSI driver in the namespace
   where the driver is installed. Each object contains capacity
   information for one storage class and defines which nodes have
   access to that storage.
-- [The `CSIDriverSpec.StorageCapacity` field](/docs/reference/kubernetes-api/config-and-storage-resources/csi-driver-v1/#CSIDriverSpec):
+- [The `CSIDriverSpec.StorageCapacity` field](/docs/kubernetes/en/reference/kubernetes-api/config-and-storage-resources/csi-driver-v1/#CSIDriverSpec):
   when set to `true`, the Kubernetes scheduler will consider storage
   capacity for volumes that use the CSI driver.
 
@@ -54,7 +54,7 @@ Storage capacity information is used by the Kubernetes scheduler if:
 - a Pod uses a volume that has not been created yet,
 - that volume uses a {{< glossary_tooltip text="StorageClass" term_id="storage-class" >}} which references a CSI driver and
   uses `WaitForFirstConsumer` [volume binding
-  mode](/docs/concepts/storage/storage-classes/#volume-binding-mode),
+  mode](/docs/kubernetes/en/concepts/storage/storage-classes/#volume-binding-mode),
   and
 - the `CSIDriver` object for the driver has `StorageCapacity` set to
   true.
@@ -70,7 +70,7 @@ decides where to create the volume, independently of Pods that will
 use the volume. The scheduler then schedules Pods onto nodes where the
 volume is available after the volume has been created.
 
-For [CSI ephemeral volumes](/docs/concepts/storage/ephemeral-volumes/#csi-ephemeral-volumes),
+For [CSI ephemeral volumes](/docs/kubernetes/en/concepts/storage/ephemeral-volumes/#csi-ephemeral-volumes),
 scheduling always happens without considering storage capacity. This
 is based on the assumption that this volume type is only used by
 special CSI drivers which are local to a node and do not need

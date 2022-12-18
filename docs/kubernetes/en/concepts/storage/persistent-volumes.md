@@ -16,7 +16,7 @@ weight: 20
 
 <!-- overview -->
 
-This document describes _persistent volumes_ in Kubernetes. Familiarity with [volumes](/docs/concepts/storage/volumes/) is suggested.
+This document describes _persistent volumes_ in Kubernetes. Familiarity with [volumes](/docs/kubernetes/en/concepts/storage/volumes/) is suggested.
 
 <!-- body -->
 
@@ -24,13 +24,13 @@ This document describes _persistent volumes_ in Kubernetes. Familiarity with [vo
 
 Managing storage is a distinct problem from managing compute instances. The PersistentVolume subsystem provides an API for users and administrators that abstracts details of how storage is provided from how it is consumed. To do this, we introduce two new API resources:  PersistentVolume and PersistentVolumeClaim.
 
-A _PersistentVolume_ (PV) is a piece of storage in the cluster that has been provisioned by an administrator or dynamically provisioned using [Storage Classes](/docs/concepts/storage/storage-classes/). It is a resource in the cluster just like a node is a cluster resource. PVs are volume plugins like Volumes, but have a lifecycle independent of any individual Pod that uses the PV. This API object captures the details of the implementation of the storage, be that NFS, iSCSI, or a cloud-provider-specific storage system.
+A _PersistentVolume_ (PV) is a piece of storage in the cluster that has been provisioned by an administrator or dynamically provisioned using [Storage Classes](/docs/kubernetes/en/concepts/storage/storage-classes/). It is a resource in the cluster just like a node is a cluster resource. PVs are volume plugins like Volumes, but have a lifecycle independent of any individual Pod that uses the PV. This API object captures the details of the implementation of the storage, be that NFS, iSCSI, or a cloud-provider-specific storage system.
 
 A _PersistentVolumeClaim_ (PVC) is a request for storage by a user. It is similar to a Pod. Pods consume node resources and PVCs consume PV resources. Pods can request specific levels of resources (CPU and Memory).  Claims can request specific size and access modes (e.g., they can be mounted ReadWriteOnce, ReadOnlyMany or ReadWriteMany, see [AccessModes](#access-modes)).
 
 While PersistentVolumeClaims allow a user to consume abstract storage resources, it is common that users need PersistentVolumes with varying properties, such as performance, for different problems. Cluster administrators need to be able to offer a variety of PersistentVolumes that differ in more ways than size and access modes, without exposing users to the details of how those volumes are implemented. For these needs, there is the _StorageClass_ resource.
 
-See the [detailed walkthrough with working examples](/docs/tasks/configure-pod-container/configure-persistent-volume-storage/).
+See the [detailed walkthrough with working examples](/docs/kubernetes/en/tasks/configure-pod-container/configure-persistent-volume-storage/).
 
 ## Lifecycle of a volume and claim
 
@@ -49,13 +49,13 @@ A cluster administrator creates a number of PVs. They carry the details of the r
 When none of the static PVs the administrator created match a user's PersistentVolumeClaim,
 the cluster may try to dynamically provision a volume specially for the PVC.
 This provisioning is based on StorageClasses: the PVC must request a
-[storage class](/docs/concepts/storage/storage-classes/) and
+[storage class](/docs/kubernetes/en/concepts/storage/storage-classes/) and
 the administrator must have created and configured that class for dynamic
 provisioning to occur. Claims that request the class `""` effectively disable
 dynamic provisioning for themselves.
 
 To enable dynamic storage provisioning based on storage class, the cluster administrator
-needs to enable the `DefaultStorageClass` [admission controller](/docs/reference/access-authn-authz/admission-controllers/#defaultstorageclass)
+needs to enable the `DefaultStorageClass` [admission controller](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/#defaultstorageclass)
 on the API server. This can be done, for example, by ensuring that `DefaultStorageClass` is
 among the comma-delimited, ordered list of values for the `--enable-admission-plugins` flag of
 the API server component. For more information on API server command-line flags,
@@ -136,7 +136,7 @@ If you want to reuse the same storage asset, create a new PersistentVolume with 
 
 #### Delete
 
-For volume plugins that support the `Delete` reclaim policy, deletion removes both the PersistentVolume object from Kubernetes, as well as the associated storage asset in the external infrastructure, such as an AWS EBS, GCE PD, Azure Disk, or Cinder volume. Volumes that were dynamically provisioned inherit the [reclaim policy of their StorageClass](#reclaim-policy), which defaults to `Delete`. The administrator should configure the StorageClass according to users' expectations; otherwise, the PV must be edited or patched after it is created. See [Change the Reclaim Policy of a PersistentVolume](/docs/tasks/administer-cluster/change-pv-reclaim-policy/).
+For volume plugins that support the `Delete` reclaim policy, deletion removes both the PersistentVolume object from Kubernetes, as well as the associated storage asset in the external infrastructure, such as an AWS EBS, GCE PD, Azure Disk, or Cinder volume. Volumes that were dynamically provisioned inherit the [reclaim policy of their StorageClass](#reclaim-policy), which defaults to `Delete`. The administrator should configure the StorageClass according to users' expectations; otherwise, the PV must be edited or patched after it is created. See [Change the Reclaim Policy of a PersistentVolume](/docs/kubernetes/en/tasks/administer-cluster/change-pv-reclaim-policy/).
 
 #### Recycle
 
@@ -148,7 +148,7 @@ If supported by the underlying volume plugin, the `Recycle` reclaim policy perfo
 
 However, an administrator can configure a custom recycler Pod template using
 the Kubernetes controller manager command line arguments as described in the
-[reference](/docs/reference/command-line-tools-reference/kube-controller-manager/).
+[reference](/docs/kubernetes/en/reference/command-line-tools-reference/kube-controller-manager/).
 The custom recycler Pod template must contain a `volumes` specification, as
 shown in the example below:
 
@@ -251,7 +251,7 @@ By specifying a PersistentVolume in a PersistentVolumeClaim, you declare a bindi
 If the PersistentVolume exists and has not reserved PersistentVolumeClaims through its `claimRef` field, then the PersistentVolume and PersistentVolumeClaim will be bound.
 
 The binding happens regardless of some volume matching criteria, including node affinity.
-The control plane still checks that [storage class](/docs/concepts/storage/storage-classes/), access modes, and requested storage size are valid.
+The control plane still checks that [storage class](/docs/kubernetes/en/concepts/storage/storage-classes/), access modes, and requested storage size are valid.
 
 ```yaml
 apiVersion: v1
@@ -387,7 +387,7 @@ If expanding underlying storage fails, the cluster administrator can manually re
 {{% feature-state for_k8s_version="v1.23" state="alpha" %}}
 
 {{< note >}}
-Recovery from failing PVC expansion by users is available as an alpha feature since Kubernetes 1.23. The `RecoverVolumeExpansionFailure` feature must be enabled for this feature to work. Refer to the [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) documentation for more information.
+Recovery from failing PVC expansion by users is available as an alpha feature since Kubernetes 1.23. The `RecoverVolumeExpansionFailure` feature must be enabled for this feature to work. Refer to the [feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) documentation for more information.
 {{< /note >}}
 
 If the feature gates `RecoverVolumeExpansionFailure` is
@@ -411,55 +411,55 @@ Kubernetes does not support shrinking a PVC to less than its current size.
 
 PersistentVolume types are implemented as plugins. Kubernetes currently supports the following plugins:
 
-* [`cephfs`](/docs/concepts/storage/volumes/#cephfs) - CephFS volume
-* [`csi`](/docs/concepts/storage/volumes/#csi) - Container Storage Interface (CSI)
-* [`fc`](/docs/concepts/storage/volumes/#fc) - Fibre Channel (FC) storage
-* [`hostPath`](/docs/concepts/storage/volumes/#hostpath) - HostPath volume
+* [`cephfs`](/docs/kubernetes/en/concepts/storage/volumes/#cephfs) - CephFS volume
+* [`csi`](/docs/kubernetes/en/concepts/storage/volumes/#csi) - Container Storage Interface (CSI)
+* [`fc`](/docs/kubernetes/en/concepts/storage/volumes/#fc) - Fibre Channel (FC) storage
+* [`hostPath`](/docs/kubernetes/en/concepts/storage/volumes/#hostpath) - HostPath volume
   (for single node testing only; WILL NOT WORK in a multi-node cluster;
   consider using `local` volume instead)
-* [`iscsi`](/docs/concepts/storage/volumes/#iscsi) - iSCSI (SCSI over IP) storage
-* [`local`](/docs/concepts/storage/volumes/#local) - local storage devices
+* [`iscsi`](/docs/kubernetes/en/concepts/storage/volumes/#iscsi) - iSCSI (SCSI over IP) storage
+* [`local`](/docs/kubernetes/en/concepts/storage/volumes/#local) - local storage devices
   mounted on nodes.
-* [`nfs`](/docs/concepts/storage/volumes/#nfs) - Network File System (NFS) storage
-* [`rbd`](/docs/concepts/storage/volumes/#rbd) - Rados Block Device (RBD) volume
+* [`nfs`](/docs/kubernetes/en/concepts/storage/volumes/#nfs) - Network File System (NFS) storage
+* [`rbd`](/docs/kubernetes/en/concepts/storage/volumes/#rbd) - Rados Block Device (RBD) volume
 
 The following types of PersistentVolume are deprecated. This means that support is still available but will be removed in a future Kubernetes release.
 
-* [`awsElasticBlockStore`](/docs/concepts/storage/volumes/#awselasticblockstore) - AWS Elastic Block Store (EBS)
+* [`awsElasticBlockStore`](/docs/kubernetes/en/concepts/storage/volumes/#awselasticblockstore) - AWS Elastic Block Store (EBS)
   (**deprecated** in v1.17)
-* [`azureDisk`](/docs/concepts/storage/volumes/#azuredisk) - Azure Disk
+* [`azureDisk`](/docs/kubernetes/en/concepts/storage/volumes/#azuredisk) - Azure Disk
   (**deprecated** in v1.19)
-* [`azureFile`](/docs/concepts/storage/volumes/#azurefile) - Azure File
+* [`azureFile`](/docs/kubernetes/en/concepts/storage/volumes/#azurefile) - Azure File
   (**deprecated** in v1.21)
-* [`cinder`](/docs/concepts/storage/volumes/#cinder) - Cinder (OpenStack block storage)
+* [`cinder`](/docs/kubernetes/en/concepts/storage/volumes/#cinder) - Cinder (OpenStack block storage)
   (**deprecated** in v1.18)
-* [`flexVolume`](/docs/concepts/storage/volumes/#flexvolume) - FlexVolume
+* [`flexVolume`](/docs/kubernetes/en/concepts/storage/volumes/#flexvolume) - FlexVolume
   (**deprecated** in v1.23)
-* [`gcePersistentDisk`](/docs/concepts/storage/volumes/#gcepersistentdisk) - GCE Persistent Disk
+* [`gcePersistentDisk`](/docs/kubernetes/en/concepts/storage/volumes/#gcepersistentdisk) - GCE Persistent Disk
   (**deprecated** in v1.17)
-* [`portworxVolume`](/docs/concepts/storage/volumes/#portworxvolume) - Portworx volume
+* [`portworxVolume`](/docs/kubernetes/en/concepts/storage/volumes/#portworxvolume) - Portworx volume
   (**deprecated** in v1.25)
-* [`vsphereVolume`](/docs/concepts/storage/volumes/#vspherevolume) - vSphere VMDK volume
+* [`vsphereVolume`](/docs/kubernetes/en/concepts/storage/volumes/#vspherevolume) - vSphere VMDK volume
   (**deprecated** in v1.19)
 
 Older versions of Kubernetes also supported the following in-tree PersistentVolume types:
 
 * `photonPersistentDisk` - Photon controller persistent disk.
   (**not available** starting v1.15)
-* [`scaleIO`](/docs/concepts/storage/volumes/#scaleio) - ScaleIO volume
+* [`scaleIO`](/docs/kubernetes/en/concepts/storage/volumes/#scaleio) - ScaleIO volume
   (**not available** starting v1.21)
-* [`flocker`](/docs/concepts/storage/volumes/#flocker) - Flocker storage
+* [`flocker`](/docs/kubernetes/en/concepts/storage/volumes/#flocker) - Flocker storage
   (**not available** starting v1.25)
-* [`quobyte`](/docs/concepts/storage/volumes/#quobyte) - Quobyte volume
+* [`quobyte`](/docs/kubernetes/en/concepts/storage/volumes/#quobyte) - Quobyte volume
   (**not available** starting v1.25)
-* [`storageos`](/docs/concepts/storage/volumes/#storageos) - StorageOS volume
+* [`storageos`](/docs/kubernetes/en/concepts/storage/volumes/#storageos) - StorageOS volume
   (**not available** starting v1.25)
 
 ## Persistent Volumes
 
 Each PV contains a spec and status, which is the specification and status of the volume.
 The name of a PersistentVolume object must be a valid
-[DNS subdomain name](/docs/concepts/overview/working-with-objects/names#dns-subdomain-names).
+[DNS subdomain name](/docs/kubernetes/en/concepts/overview/working-with-objects/names#dns-subdomain-names).
 
 ```yaml
 apiVersion: v1
@@ -488,7 +488,7 @@ Helper programs relating to the volume type may be required for consumption of a
 
 ### Capacity
 
-Generally, a PV will have a specific storage capacity.  This is set using the PV's `capacity` attribute.  Read the glossary term [Quantity](/docs/reference/glossary/?all=true#term-quantity) to understand the units expected by `capacity`.
+Generally, a PV will have a specific storage capacity.  This is set using the PV's `capacity` attribute.  Read the glossary term [Quantity](/docs/kubernetes/en/reference/glossary/?all=true#term-quantity) to understand the units expected by `capacity`.
 
 Currently, storage size is the only resource that can be set or requested.  Future attributes may include IOPS, throughput, etc.
 
@@ -578,7 +578,7 @@ If the access modes are specified as ReadWriteOncePod, the volume is constrained
 
 A PV can have a class, which is specified by setting the
 `storageClassName` attribute to the name of a
-[StorageClass](/docs/concepts/storage/storage-classes/).
+[StorageClass](/docs/kubernetes/en/concepts/storage/storage-classes/).
 A PV of a particular class can only be bound to PVCs requesting
 that class. A PV with no `storageClassName` has no class and can only be bound
 to PVCs that request no particular class.
@@ -627,10 +627,10 @@ it will become fully deprecated in a future Kubernetes release.
 ### Node Affinity
 
 {{< note >}}
-For most volume types, you do not need to set this field. It is automatically populated for [AWS EBS](/docs/concepts/storage/volumes/#awselasticblockstore), [GCE PD](/docs/concepts/storage/volumes/#gcepersistentdisk) and [Azure Disk](/docs/concepts/storage/volumes/#azuredisk) volume block types. You need to explicitly set this for [local](/docs/concepts/storage/volumes/#local) volumes.
+For most volume types, you do not need to set this field. It is automatically populated for [AWS EBS](/docs/kubernetes/en/concepts/storage/volumes/#awselasticblockstore), [GCE PD](/docs/kubernetes/en/concepts/storage/volumes/#gcepersistentdisk) and [Azure Disk](/docs/kubernetes/en/concepts/storage/volumes/#azuredisk) volume block types. You need to explicitly set this for [local](/docs/kubernetes/en/concepts/storage/volumes/#local) volumes.
 {{< /note >}}
 
-A PV can specify node affinity to define constraints that limit what nodes this volume can be accessed from. Pods that use a PV will only be scheduled to nodes that are selected by the node affinity. To specify node affinity, set `nodeAffinity` in the `.spec` of a PV. The [PersistentVolume](/docs/reference/kubernetes-api/config-and-storage-resources/persistent-volume-v1/#PersistentVolumeSpec) API reference has more details on this field.
+A PV can specify node affinity to define constraints that limit what nodes this volume can be accessed from. Pods that use a PV will only be scheduled to nodes that are selected by the node affinity. To specify node affinity, set `nodeAffinity` in the `.spec` of a PV. The [PersistentVolume](/docs/kubernetes/en/reference/kubernetes-api/config-and-storage-resources/persistent-volume-v1/#PersistentVolumeSpec) API reference has more details on this field.
 
 ### Phase
 
@@ -647,7 +647,7 @@ The CLI will show the name of the PVC bound to the PV.
 
 Each PVC contains a spec and status, which is the specification and status of the claim.
 The name of a PersistentVolumeClaim object must be a valid
-[DNS subdomain name](/docs/concepts/overview/working-with-objects/names#dns-subdomain-names).
+[DNS subdomain name](/docs/kubernetes/en/concepts/overview/working-with-objects/names#dns-subdomain-names).
 
 ```yaml
 apiVersion: v1
@@ -683,7 +683,7 @@ Claims, like Pods, can request specific quantities of a resource. In this case, 
 
 ### Selector
 
-Claims can specify a [label selector](/docs/concepts/overview/working-with-objects/labels/#label-selectors) to further filter the set of volumes. Only the volumes whose labels match the selector can be bound to the claim. The selector can consist of two fields:
+Claims can specify a [label selector](/docs/kubernetes/en/concepts/overview/working-with-objects/labels/#label-selectors) to further filter the set of volumes. Only the volumes whose labels match the selector can be bound to the claim. The selector can consist of two fields:
 
 * `matchLabels` - the volume must have a label with this value
 * `matchExpressions` - a list of requirements made by specifying key, list of values, and operator that relates the key and values. Valid operators include In, NotIn, Exists, and DoesNotExist.
@@ -693,7 +693,7 @@ All of the requirements, from both `matchLabels` and `matchExpressions`, are AND
 ### Class
 
 A claim can request a particular class by specifying the name of a
-[StorageClass](/docs/concepts/storage/storage-classes/)
+[StorageClass](/docs/kubernetes/en/concepts/storage/storage-classes/)
 using the attribute `storageClassName`.
 Only PVs of the requested class, ones with the same `storageClassName` as the PVC, can
 be bound to the PVC.
@@ -703,7 +703,7 @@ equal to `""` is always interpreted to be requesting a PV with no class, so it
 can only be bound to PVs with no class (no annotation or one set equal to
 `""`). A PVC with no `storageClassName` is not quite the same and is treated differently
 by the cluster, depending on whether the
-[`DefaultStorageClass` admission plugin](/docs/reference/access-authn-authz/admission-controllers/#defaultstorageclass)
+[`DefaultStorageClass` admission plugin](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/#defaultstorageclass)
 is turned on.
 
 * If the admission plugin is turned on, the administrator may specify a
@@ -780,7 +780,7 @@ PersistentVolumes binds are exclusive, and since PersistentVolumeClaims are name
 ### PersistentVolumes typed `hostPath`
 
 A `hostPath` PersistentVolume uses a file or directory on the Node to emulate network-attached storage.
-See [an example of `hostPath` typed volume](/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume).
+See [an example of `hostPath` typed volume](/docs/kubernetes/en/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume).
 
 ## Raw Block Volume Support
 
@@ -887,7 +887,7 @@ Only statically provisioned volumes are supported for alpha release. Administrat
 
 {{< feature-state for_k8s_version="v1.20" state="stable" >}}
 
-Volume snapshots only support the out-of-tree CSI volume plugins. For details, see [Volume Snapshots](/docs/concepts/storage/volume-snapshots/).
+Volume snapshots only support the out-of-tree CSI volume plugins. For details, see [Volume Snapshots](/docs/kubernetes/en/concepts/storage/volume-snapshots/).
 In-tree volume plugins are deprecated. You can read about the deprecated volume plugins in the [Volume Plugin FAQ](https://github.com/kubernetes/community/blob/master/sig-storage/volume-plugin-faq.md).
 
 ### Create a PersistentVolumeClaim from a Volume Snapshot {#create-persistent-volume-claim-from-volume-snapshot}
@@ -912,7 +912,7 @@ spec:
 
 ## Volume Cloning
 
-[Volume Cloning](/docs/concepts/storage/volume-pvc-datasource/) only available for CSI volume plugins.
+[Volume Cloning](/docs/kubernetes/en/concepts/storage/volume-pvc-datasource/) only available for CSI volume plugins.
 
 ### Create PersistentVolumeClaim from an existing PVC {#create-persistent-volume-claim-from-an-existing-pvc}
 
@@ -939,7 +939,7 @@ spec:
 
 Kubernetes supports custom volume populators.
 To use custom volume populators, you must enable the `AnyVolumeDataSource`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/) for
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) for
 the kube-apiserver and kube-controller-manager.
 
 Volume populators take advantage of a PVC spec field called `dataSourceRef`. Unlike the
@@ -953,7 +953,7 @@ gate enabled, use of the `dataSourceRef` is preferred over `dataSource`.
 
 Kubernetes supports cross namespace volume data sources.
 To use cross namespace volume data sources, you must enable the `AnyVolumeDataSource` and `CrossNamespaceVolumeDataSource`
-[feature gates](/docs/reference/command-line-tools-reference/feature-gates/) for
+[feature gates](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) for
 the kube-apiserver, kube-controller-manager.
 Also, you must enable the `CrossNamespaceVolumeDataSource` feature gate for the csi-provisioner.
 
@@ -1101,13 +1101,13 @@ and need persistent storage, it is recommended that you use the following patter
 
 ## {{% heading "whatsnext" %}}
 
-* Learn more about [Creating a PersistentVolume](/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume).
-* Learn more about [Creating a PersistentVolumeClaim](/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolumeclaim).
+* Learn more about [Creating a PersistentVolume](/docs/kubernetes/en/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume).
+* Learn more about [Creating a PersistentVolumeClaim](/docs/kubernetes/en/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolumeclaim).
 * Read the [Persistent Storage design document](https://git.k8s.io/design-proposals-archive/storage/persistent-storage.md).
 
 ### API references {#reference}
 
 Read about the APIs described in this page:
 
-* [`PersistentVolume`](/docs/reference/kubernetes-api/config-and-storage-resources/persistent-volume-v1/)
-* [`PersistentVolumeClaim`](/docs/reference/kubernetes-api/config-and-storage-resources/persistent-volume-claim-v1/)
+* [`PersistentVolume`](/docs/kubernetes/en/reference/kubernetes-api/config-and-storage-resources/persistent-volume-v1/)
+* [`PersistentVolumeClaim`](/docs/kubernetes/en/reference/kubernetes-api/config-and-storage-resources/persistent-volume-claim-v1/)

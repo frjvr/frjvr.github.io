@@ -19,7 +19,7 @@ to identify which part of the overall task to work on.
 The pod index is available in the {{< glossary_tooltip text="annotation" term_id="annotation" >}}
 `batch.kubernetes.io/job-completion-index` as a string representing its
 decimal value. In order for the containerized task process to obtain this index,
-you can publish the value of the annotation using the [downward API](/docs/concepts/workloads/pods/downward-api/)
+you can publish the value of the annotation using the [downward API](/docs/kubernetes/en/concepts/workloads/pods/downward-api/)
 mechanism.
 For convenience, the control plane automatically sets the downward API to
 expose the index in the `JOB_COMPLETION_INDEX` environment variable.
@@ -34,7 +34,7 @@ Here is an overview of the steps in this example:
 ## {{% heading "prerequisites" %}}
 
 You should already be familiar with the basic,
-non-parallel, use of [Job](/docs/concepts/workloads/controllers/job/).
+non-parallel, use of [Job](/docs/kubernetes/en/concepts/workloads/controllers/job/).
 
 {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
 
@@ -80,16 +80,16 @@ Here is a sample Job manifest that uses `Indexed` completion mode:
 {{< codenew language="yaml" file="application/job/indexed-job.yaml" >}}
 
 In the example above, you use the builtin `JOB_COMPLETION_INDEX` environment
-variable set by the Job controller for all containers. An [init container](/docs/concepts/workloads/pods/init-containers/)
+variable set by the Job controller for all containers. An [init container](/docs/kubernetes/en/concepts/workloads/pods/init-containers/)
 maps the index to a static value and writes it to a file that is shared with the
-container running the worker through an [emptyDir volume](/docs/concepts/storage/volumes/#emptydir).
+container running the worker through an [emptyDir volume](/docs/kubernetes/en/concepts/storage/volumes/#emptydir).
 Optionally, you can [define your own environment variable through the downward
-API](/docs/tasks/inject-data-application/environment-variable-expose-pod-information/)
+API](/docs/kubernetes/en/tasks/inject-data-application/environment-variable-expose-pod-information/)
 to publish the index to containers. You can also choose to load a list of values
-from a [ConfigMap as an environment variable or file](/docs/tasks/configure-pod-container/configure-pod-configmap/).
+from a [ConfigMap as an environment variable or file](/docs/kubernetes/en/tasks/configure-pod-container/configure-pod-configmap/).
 
 Alternatively, you can directly [use the downward API to pass the annotation
-value as a volume file](/docs/tasks/inject-data-application/downward-api-volume-expose-pod-information/#store-pod-fields),
+value as a volume file](/docs/kubernetes/en/tasks/inject-data-application/downward-api-volume-expose-pod-information/#store-pod-fields),
 like shown in the following example:
 
 {{< codenew language="yaml" file="application/job/indexed-job-vol.yaml" >}}

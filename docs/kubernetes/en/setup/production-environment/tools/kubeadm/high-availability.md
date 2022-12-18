@@ -17,12 +17,12 @@ cluster using kubeadm:
   control plane nodes and etcd members are separated.
 
 Before proceeding, you should carefully consider which approach best meets the needs of your applications
-and environment. [Options for Highly Available topology](/docs/setup/production-environment/tools/kubeadm/ha-topology/) outlines the advantages and disadvantages of each.
+and environment. [Options for Highly Available topology](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/ha-topology/) outlines the advantages and disadvantages of each.
 
 If you encounter issues with setting up the HA cluster, please report these
 in the kubeadm [issue tracker](https://github.com/kubernetes/kubeadm/issues/new).
 
-See also the [upgrade documentation](/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/).
+See also the [upgrade documentation](/docs/kubernetes/en/tasks/administer-cluster/kubeadm/kubeadm-upgrade/).
 
 {{< caution >}}
 This page does not address running your cluster on a cloud provider. In a cloud
@@ -44,12 +44,12 @@ control plane:
 
 You need:
 
-- Three or more machines that meet [kubeadm's minimum requirements](/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#before-you-begin) for
+- Three or more machines that meet [kubeadm's minimum requirements](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/install-kubeadm/#before-you-begin) for
   the control-plane nodes. Having an odd number of control plane nodes can help
   with leader selection in the case of machine or zone failure.
   - including a {{< glossary_tooltip text="container runtime" term_id="container-runtime" >}}, already set up and working
 - Three or more machines that meet [kubeadm's minimum
-  requirements](/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#before-you-begin) for the workers
+  requirements](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/install-kubeadm/#before-you-begin) for the workers
   - including a container runtime, already set up and working
 - Full network connectivity between all machines in the cluster (public or
   private network)
@@ -58,7 +58,7 @@ You need:
 - SSH access from one device to all nodes in the system
 - `kubeadm` and `kubelet` already installed on all machines.
 
-_See [Stacked etcd topology](/docs/setup/production-environment/tools/kubeadm/ha-topology/#stacked-etcd-topology) for context._
+_See [Stacked etcd topology](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/ha-topology/#stacked-etcd-topology) for context._
 
 {{% /tab %}}
 {{% tab name="External etcd" %}}
@@ -68,12 +68,12 @@ _See [Stacked etcd topology](/docs/setup/production-environment/tools/kubeadm/ha
 -->
 You need:
 
-- Three or more machines that meet [kubeadm's minimum requirements](/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#before-you-begin) for
+- Three or more machines that meet [kubeadm's minimum requirements](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/install-kubeadm/#before-you-begin) for
   the control-plane nodes. Having an odd number of control plane nodes can help
   with leader selection in the case of machine or zone failure.
   - including a {{< glossary_tooltip text="container runtime" term_id="container-runtime" >}}, already set up and working
 - Three or more machines that meet [kubeadm's minimum
-  requirements](/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#before-you-begin) for the workers
+  requirements](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/install-kubeadm/#before-you-begin) for the workers
   - including a container runtime, already set up and working
 - Full network connectivity between all machines in the cluster (public or
   private network)
@@ -91,7 +91,7 @@ And you also need:
   - These machines again need to have `kubeadm` and `kubelet` installed.
   - These machines also require a container runtime, that is already set up and working.
 
-_See [External etcd topology](/docs/setup/production-environment/tools/kubeadm/ha-topology/#external-etcd-topology) for context._
+_See [External etcd topology](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/ha-topology/#external-etcd-topology) for context._
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -103,7 +103,7 @@ If you want to deploy a highly-available cluster where the hosts do not have acc
 ### Command line interface {#kubectl}
 
 To manage Kubernetes once your cluster is set up, you should
-[install kubectl](/docs/tasks/tools/#kubectl) on your PC. It is also useful
+[install kubectl](/docs/kubernetes/en/tasks/tools/#kubectl) on your PC. It is also useful
 to install the `kubectl` tool on each control plane node, as this can be
 helpful for troubleshooting.
 
@@ -173,14 +173,14 @@ option. Your cluster requirements may need a different configuration.
 
    {{< note >}}
    The `kubeadm init` flags `--config` and `--certificate-key` cannot be mixed, therefore if you want
-   to use the [kubeadm configuration](/docs/reference/config-api/kubeadm-config.v1beta3/)
+   to use the [kubeadm configuration](/docs/kubernetes/en/reference/config-api/kubeadm-config.v1beta3/)
    you must add the `certificateKey` field in the appropriate config locations
    (under `InitConfiguration` and `JoinConfiguration: controlPlane`).
    {{< /note >}}
 
    {{< note >}}
    Some CNI network plugins require additional configuration, for example specifying the pod IP CIDR, while others do not.
-   See the [CNI network documentation](/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network).
+   See the [CNI network documentation](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network).
    To add a pod CIDR pass the flag `--pod-network-cidr`, or if you are using a kubeadm configuration file
    set the `podSubnet` field under the `networking` object of `ClusterConfiguration`.
    {{< /note >}}
@@ -227,7 +227,7 @@ option. Your cluster requirements may need a different configuration.
    {{< /caution >}}
 
 1. Apply the CNI plugin of your choice:
-   [Follow these instructions](/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network)
+   [Follow these instructions](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network)
    to install the CNI provider. Make sure the configuration corresponds to the Pod CIDR specified in the
    kubeadm configuration file (if applicable).
 
@@ -267,7 +267,7 @@ in the kubeadm config file.
 
 ### Set up the etcd cluster
 
-1. Follow these [instructions](/docs/setup/production-environment/tools/kubeadm/setup-ha-etcd-with-kubeadm/) to set up the etcd cluster.
+1. Follow these [instructions](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/setup-ha-etcd-with-kubeadm/) to set up the etcd cluster.
 
 1. Set up SSH as described [here](#manual-certs).
 

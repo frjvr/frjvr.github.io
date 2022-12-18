@@ -29,7 +29,7 @@ etcd cluster externally or on custom ports.
 | TCP      | Inbound   | 10250       | Kubelet API           | Self, Control plane     |
 | TCP      | Inbound   | 30000-32767 | NodePort Services†    | All                     |
 
-† Default port range for [NodePort Services](/docs/concepts/services-networking/service/).
+† Default port range for [NodePort Services](/docs/kubernetes/en/concepts/services-networking/service/).
 
 All default port numbers can be overridden. When custom ports are used those 
 ports need to be open instead of defaults mentioned here. 

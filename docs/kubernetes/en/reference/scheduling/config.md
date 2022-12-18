@@ -20,8 +20,8 @@ by implementing one or more of these extension points.
 
 You can specify scheduling profiles by running `kube-scheduler --config <filename>`,
 using the
-KubeSchedulerConfiguration ([v1beta3](/docs/reference/config-api/kube-scheduler-config.v1beta3/)
-or [v1](/docs/reference/config-api/kube-scheduler-config.v1/))
+KubeSchedulerConfiguration ([v1beta3](/docs/kubernetes/en/reference/config-api/kube-scheduler-config.v1beta3/)
+or [v1](/docs/kubernetes/en/reference/config-api/kube-scheduler-config.v1/))
 struct.
 
 A minimal configuration looks as follows:
@@ -34,9 +34,9 @@ clientConnection:
 ```
 
   {{< note >}}
-  KubeSchedulerConfiguration [v1beta2](/docs/reference/config-api/kube-scheduler-config.v1beta2/)
+  KubeSchedulerConfiguration [v1beta2](/docs/kubernetes/en/reference/config-api/kube-scheduler-config.v1beta2/)
   is deprecated in v1.25 and will be removed in v1.26. Please migrate KubeSchedulerConfiguration to
-  [v1beta3](/docs/reference/config-api/kube-scheduler-config.v1beta3/) or [v1](/docs/reference/config-api/kube-scheduler-config.v1/)
+  [v1beta3](/docs/kubernetes/en/reference/config-api/kube-scheduler-config.v1beta3/) or [v1](/docs/kubernetes/en/reference/config-api/kube-scheduler-config.v1/)
   before upgrading Kubernetes to v1.25.
   {{< /note >}}
 ## Profiles
@@ -118,18 +118,18 @@ extension points:
   Pod runs.
   Extension points: `score`.
 - `TaintToleration`: Implements
-  [taints and tolerations](/docs/concepts/scheduling-eviction/taint-and-toleration/).
+  [taints and tolerations](/docs/kubernetes/en/concepts/scheduling-eviction/taint-and-toleration/).
   Implements extension points: `filter`, `preScore`, `score`.
 - `NodeName`: Checks if a Pod spec node name matches the current node.
   Extension points: `filter`.
 - `NodePorts`: Checks if a node has free ports for the requested Pod ports.
   Extension points: `preFilter`, `filter`.
 - `NodeAffinity`: Implements
-  [node selectors](/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector)
-  and [node affinity](/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity).
+  [node selectors](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node/#nodeselector)
+  and [node affinity](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node/#node-affinity).
   Extension points: `filter`, `score`.
 - `PodTopologySpread`: Implements
-  [Pod topology spread](/docs/concepts/scheduling-eviction/topology-spread-constraints/).
+  [Pod topology spread](/docs/kubernetes/en/concepts/scheduling-eviction/topology-spread-constraints/).
   Extension points: `preFilter`, `filter`, `preScore`, `score`.
 - `NodeUnschedulable`: Filters out nodes that have `.spec.unschedulable` set to
   true.
@@ -166,7 +166,7 @@ extension points:
   the node.
   Extension points: `filter`.
 - `InterPodAffinity`: Implements
-  [inter-Pod affinity and anti-affinity](/docs/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity).
+  [inter-Pod affinity and anti-affinity](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity).
   Extension points: `preFilter`, `filter`, `preScore`, `score`.
 - `PrioritySort`: Provides the default priority based sorting.
   Extension points: `queueSort`.
@@ -436,11 +436,11 @@ as well as its seamless integration with the existing methods for configuring ex
       name: NodeResourcesFit
   ```
 
-* The scheduler plugin `NodeLabel` is deprecated; instead, use the [`NodeAffinity`](/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity) plugin (enabled by default) to achieve similar behavior.
+* The scheduler plugin `NodeLabel` is deprecated; instead, use the [`NodeAffinity`](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity) plugin (enabled by default) to achieve similar behavior.
 
-* The scheduler plugin `ServiceAffinity` is deprecated; instead, use the [`InterPodAffinity`](/docs/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity) plugin (enabled by default) to achieve similar behavior.
+* The scheduler plugin `ServiceAffinity` is deprecated; instead, use the [`InterPodAffinity`](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity) plugin (enabled by default) to achieve similar behavior.
 
-* The scheduler plugin `NodePreferAvoidPods` is deprecated; instead, use [node taints](/docs/concepts/scheduling-eviction/taint-and-toleration/) to achieve similar behavior.
+* The scheduler plugin `NodePreferAvoidPods` is deprecated; instead, use [node taints](/docs/kubernetes/en/concepts/scheduling-eviction/taint-and-toleration/) to achieve similar behavior.
 
 * A plugin enabled in a v1beta2 configuration file takes precedence over the default configuration for that plugin.
 
@@ -462,8 +462,8 @@ to achieve similar behavior.
 
 ## {{% heading "whatsnext" %}}
 
-* Read the [kube-scheduler reference](/docs/reference/command-line-tools-reference/kube-scheduler/)
-* Learn about [scheduling](/docs/concepts/scheduling-eviction/kube-scheduler/)
-* Read the [kube-scheduler configuration (v1beta2)](/docs/reference/config-api/kube-scheduler-config.v1beta2/) reference
-* Read the [kube-scheduler configuration (v1beta3)](/docs/reference/config-api/kube-scheduler-config.v1beta3/) reference
-* Read the [kube-scheduler configuration (v1)](/docs/reference/config-api/kube-scheduler-config.v1/) reference
+* Read the [kube-scheduler reference](/docs/kubernetes/en/reference/command-line-tools-reference/kube-scheduler/)
+* Learn about [scheduling](/docs/kubernetes/en/concepts/scheduling-eviction/kube-scheduler/)
+* Read the [kube-scheduler configuration (v1beta2)](/docs/kubernetes/en/reference/config-api/kube-scheduler-config.v1beta2/) reference
+* Read the [kube-scheduler configuration (v1beta3)](/docs/kubernetes/en/reference/config-api/kube-scheduler-config.v1beta3/) reference
+* Read the [kube-scheduler configuration (v1)](/docs/kubernetes/en/reference/config-api/kube-scheduler-config.v1/) reference

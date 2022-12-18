@@ -82,4 +82,4 @@ The output should look similar to this:
 
 ## {{% heading "whatsnext" %}}
 
-Learn more about [kubectl proxy](/docs/reference/generated/kubectl/kubectl-commands#proxy).
+Learn more about [kubectl proxy](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands#proxy).

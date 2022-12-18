@@ -2,7 +2,7 @@
 title: Workload
 id: workloads
 date: 2019-02-13
-full_link: /docs/concepts/workloads/
+full_link: /docs/kubernetes/en/concepts/workloads/
 short_description: >
    A workload is an application running on Kubernetes.
 

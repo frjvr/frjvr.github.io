@@ -18,7 +18,7 @@ A client interacts with the proxy; the proxy copies the client's data to the
 actual server; the actual server replies to the proxy; the proxy sends the
 actual server's reply to the client.
 
-[kube-proxy](/docs/reference/command-line-tools-reference/kube-proxy/) is a
+[kube-proxy](/docs/kubernetes/en/reference/command-line-tools-reference/kube-proxy/) is a
 network proxy that runs on each node in your cluster, implementing part of
 the Kubernetes {{< glossary_tooltip term_id="service">}} concept.
 

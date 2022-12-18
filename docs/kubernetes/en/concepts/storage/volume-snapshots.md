@@ -15,7 +15,7 @@ weight: 60
 
 In Kubernetes, a _VolumeSnapshot_ represents a snapshot of a volume on a storage
 system. This document assumes that you are already familiar with Kubernetes
-[persistent volumes](/docs/concepts/storage/persistent-volumes/).
+[persistent volumes](/docs/kubernetes/en/concepts/storage/persistent-volumes/).
 
 <!-- body -->
 
@@ -84,7 +84,7 @@ They exist in the Kubernetes API and are available for consumption.
 #### Dynamic
 
 Instead of using a pre-existing snapshot, you can request that a snapshot to be dynamically
-taken from a PersistentVolumeClaim. The [VolumeSnapshotClass](/docs/concepts/storage/volume-snapshot-classes/)
+taken from a PersistentVolumeClaim. The [VolumeSnapshotClass](/docs/kubernetes/en/concepts/storage/volume-snapshot-classes/)
 specifies storage provider-specific parameters to use when taking a snapshot.
 
 ### Binding
@@ -134,7 +134,7 @@ spec:
 for the snapshot. This field is required for dynamically provisioning a snapshot.
 
 A volume snapshot can request a particular class by specifying the name of a
-[VolumeSnapshotClass](/docs/concepts/storage/volume-snapshot-classes/)
+[VolumeSnapshotClass](/docs/kubernetes/en/concepts/storage/volume-snapshot-classes/)
 using the attribute `volumeSnapshotClassName`. If nothing is set, then the
 default class is used if available.
 
@@ -259,4 +259,4 @@ You can provision a new volume, pre-populated with data from a snapshot, by usin
 the _dataSource_ field in the `PersistentVolumeClaim` object.
 
 For more details, see
-[Volume Snapshot and Restore Volume from Snapshot](/docs/concepts/storage/persistent-volumes/#volume-snapshot-and-restore-volume-from-snapshot-support).
+[Volume Snapshot and Restore Volume from Snapshot](/docs/kubernetes/en/concepts/storage/persistent-volumes/#volume-snapshot-and-restore-volume-from-snapshot-support).

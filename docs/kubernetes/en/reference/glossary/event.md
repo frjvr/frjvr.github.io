@@ -2,7 +2,7 @@
 title: Event
 id: event
 date: 2022-01-16
-full_link: /docs/reference/kubernetes-api/cluster-resources/event-v1/
+full_link: /docs/kubernetes/en/reference/kubernetes-api/cluster-resources/event-v1/
 short_description: >
    A report of an event somewhere in the cluster. It generally denotes some state change in the system.
 aka: 
@@ -21,5 +21,5 @@ or the continued existence of events with that reason.
 
 Events should be treated as informative, best-effort, supplemental data.
 
-In Kubernetes, [auditing](/docs/tasks/debug/debug-cluster/audit/) generates a different kind of
+In Kubernetes, [auditing](/docs/kubernetes/en/tasks/debug/debug-cluster/audit/) generates a different kind of
 Event record (API group `audit.k8s.io`).

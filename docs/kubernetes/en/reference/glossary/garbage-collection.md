@@ -2,7 +2,7 @@
 title: Garbage Collection
 id: garbage-collection
 date: 2021-07-07
-full_link: /docs/concepts/architecture/garbage-collection/
+full_link: /docs/kubernetes/en/concepts/architecture/garbage-collection/
 short_description: >
   A collective term for the various mechanisms Kubernetes uses to clean up cluster
   resources.
@@ -19,9 +19,9 @@ cluster resources.
 <!--more-->
 
 Kubernetes uses garbage collection to clean up resources like
-[unused containers and images](/docs/concepts/architecture/garbage-collection/#containers-images),
-[failed Pods](/docs/concepts/workloads/pods/pod-lifecycle/#pod-garbage-collection),
-[objects owned by the targeted resource](/docs/concepts/overview/working-with-objects/owners-dependents/),
-[completed Jobs](/docs/concepts/workloads/controllers/ttlafterfinished/), and resources
+[unused containers and images](/docs/kubernetes/en/concepts/architecture/garbage-collection/#containers-images),
+[failed Pods](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#pod-garbage-collection),
+[objects owned by the targeted resource](/docs/kubernetes/en/concepts/overview/working-with-objects/owners-dependents/),
+[completed Jobs](/docs/kubernetes/en/concepts/workloads/controllers/ttlafterfinished/), and resources
 that have expired or failed.
 

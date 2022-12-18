@@ -10,9 +10,9 @@ weight: 60
 <!-- overview -->
 
 This document shows you how to use the
-[Pod failure policy](/docs/concepts/workloads/controllers/job#pod-failure-policy),
+[Pod failure policy](/docs/kubernetes/en/concepts/workloads/controllers/job#pod-failure-policy),
 in combination with the default
-[Pod backoff failure policy](/docs/concepts/workloads/controllers/job#pod-backoff-failure-policy),
+[Pod backoff failure policy](/docs/kubernetes/en/concepts/workloads/controllers/job#pod-backoff-failure-policy),
 to improve the control over the handling of container- or Pod-level failure
 within a {{<glossary_tooltip text="Job" term_id="job">}}.
 
@@ -24,7 +24,7 @@ or {{<glossary_tooltip text="taint" term_id="taint" >}}-based eviction).
 
 ## {{% heading "prerequisites" %}}
 
-You should already be familiar with the basic use of [Job](/docs/concepts/workloads/controllers/job/).
+You should already be familiar with the basic use of [Job](/docs/kubernetes/en/concepts/workloads/controllers/job/).
 
 {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
 
@@ -132,7 +132,7 @@ The cluster automatically cleans up the Pods.
 ## Alternatives
 
 You could rely solely on the
-[Pod backoff failure policy](/docs/concepts/workloads/controllers/job#pod-backoff-failure-policy),
+[Pod backoff failure policy](/docs/kubernetes/en/concepts/workloads/controllers/job#pod-backoff-failure-policy),
 by specifying the Job's `.spec.backoffLimit` field. However, in many situations
 it is problematic to find a balance between setting a low value for `.spec.backoffLimit`
  to avoid unnecessary Pod retries, yet high enough to make sure the Job would

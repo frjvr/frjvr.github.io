@@ -167,11 +167,11 @@ containers, resource shortage or complete breakage of a node.
 It is good practice to consider nodes with special sysctl settings as
 _tainted_ within a cluster, and only schedule pods onto them which need those
 sysctl settings. It is suggested to use the Kubernetes [_taints and toleration_
-feature](/docs/reference/generated/kubectl/kubectl-commands/#taint) to implement this.
+feature](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#taint) to implement this.
 
 A pod with the _unsafe_ sysctls will fail to launch on any node which has not
 enabled those two _unsafe_ sysctls explicitly. As with _node-level_ sysctls it
 is recommended to use
-[_taints and toleration_ feature](/docs/reference/generated/kubectl/kubectl-commands/#taint) or
-[taints on nodes](/docs/concepts/scheduling-eviction/taint-and-toleration/)
+[_taints and toleration_ feature](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#taint) or
+[taints on nodes](/docs/kubernetes/en/concepts/scheduling-eviction/taint-and-toleration/)
 to schedule those pods onto the right nodes.

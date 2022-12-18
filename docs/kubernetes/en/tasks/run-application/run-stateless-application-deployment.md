@@ -145,7 +145,7 @@ Delete the deployment by name:
 The preferred way to create a replicated application is to use a Deployment,
 which in turn uses a ReplicaSet. Before the Deployment and ReplicaSet were
 added to Kubernetes, replicated applications were configured using a
-[ReplicationController](/docs/concepts/workloads/controllers/replicationcontroller/).
+[ReplicationController](/docs/kubernetes/en/concepts/workloads/controllers/replicationcontroller/).
 
 
 
@@ -153,7 +153,7 @@ added to Kubernetes, replicated applications were configured using a
 ## {{% heading "whatsnext" %}}
 
 
-* Learn more about [Deployment objects](/docs/concepts/workloads/controllers/deployment/).
+* Learn more about [Deployment objects](/docs/kubernetes/en/concepts/workloads/controllers/deployment/).
 
 
 

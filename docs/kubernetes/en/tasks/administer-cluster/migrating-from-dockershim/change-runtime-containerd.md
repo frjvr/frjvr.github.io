@@ -7,7 +7,7 @@ content_type: task
 This task outlines the steps needed to update your container runtime to containerd from Docker. It
 is applicable for cluster operators running Kubernetes 1.23 or earlier. This also covers an
 example scenario for migrating from dockershim to containerd. Alternative container runtimes
-can be picked from this [page](/docs/setup/production-environment/container-runtimes/).
+can be picked from this [page](/docs/kubernetes/en/setup/production-environment/container-runtimes/).
 
 ## {{% heading "prerequisites" %}}
 
@@ -16,7 +16,7 @@ can be picked from this [page](/docs/setup/production-environment/container-runt
 Install containerd. For more information see
 [containerd's installation documentation](https://containerd.io/docs/getting-started/)
 and for specific prerequisite follow
-[the containerd guide](/docs/setup/production-environment/container-runtimes/#containerd).
+[the containerd guide](/docs/kubernetes/en/setup/production-environment/container-runtimes/#containerd).
 
 ## Drain the node 
 
@@ -35,7 +35,7 @@ systemctl disable docker.service --now
 
 ## Install Containerd
 
-Follow the [guide](/docs/setup/production-environment/container-runtimes/#containerd)
+Follow the [guide](/docs/kubernetes/en/setup/production-environment/container-runtimes/#containerd)
 for detailed steps to install containerd.
 
 {{< tabs name="tab-cri-containerd-installation" >}}

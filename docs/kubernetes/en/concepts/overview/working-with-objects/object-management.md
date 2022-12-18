@@ -64,7 +64,7 @@ operation (create, replace, etc.), optional flags and at least one file
 name. The file specified must contain a full definition of the object
 in YAML or JSON format.
 
-See the [API reference](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/)
+See the [API reference](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/)
 for more details on object definitions.
 
 {{< warning >}}
@@ -168,11 +168,11 @@ Disadvantages compared to imperative object configuration:
 
 ## {{% heading "whatsnext" %}}
 
-- [Managing Kubernetes Objects Using Imperative Commands](/docs/tasks/manage-kubernetes-objects/imperative-command/)
-- [Imperative Management of Kubernetes Objects Using Configuration Files](/docs/tasks/manage-kubernetes-objects/imperative-config/)
-- [Declarative Management of Kubernetes Objects Using Configuration Files](/docs/tasks/manage-kubernetes-objects/declarative-config/)
-- [Declarative Management of Kubernetes Objects Using Kustomize](/docs/tasks/manage-kubernetes-objects/kustomization/)
-- [Kubectl Command Reference](/docs/reference/generated/kubectl/kubectl-commands/)
+- [Managing Kubernetes Objects Using Imperative Commands](/docs/kubernetes/en/tasks/manage-kubernetes-objects/imperative-command/)
+- [Imperative Management of Kubernetes Objects Using Configuration Files](/docs/kubernetes/en/tasks/manage-kubernetes-objects/imperative-config/)
+- [Declarative Management of Kubernetes Objects Using Configuration Files](/docs/kubernetes/en/tasks/manage-kubernetes-objects/declarative-config/)
+- [Declarative Management of Kubernetes Objects Using Kustomize](/docs/kubernetes/en/tasks/manage-kubernetes-objects/kustomization/)
+- [Kubectl Command Reference](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/)
 - [Kubectl Book](https://kubectl.docs.kubernetes.io)
-- [Kubernetes API Reference](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/)
+- [Kubernetes API Reference](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/)
 

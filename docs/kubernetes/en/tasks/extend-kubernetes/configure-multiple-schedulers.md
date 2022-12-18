@@ -10,7 +10,7 @@ weight: 20
 <!-- overview -->
 
 Kubernetes ships with a default scheduler that is described
-[here](/docs/reference/command-line-tools-reference/kube-scheduler/).
+[here](/docs/kubernetes/en/reference/command-line-tools-reference/kube-scheduler/).
 If the default scheduler does not suit your needs you can implement your own scheduler.
 Moreover, you can even run multiple schedulers simultaneously alongside the default
 scheduler and instruct Kubernetes what scheduler to use for each of your pods. Let's
@@ -63,20 +63,20 @@ gcloud docker -- push gcr.io/my-gcp-project/my-kube-scheduler:1.0
 
 Now that you have your scheduler in a container image, create a pod
 configuration for it and run it in your Kubernetes cluster. But instead of creating a pod
-directly in the cluster, you can use a [Deployment](/docs/concepts/workloads/controllers/deployment/)
-for this example. A [Deployment](/docs/concepts/workloads/controllers/deployment/) manages a
-[Replica Set](/docs/concepts/workloads/controllers/replicaset/) which in turn manages the pods,
+directly in the cluster, you can use a [Deployment](/docs/kubernetes/en/concepts/workloads/controllers/deployment/)
+for this example. A [Deployment](/docs/kubernetes/en/concepts/workloads/controllers/deployment/) manages a
+[Replica Set](/docs/kubernetes/en/concepts/workloads/controllers/replicaset/) which in turn manages the pods,
 thereby making the scheduler resilient to failures. Here is the deployment
 config. Save it as `my-scheduler.yaml`:
 
 {{< codenew file="admin/sched/my-scheduler.yaml" >}}
 
-In the above manifest, you use a [KubeSchedulerConfiguration](/docs/reference/scheduling/config/)
+In the above manifest, you use a [KubeSchedulerConfiguration](/docs/kubernetes/en/reference/scheduling/config/)
 to customize the behavior of your scheduler implementation. This configuration has been passed to
 the `kube-scheduler` during initialization with the `--config` option. The `my-scheduler-config` ConfigMap stores the configuration file. The Pod of the`my-scheduler` Deployment mounts the `my-scheduler-config` ConfigMap as a volume.
 
 In the aforementioned Scheduler Configuration, your scheduler implementation is represented via
-a [KubeSchedulerProfile](/docs/reference/config-api/kube-scheduler-config.v1beta3/#kubescheduler-config-k8s-io-v1beta3-KubeSchedulerProfile).
+a [KubeSchedulerProfile](/docs/kubernetes/en/reference/config-api/kube-scheduler-config.v1beta3/#kubescheduler-config-k8s-io-v1beta3-KubeSchedulerProfile).
 {{< note >}}
 To determine if a scheduler is responsible for scheduling a specific Pod, the `spec.schedulerName` field in a 
 PodTemplate or Pod manifest must match the `schedulerName` field of the `KubeSchedulerProfile`.
@@ -87,9 +87,9 @@ Also, note that you create a dedicated service account `my-scheduler` and bind t
 `system:kube-scheduler` to it so that it can acquire the same privileges as `kube-scheduler`.
 
 Please see the
-[kube-scheduler documentation](/docs/reference/command-line-tools-reference/kube-scheduler/) for
+[kube-scheduler documentation](/docs/kubernetes/en/reference/command-line-tools-reference/kube-scheduler/) for
 detailed description of other command line arguments and
-[Scheduler Configuration reference](/docs/reference/config-api/kube-scheduler-config.v1beta3/) for
+[Scheduler Configuration reference](/docs/kubernetes/en/reference/config-api/kube-scheduler-config.v1beta3/) for
 detailed description of other customizable `kube-scheduler` configurations.
 
 ## Run the second scheduler in the cluster
@@ -213,7 +213,7 @@ verify that the pods were scheduled by the desired schedulers.
 ```shell
 kubectl get events
 ```
-You can also use a [custom scheduler configuration](/docs/reference/scheduling/config/#multiple-profiles)
+You can also use a [custom scheduler configuration](/docs/kubernetes/en/reference/scheduling/config/#multiple-profiles)
 or a custom container image for the cluster's main scheduler by modifying its static pod manifest
 on the relevant control plane nodes.
 

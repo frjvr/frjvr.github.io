@@ -12,14 +12,14 @@ API from various programming languages.
 
 
 <!-- body -->
-To write applications using the [Kubernetes REST API](/docs/reference/using-api/),
+To write applications using the [Kubernetes REST API](/docs/kubernetes/en/reference/using-api/),
 you do not need to implement the API calls and request/response types yourself.
 You can use a client library for the programming language you are using.
 
 Client libraries often handle common tasks such as authentication for you.
 Most client libraries can discover and use the Kubernetes Service Account to
 authenticate if the API client is running inside the Kubernetes cluster, or can
-understand the [kubeconfig file](/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)
+understand the [kubeconfig file](/docs/kubernetes/en/tasks/access-application-cluster/configure-access-multiple-clusters/)
 format to read the credentials and the API Server address.
 
 ## Officially-supported Kubernetes client libraries

@@ -2,7 +2,7 @@
 title: kube-proxy
 id: kube-proxy
 date: 2018-04-12
-full_link: /docs/reference/command-line-tools-reference/kube-proxy/
+full_link: /docs/kubernetes/en/reference/command-line-tools-reference/kube-proxy/
 short_description: >
   `kube-proxy` is a network proxy that runs on each node in the cluster.
 
@@ -18,7 +18,7 @@ implementing part of the Kubernetes
 
 <!--more-->
 
-[kube-proxy](/docs/reference/command-line-tools-reference/kube-proxy/)
+[kube-proxy](/docs/kubernetes/en/reference/command-line-tools-reference/kube-proxy/)
 maintains network rules on nodes. These network rules allow network
 communication to your Pods from network sessions inside or outside of
 your cluster.

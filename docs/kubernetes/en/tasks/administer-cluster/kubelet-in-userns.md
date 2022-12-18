@@ -16,7 +16,7 @@ This technique is also known as _rootless mode_.
 {{< note >}}
 This document describes how to run Kubernetes Node components (and hence pods) as a non-root user.
 
-If you are just looking for how to run a pod as a non-root user, see [SecurityContext](/docs/tasks/configure-pod-container/security-context/).
+If you are just looking for how to run a pod as a non-root user, see [SecurityContext](/docs/kubernetes/en/tasks/configure-pod-container/security-context/).
 {{< /note >}}
 
 ## {{% heading "prerequisites" %}}
@@ -27,7 +27,7 @@ If you are just looking for how to run a pod as a non-root user, see [SecurityCo
 * [Enable systemd with user session](https://rootlesscontaine.rs/getting-started/common/login/)
 * [Configure several sysctl values, depending on host Linux distribution](https://rootlesscontaine.rs/getting-started/common/sysctl/)
 * [Ensure that your unprivileged user is listed in `/etc/subuid` and `/etc/subgid`](https://rootlesscontaine.rs/getting-started/common/subuid/)
-* Enable the `KubeletInUserNamespace` [feature gate](/docs/reference/command-line-tools-reference/feature-gates/)
+* Enable the `KubeletInUserNamespace` [feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/)
 
 <!-- steps -->
 

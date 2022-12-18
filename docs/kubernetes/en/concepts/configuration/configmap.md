@@ -36,7 +36,7 @@ separate database or file service.
 
 ## ConfigMap object
 
-A ConfigMap is an API [object](/docs/concepts/overview/working-with-objects/kubernetes-objects/)
+A ConfigMap is an API [object](/docs/kubernetes/en/concepts/overview/working-with-objects/kubernetes-objects/)
 that lets you store configuration for other objects to use. Unlike most
 Kubernetes objects that have a `spec`, a ConfigMap has `data` and `binaryData`
 fields. These fields accept key-value pairs as their values.  Both the `data`
@@ -45,7 +45,7 @@ contain UTF-8 strings while the `binaryData` field is designed to
 contain binary data as base64-encoded strings.
 
 The name of a ConfigMap must be a valid
-[DNS subdomain name](/docs/concepts/overview/working-with-objects/names#dns-subdomain-names).
+[DNS subdomain name](/docs/kubernetes/en/concepts/overview/working-with-objects/names#dns-subdomain-names).
 
 Each key under the `data` or the `binaryData` field must consist of
 alphanumeric characters, `-`, `_` or `.`. The keys stored in `data` must not
@@ -189,7 +189,7 @@ When a ConfigMap currently consumed in a volume is updated, projected keys are e
 The kubelet checks whether the mounted ConfigMap is fresh on every periodic sync.
 However, the kubelet uses its local cache for getting the current value of the ConfigMap.
 The type of the cache is configurable using the `ConfigMapAndSecretChangeDetectionStrategy` field in
-the [KubeletConfiguration struct](/docs/reference/config-api/kubelet-config.v1beta1/).
+the [KubeletConfiguration struct](/docs/kubernetes/en/reference/config-api/kubelet-config.v1beta1/).
 A ConfigMap can be either propagated by watch (default), ttl-based, or by redirecting
 all requests directly to the API server.
 As a result, the total delay from the moment when the ConfigMap is updated to the moment
@@ -200,7 +200,7 @@ propagation delay, where the cache propagation delay depends on the chosen cache
 ConfigMaps consumed as environment variables are not updated automatically and require a pod restart. 
 
 {{< note >}}
-A container using a ConfigMap as a [subPath](/docs/concepts/storage/volumes#using-subpath) volume mount will not receive ConfigMap updates.
+A container using a ConfigMap as a [subPath](/docs/kubernetes/en/concepts/storage/volumes#using-subpath) volume mount will not receive ConfigMap updates.
 {{< /note >}}
 
 ## Immutable ConfigMaps {#configmap-immutable}
@@ -217,7 +217,7 @@ data has the following advantages:
   closing watches for ConfigMaps marked as immutable.
 
 This feature is controlled by the `ImmutableEphemeralVolumes`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/).
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/).
 You can create an immutable ConfigMap by setting the `immutable` field to `true`.
 For example:
 
@@ -238,8 +238,8 @@ to the deleted ConfigMap, it is recommended to recreate these pods.
 
 ## {{% heading "whatsnext" %}}
 
-* Read about [Secrets](/docs/concepts/configuration/secret/).
-* Read [Configure a Pod to Use a ConfigMap](/docs/tasks/configure-pod-container/configure-pod-configmap/).
-* Read about [changing a ConfigMap (or any other Kubernetes object)](/docs/tasks/manage-kubernetes-objects/update-api-object-kubectl-patch/)
+* Read about [Secrets](/docs/kubernetes/en/concepts/configuration/secret/).
+* Read [Configure a Pod to Use a ConfigMap](/docs/kubernetes/en/tasks/configure-pod-container/configure-pod-configmap/).
+* Read about [changing a ConfigMap (or any other Kubernetes object)](/docs/kubernetes/en/tasks/manage-kubernetes-objects/update-api-object-kubectl-patch/)
 * Read [The Twelve-Factor App](https://12factor.net/) to understand the motivation for
   separating code from configuration.

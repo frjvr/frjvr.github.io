@@ -27,10 +27,10 @@ operator, you should take both of the following additional measures:
 
 ## Container users
 
-[RunAsUsername](/docs/tasks/configure-pod-container/configure-runasusername)
+[RunAsUsername](/docs/kubernetes/en/tasks/configure-pod-container/configure-runasusername)
 can be specified for Windows Pods or containers to execute the container
 processes as specific user. This is roughly equivalent to
-[RunAsUser](/docs/concepts/security/pod-security-policy/#users-and-groups).
+[RunAsUser](/docs/kubernetes/en/concepts/security/pod-security-policy/#users-and-groups).
 
 Windows containers offer two default user accounts, ContainerUser and ContainerAdministrator.
 The differences between these two user accounts are covered in
@@ -49,14 +49,14 @@ Local users can be added to container images during the container build process.
 {{< /note >}}
 
 Windows containers can also run as Active Directory identities by utilizing
-[Group Managed Service Accounts](/docs/tasks/configure-pod-container/configure-gmsa/)
+[Group Managed Service Accounts](/docs/kubernetes/en/tasks/configure-pod-container/configure-gmsa/)
 
 ## Pod-level security isolation
 
 Linux-specific pod security context mechanisms (such as SELinux, AppArmor, Seccomp, or custom
 POSIX capabilities) are not supported on Windows nodes.
 
-Privileged containers are [not supported](/docs/concepts/windows/intro/#compatibility-v1-pod-spec-containers-securitycontext)
+Privileged containers are [not supported](/docs/kubernetes/en/concepts/windows/intro/#compatibility-v1-pod-spec-containers-securitycontext)
 on Windows.
-Instead [HostProcess containers](/docs/tasks/configure-pod-container/create-hostprocess-pod)
+Instead [HostProcess containers](/docs/kubernetes/en/tasks/configure-pod-container/create-hostprocess-pod)
 can be used on Windows to perform many of the tasks performed by privileged containers on Linux.

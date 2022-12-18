@@ -7,7 +7,7 @@ min-kubernetes-server-version: v1.8
 content_type: task
 ---
 <!-- overview -->
-This document helps you get started using the Kubernetes [NetworkPolicy API](/docs/concepts/services-networking/network-policies/) to declare network policies that govern how pods communicate with each other.
+This document helps you get started using the Kubernetes [NetworkPolicy API](/docs/kubernetes/en/concepts/services-networking/network-policies/) to declare network policies that govern how pods communicate with each other.
 
 {{% thirdparty-content %}}
 
@@ -18,12 +18,12 @@ This document helps you get started using the Kubernetes [NetworkPolicy API](/do
 
 Make sure you've configured a network provider with network policy support. There are a number of network providers that support NetworkPolicy, including:
 
-* [Antrea](/docs/tasks/administer-cluster/network-policy-provider/antrea-network-policy/)
-* [Calico](/docs/tasks/administer-cluster/network-policy-provider/calico-network-policy/)
-* [Cilium](/docs/tasks/administer-cluster/network-policy-provider/cilium-network-policy/)
-* [Kube-router](/docs/tasks/administer-cluster/network-policy-provider/kube-router-network-policy/)
-* [Romana](/docs/tasks/administer-cluster/network-policy-provider/romana-network-policy/)
-* [Weave Net](/docs/tasks/administer-cluster/network-policy-provider/weave-network-policy/)
+* [Antrea](/docs/kubernetes/en/tasks/administer-cluster/network-policy-provider/antrea-network-policy/)
+* [Calico](/docs/kubernetes/en/tasks/administer-cluster/network-policy-provider/calico-network-policy/)
+* [Cilium](/docs/kubernetes/en/tasks/administer-cluster/network-policy-provider/cilium-network-policy/)
+* [Kube-router](/docs/kubernetes/en/tasks/administer-cluster/network-policy-provider/kube-router-network-policy/)
+* [Romana](/docs/kubernetes/en/tasks/administer-cluster/network-policy-provider/romana-network-policy/)
+* [Weave Net](/docs/kubernetes/en/tasks/administer-cluster/network-policy-provider/weave-network-policy/)
 
 <!-- steps -->
 
@@ -89,7 +89,7 @@ To limit the access to the `nginx` service so that only Pods with the label `acc
 {{< codenew file="service/networking/nginx-policy.yaml" >}}
 
 The name of a NetworkPolicy object must be a valid
-[DNS subdomain name](/docs/concepts/overview/working-with-objects/names#dns-subdomain-names).
+[DNS subdomain name](/docs/kubernetes/en/concepts/overview/working-with-objects/names#dns-subdomain-names).
 
 {{< note >}}
 NetworkPolicy includes a `podSelector` which selects the grouping of Pods to which the policy applies. You can see this policy selects Pods with the label `app=nginx`. The label was automatically added to the Pod in the `nginx` Deployment. An empty `podSelector` selects all pods in the namespace.

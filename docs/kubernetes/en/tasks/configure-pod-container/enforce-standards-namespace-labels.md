@@ -7,17 +7,17 @@ content_type: task
 min-kubernetes-server-version: v1.22
 ---
 
-Namespaces can be labeled to enforce the [Pod Security Standards](/docs/concepts/security/pod-security-standards). The three policies
-[privileged](/docs/concepts/security/pod-security-standards/#privileged), [baseline](/docs/concepts/security/pod-security-standards/#baseline)
-and [restricted](/docs/concepts/security/pod-security-standards/#restricted) broadly cover the security spectrum
-and are implemented by the [Pod Security](/docs/concepts/security/pod-security-admission/) {{< glossary_tooltip
+Namespaces can be labeled to enforce the [Pod Security Standards](/docs/kubernetes/en/concepts/security/pod-security-standards). The three policies
+[privileged](/docs/kubernetes/en/concepts/security/pod-security-standards/#privileged), [baseline](/docs/kubernetes/en/concepts/security/pod-security-standards/#baseline)
+and [restricted](/docs/kubernetes/en/concepts/security/pod-security-standards/#restricted) broadly cover the security spectrum
+and are implemented by the [Pod Security](/docs/kubernetes/en/concepts/security/pod-security-admission/) {{< glossary_tooltip
 text="admission controller" term_id="admission-controller" >}}.
 
 ## {{% heading "prerequisites" %}}
 
 {{% version-check %}}
 
-- Ensure the `PodSecurity` [feature gate](/docs/reference/command-line-tools-reference/feature-gates/#feature-gates-for-alpha-or-beta-features) is enabled.
+- Ensure the `PodSecurity` [feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/#feature-gates-for-alpha-or-beta-features) is enabled.
 
 ## Requiring the `baseline` Pod Security Standard with namespace labels
 

@@ -20,7 +20,7 @@ it simplifies node deployment and configuration management.
 
 The subset of the Kubelet's configuration that can be configured via a file
 is defined by the
-[`KubeletConfiguration`](/docs/reference/config-api/kubelet-config.v1beta1/)
+[`KubeletConfiguration`](/docs/kubernetes/en/reference/config-api/kubelet-config.v1beta1/)
 struct.
 
 The configuration file must be a JSON or YAML representation of the parameters
@@ -54,7 +54,7 @@ the threshold values respectively.
 
 {{< note >}}
 If you use kubeadm to initialize your cluster, use the kubelet-config while creating your cluster with `kubeadmin init`.
-See [configuring kubelet using kubeadm](/docs/setup/production-environment/tools/kubeadm/kubelet-integration/) for details.
+See [configuring kubelet using kubeadm](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/kubelet-integration/) for details.
 {{< /note >}}
 
 Start the Kubelet with the `--config` flag set to the path of the Kubelet's config file.
@@ -77,6 +77,6 @@ In the above example, this version is `kubelet.config.k8s.io/v1beta1`.
 ## {{% heading "whatsnext" %}}
 
 - Learn more about kubelet configuration by checking the
-  [`KubeletConfiguration`](/docs/reference/config-api/kubelet-config.v1beta1/)
+  [`KubeletConfiguration`](/docs/kubernetes/en/reference/config-api/kubelet-config.v1beta1/)
   reference.
 

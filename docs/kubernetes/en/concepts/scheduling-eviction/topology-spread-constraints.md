@@ -40,7 +40,7 @@ higher than you'd like, and you are paying for network costs associated with
 sending network traffic between the different zones.
 
 You decide that under normal operation you'd prefer to have a similar number of replicas
-[scheduled](/docs/concepts/scheduling-eviction/) into each infrastructure zone,
+[scheduled](/docs/kubernetes/en/concepts/scheduling-eviction/) into each infrastructure zone,
 and you'd like the cluster to self-heal in the case that there is a problem.
 
 Pod topology spread constraints offer you a declarative way to configure that.
@@ -71,7 +71,7 @@ spec:
 ```
 
 You can read more about this field by running `kubectl explain Pod.spec.topologySpreadConstraints` or
-refer to [scheduling](/docs/reference/kubernetes-api/workload-resources/pod-v1/#scheduling) section of the API reference for Pod.
+refer to [scheduling](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/pod-v1/#scheduling) section of the API reference for Pod.
 
 ### Spread constraint definition
 
@@ -98,7 +98,7 @@ your cluster. Those fields are:
 
   {{< note >}}
   The `minDomains` field is a beta field and enabled by default in 1.25. You can disable it by disabling the
-  `MinDomainsInPodTopologySpread` [feature gate](/docs/reference/command-line-tools-reference/feature-gates/).
+  `MinDomainsInPodTopologySpread` [feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/).
   {{< /note >}}
 
   - The value of `minDomains` must be greater than 0, when specified.
@@ -125,7 +125,7 @@ your cluster. Those fields are:
 - **labelSelector** is used to find matching Pods. Pods
   that match this label selector are counted to determine the
   number of Pods in their corresponding topology domain.
-  See [Label Selectors](/docs/concepts/overview/working-with-objects/labels/#label-selectors)
+  See [Label Selectors](/docs/kubernetes/en/concepts/overview/working-with-objects/labels/#label-selectors)
   for more details.
 
 - **matchLabelKeys** is a list of pod label keys to select the pods over which
@@ -145,7 +145,7 @@ your cluster. Those fields are:
 
   {{< note >}}
   The `matchLabelKeys` field is an alpha field added in 1.25. You have to enable the
-  `MatchLabelKeysInPodTopologySpread` [feature gate](/docs/reference/command-line-tools-reference/feature-gates/)
+  `MatchLabelKeysInPodTopologySpread` [feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/)
   in order to use it.
   {{< /note >}}
 
@@ -158,7 +158,7 @@ your cluster. Those fields are:
 
   {{< note >}}
   The `nodeAffinityPolicy` is a beta-level field and enabled by default in 1.26. You can disable it by disabling the
-  `NodeInclusionPolicyInPodTopologySpread` [feature gate](/docs/reference/command-line-tools-reference/feature-gates/).
+  `NodeInclusionPolicyInPodTopologySpread` [feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/).
   {{< /note >}}
 
 - **nodeTaintsPolicy** indicates how we will treat node taints when calculating
@@ -171,7 +171,7 @@ your cluster. Those fields are:
 
   {{< note >}}
   The `nodeTaintsPolicy` is a beta-level field and enabled by default in 1.26. You can disable it by disabling the
-  `NodeInclusionPolicyInPodTopologySpread` [feature gate](/docs/reference/command-line-tools-reference/feature-gates/).
+  `NodeInclusionPolicyInPodTopologySpread` [feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/).
   {{< /note >}}
 
 When a Pod defines more than one `topologySpreadConstraint`, those constraints are
@@ -190,7 +190,7 @@ For example, a node might have labels:
 
 {{< note >}}
 For brevity, this example doesn't use the
-[well-known](/docs/reference/labels-annotations-taints/) label keys
+[well-known](/docs/kubernetes/en/reference/labels-annotations-taints/) label keys
 `topology.kubernetes.io/zone` and `topology.kubernetes.io/region`. However,
 those registered label keys are nonetheless recommended rather than the private
 (unqualified) label keys `region` and `zone` that are used here.
@@ -491,7 +491,7 @@ topology spread constraints are applied to a Pod if, and only if:
 - It belongs to a Service, ReplicaSet, StatefulSet or ReplicationController.
 
 Default constraints can be set as part of the `PodTopologySpread` plugin
-arguments in a [scheduling profile](/docs/reference/scheduling/config/#profiles).
+arguments in a [scheduling profile](/docs/kubernetes/en/reference/scheduling/config/#profiles).
 The constraints are specified with the same [API above](#topologyspreadconstraints-field), except that
 `labelSelector` must be empty. The selectors are calculated from the Services,
 ReplicaSets, StatefulSets or ReplicationControllers that the Pod belongs to.
@@ -515,7 +515,7 @@ profiles:
 ```
 
 {{< note >}}
-The [`SelectorSpread` plugin](/docs/reference/scheduling/config/#scheduling-plugins)
+The [`SelectorSpread` plugin](/docs/kubernetes/en/reference/scheduling/config/#scheduling-plugins)
 is disabled by default. The Kubernetes project recommends using `PodTopologySpread`
 to achieve similar behavior.
 {{< /note >}}
@@ -570,7 +570,7 @@ profiles:
 
 ## Comparison with podAffinity and podAntiAffinity {#comparison-with-podaffinity-podantiaffinity}
 
-In Kubernetes, [inter-Pod affinity and anti-affinity](/docs/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity)
+In Kubernetes, [inter-Pod affinity and anti-affinity](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity)
 control how Pods are scheduled in relation to one another - either more packed
 or more scattered.
 
@@ -617,5 +617,5 @@ section of the enhancement proposal about Pod topology spread constraints.
 
 - The blog article [Introducing PodTopologySpread](/blog/2020/05/introducing-podtopologyspread/)
   explains `maxSkew` in some detail, as well as covering some advanced usage examples.
-- Read the [scheduling](/docs/reference/kubernetes-api/workload-resources/pod-v1/#scheduling) section of
+- Read the [scheduling](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/pod-v1/#scheduling) section of
   the API reference for Pod.

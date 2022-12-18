@@ -6,7 +6,7 @@ weight: 90
 
 `kubeadm certs` provides utilities for managing certificates.
 For more details on how these commands can be used, see
-[Certificate Management with kubeadm](/docs/tasks/administer-cluster/kubeadm/kubeadm-certs/).
+[Certificate Management with kubeadm](/docs/kubernetes/en/tasks/administer-cluster/kubeadm/kubeadm-certs/).
 
 ## kubeadm certs {#cmd-certs}
 
@@ -19,7 +19,7 @@ A collection of operations for operating Kubernetes certificates.
 ## kubeadm certs renew {#cmd-certs-renew}
 
 You can renew all Kubernetes certificates using the `all` subcommand or renew them selectively.
-For more details see [Manual certificate renewal](/docs/tasks/administer-cluster/kubeadm/kubeadm-certs/#manual-certificate-renewal).
+For more details see [Manual certificate renewal](/docs/kubernetes/en/tasks/administer-cluster/kubeadm/kubeadm-certs/#manual-certificate-renewal).
 
 {{< tabs name="tab-certs-renew" >}}
 {{< tab name="renew" include="generated/kubeadm_certs_renew.md" />}}
@@ -39,8 +39,8 @@ For more details see [Manual certificate renewal](/docs/tasks/administer-cluster
 ## kubeadm certs certificate-key {#cmd-certs-certificate-key}
 
 This command can be used to generate a new control-plane certificate key.
-The key can be passed as `--certificate-key` to [`kubeadm init`](/docs/reference/setup-tools/kubeadm/kubeadm-init)
-and [`kubeadm join`](/docs/reference/setup-tools/kubeadm/kubeadm-join)
+The key can be passed as `--certificate-key` to [`kubeadm init`](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-init)
+and [`kubeadm join`](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-join)
 to enable the automatic copy of certificates when joining additional control-plane nodes.
 
 {{< tabs name="tab-certs-certificate-key" >}}
@@ -51,7 +51,7 @@ to enable the automatic copy of certificates when joining additional control-pla
 
 This command checks expiration for the certificates in the local PKI managed by kubeadm.
 For more details see
-[Check certificate expiration](/docs/tasks/administer-cluster/kubeadm/kubeadm-certs/#check-certificate-expiration).
+[Check certificate expiration](/docs/kubernetes/en/tasks/administer-cluster/kubeadm/kubeadm-certs/#check-certificate-expiration).
 
 {{< tabs name="tab-certs-check-expiration" >}}
 {{< tab name="check-expiration" include="generated/kubeadm_certs_check-expiration.md" />}}
@@ -68,6 +68,6 @@ The user can then sign the CSRs with a CA of their choice.
 
 ## {{% heading "whatsnext" %}}
 
-* [kubeadm init](/docs/reference/setup-tools/kubeadm/kubeadm-init/) to bootstrap a Kubernetes control-plane node
-* [kubeadm join](/docs/reference/setup-tools/kubeadm/kubeadm-join/) to connect a node to the cluster
-* [kubeadm reset](/docs/reference/setup-tools/kubeadm/kubeadm-reset/) to revert any changes made to this host by `kubeadm init` or `kubeadm join`
+* [kubeadm init](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-init/) to bootstrap a Kubernetes control-plane node
+* [kubeadm join](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-join/) to connect a node to the cluster
+* [kubeadm reset](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-reset/) to revert any changes made to this host by `kubeadm init` or `kubeadm join`

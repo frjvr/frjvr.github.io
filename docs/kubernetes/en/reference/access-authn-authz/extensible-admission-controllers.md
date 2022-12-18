@@ -12,7 +12,7 @@ weight: 40
 ---
 
 <!-- overview -->
-In addition to [compiled-in admission plugins](/docs/reference/access-authn-authz/admission-controllers/),
+In addition to [compiled-in admission plugins](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/),
 admission plugins can be developed as extensions and run as webhooks configured at runtime.
 This page describes how to build, configure, use, and monitor admission webhooks.
 
@@ -22,9 +22,9 @@ This page describes how to build, configure, use, and monitor admission webhooks
 
 Admission webhooks are HTTP callbacks that receive admission requests and do
 something with them. You can define two types of admission webhooks,
-[validating admission webhook](/docs/reference/access-authn-authz/admission-controllers/#validatingadmissionwebhook)
+[validating admission webhook](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/#validatingadmissionwebhook)
 and
-[mutating admission webhook](/docs/reference/access-authn-authz/admission-controllers/#mutatingadmissionwebhook).
+[mutating admission webhook](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/#mutatingadmissionwebhook).
 Mutating admission webhooks are invoked first, and can modify objects sent to the API server to enforce custom defaults.
 After all object modifications are complete, and after the incoming object is validated by the API server,
 validating admission webhooks are invoked and can reject requests to enforce custom policies.
@@ -38,7 +38,7 @@ should use a validating admission webhook, since objects can be modified after b
 
 Admission webhooks are essentially part of the cluster control-plane. You should
 write and deploy them with great caution. Please read the
-[user guides](/docs/reference/access-authn-authz/extensible-admission-controllers/#write-an-admission-webhook-server)
+[user guides](/docs/kubernetes/en/reference/access-authn-authz/extensible-admission-controllers/#write-an-admission-webhook-server)
 for instructions if you intend to write/deploy production-grade admission webhooks.
 In the following, we describe how to quickly experiment with admission webhooks.
 
@@ -46,7 +46,7 @@ In the following, we describe how to quickly experiment with admission webhooks.
 
 * Ensure that MutatingAdmissionWebhook and ValidatingAdmissionWebhook
   admission controllers are enabled.
-  [Here](/docs/reference/access-authn-authz/admission-controllers/#is-there-a-recommended-set-of-admission-controllers-to-use)
+  [Here](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/#is-there-a-recommended-set-of-admission-controllers-to-use)
   is a recommended set of admission controllers to enable in general.
 
 * Ensure that the `admissionregistration.k8s.io/v1` API is enabled.
@@ -72,8 +72,8 @@ how to [authenticate API servers](#authenticate-apiservers).
 ### Deploy the admission webhook service
 
 The webhook server in the e2e test is deployed in the Kubernetes cluster, via
-the [deployment API](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#deployment-v1-apps).
-The test also creates a [service](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#service-v1-core)
+the [deployment API](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#deployment-v1-apps).
+The test also creates a [service](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#service-v1-core)
 as the front-end of the webhook server. See
 [code](https://github.com/kubernetes/kubernetes/blob/v1.22.0/test/e2e/apimachinery/webhook.go#L748).
 
@@ -84,9 +84,9 @@ your webhook configurations accordingly.
 
 You can dynamically configure what resources are subject to what admission
 webhooks via
-[ValidatingWebhookConfiguration](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#validatingwebhookconfiguration-v1-admissionregistration-k8s-io)
+[ValidatingWebhookConfiguration](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#validatingwebhookconfiguration-v1-admissionregistration-k8s-io)
 or
-[MutatingWebhookConfiguration](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#mutatingwebhookconfiguration-v1-admissionregistration-k8s-io).
+[MutatingWebhookConfiguration](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#mutatingwebhookconfiguration-v1-admissionregistration-k8s-io).
 
 The following is an example `ValidatingWebhookConfiguration`, a mutating webhook configuration is similar.
 See the [webhook configuration](#webhook-configuration) section for details about each config field.
@@ -197,7 +197,7 @@ plugins:
 {{< /tabs >}}
 
 For more information about `AdmissionConfiguration`, see the
-[AdmissionConfiguration (v1) reference](/docs/reference/config-api/apiserver-webhookadmission.v1/).
+[AdmissionConfiguration (v1) reference](/docs/kubernetes/en/reference/config-api/apiserver-webhookadmission.v1/).
 See the [webhook configuration](#webhook-configuration) section for details about each config field.
 
 In the kubeConfig file, provide the credentials:
@@ -372,7 +372,7 @@ request:
 
   # dryRun indicates the API request is running in dry run mode and will not be persisted.
   # Webhooks with side effects should avoid actuating those side effects when dryRun is true.
-  # See http://k8s.io/docs/reference/using-api/api-concepts/#make-a-dry-run-request for more details.
+  # See http://k8s.io/docs/kubernetes/en/reference/using-api/api-concepts/#make-a-dry-run-request for more details.
   dryRun: False
 ```
 
@@ -415,7 +415,7 @@ Example of a minimal response from a webhook to forbid a request:
 
 When rejecting a request, the webhook can customize the http code and message returned to the user
 using the `status` field. The specified status object is returned to the user.
-See the [API documentation](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#status-v1-meta)
+See the [API documentation](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#status-v1-meta)
 for details about the `status` type.
 Example of a response to forbid a request, customizing the HTTP status code and message presented to the user:
 
@@ -493,7 +493,7 @@ If more than 4096 characters of warning messages are added (from all sources), a
 
 To register admission webhooks, create `MutatingWebhookConfiguration` or `ValidatingWebhookConfiguration` API objects.
 The name of a `MutatingWebhookConfiguration` or a `ValidatingWebhookConfiguration` object must be a valid
-[DNS subdomain name](/docs/concepts/overview/working-with-objects/names#dns-subdomain-names).
+[DNS subdomain name](/docs/kubernetes/en/concepts/overview/working-with-objects/names#dns-subdomain-names).
 
 Each configuration can contain one or more webhooks.
 If multiple webhooks are specified in a single configuration, each must be given a unique name.
@@ -609,7 +609,7 @@ webhooks:
     scope: "*"
 ```
 
-See [labels concept](/docs/concepts/overview/working-with-objects/labels)
+See [labels concept](/docs/kubernetes/en/concepts/overview/working-with-objects/labels)
 for more examples of label selectors.
 
 ### Matching requests: namespaceSelector
@@ -664,7 +664,7 @@ webhooks:
         scope: "Namespaced"
 ```
 
-See [labels concept](/docs/concepts/overview/working-with-objects/labels)
+See [labels concept](/docs/kubernetes/en/concepts/overview/working-with-objects/labels)
 for more examples of label selectors.
 
 ### Matching requests: matchPolicy
@@ -925,7 +925,7 @@ monitoring mechanisms help cluster admins to answer questions like:
 Sometimes it's useful to know which mutating webhook mutated the object in a API request, and what change did the
 webhook apply.
 
-The Kubernetes API server performs [auditing](/docs/tasks/debug/debug-cluster/audit/) on each
+The Kubernetes API server performs [auditing](/docs/kubernetes/en/tasks/debug/debug-cluster/audit/) on each
 mutating webhook invocation. Each invocation generates an auditing annotation
 capturing if a request object is mutated by the invocation, and optionally generates an annotation
 capturing the applied patch from the webhook admission response. The annotations are set in the

@@ -17,7 +17,7 @@ cluster and that suits your needs. Different plugins are available (both open- a
 in the wider Kubernetes ecosystem.
 
 A CNI plugin is required to implement the
-[Kubernetes network model](/docs/concepts/services-networking/#the-kubernetes-network-model). 
+[Kubernetes network model](/docs/kubernetes/en/concepts/services-networking/#the-kubernetes-network-model). 
 
 You must use a CNI plugin that is compatible with the 
 [v0.4.0](https://github.com/containernetworking/cni/blob/spec-v0.4.0/SPEC.md) or later
@@ -39,7 +39,7 @@ Prior to Kubernetes 1.24, the CNI plugins could also be managed by the kubelet u
 These command-line parameters were removed in Kubernetes 1.24, with management of the CNI no
 longer in scope for kubelet.
 
-See [Troubleshooting CNI plugin-related errors](/docs/tasks/administer-cluster/migrating-from-dockershim/troubleshooting-cni-plugin-related-errors/)
+See [Troubleshooting CNI plugin-related errors](/docs/kubernetes/en/tasks/administer-cluster/migrating-from-dockershim/troubleshooting-cni-plugin-related-errors/)
 if you are facing issues following the removal of dockershim.
 {{< /note >}}
 
@@ -50,7 +50,7 @@ documentation for that Container Runtime, for example:
 - [CRI-O](https://github.com/cri-o/cri-o/blob/main/contrib/cni/README.md)
 
 For specific information about how to install and manage a CNI plugin, see the documentation for
-that plugin or [networking provider](/docs/concepts/cluster-administration/networking/#how-to-implement-the-kubernetes-networking-model).
+that plugin or [networking provider](/docs/kubernetes/en/concepts/cluster-administration/networking/#how-to-implement-the-kubernetes-networking-model).
 
 ## Network Plugin Requirements
 

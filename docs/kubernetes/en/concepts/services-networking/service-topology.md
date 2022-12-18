@@ -16,7 +16,7 @@ weight: 150
 
 This feature, specifically the alpha `topologyKeys` API, is deprecated since
 Kubernetes v1.21.
-[Topology Aware Hints](/docs/concepts/services-networking/topology-aware-hints/),
+[Topology Aware Hints](/docs/kubernetes/en/concepts/services-networking/topology-aware-hints/),
 introduced in Kubernetes v1.21, provide similar functionality.
 {{</ note >}}
 
@@ -51,7 +51,7 @@ same top-of-rack switch for the lowest latency.
 
 ## Using Service Topology
 
-If your cluster has the `ServiceTopology` [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) enabled, you can control Service traffic
+If your cluster has the `ServiceTopology` [feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) enabled, you can control Service traffic
 routing by specifying the `topologyKeys` field on the Service spec. This field
 is a preference-order list of Node labels which will be used to sort endpoints
 when accessing this Service. Traffic will be directed to a Node whose value for
@@ -195,5 +195,5 @@ spec:
 
 ## {{% heading "whatsnext" %}}
 
-* Read about [Topology Aware Hints](/docs/concepts/services-networking/topology-aware-hints/)
-* Read [Connecting Applications with Services](/docs/tutorials/services/connect-applications-service/)
+* Read about [Topology Aware Hints](/docs/kubernetes/en/concepts/services-networking/topology-aware-hints/)
+* Read [Connecting Applications with Services](/docs/kubernetes/en/tutorials/services/connect-applications-service/)

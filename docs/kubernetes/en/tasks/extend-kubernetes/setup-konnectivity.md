@@ -15,7 +15,7 @@ You need to have a Kubernetes cluster, and the kubectl command-line tool must
 be configured to communicate with your cluster. It is recommended to run this
 tutorial on a cluster with at least two nodes that are not acting as control
 plane hosts. If you do not already have a cluster, you can create one by using
-[minikube](https://minikube.sigs.k8s.io/docs/tutorials/multi_node/).
+[minikube](https://minikube.sigs.k8s.io/docs/kubernetes/en/tutorials/multi_node/).
 
 <!-- steps -->
 
@@ -29,7 +29,7 @@ You need to configure the API Server to use the Konnectivity service
 and direct the network traffic to the cluster nodes:
 
 1. Make sure that
-[Service Account Token Volume Projection](/docs/tasks/configure-pod-container/configure-service-account/#service-account-token-volume-projection)
+[Service Account Token Volume Projection](/docs/kubernetes/en/tasks/configure-pod-container/configure-service-account/#service-account-token-volume-projection)
 feature enabled in your cluster. It is enabled by default since Kubernetes v1.20.
 1. Create an egress configuration file such as `admin/konnectivity/egress-selector-configuration.yaml`.
 1. Set the `--egress-selector-config-file` flag of the API Server to the path of

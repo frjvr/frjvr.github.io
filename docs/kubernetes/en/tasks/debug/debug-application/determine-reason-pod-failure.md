@@ -14,7 +14,7 @@ be easily retrieved and surfaced by tools like dashboards
 and monitoring software. In most cases, information that you
 put in a termination message should also be written to
 the general
-[Kubernetes logs](/docs/concepts/cluster-administration/logging/).
+[Kubernetes logs](/docs/kubernetes/en/concepts/cluster-administration/logging/).
 
 ## {{% heading "prerequisites" %}}
 
@@ -126,6 +126,6 @@ is empty and the container exited with an error. The log output is limited to
 ## {{% heading "whatsnext" %}}
 
 * See the `terminationMessagePath` field in
-  [Container](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#container-v1-core).
-* Learn about [retrieving logs](/docs/concepts/cluster-administration/logging/).
+  [Container](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#container-v1-core).
+* Learn about [retrieving logs](/docs/kubernetes/en/concepts/cluster-administration/logging/).
 * Learn about [Go templates](https://golang.org/pkg/text/template/).

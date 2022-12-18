@@ -9,7 +9,7 @@ content_type: task
 
 <!-- overview -->
 
-This guide demonstrates how to install and write extensions for [kubectl](/docs/reference/kubectl/kubectl/). By thinking of core `kubectl` commands as essential building blocks for interacting with a Kubernetes cluster, a cluster administrator can think
+This guide demonstrates how to install and write extensions for [kubectl](/docs/kubernetes/en/reference/kubectl/kubectl/). By thinking of core `kubectl` commands as essential building blocks for interacting with a Kubernetes cluster, a cluster administrator can think
 of plugins as a means of utilizing these building blocks to create more complex behavior. Plugins extend `kubectl` with new sub-commands, allowing for new and custom features not included in the main distribution of `kubectl`.
 
 ## {{% heading "prerequisites" %}}
@@ -335,7 +335,7 @@ of the
 [cli-runtime](https://github.com/kubernetes/cli-runtime) utility libraries.
 
 These libraries provide helpers for parsing or updating a user's
-[kubeconfig](/docs/concepts/configuration/organize-cluster-access-kubeconfig/)
+[kubeconfig](/docs/kubernetes/en/concepts/configuration/organize-cluster-access-kubeconfig/)
 file, for making REST-style requests to the API server, or to bind flags
 associated with configuration and printing.
 

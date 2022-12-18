@@ -112,7 +112,7 @@ components by adding customized setting or overriding kubeadm default settings.<
 </span><span style="color:#bbb">  </span>...<span style="color:#bbb">
 </span></pre><p>The KubeProxyConfiguration type should be used to change the configuration passed to kube-proxy instances deployed
 in the cluster. If this object is not provided or provided only partially, kubeadm applies defaults.</p>
-<p>See https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/ or
+<p>See https://kubernetes.io/docs/kubernetes/en/reference/command-line-tools-reference/kube-proxy/ or
 https://pkg.go.dev/k8s.io/kube-proxy/config/v1alpha1#KubeProxyConfiguration
 for kube proxy official documentation.</p>
 <pre style="background-color:#fff"><span style="color:#000;font-weight:bold">apiVersion</span>:<span style="color:#bbb"> </span>kubelet.config.k8s.io/v1beta1<span style="color:#bbb">
@@ -120,7 +120,7 @@ for kube proxy official documentation.</p>
 </span><span style="color:#bbb">  </span>...<span style="color:#bbb">
 </span></pre><p>The KubeletConfiguration type should be used to change the configurations that will be passed to all kubelet instances
 deployed in the cluster. If this object is not provided or provided only partially, kubeadm applies defaults.</p>
-<p>See https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/ or
+<p>See https://kubernetes.io/docs/kubernetes/en/reference/command-line-tools-reference/kubelet/ or
 https://pkg.go.dev/k8s.io/kubelet/config/v1beta1#KubeletConfiguration
 for kubelet official documentation.</p>
 <p>Here is a fully populated example of a single YAML file containing multiple
@@ -637,7 +637,7 @@ for, so other administrators can know its purpose.</p>
 </td>
 </tr>
 <tr><td><code>expires</code> <B>[Required]</B><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#time-v1-meta"><code>meta/v1.Time</code></a>
+<a href="https://kubernetes.io/docs/kubernetes/en/reference/generated/kubernetes-api/v1.23/#time-v1-meta"><code>meta/v1.Time</code></a>
 </td>
 <td>
    <p><code>expires</code> specifies the timestamp when this token expires. Defaults to being set
@@ -1050,7 +1050,7 @@ from which to load cluster information.</p>
 </td>
 </tr>
 <tr><td><code>pathType</code> <B>[Required]</B><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#hostpathtype-v1-core"><code>core/v1.HostPathType</code></a>
+<a href="https://kubernetes.io/docs/kubernetes/en/reference/generated/kubernetes-api/v1.23/#hostpathtype-v1-core"><code>core/v1.HostPathType</code></a>
 </td>
 <td>
    <p><code>pathType</code> is the type of the HostPath.</p>
@@ -1274,7 +1274,7 @@ be annotated to the Node API object, for later re-use.</p>
 </td>
 </tr>
 <tr><td><code>taints</code> <B>[Required]</B><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#taint-v1-core"><code>[]core/v1.Taint</code></a>
+<a href="https://kubernetes.io/docs/kubernetes/en/reference/generated/kubernetes-api/v1.23/#taint-v1-core"><code>[]core/v1.Taint</code></a>
 </td>
 <td>
    <p><code>taints</code> specifies the taints the Node API object should be registered with.

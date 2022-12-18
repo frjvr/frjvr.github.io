@@ -12,7 +12,7 @@ help different projects, teams, or customers to share a Kubernetes cluster.
 
 It does this by providing the following:
 
-1. A scope for [Names](/docs/concepts/overview/working-with-objects/names/).
+1. A scope for [Names](/docs/kubernetes/en/concepts/overview/working-with-objects/names/).
 2. A mechanism to attach authorization and policy to a subsection of the cluster.
 
 Use of multiple namespaces is optional.
@@ -35,7 +35,7 @@ This example demonstrates how to use Kubernetes namespaces to subdivide your clu
 
 This example assumes the following:
 
-1. You have an [existing Kubernetes cluster](/docs/setup/).
+1. You have an [existing Kubernetes cluster](/docs/kubernetes/en/setup/).
 2. You have a basic understanding of Kubernetes {{< glossary_tooltip text="Pods" term_id="pod" >}}, {{< glossary_tooltip term_id="service" text="Services" >}}, and {{< glossary_tooltip text="Deployments" term_id="deployment" >}}.
 
 ## Understand the default namespace

@@ -549,7 +549,7 @@ Follow the steps given below to rollback the Deployment from the current version
     deployment.apps/nginx-deployment rolled back
     ```
 
-    For more details about rollout related commands, read [`kubectl rollout`](/docs/reference/generated/kubectl/kubectl-commands#rollout).
+    For more details about rollout related commands, read [`kubectl rollout`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands#rollout).
 
     The Deployment is now rolled back to a previous stable revision. As you can see, a `DeploymentRollback` event
     for rolling back to revision 2 is generated from Deployment controller.
@@ -625,7 +625,7 @@ The output is similar to this:
 deployment.apps/nginx-deployment scaled
 ```
 
-Assuming [horizontal Pod autoscaling](/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/) is enabled
+Assuming [horizontal Pod autoscaling](/docs/kubernetes/en/tasks/run-application/horizontal-pod-autoscale-walkthrough/) is enabled
 in your cluster, you can set up an autoscaler for your Deployment and choose the minimum and maximum number of
 Pods you want to run based on the CPU utilization of your existing Pods.
 
@@ -1074,21 +1074,21 @@ thus that Deployment will not be able to roll back.
 
 If you want to roll out releases to a subset of users or servers using the Deployment, you
 can create multiple Deployments, one for each release, following the canary pattern described in
-[managing resources](/docs/concepts/cluster-administration/manage-deployment/#canary-deployments).
+[managing resources](/docs/kubernetes/en/concepts/cluster-administration/manage-deployment/#canary-deployments).
 
 ## Writing a Deployment Spec
 
 As with all other Kubernetes configs, a Deployment needs `.apiVersion`, `.kind`, and `.metadata` fields.
 For general information about working with config files, see
-[deploying applications](/docs/tasks/run-application/run-stateless-application-deployment/),
-configuring containers, and [using kubectl to manage resources](/docs/concepts/overview/working-with-objects/object-management/) documents.
+[deploying applications](/docs/kubernetes/en/tasks/run-application/run-stateless-application-deployment/),
+configuring containers, and [using kubectl to manage resources](/docs/kubernetes/en/concepts/overview/working-with-objects/object-management/) documents.
 
 When the control plane creates new Pods for a Deployment, the `.metadata.name` of the
 Deployment is part of the basis for naming those Pods.  The name of a Deployment must be a valid
-[DNS subdomain](/docs/concepts/overview/working-with-objects/names#dns-subdomain-names)
+[DNS subdomain](/docs/kubernetes/en/concepts/overview/working-with-objects/names#dns-subdomain-names)
 value, but this can produce unexpected results for the Pod hostnames.  For best compatibility,
 the name should follow the more restrictive rules for a
-[DNS label](/docs/concepts/overview/working-with-objects/names#dns-label-names).
+[DNS label](/docs/kubernetes/en/concepts/overview/working-with-objects/names#dns-label-names).
 
 A Deployment also needs a [`.spec` section](https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status).
 
@@ -1096,12 +1096,12 @@ A Deployment also needs a [`.spec` section](https://git.k8s.io/community/contrib
 
 The `.spec.template` and `.spec.selector` are the only required fields of the `.spec`.
 
-The `.spec.template` is a [Pod template](/docs/concepts/workloads/pods/#pod-templates). It has exactly the same schema as a {{< glossary_tooltip text="Pod" term_id="pod" >}}, except it is nested and does not have an `apiVersion` or `kind`.
+The `.spec.template` is a [Pod template](/docs/kubernetes/en/concepts/workloads/pods/#pod-templates). It has exactly the same schema as a {{< glossary_tooltip text="Pod" term_id="pod" >}}, except it is nested and does not have an `apiVersion` or `kind`.
 
 In addition to required fields for a Pod, a Pod template in a Deployment must specify appropriate
 labels and an appropriate restart policy. For labels, make sure not to overlap with other controllers. See [selector](#selector).
 
-Only a [`.spec.template.spec.restartPolicy`](/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy) equal to `Always` is
+Only a [`.spec.template.spec.restartPolicy`](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#restart-policy) equal to `Always` is
 allowed, which is the default if not specified.
 
 ### Replicas
@@ -1113,7 +1113,7 @@ deployment --replicas=X`, and then you update that Deployment based on a manifes
 (for example: by running `kubectl apply -f deployment.yaml`),
 then applying that manifest overwrites the manual scaling that you previously did.
 
-If a [HorizontalPodAutoscaler](/docs/tasks/run-application/horizontal-pod-autoscale/) (or any
+If a [HorizontalPodAutoscaler](/docs/kubernetes/en/tasks/run-application/horizontal-pod-autoscale/) (or any
 similar API for horizontal scaling) is managing scaling for a Deployment, don't set `.spec.replicas`.
 
 Instead, allow the Kubernetes
@@ -1122,7 +1122,7 @@ Instead, allow the Kubernetes
 
 ### Selector
 
-`.spec.selector` is a required field that specifies a [label selector](/docs/concepts/overview/working-with-objects/labels/)
+`.spec.selector` is a required field that specifies a [label selector](/docs/kubernetes/en/concepts/overview/working-with-objects/labels/)
 for the Pods targeted by this Deployment.
 
 `.spec.selector` must match `.spec.template.metadata.labels`, or it will be rejected by the API.
@@ -1158,7 +1158,7 @@ of the old revision will be terminated immediately. Successful removal is awaite
 revision is created. If you manually delete a Pod, the lifecycle is controlled by the ReplicaSet and the 
 replacement will be created immediately (even if the old Pod is still in a Terminating state). If you need an 
 "at most" guarantee for your Pods, you should consider using a 
-[StatefulSet](/docs/concepts/workloads/controllers/statefulset/).
+[StatefulSet](/docs/kubernetes/en/concepts/workloads/controllers/statefulset/).
 {{< /note >}}
 
 #### Rolling Update Deployment
@@ -1207,7 +1207,7 @@ If specified, this field needs to be greater than `.spec.minReadySeconds`.
 `.spec.minReadySeconds` is an optional field that specifies the minimum number of seconds for which a newly
 created Pod should be ready without any of its containers crashing, for it to be considered available.
 This defaults to 0 (the Pod will be considered available as soon as it is ready). To learn more about when
-a Pod is considered ready, see [Container Probes](/docs/concepts/workloads/pods/pod-lifecycle/#container-probes).
+a Pod is considered ready, see [Container Probes](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#container-probes).
 
 ### Revision History Limit
 
@@ -1228,10 +1228,10 @@ it is created.
 
 ## {{% heading "whatsnext" %}}
 
-* Learn about [Pods](/docs/concepts/workloads/pods).
-* [Run a Stateless Application Using a Deployment](/docs/tasks/run-application/run-stateless-application-deployment/).
+* Learn about [Pods](/docs/kubernetes/en/concepts/workloads/pods).
+* [Run a Stateless Application Using a Deployment](/docs/kubernetes/en/tasks/run-application/run-stateless-application-deployment/).
 * `Deployment` is a top-level resource in the Kubernetes REST API.
   Read the {{< api-reference page="workload-resources/deployment-v1" >}}
   object definition to understand the API for deployments.
-* Read about [PodDisruptionBudget](/docs/concepts/workloads/pods/disruptions/) and how
+* Read about [PodDisruptionBudget](/docs/kubernetes/en/concepts/workloads/pods/disruptions/) and how
   you can use it to manage application availability during disruptions.

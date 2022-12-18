@@ -66,13 +66,13 @@ When creating a cluster, you can (using custom tooling):
 * start and configure additional etcd instance
 * configure the {{< glossary_tooltip term_id="kube-apiserver" text="API server" >}} to use it for storing events
 
-See [Operating etcd clusters for Kubernetes](/docs/tasks/administer-cluster/configure-upgrade-etcd/) and
-[Set up a High Availability etcd cluster with kubeadm](/docs/setup/production-environment/tools/kubeadm/setup-ha-etcd-with-kubeadm/)
+See [Operating etcd clusters for Kubernetes](/docs/kubernetes/en/tasks/administer-cluster/configure-upgrade-etcd/) and
+[Set up a High Availability etcd cluster with kubeadm](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/setup-ha-etcd-with-kubeadm/)
 for details on configuring and managing etcd for a large cluster.
 
 ## Addon resources
 
-Kubernetes [resource limits](/docs/concepts/configuration/manage-resources-containers/)
+Kubernetes [resource limits](/docs/kubernetes/en/concepts/configuration/manage-resources-containers/)
 help to minimize the impact of memory leaks and other ways that pods and containers can
 impact on other components. These resource limits apply to
 {{< glossary_tooltip text="addon" term_id="addons" >}} resources just as they apply to application workloads.

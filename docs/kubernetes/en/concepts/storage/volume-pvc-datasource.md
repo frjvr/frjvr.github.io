@@ -11,7 +11,7 @@ weight: 70
 
 <!-- overview -->
 
-This document describes the concept of cloning existing CSI Volumes in Kubernetes.  Familiarity with [Volumes](/docs/concepts/storage/volumes) is suggested.
+This document describes the concept of cloning existing CSI Volumes in Kubernetes.  Familiarity with [Volumes](/docs/kubernetes/en/concepts/storage/volumes) is suggested.
 
 
 

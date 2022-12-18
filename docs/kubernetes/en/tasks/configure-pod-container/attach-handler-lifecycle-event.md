@@ -75,7 +75,7 @@ set to RUNNING until the postStart handler completes.
 Kubernetes sends the preStop event immediately before the Container is terminated.
 Kubernetes' management of the Container blocks until the preStop handler completes,
 unless the Pod's grace period expires. For more details, see
-[Pod Lifecycle](/docs/concepts/workloads/pods/pod-lifecycle/).
+[Pod Lifecycle](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/).
 
 {{< note >}}
 Kubernetes only sends the preStop event when a Pod is *terminated*.
@@ -89,15 +89,15 @@ This limitation is tracked in [issue #55087](https://github.com/kubernetes/kuber
 ## {{% heading "whatsnext" %}}
 
 
-* Learn more about [Container lifecycle hooks](/docs/concepts/containers/container-lifecycle-hooks/).
-* Learn more about the [lifecycle of a Pod](/docs/concepts/workloads/pods/pod-lifecycle/).
+* Learn more about [Container lifecycle hooks](/docs/kubernetes/en/concepts/containers/container-lifecycle-hooks/).
+* Learn more about the [lifecycle of a Pod](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/).
 
 
 ### Reference
 
-* [Lifecycle](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#lifecycle-v1-core)
-* [Container](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#container-v1-core)
-* See `terminationGracePeriodSeconds` in [PodSpec](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core)
+* [Lifecycle](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#lifecycle-v1-core)
+* [Container](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#container-v1-core)
+* See `terminationGracePeriodSeconds` in [PodSpec](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core)
 
 
 

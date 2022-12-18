@@ -1,7 +1,7 @@
 ---
 title: Ingress Controllers
 description: >-
-  In order for an [Ingress](/docs/concepts/services-networking/ingress/) to work in your cluster,
+  In order for an [Ingress](/docs/kubernetes/en/concepts/services-networking/ingress/) to work in your cluster,
   there must be an _ingress controller_ running.
   You need to select at least one ingress controller and make sure it is set up in your cluster.  
   This page lists common ingress controllers that you can deploy.
@@ -46,7 +46,7 @@ Kubernetes as a project supports and maintains [AWS](https://github.com/kubernet
   [HAProxy](https://www.haproxy.org/#desc).
 * The [HAProxy Ingress Controller for Kubernetes](https://github.com/haproxytech/kubernetes-ingress#readme)
   is also an ingress controller for [HAProxy](https://www.haproxy.org/#desc).
-* [Istio Ingress](https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/)
+* [Istio Ingress](https://istio.io/latest/docs/kubernetes/en/tasks/traffic-management/ingress/kubernetes-ingress/)
   is an [Istio](https://istio.io/) based ingress controller.
 * The [Kong Ingress Controller for Kubernetes](https://github.com/Kong/kubernetes-ingress-controller#readme)
   is an ingress controller driving [Kong Gateway](https://konghq.com/kong/).
@@ -63,11 +63,11 @@ Kubernetes as a project supports and maintains [AWS](https://github.com/kubernet
 
 ## Using multiple Ingress controllers
 
-You may deploy any number of ingress controllers using [ingress class](/docs/concepts/services-networking/ingress/#ingress-class)
-within a cluster. Note the `.metadata.name` of your ingress class resource. When you create an ingress you would need that name to specify the `ingressClassName` field on your Ingress object (refer to [IngressSpec v1 reference](/docs/reference/kubernetes-api/service-resources/ingress-v1/#IngressSpec)). `ingressClassName` is a replacement of the older [annotation method](/docs/concepts/services-networking/ingress/#deprecated-annotation).
+You may deploy any number of ingress controllers using [ingress class](/docs/kubernetes/en/concepts/services-networking/ingress/#ingress-class)
+within a cluster. Note the `.metadata.name` of your ingress class resource. When you create an ingress you would need that name to specify the `ingressClassName` field on your Ingress object (refer to [IngressSpec v1 reference](/docs/kubernetes/en/reference/kubernetes-api/service-resources/ingress-v1/#IngressSpec)). `ingressClassName` is a replacement of the older [annotation method](/docs/kubernetes/en/concepts/services-networking/ingress/#deprecated-annotation).
 
-If you do not specify an IngressClass for an Ingress, and your cluster has exactly one IngressClass marked as default, then Kubernetes [applies](/docs/concepts/services-networking/ingress/#default-ingress-class) the cluster's default IngressClass to the Ingress.
-You mark an IngressClass as default by setting the [`ingressclass.kubernetes.io/is-default-class` annotation](/docs/reference/labels-annotations-taints/#ingressclass-kubernetes-io-is-default-class) on that IngressClass, with the string value `"true"`.
+If you do not specify an IngressClass for an Ingress, and your cluster has exactly one IngressClass marked as default, then Kubernetes [applies](/docs/kubernetes/en/concepts/services-networking/ingress/#default-ingress-class) the cluster's default IngressClass to the Ingress.
+You mark an IngressClass as default by setting the [`ingressclass.kubernetes.io/is-default-class` annotation](/docs/kubernetes/en/reference/labels-annotations-taints/#ingressclass-kubernetes-io-is-default-class) on that IngressClass, with the string value `"true"`.
 
 Ideally, all ingress controllers should fulfill this specification, but the various ingress
 controllers operate slightly differently.
@@ -81,7 +81,7 @@ Make sure you review your ingress controller's documentation to understand the c
 ## {{% heading "whatsnext" %}}
 
 
-* Learn more about [Ingress](/docs/concepts/services-networking/ingress/).
-* [Set up Ingress on Minikube with the NGINX Controller](/docs/tasks/access-application-cluster/ingress-minikube).
+* Learn more about [Ingress](/docs/kubernetes/en/concepts/services-networking/ingress/).
+* [Set up Ingress on Minikube with the NGINX Controller](/docs/kubernetes/en/tasks/access-application-cluster/ingress-minikube).
 
 

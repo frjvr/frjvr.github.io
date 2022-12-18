@@ -8,7 +8,7 @@ weight: 110
 
 This page shows how to configure liveness, readiness and startup probes for containers.
 
-The [kubelet](/docs/reference/command-line-tools-reference/kubelet/) uses liveness probes to know when to
+The [kubelet](/docs/kubernetes/en/reference/command-line-tools-reference/kubelet/) uses liveness probes to know when to
 restart a container. For example, liveness probes could catch a deadlock,
 where an application is running, but unable to make progress. Restarting a
 container in such a state can help to make the application more available
@@ -228,7 +228,7 @@ kubectl describe pod goproxy
 If your application implements [gRPC Health Checking Protocol](https://github.com/grpc/grpc/blob/master/doc/health-checking.md),
 kubelet can be configured to use it for application liveness checks.
 You must enable the `GRPCContainerProbe`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/)
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/)
 in order to configure checks that rely on gRPC.
 
 Here is an example manifest:
@@ -273,7 +273,7 @@ When migrating from grpc-health-probe to built-in probes, remember the following
 ## Use a named port
 
 You can use a named
-[`port`](/docs/reference/kubernetes-api/workload-resources/pod-v1/#ports)
+[`port`](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/pod-v1/#ports)
 for HTTP and TCP probes. (gRPC probes do not support named ports).
 
 For example:
@@ -375,7 +375,7 @@ for it, and that containers are restarted when they fail.
 Eventually, some of this section could be moved to a concept topic.
 {{< /comment >}}
 
-[Probes](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#probe-v1-core) have a number of fields that
+[Probes](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#probe-v1-core) have a number of fields that
 you can use to more precisely control the behavior of startup, liveness and readiness
 checks:
 
@@ -399,7 +399,7 @@ until a result was returned.
 
 This defect was corrected in Kubernetes v1.20. You may have been relying on the previous behavior,
 even without realizing it, as the default timeout is 1 second.
-As a cluster administrator, you can disable the [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) `ExecProbeTimeout` (set it to `false`)
+As a cluster administrator, you can disable the [feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) `ExecProbeTimeout` (set it to `false`)
 on each kubelet to restore the  behavior from older versions, then remove that override
 once all the exec probes in the cluster have a `timeoutSeconds` value set.
 If you have pods that are impacted from the default 1 second timeout,
@@ -416,7 +416,7 @@ of processes in the container, and resource starvation if this is left unchecked
 
 ### HTTP probes
 
-[HTTP probes](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#httpgetaction-v1-core)
+[HTTP probes](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#httpgetaction-v1-core)
 have additional fields that can be set on `httpGet`:
 
 * `host`: Host name to connect to, defaults to the pod IP. You probably want to
@@ -541,10 +541,10 @@ It will be rejected by the API server.
 ## {{% heading "whatsnext" %}}
 
 * Learn more about
-[Container Probes](/docs/concepts/workloads/pods/pod-lifecycle/#container-probes).
+[Container Probes](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#container-probes).
 
 You can also read the API references for:
 
-* [Pod](/docs/reference/kubernetes-api/workload-resources/pod-v1/), and specifically:
-  * [container(s)](/docs/reference/kubernetes-api/workload-resources/pod-v1/#Container)
-  * [probe(s)](/docs/reference/kubernetes-api/workload-resources/pod-v1/#Probe)
+* [Pod](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/pod-v1/), and specifically:
+  * [container(s)](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/pod-v1/#Container)
+  * [probe(s)](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/pod-v1/#Probe)

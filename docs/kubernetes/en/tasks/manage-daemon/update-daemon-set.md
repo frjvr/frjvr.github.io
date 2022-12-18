@@ -35,11 +35,11 @@ To enable the rolling update feature of a DaemonSet, you must set its
 `.spec.updateStrategy.type` to `RollingUpdate`.
 
 You may want to set
-[`.spec.updateStrategy.rollingUpdate.maxUnavailable`](/docs/reference/kubernetes-api/workload-resources/daemon-set-v1/#DaemonSetSpec) 
+[`.spec.updateStrategy.rollingUpdate.maxUnavailable`](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/daemon-set-v1/#DaemonSetSpec) 
 (default to 1),
-[`.spec.minReadySeconds`](/docs/reference/kubernetes-api/workload-resources/daemon-set-v1/#DaemonSetSpec)
+[`.spec.minReadySeconds`](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/daemon-set-v1/#DaemonSetSpec)
 (default to 0) and
-[`.spec.updateStrategy.rollingUpdate.maxSurge`](/docs/reference/kubernetes-api/workload-resources/daemon-set-v1/#DaemonSetSpec)
+[`.spec.updateStrategy.rollingUpdate.maxSurge`](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/daemon-set-v1/#DaemonSetSpec)
 (defaults to 0) as well.
 
 ### Creating a DaemonSet with `RollingUpdate` update strategy
@@ -97,7 +97,7 @@ update. Let's update the DaemonSet by applying a new YAML file. This can be done
 #### Declarative commands
 
 If you update DaemonSets using
-[configuration files](/docs/tasks/manage-kubernetes-objects/declarative-config/),
+[configuration files](/docs/kubernetes/en/tasks/manage-kubernetes-objects/declarative-config/),
 use `kubectl apply`:
 
 ```shell
@@ -107,7 +107,7 @@ kubectl apply -f https://k8s.io/examples/controllers/fluentd-daemonset-update.ya
 #### Imperative commands
 
 If you update DaemonSets using
-[imperative commands](/docs/tasks/manage-kubernetes-objects/imperative-command/),
+[imperative commands](/docs/kubernetes/en/tasks/manage-kubernetes-objects/imperative-command/),
 use `kubectl edit` :
 
 ```shell
@@ -148,7 +148,7 @@ causes:
 
 The rollout is stuck because new DaemonSet pods can't be scheduled on at least one
 node. This is possible when the node is
-[running out of resources](/docs/concepts/scheduling-eviction/node-pressure-eviction/).
+[running out of resources](/docs/kubernetes/en/concepts/scheduling-eviction/node-pressure-eviction/).
 
 When this happens, find the nodes that don't have the DaemonSet pods scheduled on
 by comparing the output of `kubectl get nodes` and the output of:
@@ -162,7 +162,7 @@ make room for new DaemonSet pods.
 
 {{< note >}}
 This will cause service disruption when deleted pods are not controlled by any controllers or pods are not
-replicated. This does not respect [PodDisruptionBudget](/docs/tasks/run-application/configure-pdb/)
+replicated. This does not respect [PodDisruptionBudget](/docs/kubernetes/en/tasks/run-application/configure-pdb/)
 either.
 {{< /note >}}
 
@@ -191,5 +191,5 @@ kubectl delete ds fluentd-elasticsearch -n kube-system
 
 ## {{% heading "whatsnext" %}}
 
-* See [Performing a rollback on a DaemonSet](/docs/tasks/manage-daemon/rollback-daemon-set/)
-* See [Creating a DaemonSet to adopt existing DaemonSet pods](/docs/concepts/workloads/controllers/daemonset/)
+* See [Performing a rollback on a DaemonSet](/docs/kubernetes/en/tasks/manage-daemon/rollback-daemon-set/)
+* See [Creating a DaemonSet to adopt existing DaemonSet pods](/docs/kubernetes/en/concepts/workloads/controllers/daemonset/)

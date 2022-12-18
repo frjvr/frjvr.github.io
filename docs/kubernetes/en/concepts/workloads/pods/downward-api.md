@@ -23,8 +23,8 @@ inject the Pod's name into the well-known environment variable.
 
 In Kubernetes, there are two ways to expose Pod and container fields to a running container:
 
-* as [environment variables](/docs/tasks/inject-data-application/environment-variable-expose-pod-information/)
-* as [files in a `downwardAPI` volume](/docs/tasks/inject-data-application/downward-api-volume-expose-pod-information/)
+* as [environment variables](/docs/kubernetes/en/tasks/inject-data-application/environment-variable-expose-pod-information/)
+* as [files in a `downwardAPI` volume](/docs/kubernetes/en/tasks/inject-data-application/downward-api-volume-expose-pod-information/)
 
 Together, these two ways of exposing Pod and container fields are called the
 _downward API_.
@@ -38,7 +38,7 @@ section lists which fields you can make available.
 
 You can pass information from available Pod-level fields using `fieldRef`.
 At the API level, the `spec` for a Pod always defines at least one
-[Container](/docs/reference/kubernetes-api/workload-resources/pod-v1/#Container).
+[Container](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/pod-v1/#Container).
 You can pass information from available Container-level fields using
 `resourceFieldRef`.
 
@@ -87,7 +87,7 @@ a `downwardAPI` volume `fieldRef`, but **not as environment variables**:
 ### Information available via `resourceFieldRef` {#downwardapi-resourceFieldRef}
 
 These container-level fields allow you to provide information about
-[requests and limits](/docs/concepts/configuration/manage-resources-containers/#requests-and-limits)
+[requests and limits](/docs/kubernetes/en/concepts/configuration/manage-resources-containers/#requests-and-limits)
 for resources such as CPU and memory.
 
 
@@ -104,10 +104,10 @@ for resources such as CPU and memory.
 : A container's memory request
 
 `resource: limits.hugepages-*`
-: A container's hugepages limit (provided that the `DownwardAPIHugePages` [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) is enabled)
+: A container's hugepages limit (provided that the `DownwardAPIHugePages` [feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) is enabled)
 
 `resource: requests.hugepages-*`
-: A container's hugepages request (provided that the `DownwardAPIHugePages` [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) is enabled)
+: A container's hugepages request (provided that the `DownwardAPIHugePages` [feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) is enabled)
 
 `resource: limits.ephemeral-storage`
 : A container's ephemeral-storage limit
@@ -120,13 +120,13 @@ for resources such as CPU and memory.
 If CPU and memory limits are not specified for a container, and you use the
 downward API to try to expose that information, then the
 kubelet defaults to exposing the maximum allocatable value for CPU and memory
-based on the [node allocatable](/docs/tasks/administer-cluster/reserve-compute-resources/#node-allocatable)
+based on the [node allocatable](/docs/kubernetes/en/tasks/administer-cluster/reserve-compute-resources/#node-allocatable)
 calculation.
 
 ## {{% heading "whatsnext" %}}
 
-You can read about [`downwardAPI` volumes](/docs/concepts/storage/volumes/#downwardapi).
+You can read about [`downwardAPI` volumes](/docs/kubernetes/en/concepts/storage/volumes/#downwardapi).
 
 You can try using the downward API to expose container- or Pod-level information:
-* as [environment variables](/docs/tasks/inject-data-application/environment-variable-expose-pod-information/)
-* as [files in `downwardAPI` volume](/docs/tasks/inject-data-application/downward-api-volume-expose-pod-information/)
+* as [environment variables](/docs/kubernetes/en/tasks/inject-data-application/environment-variable-expose-pod-information/)
+* as [files in `downwardAPI` volume](/docs/kubernetes/en/tasks/inject-data-application/downward-api-volume-expose-pod-information/)

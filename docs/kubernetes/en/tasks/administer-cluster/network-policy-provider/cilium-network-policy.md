@@ -114,7 +114,7 @@ on the traffic to/from Pods on that node using Linux BPF.
 ## {{% heading "whatsnext" %}}
 
 Once your cluster is running, you can follow the
-[Declare Network Policy](/docs/tasks/administer-cluster/declare-network-policy/)
+[Declare Network Policy](/docs/kubernetes/en/tasks/administer-cluster/declare-network-policy/)
 to try out Kubernetes NetworkPolicy with Cilium.
 Have fun, and if you have questions, contact us using the
 [Cilium Slack Channel](https://cilium.herokuapp.com/).

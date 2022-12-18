@@ -17,7 +17,7 @@ This page shows how to perform a rollback on a {{< glossary_tooltip term_id="dae
 {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
 
 You should already know how to [perform a rolling update on a
- DaemonSet](/docs/tasks/manage-daemon/update-daemon-set/).
+ DaemonSet](/docs/kubernetes/en/tasks/manage-daemon/update-daemon-set/).
 
 <!-- steps -->
 
@@ -146,4 +146,4 @@ have revision 1 and 2 in the system, and roll back from revision 2 to revision
 ## Troubleshooting
 
 * See [troubleshooting DaemonSet rolling
-  update](/docs/tasks/manage-daemon/update-daemon-set/#troubleshooting).
+  update](/docs/kubernetes/en/tasks/manage-daemon/update-daemon-set/#troubleshooting).

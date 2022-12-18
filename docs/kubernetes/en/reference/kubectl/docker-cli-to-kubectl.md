@@ -14,7 +14,7 @@ You can use the Kubernetes command line tool `kubectl` to interact with the API 
 <!-- body -->
 ## docker run
 
-To run an nginx Deployment and expose the Deployment, see [kubectl create deployment](/docs/reference/generated/kubectl/kubectl-commands#-em-deployment-em-).
+To run an nginx Deployment and expose the Deployment, see [kubectl create deployment](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands#-em-deployment-em-).
 docker:
 
 ```shell
@@ -62,9 +62,9 @@ kubectl expose deployment nginx-app --port=80 --name=nginx-http
 service "nginx-http" exposed
 ```
 
-By using kubectl, you can create a [Deployment](/docs/concepts/workloads/controllers/deployment/) to ensure that N pods are running nginx, where N is the number of replicas stated in the spec and defaults to 1. You can also create a [service](/docs/concepts/services-networking/service/) with a selector that matches the pod labels. For more information, see [Use a Service to Access an Application in a Cluster](/docs/tasks/access-application-cluster/service-access-application-cluster).
+By using kubectl, you can create a [Deployment](/docs/kubernetes/en/concepts/workloads/controllers/deployment/) to ensure that N pods are running nginx, where N is the number of replicas stated in the spec and defaults to 1. You can also create a [service](/docs/kubernetes/en/concepts/services-networking/service/) with a selector that matches the pod labels. For more information, see [Use a Service to Access an Application in a Cluster](/docs/kubernetes/en/tasks/access-application-cluster/service-access-application-cluster).
 
-By default images run in the background, similar to `docker run -d ...`. To run things in the foreground, use [`kubectl run`](/docs/reference/generated/kubectl/kubectl-commands/#run) to create pod:
+By default images run in the background, similar to `docker run -d ...`. To run things in the foreground, use [`kubectl run`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#run) to create pod:
 ```shell
 kubectl run [-i] [--tty] --attach <name> --image=<image>
 ```
@@ -74,7 +74,7 @@ To detach from the container, you can type the escape sequence Ctrl+P followed b
 
 ## docker ps
 
-To list what is currently running, see [kubectl get](/docs/reference/generated/kubectl/kubectl-commands/#get).
+To list what is currently running, see [kubectl get](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#get).
 
 docker:
 
@@ -100,7 +100,7 @@ ubuntu                      0/1       Completed   0          20s
 
 ## docker attach
 
-To attach a process that is already running in a container, see [kubectl attach](/docs/reference/generated/kubectl/kubectl-commands/#attach).
+To attach a process that is already running in a container, see [kubectl attach](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#attach).
 
 docker:
 
@@ -136,7 +136,7 @@ To detach from the container, you can type the escape sequence Ctrl+P followed b
 
 ## docker exec
 
-To execute a command in a container, see [kubectl exec](/docs/reference/generated/kubectl/kubectl-commands/#exec).
+To execute a command in a container, see [kubectl exec](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#exec).
 
 docker:
 
@@ -188,11 +188,11 @@ kubectl exec -ti nginx-app-5jyvm -- /bin/sh
 # exit
 ```
 
-For more information, see [Get a Shell to a Running Container](/docs/tasks/debug/debug-application/get-shell-running-container/).
+For more information, see [Get a Shell to a Running Container](/docs/kubernetes/en/tasks/debug/debug-application/get-shell-running-container/).
 
 ## docker logs
 
-To follow stdout/stderr of a process that is running, see [kubectl logs](/docs/reference/generated/kubectl/kubectl-commands/#logs).
+To follow stdout/stderr of a process that is running, see [kubectl logs](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#logs).
 
 
 docker:
@@ -225,11 +225,11 @@ kubectl logs --previous nginx-app-zibvs
 10.240.63.110 - - [14/Jul/2015:01:09:02 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.26.0" "-"
 ```
 
-For more information, see [Logging Architecture](/docs/concepts/cluster-administration/logging/).
+For more information, see [Logging Architecture](/docs/kubernetes/en/concepts/cluster-administration/logging/).
 
 ## docker stop and docker rm
 
-To stop and delete a running process, see [kubectl delete](/docs/reference/generated/kubectl/kubectl-commands/#delete).
+To stop and delete a running process, see [kubectl delete](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#delete).
 
 docker:
 
@@ -290,11 +290,11 @@ When you use kubectl, you don't delete the pod directly. You have to first delet
 
 ## docker login
 
-There is no direct analog of `docker login` in kubectl. If you are interested in using Kubernetes with a private registry, see [Using a Private Registry](/docs/concepts/containers/images/#using-a-private-registry).
+There is no direct analog of `docker login` in kubectl. If you are interested in using Kubernetes with a private registry, see [Using a Private Registry](/docs/kubernetes/en/concepts/containers/images/#using-a-private-registry).
 
 ## docker version
 
-To get the version of client and server, see [kubectl version](/docs/reference/generated/kubectl/kubectl-commands/#version).
+To get the version of client and server, see [kubectl version](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#version).
 
 docker:
 
@@ -326,7 +326,7 @@ Server Version: version.Info{Major:"1", Minor:"6", GitVersion:"v1.6.9+a3d1dfa6f4
 
 ## docker info
 
-To get miscellaneous information about the environment and configuration, see [kubectl cluster-info](/docs/reference/generated/kubectl/kubectl-commands/#cluster-info).
+To get miscellaneous information about the environment and configuration, see [kubectl cluster-info](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#cluster-info).
 
 docker:
 

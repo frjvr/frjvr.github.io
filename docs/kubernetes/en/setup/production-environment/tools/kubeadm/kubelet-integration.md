@@ -13,7 +13,7 @@ weight: 80
 {{< feature-state for_k8s_version="v1.11" state="stable" >}}
 
 The lifecycle of the kubeadm CLI tool is decoupled from the
-[kubelet](/docs/reference/command-line-tools-reference/kubelet), which is a daemon that runs
+[kubelet](/docs/kubernetes/en/reference/command-line-tools-reference/kubelet), which is a daemon that runs
 on each node within the Kubernetes cluster. The kubeadm CLI tool is executed by the user when Kubernetes is
 initialized or upgraded, whereas the kubelet is always running in the background.
 
@@ -53,7 +53,7 @@ by the kubelet, using the `--cluster-dns` flag. This setting needs to be the sam
 on every manager and Node in the cluster. The kubelet provides a versioned, structured API object
 that can configure most parameters in the kubelet and push out this configuration to each running
 kubelet in the cluster. This object is called
-[`KubeletConfiguration`](/docs/reference/config-api/kubelet-config.v1beta1/).
+[`KubeletConfiguration`](/docs/kubernetes/en/reference/config-api/kubelet-config.v1beta1/).
 The `KubeletConfiguration` allows the user to specify flags such as the cluster DNS IP addresses expressed as
 a list of values to a camelCased key, illustrated by the following example:
 
@@ -88,19 +88,19 @@ networking, or other host-specific parameters. The following list provides a few
 `--container-runtime-endpoint=<path>` flag.
 
 The recommended way of applying such instance-specific configuration is by using
-[`KubeletConfiguration` patches](/docs/setup/production-environment/tools/kubeadm/control-plane-flags#patches).
+[`KubeletConfiguration` patches](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/control-plane-flags#patches).
 
 ## Configure kubelets using kubeadm
 
 It is possible to configure the kubelet that kubeadm will start if a custom
-[`KubeletConfiguration`](/docs/reference/config-api/kubelet-config.v1beta1/)
+[`KubeletConfiguration`](/docs/kubernetes/en/reference/config-api/kubelet-config.v1beta1/)
 API object is passed with a configuration file like so `kubeadm ... --config some-config-file.yaml`.
 
 By calling `kubeadm config print init-defaults --component-configs KubeletConfiguration` you can
 see all the default values for this structure.
 
 It is also possible to apply instance-specific patches over the base `KubeletConfiguration`.
-Have a look at [Customizing the kubelet](/docs/setup/production-environment/tools/kubeadm/control-plane-flags#customizing-the-kubelet)
+Have a look at [Customizing the kubelet](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/control-plane-flags#customizing-the-kubelet)
 for more details.
 
 ### Workflow when using `kubeadm init`
@@ -171,7 +171,7 @@ It augments the basic
 
 {{< note >}}
 The contents below are just an example. If you don't want to use a package manager
-follow the guide outlined in the [Without a package manager](/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#k8s-install-2))
+follow the guide outlined in the [Without a package manager](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/install-kubeadm/#k8s-install-2))
 section.
 {{< /note >}}
 

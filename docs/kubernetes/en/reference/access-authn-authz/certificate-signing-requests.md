@@ -207,7 +207,7 @@ by the Kubernetes cluster, and then present that certificate to the Kubernetes A
 The following scripts show how to generate PKI private key and CSR. It is
 important to set CN and O attribute of the CSR. CN is the name of the user and
 O is the group that this user will belong to. You can refer to
-[RBAC](/docs/reference/access-authn-authz/rbac/) for standard groups.
+[RBAC](/docs/kubernetes/en/reference/access-authn-authz/rbac/) for standard groups.
 
 ```shell
 openssl genrsa -out myuser.key 2048
@@ -390,7 +390,7 @@ you like. If you want to add a note for human consumption, use the
 ### Control plane signer {#signer-control-plane}
 
 The Kubernetes control plane implements each of the
-[Kubernetes signers](/docs/reference/access-authn-authz/certificate-signing-requests/#kubernetes-signers),
+[Kubernetes signers](/docs/kubernetes/en/reference/access-authn-authz/certificate-signing-requests/#kubernetes-signers),
 as part of the kube-controller-manager.
 
 {{< note >}}
@@ -457,7 +457,7 @@ status:
 
 ## {{% heading "whatsnext" %}}
 
-* Read [Manage TLS Certificates in a Cluster](/docs/tasks/tls/managing-tls-in-a-cluster/)
+* Read [Manage TLS Certificates in a Cluster](/docs/kubernetes/en/tasks/tls/managing-tls-in-a-cluster/)
 * View the source code for the kube-controller-manager built in [signer](https://github.com/kubernetes/kubernetes/blob/32ec6c212ec9415f604ffc1f4c1f29b782968ff1/pkg/controller/certificates/signer/cfssl_signer.go)
 * View the source code for the kube-controller-manager built in [approver](https://github.com/kubernetes/kubernetes/blob/32ec6c212ec9415f604ffc1f4c1f29b782968ff1/pkg/controller/certificates/approver/sarapprove.go)
 * For details of X.509 itself, refer to [RFC 5280](https://tools.ietf.org/html/rfc5280#section-3.1) section 3.1

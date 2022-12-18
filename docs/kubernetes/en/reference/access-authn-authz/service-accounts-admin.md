@@ -16,7 +16,7 @@ A _ServiceAccount_ provides an identity for processes that run in a Pod.
 A process inside a Pod can use the identity of its associated service account to
 authenticate to the cluster's API server.
 
-For an introduction to service accounts, read [configure service accounts](/docs/tasks/configure-pod-container/configure-service-account/).
+For an introduction to service accounts, read [configure service accounts](/docs/kubernetes/en/tasks/configure-pod-container/configure-service-account/).
 
 This task guide explains some of the concepts behind ServiceAccounts. The
 guide also explains how to obtain or revoke tokens that represent
@@ -68,7 +68,7 @@ for a number of reasons:
 
 By default, the Kubernetes control plane (specifically, the
 [ServiceAccount admission controller](#service-account-admission-controller))
-adds a [projected volume](/docs/concepts/storage/projected-volumes/) to Pods,
+adds a [projected volume](/docs/kubernetes/en/concepts/storage/projected-volumes/) to Pods,
 and this volume includes a token for Kubernetes API access.
 
 Here's an example of how that looks for a launched Pod:
@@ -124,18 +124,18 @@ could then be mounted into running Pods.
 
 In more recent versions, including Kubernetes v{{< skew currentVersion >}}, API credentials
 are [obtained directly](#bound-service-account-token-volume) using the
-[TokenRequest](/docs/reference/kubernetes-api/authentication-resources/token-request-v1/) API,
+[TokenRequest](/docs/kubernetes/en/reference/kubernetes-api/authentication-resources/token-request-v1/) API,
 and are mounted into Pods using a projected volume.
 The tokens obtained using this method have bounded lifetimes, and are automatically
 invalidated when the Pod they are mounted into is deleted.
 
-You can still [manually create](/docs/tasks/configure-pod-container/configure-service-account/#manually-create-an-api-token-for-a-serviceaccount) a Secret to hold a service account token; for example, if you need a token that never expires.
+You can still [manually create](/docs/kubernetes/en/tasks/configure-pod-container/configure-service-account/#manually-create-an-api-token-for-a-serviceaccount) a Secret to hold a service account token; for example, if you need a token that never expires.
 
 Once you manually create a Secret and link it to a ServiceAccount, the Kubernetes control plane automatically populates the token into that Secret.
 
 {{< note >}}
 Although the manual mechanism for creating a long-lived ServiceAccount token exists,
-using [TokenRequest](/docs/reference/kubernetes-api/authentication-resources/token-request-v1/)
+using [TokenRequest](/docs/kubernetes/en/reference/kubernetes-api/authentication-resources/token-request-v1/)
 to obtain short-lived API access tokens is recommended instead.
 {{< /note >}}
 
@@ -163,7 +163,7 @@ verify the tokens during authentication.
 ### ServiceAccount admission controller
 
 The modification of pods is implemented via a plugin
-called an [Admission Controller](/docs/reference/access-authn-authz/admission-controllers/).
+called an [Admission Controller](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/).
 It is part of the API server.
 This admission controller acts synchronously to modify pods as they are created.
 When this plugin is active (and it is by default on most distributions), then
@@ -191,13 +191,13 @@ it does the following when a Pod is created:
 
 {{< feature-state for_k8s_version="v1.22" state="stable" >}}
 
-You use the [TokenRequest](/docs/reference/kubernetes-api/authentication-resources/token-request-v1/)
+You use the [TokenRequest](/docs/kubernetes/en/reference/kubernetes-api/authentication-resources/token-request-v1/)
 subresource of a ServiceAccount to obtain a time-bound token for that ServiceAccount.
 You don't need to call this to obtain an API token for use within a container, since
 the kubelet sets this up for you using a _projected volume_.
 
 If you want to use the TokenRequest API from `kubectl`, see
-[Manually create an API token for a ServiceAccount](/docs/tasks/configure-pod-container/configure-service-account/#manually-create-an-api-token-for-a-serviceaccount).
+[Manually create an API token for a ServiceAccount](/docs/kubernetes/en/tasks/configure-pod-container/configure-service-account/#manually-create-an-api-token-for-a-serviceaccount).
 
 The Kubernetes control plane (specifically, the ServiceAccount admission controller)
 adds a projected volume to Pods, and the kubelet ensures that this volume contains a token
@@ -396,4 +396,4 @@ verify the tokens during authentication.
 
 ## {{% heading "whatsnext" %}}
 
-- Read more details about [projected volumes](/docs/concepts/storage/projected-volumes/).
+- Read more details about [projected volumes](/docs/kubernetes/en/concepts/storage/projected-volumes/).

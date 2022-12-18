@@ -39,21 +39,21 @@ or static Bearer token approach. Larger clusters may wish to integrate an existi
 allow users to be subdivided into groups.
 
 All API clients must be authenticated, even those that are part of the infrastructure like nodes,
-proxies, the scheduler, and volume plugins. These clients are typically [service accounts](/docs/reference/access-authn-authz/service-accounts-admin/) or use x509 client certificates, and they are created automatically at cluster startup or are setup as part of the cluster installation.
+proxies, the scheduler, and volume plugins. These clients are typically [service accounts](/docs/kubernetes/en/reference/access-authn-authz/service-accounts-admin/) or use x509 client certificates, and they are created automatically at cluster startup or are setup as part of the cluster installation.
 
-Consult the [authentication reference document](/docs/reference/access-authn-authz/authentication/) for more information.
+Consult the [authentication reference document](/docs/kubernetes/en/reference/access-authn-authz/authentication/) for more information.
 
 ### API Authorization
 
 Once authenticated, every API call is also expected to pass an authorization check. Kubernetes ships
-an integrated [Role-Based Access Control (RBAC)](/docs/reference/access-authn-authz/rbac/) component that matches an incoming user or group to a
+an integrated [Role-Based Access Control (RBAC)](/docs/kubernetes/en/reference/access-authn-authz/rbac/) component that matches an incoming user or group to a
 set of permissions bundled into roles. These permissions combine verbs (get, create, delete) with
 resources (pods, services, nodes) and can be namespace-scoped or cluster-scoped. A set of out-of-the-box
 roles are provided that offer reasonable default separation of responsibility depending on what
 actions a client might want to perform. It is recommended that you use the
-[Node](/docs/reference/access-authn-authz/node/) and
-[RBAC](/docs/reference/access-authn-authz/rbac/) authorizers together, in combination with the
-[NodeRestriction](/docs/reference/access-authn-authz/admission-controllers/#noderestriction) admission plugin.
+[Node](/docs/kubernetes/en/reference/access-authn-authz/node/) and
+[RBAC](/docs/kubernetes/en/reference/access-authn-authz/rbac/) authorizers together, in combination with the
+[NodeRestriction](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/#noderestriction) admission plugin.
 
 As with authentication, simple and broad roles may be appropriate for smaller clusters, but as
 more users interact with the cluster, it may become necessary to separate teams into separate
@@ -67,7 +67,7 @@ being terminated and recreated on other nodes. The out-of-the box roles represen
 between flexibility and common use cases, but more limited roles should be carefully reviewed
 to prevent accidental escalation. You can make roles specific to your use case if the out-of-box ones don't meet your needs.
 
-Consult the [authorization reference section](/docs/reference/access-authn-authz/authorization/) for more information.
+Consult the [authorization reference section](/docs/kubernetes/en/reference/access-authn-authz/authorization/) for more information.
 
 ## Controlling access to the Kubelet
 
@@ -76,7 +76,7 @@ By default Kubelets allow unauthenticated access to this API.
 
 Production clusters should enable Kubelet authentication and authorization.
 
-Consult the [Kubelet authentication/authorization reference](/docs/reference/access-authn-authz/kubelet-authn-authz/)
+Consult the [Kubelet authentication/authorization reference](/docs/kubernetes/en/reference/access-authn-authz/kubelet-authn-authz/)
 for more information.
 
 ## Controlling the capabilities of a workload or user at runtime
@@ -87,25 +87,25 @@ cluster, themselves, and other resources.
 
 ### Limiting resource usage on a cluster
 
-[Resource quota](/docs/concepts/policy/resource-quotas/) limits the number or capacity of
+[Resource quota](/docs/kubernetes/en/concepts/policy/resource-quotas/) limits the number or capacity of
 resources granted to a namespace. This is most often used to limit the amount of CPU, memory,
 or persistent disk a namespace can allocate, but can also control how many pods, services, or
 volumes exist in each namespace.
 
-[Limit ranges](/docs/tasks/administer-cluster/manage-resources/memory-default-namespace/) restrict the maximum or minimum size of some of the
+[Limit ranges](/docs/kubernetes/en/tasks/administer-cluster/manage-resources/memory-default-namespace/) restrict the maximum or minimum size of some of the
 resources above, to prevent users from requesting unreasonably high or low values for commonly
 reserved resources like memory, or to provide default limits when none are specified.
 
 
 ### Controlling what privileges containers run with
 
-A pod definition contains a [security context](/docs/tasks/configure-pod-container/security-context/)
+A pod definition contains a [security context](/docs/kubernetes/en/tasks/configure-pod-container/security-context/)
 that allows it to request access to run as a specific Linux user on a node (like root),
 access to run privileged or access the host network, and other controls that would otherwise
 allow it to run unfettered on a hosting node.
 
-You can configure [Pod security admission](/docs/concepts/security/pod-security-admission/)
-to enforce use of a particular [Pod Security Standard](/docs/concepts/security/pod-security-standards/)
+You can configure [Pod security admission](/docs/kubernetes/en/concepts/security/pod-security-admission/)
+to enforce use of a particular [Pod Security Standard](/docs/kubernetes/en/concepts/security/pod-security-standards/)
 in a {{< glossary_tooltip text="namespace" term_id="namespace" >}}, or to detect breaches.
 
 Generally, most application workloads need limited access to host resources so they can
@@ -148,9 +148,9 @@ kernel on behalf of some more-privileged process.)
 
 ### Restricting network access
 
-The [network policies](/docs/tasks/administer-cluster/declare-network-policy/) for a namespace
+The [network policies](/docs/kubernetes/en/tasks/administer-cluster/declare-network-policy/) for a namespace
 allows application authors to restrict which pods in other namespaces may access pods and ports
-within their namespaces. Many of the supported [Kubernetes networking providers](/docs/concepts/cluster-administration/networking/)
+within their namespaces. Many of the supported [Kubernetes networking providers](/docs/kubernetes/en/concepts/cluster-administration/networking/)
 now respect network policy.
 
 Quota and limit ranges can also be used to control whether users may request node ports or
@@ -169,14 +169,14 @@ credentials for that node, or provisioning data such as kubelet credentials. The
 can be used to escalate within the cluster or to other cloud services under the same account.
 
 When running Kubernetes on a cloud platform, limit permissions given to instance credentials, use
-[network policies](/docs/tasks/administer-cluster/declare-network-policy/) to restrict pod access
+[network policies](/docs/kubernetes/en/tasks/administer-cluster/declare-network-policy/) to restrict pod access
 to the metadata API, and avoid using provisioning data to deliver secrets.
 
 ### Controlling which nodes pods may access
 
 By default, there are no restrictions on which nodes may run a pod.  Kubernetes offers a
-[rich set of policies for controlling placement of pods onto nodes](/docs/concepts/scheduling-eviction/assign-pod-node/)
-and the [taint-based pod placement and eviction](/docs/concepts/scheduling-eviction/taint-and-toleration/)
+[rich set of policies for controlling placement of pods onto nodes](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node/)
+and the [taint-based pod placement and eviction](/docs/kubernetes/en/concepts/scheduling-eviction/taint-and-toleration/)
 that are available to end users. For many clusters use of these policies to separate workloads
 can be a convention that authors adopt or enforce via tooling.
 
@@ -206,7 +206,7 @@ access to a subset of the keyspace is strongly recommended.
 
 ### Enable audit logging
 
-The [audit logger](/docs/tasks/debug/debug-cluster/audit/) is a beta feature that records actions taken by the
+The [audit logger](/docs/kubernetes/en/tasks/debug/debug-cluster/audit/) is a beta feature that records actions taken by the
 API for later analysis in the event of a compromise. It is recommended to enable audit logging
 and archive the audit file on a secure server.
 
@@ -237,9 +237,9 @@ restrict the integration to functioning in a single namespace if possible.
 Components that create pods may also be unexpectedly powerful if they can do so inside namespaces
 like the `kube-system` namespace, because those pods can gain access to service account secrets
 or run with elevated permissions if those service accounts are granted access to permissive
-[PodSecurityPolicies](/docs/concepts/security/pod-security-policy/).
+[PodSecurityPolicies](/docs/kubernetes/en/concepts/security/pod-security-policy/).
 
-If you use [Pod Security admission](/docs/concepts/security/pod-security-admission/) and allow
+If you use [Pod Security admission](/docs/kubernetes/en/concepts/security/pod-security-admission/) and allow
 any component to create Pods within a namespace that permits privileged Pods, those Pods may
 be able to escape their containers and use this widened access to elevate their privileges.
 
@@ -254,7 +254,7 @@ and may grant an attacker significant visibility into the state of your cluster.
 your backups using a well reviewed backup and encryption solution, and consider using full disk
 encryption where possible.
 
-Kubernetes supports optional [encryption at rest](/docs/tasks/administer-cluster/encrypt-data/) for information in the Kubernetes API. 
+Kubernetes supports optional [encryption at rest](/docs/kubernetes/en/tasks/administer-cluster/encrypt-data/) for information in the Kubernetes API. 
 This lets you ensure that when Kubernetes stores data for objects (for example, `Secret` or
 `ConfigMap` objects), the API server writes an encrypted representation of the object.
 That encryption means that even someone who has access to etcd backup data is unable
@@ -267,7 +267,7 @@ Kubernetes as part of the v1.26 release.
 
 Join the [kubernetes-announce](https://groups.google.com/forum/#!forum/kubernetes-announce)
 group for emails about security announcements. See the
-[security reporting](/docs/reference/issues-security/security/)
+[security reporting](/docs/kubernetes/en/reference/issues-security/security/)
 page for more on how to report vulnerabilities.
 
 

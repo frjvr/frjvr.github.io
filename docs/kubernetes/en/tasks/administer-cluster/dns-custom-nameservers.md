@@ -45,12 +45,12 @@ with the flag `--cluster-domain=<default-local-domain>`.
 
 The DNS server supports forward lookups (A and AAAA records), port lookups (SRV records),
 reverse IP address lookups (PTR records), and more. For more information, see
-[DNS for Services and Pods](/docs/concepts/services-networking/dns-pod-service/).
+[DNS for Services and Pods](/docs/kubernetes/en/concepts/services-networking/dns-pod-service/).
 
 If a Pod's `dnsPolicy` is set to `default`, it inherits the name resolution
 configuration from the node that the Pod runs on. The Pod's DNS resolution
 should behave the same as the node.
-But see [Known issues](/docs/tasks/administer-cluster/dns-debugging-resolution/#known-issues).
+But see [Known issues](/docs/kubernetes/en/tasks/administer-cluster/dns-debugging-resolution/#known-issues).
 
 If you don't want this, or if you want a different DNS config for pods, you can
 use the kubelet's `--resolv-conf` flag.  Set this flag to "" to prevent Pods from
@@ -197,5 +197,5 @@ During translation, all FQDN nameservers will be omitted from the CoreDNS config
 
 ## {{% heading "whatsnext" %}}
 
-- Read [Debugging DNS Resolution](/docs/tasks/administer-cluster/dns-debugging-resolution/)
+- Read [Debugging DNS Resolution](/docs/kubernetes/en/tasks/administer-cluster/dns-debugging-resolution/)
 

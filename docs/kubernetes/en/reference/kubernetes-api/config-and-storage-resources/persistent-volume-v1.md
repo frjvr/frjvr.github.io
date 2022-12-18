@@ -28,7 +28,7 @@ guide. You can file document formatting bugs against the
 
 ## PersistentVolume {#PersistentVolume}
 
-PersistentVolume (PV) is a storage resource provisioned by an administrator. It is analogous to a node. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes
+PersistentVolume (PV) is a storage resource provisioned by an administrator. It is analogous to a node. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/persistent-volumes
 
 <hr>
 
@@ -44,11 +44,11 @@ PersistentVolume (PV) is a storage resource provisioned by an administrator. It 
 
 - **spec** (<a href="{{< ref "../config-and-storage-resources/persistent-volume-v1#PersistentVolumeSpec" >}}">PersistentVolumeSpec</a>)
 
-  spec defines a specification of a persistent volume owned by the cluster. Provisioned by an administrator. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes
+  spec defines a specification of a persistent volume owned by the cluster. Provisioned by an administrator. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/persistent-volumes#persistent-volumes
 
 - **status** (<a href="{{< ref "../config-and-storage-resources/persistent-volume-v1#PersistentVolumeStatus" >}}">PersistentVolumeStatus</a>)
 
-  status represents the current information/status for the persistent volume. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes
+  status represents the current information/status for the persistent volume. Populated by the system. Read-only. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/persistent-volumes#persistent-volumes
 
 
 
@@ -62,19 +62,19 @@ PersistentVolumeSpec is the specification of a persistent volume.
 
 - **accessModes** ([]string)
 
-  accessModes contains all ways the volume can be mounted. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes
+  accessModes contains all ways the volume can be mounted. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/persistent-volumes#access-modes
 
 - **capacity** (map[string]<a href="{{< ref "../common-definitions/quantity#Quantity" >}}">Quantity</a>)
 
-  capacity is the description of the persistent volume's resources and capacity. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity
+  capacity is the description of the persistent volume's resources and capacity. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/persistent-volumes#capacity
 
 - **claimRef** (<a href="{{< ref "../common-definitions/object-reference#ObjectReference" >}}">ObjectReference</a>)
 
-  claimRef is part of a bi-directional binding between PersistentVolume and PersistentVolumeClaim. Expected to be non-nil when bound. claim.VolumeName is the authoritative bind between PV and PVC. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#binding
+  claimRef is part of a bi-directional binding between PersistentVolume and PersistentVolumeClaim. Expected to be non-nil when bound. claim.VolumeName is the authoritative bind between PV and PVC. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/persistent-volumes#binding
 
 - **mountOptions** ([]string)
 
-  mountOptions is the list of mount options, e.g. ["ro", "soft"]. Not validated - mount will simply fail if one is invalid. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options
+  mountOptions is the list of mount options, e.g. ["ro", "soft"]. Not validated - mount will simply fail if one is invalid. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/persistent-volumes/#mount-options
 
 - **nodeAffinity** (VolumeNodeAffinity)
 
@@ -107,7 +107,7 @@ PersistentVolumeSpec is the specification of a persistent volume.
 
 - **persistentVolumeReclaimPolicy** (string)
 
-  persistentVolumeReclaimPolicy defines what happens to a persistent volume when released from its claim. Valid options are Retain (default for manually created PersistentVolumes), Delete (default for dynamically provisioned PersistentVolumes), and Recycle (deprecated). Recycle must be supported by the volume plugin underlying this PersistentVolume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#reclaiming
+  persistentVolumeReclaimPolicy defines what happens to a persistent volume when released from its claim. Valid options are Retain (default for manually created PersistentVolumes), Delete (default for dynamically provisioned PersistentVolumes), and Recycle (deprecated). Recycle must be supported by the volume plugin underlying this PersistentVolume. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/persistent-volumes#reclaiming
   
   
 
@@ -126,18 +126,18 @@ PersistentVolumeSpec is the specification of a persistent volume.
 
 - **hostPath** (HostPathVolumeSource)
 
-  hostPath represents a directory on the host. Provisioned by a developer or tester. This is useful for single-node development and testing only! On-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+  hostPath represents a directory on the host. Provisioned by a developer or tester. This is useful for single-node development and testing only! On-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#hostpath
 
   <a name="HostPathVolumeSource"></a>
   *Represents a host path mapped into a pod. Host path volumes do not support ownership management or SELinux relabeling.*
 
   - **hostPath.path** (string), required
 
-    path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+    path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#hostpath
 
   - **hostPath.type** (string)
 
-    type for HostPath Volume Defaults to "" More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+    type for HostPath Volume Defaults to "" More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#hostpath
 
 - **local** (LocalVolumeSource)
 
@@ -159,7 +159,7 @@ PersistentVolumeSpec is the specification of a persistent volume.
 
 - **awsElasticBlockStore** (AWSElasticBlockStoreVolumeSource)
 
-  awsElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+  awsElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#awselasticblockstore
 
   <a name="AWSElasticBlockStoreVolumeSource"></a>
   *Represents a Persistent Disk resource in AWS.
@@ -168,11 +168,11 @@ PersistentVolumeSpec is the specification of a persistent volume.
 
   - **awsElasticBlockStore.volumeID** (string), required
 
-    volumeID is unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+    volumeID is unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#awselasticblockstore
 
   - **awsElasticBlockStore.fsType** (string)
 
-    fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+    fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#awselasticblockstore
 
   - **awsElasticBlockStore.partition** (int32)
 
@@ -180,7 +180,7 @@ PersistentVolumeSpec is the specification of a persistent volume.
 
   - **awsElasticBlockStore.readOnly** (boolean)
 
-    readOnly value true will force the readOnly setting in VolumeMounts. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+    readOnly value true will force the readOnly setting in VolumeMounts. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#awselasticblockstore
 
 - **azureDisk** (AzureDiskVolumeSource)
 
@@ -496,7 +496,7 @@ PersistentVolumeSpec is the specification of a persistent volume.
 
 - **gcePersistentDisk** (GCEPersistentDiskVolumeSource)
 
-  gcePersistentDisk represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+  gcePersistentDisk represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#gcepersistentdisk
 
   <a name="GCEPersistentDiskVolumeSource"></a>
   *Represents a Persistent Disk resource in Google Compute Engine.
@@ -505,19 +505,19 @@ PersistentVolumeSpec is the specification of a persistent volume.
 
   - **gcePersistentDisk.pdName** (string), required
 
-    pdName is unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+    pdName is unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#gcepersistentdisk
 
   - **gcePersistentDisk.fsType** (string)
 
-    fsType is filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+    fsType is filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#gcepersistentdisk
 
   - **gcePersistentDisk.partition** (int32)
 
-    partition is the partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty). More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+    partition is the partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty). More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#gcepersistentdisk
 
   - **gcePersistentDisk.readOnly** (boolean)
 
-    readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+    readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#gcepersistentdisk
 
 - **iscsi** (ISCSIPersistentVolumeSource)
 
@@ -548,7 +548,7 @@ PersistentVolumeSpec is the specification of a persistent volume.
 
   - **iscsi.fsType** (string)
 
-    fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi
+    fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#iscsi
 
   - **iscsi.initiatorName** (string)
 
@@ -583,22 +583,22 @@ PersistentVolumeSpec is the specification of a persistent volume.
 
 - **nfs** (NFSVolumeSource)
 
-  nfs represents an NFS mount on the host. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+  nfs represents an NFS mount on the host. Provisioned by an admin. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#nfs
 
   <a name="NFSVolumeSource"></a>
   *Represents an NFS mount that lasts the lifetime of a pod. NFS volumes do not support ownership management or SELinux relabeling.*
 
   - **nfs.path** (string), required
 
-    path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+    path that is exported by the NFS server. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#nfs
 
   - **nfs.server** (string), required
 
-    server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+    server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#nfs
 
   - **nfs.readOnly** (boolean)
 
-    readOnly here will force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+    readOnly here will force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#nfs
 
 - **photonPersistentDisk** (PhotonPersistentDiskVolumeSource)
 
@@ -682,7 +682,7 @@ PersistentVolumeSpec is the specification of a persistent volume.
 
   - **rbd.fsType** (string)
 
-    fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd
+    fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes#rbd
 
   - **rbd.keyring** (string)
 
@@ -837,7 +837,7 @@ PersistentVolumeStatus is the current status of a persistent volume.
 
 - **phase** (string)
 
-  phase indicates if a volume is available, bound to a claim, or released by a claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#phase
+  phase indicates if a volume is available, bound to a claim, or released by a claim. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/persistent-volumes#phase
   
   
 
@@ -867,7 +867,7 @@ PersistentVolumeList is a list of PersistentVolume items.
 
 - **items** ([]<a href="{{< ref "../config-and-storage-resources/persistent-volume-v1#PersistentVolume" >}}">PersistentVolume</a>), required
 
-  items is a list of persistent volumes. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes
+  items is a list of persistent volumes. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/persistent-volumes
 
 
 

@@ -16,7 +16,7 @@ preview of what changes `apply` will make.
 ## {{% heading "prerequisites" %}}
 
 
-Install [`kubectl`](/docs/tasks/tools/).
+Install [`kubectl`](/docs/kubernetes/en/tasks/tools/).
 
 {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
 
@@ -32,7 +32,7 @@ The `kubectl` tool supports three kinds of object management:
 * Imperative object configuration
 * Declarative object configuration
 
-See [Kubernetes Object Management](/docs/concepts/overview/working-with-objects/object-management/)
+See [Kubernetes Object Management](/docs/kubernetes/en/concepts/overview/working-with-objects/object-management/)
 for a discussion of the advantages and disadvantage of each kind of object management.
 
 ## Overview
@@ -41,8 +41,8 @@ Declarative object configuration requires a firm understanding of
 the Kubernetes object definitions and configuration. Read and complete
 the following documents if you have not already:
 
-* [Managing Kubernetes Objects Using Imperative Commands](/docs/tasks/manage-kubernetes-objects/imperative-command/)
-* [Imperative Management of Kubernetes Objects Using Configuration Files](/docs/tasks/manage-kubernetes-objects/imperative-config/)
+* [Managing Kubernetes Objects Using Imperative Commands](/docs/kubernetes/en/tasks/manage-kubernetes-objects/imperative-command/)
+* [Imperative Management of Kubernetes Objects Using Configuration Files](/docs/kubernetes/en/tasks/manage-kubernetes-objects/imperative-config/)
 
 Following are definitions for terms used in this document:
 
@@ -84,12 +84,12 @@ kubectl diff -f https://k8s.io/examples/application/simple_deployment.yaml
 ```
 
 {{< note >}}
-`diff` uses [server-side dry-run](/docs/reference/using-api/api-concepts/#dry-run),
+`diff` uses [server-side dry-run](/docs/kubernetes/en/reference/using-api/api-concepts/#dry-run),
 which needs to be enabled on `kube-apiserver`.
 
 Since `diff` performs a server-side apply request in dry-run mode,
 it requires granting `PATCH`, `CREATE`, and `UPDATE` permissions.
-See [Dry-Run Authorization](/docs/reference/using-api/api-concepts#dry-run-authorization)
+See [Dry-Run Authorization](/docs/kubernetes/en/reference/using-api/api-concepts#dry-run-authorization)
 for details.
 
 {{< /note >}}
@@ -1003,9 +1003,9 @@ template:
 ## {{% heading "whatsnext" %}}
 
 
-* [Managing Kubernetes Objects Using Imperative Commands](/docs/tasks/manage-kubernetes-objects/imperative-command/)
-* [Imperative Management of Kubernetes Objects Using Configuration Files](/docs/tasks/manage-kubernetes-objects/imperative-config/)
-* [Kubectl Command Reference](/docs/reference/generated/kubectl/kubectl-commands/)
-* [Kubernetes API Reference](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/)
+* [Managing Kubernetes Objects Using Imperative Commands](/docs/kubernetes/en/tasks/manage-kubernetes-objects/imperative-command/)
+* [Imperative Management of Kubernetes Objects Using Configuration Files](/docs/kubernetes/en/tasks/manage-kubernetes-objects/imperative-config/)
+* [Kubectl Command Reference](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/)
+* [Kubernetes API Reference](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/)
 
 

@@ -14,7 +14,7 @@ weight: 50
 Dynamic volume provisioning allows storage volumes to be created on-demand.
 Without dynamic provisioning, cluster administrators have to manually make
 calls to their cloud or storage provider to create new storage volumes, and
-then create [`PersistentVolume` objects](/docs/concepts/storage/persistent-volumes/)
+then create [`PersistentVolume` objects](/docs/kubernetes/en/concepts/storage/persistent-volumes/)
 to represent them in Kubernetes. The dynamic provisioning feature eliminates
 the need for cluster administrators to pre-provision storage. Instead, it
 automatically provisions storage when it is requested by users.
@@ -35,7 +35,7 @@ about the complexity and nuances of how storage is provisioned, but still
 have the ability to select from multiple storage options.
 
 More information on storage classes can be found
-[here](/docs/concepts/storage/storage-classes/).
+[here](/docs/kubernetes/en/concepts/storage/storage-classes/).
 
 ## Enabling Dynamic Provisioning
 
@@ -44,7 +44,7 @@ one or more StorageClass objects for users.
 StorageClass objects define which provisioner should be used and what parameters
 should be passed to that provisioner when dynamic provisioning is invoked.
 The name of a StorageClass object must be a valid
-[DNS subdomain name](/docs/concepts/overview/working-with-objects/names#dns-subdomain-names).
+[DNS subdomain name](/docs/kubernetes/en/concepts/overview/working-with-objects/names#dns-subdomain-names).
 
 The following manifest creates a storage class "slow" which provisions standard
 disk-like persistent disks.
@@ -109,11 +109,11 @@ dynamically provisioned if no storage class is specified. A cluster administrato
 can enable this behavior by:
 
 - Marking one `StorageClass` object as *default*;
-- Making sure that the [`DefaultStorageClass` admission controller](/docs/reference/access-authn-authz/admission-controllers/#defaultstorageclass)
+- Making sure that the [`DefaultStorageClass` admission controller](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/#defaultstorageclass)
   is enabled on the API server.
 
 An administrator can mark a specific `StorageClass` as default by adding the
-[`storageclass.kubernetes.io/is-default-class` annotation](/docs/reference/labels-annotations-taints/#storageclass-kubernetes-io-is-default-class) to it.
+[`storageclass.kubernetes.io/is-default-class` annotation](/docs/kubernetes/en/reference/labels-annotations-taints/#storageclass-kubernetes-io-is-default-class) to it.
 When a default `StorageClass` exists in a cluster and a user creates a
 `PersistentVolumeClaim` with `storageClassName` unspecified, the
 `DefaultStorageClass` admission controller automatically adds the
@@ -125,9 +125,9 @@ be created.
 
 ## Topology Awareness
 
-In [Multi-Zone](/docs/setup/best-practices/multiple-zones/) clusters, Pods can be spread across
+In [Multi-Zone](/docs/kubernetes/en/setup/best-practices/multiple-zones/) clusters, Pods can be spread across
 Zones in a Region. Single-Zone storage backends should be provisioned in the Zones where
 Pods are scheduled. This can be accomplished by setting the
-[Volume Binding Mode](/docs/concepts/storage/storage-classes/#volume-binding-mode).
+[Volume Binding Mode](/docs/kubernetes/en/concepts/storage/storage-classes/#volume-binding-mode).
 
 

@@ -71,7 +71,7 @@ To configure a KMS provider on the API server, include a provider of type `kms` 
 * `timeout`: How long should `kube-apiserver` wait for kms-plugin to respond before
   returning an error (default is 3 seconds).
 
-See [Understanding the encryption at rest configuration](/docs/tasks/administer-cluster/encrypt-data).
+See [Understanding the encryption at rest configuration](/docs/kubernetes/en/tasks/administer-cluster/encrypt-data).
 
 ## Implementing a KMS plugin
 
@@ -224,7 +224,7 @@ These healthcheck endpoint paths are hard coded and generated/controlled by the 
 Until the steps defined in [Ensuring all secrets are encrypted](#ensuring-all-secrets-are-encrypted) are performed, the `providers` list should end with the `identity: {}` provider to allow unencrypted data to be read.  Once all resources are encrypted, the `identity` provider should be removed to prevent the API server from honoring unencrypted data.
 
 For details about the `EncryptionConfiguration` format, please check the
-[API server encryption API reference](/docs/reference/config-api/apiserver-encryption.v1/).
+[API server encryption API reference](/docs/kubernetes/en/reference/config-api/apiserver-encryption.v1/).
 
 ## Verifying that the data is encrypted
 

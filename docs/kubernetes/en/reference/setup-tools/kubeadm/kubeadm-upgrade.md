@@ -15,7 +15,7 @@ behind one command, with support for both planning an upgrade and actually perfo
 
 ## kubeadm upgrade guidance
 
-The steps for performing an upgrade using kubeadm are outlined in [this document](/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/).
+The steps for performing an upgrade using kubeadm are outlined in [this document](/docs/kubernetes/en/tasks/administer-cluster/kubeadm/kubeadm-upgrade/).
 For older versions of kubeadm, please refer to older documentation sets of the Kubernetes website.
 
 You can use `kubeadm upgrade diff` to see the changes that would be applied to static pod manifests.
@@ -23,7 +23,7 @@ You can use `kubeadm upgrade diff` to see the changes that would be applied to s
 In Kubernetes v1.15.0 and later, `kubeadm upgrade apply` and `kubeadm upgrade node` will also
 automatically renew the kubeadm managed certificates on this node, including those stored in kubeconfig files.
 To opt-out, it is possible to pass the flag `--certificate-renewal=false`. For more details about certificate
-renewal see the [certificate management documentation](/docs/tasks/administer-cluster/kubeadm/kubeadm-certs).
+renewal see the [certificate management documentation](/docs/kubernetes/en/tasks/administer-cluster/kubeadm/kubeadm-certs).
 
 {{< note >}}
 The commands `kubeadm upgrade apply` and `kubeadm upgrade plan` have a legacy `--config`
@@ -47,4 +47,4 @@ reports of unexpected results.
 
 ## {{% heading "whatsnext" %}}
 
-* [kubeadm config](/docs/reference/setup-tools/kubeadm/kubeadm-config/) if you initialized your cluster using kubeadm v1.7.x or lower, to configure your cluster for `kubeadm upgrade`
+* [kubeadm config](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-config/) if you initialized your cluster using kubeadm v1.7.x or lower, to configure your cluster for `kubeadm upgrade`

@@ -24,7 +24,7 @@ connection with the Kubernetes API server.
 
 ## {{% heading "prerequisites" %}}
 
-You should already be familiar with the basic use of [Job](/docs/concepts/workloads/controllers/job/).
+You should already be familiar with the basic use of [Job](/docs/kubernetes/en/concepts/workloads/controllers/job/).
 
 {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
 
@@ -40,7 +40,7 @@ to ensure you have DNS.
 
 To enable pod-to-pod communication using pod hostnames in a Job, you must do the following:
 
-1. Set up a [headless service](/docs/concepts/services-networking/service/#headless-services)
+1. Set up a [headless service](/docs/kubernetes/en/concepts/services-networking/service/#headless-services)
 with a valid label selector for the pods created by your Job. The headless service must be in the same namespace as 
 the Job. One easy way to do this is to use the `job-name: <your-job-name>` selector, since the `job-name` label will be automatically added by Kubernetes. This configuration will trigger the DNS system to create records of the hostnames of 
 the pods running your Job. 
@@ -124,5 +124,5 @@ Successfully pinged pod: example-job-2.headless-svc
 {{<note>}}
 Keep in mind that the `<pod-hostname>.<headless-service-name>` name format used
 in this example would not work with DNS policy set to `None` or `Default`.
-You can learn more about pod DNS policies [here](/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy).
+You can learn more about pod DNS policies [here](/docs/kubernetes/en/concepts/services-networking/dns-pod-service/#pod-s-dns-policy).
 {{</note>}}

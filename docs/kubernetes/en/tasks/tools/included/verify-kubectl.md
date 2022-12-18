@@ -5,7 +5,7 @@ headless: true
 ---
 
 In order for kubectl to find and access a Kubernetes cluster, it needs a
-[kubeconfig file](/docs/concepts/configuration/organize-cluster-access-kubeconfig/),
+[kubeconfig file](/docs/kubernetes/en/concepts/configuration/organize-cluster-access-kubeconfig/),
 which is created automatically when you create a cluster using
 [kube-up.sh](https://github.com/kubernetes/kubernetes/blob/master/cluster/kube-up.sh)
 or successfully deploy a Minikube cluster.

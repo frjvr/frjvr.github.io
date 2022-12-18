@@ -11,17 +11,17 @@ weight: 95
 The tables below enumerate the configuration parameters on
 `PodSecurityPolicy` objects, whether the field mutates
 and/or validates pods, and how the configuration values map to the
-[Pod Security Standards](/docs/concepts/security/pod-security-standards/).
+[Pod Security Standards](/docs/kubernetes/en/concepts/security/pod-security-standards/).
 
 For each applicable parameter, the allowed values for the
-[Baseline](/docs/concepts/security/pod-security-standards/#baseline) and
-[Restricted](/docs/concepts/security/pod-security-standards/#restricted) profiles are listed.
+[Baseline](/docs/kubernetes/en/concepts/security/pod-security-standards/#baseline) and
+[Restricted](/docs/kubernetes/en/concepts/security/pod-security-standards/#restricted) profiles are listed.
 Anything outside the allowed values for those profiles would fall under the
-[Privileged](/docs/concepts/security/pod-security-standards/#privileged) profile. "No opinion"
+[Privileged](/docs/kubernetes/en/concepts/security/pod-security-standards/#privileged) profile. "No opinion"
 means all values are allowed under all Pod Security Standards.
 
 For a step-by-step migration guide, see
-[Migrate from PodSecurityPolicy to the Built-In PodSecurity Admission Controller](/docs/tasks/configure-pod-container/migrate-from-psp/).
+[Migrate from PodSecurityPolicy to the Built-In PodSecurity Admission Controller](/docs/kubernetes/en/tasks/configure-pod-container/migrate-from-psp/).
 
 <!-- body -->
 
@@ -232,7 +232,7 @@ under the `.spec` field path.
 
 ## PodSecurityPolicy annotations
 
-The [annotations](/docs/concepts/overview/working-with-objects/annotations/) enumerated in this
+The [annotations](/docs/kubernetes/en/concepts/overview/working-with-objects/annotations/) enumerated in this
 table can be specified under `.metadata.annotations` on the PodSecurityPolicy object.
 
 <table class="no-word-break">

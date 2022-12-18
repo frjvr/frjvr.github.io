@@ -2,7 +2,7 @@
 title: Aggregation Layer
 id: aggregation-layer
 date: 2018-10-08
-full_link: /docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/
+full_link: /docs/kubernetes/en/concepts/extend-kubernetes/api-extension/apiserver-aggregation/
 short_description: >
   The aggregation layer lets you install additional Kubernetes-style APIs in your cluster.
 
@@ -16,4 +16,4 @@ tags:
 
 <!--more-->
 
-When you've configured the {{< glossary_tooltip text="Kubernetes API Server" term_id="kube-apiserver" >}} to [support additional APIs](/docs/tasks/extend-kubernetes/configure-aggregation-layer/), you can add `APIService` objects to "claim" a URL path in the Kubernetes API.
+When you've configured the {{< glossary_tooltip text="Kubernetes API Server" term_id="kube-apiserver" >}} to [support additional APIs](/docs/kubernetes/en/tasks/extend-kubernetes/configure-aggregation-layer/), you can add `APIService` objects to "claim" a URL path in the Kubernetes API.

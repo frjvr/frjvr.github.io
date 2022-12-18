@@ -14,17 +14,17 @@ card:
 This tool is named `kubectl`.
 
 For configuration, `kubectl` looks for a file named `config` in the `$HOME/.kube` directory.
-You can specify other [kubeconfig](/docs/concepts/configuration/organize-cluster-access-kubeconfig/)
+You can specify other [kubeconfig](/docs/kubernetes/en/concepts/configuration/organize-cluster-access-kubeconfig/)
 files by setting the `KUBECONFIG` environment variable or by setting the
-[`--kubeconfig`](/docs/concepts/configuration/organize-cluster-access-kubeconfig/) flag.
+[`--kubeconfig`](/docs/kubernetes/en/concepts/configuration/organize-cluster-access-kubeconfig/) flag.
 
 This overview covers `kubectl` syntax, describes the command operations, and provides common examples.
 For details about each command, including all the supported flags and subcommands, see the
-[kubectl](/docs/reference/generated/kubectl/kubectl-commands/) reference documentation.
+[kubectl](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/) reference documentation.
 
-For installation instructions, see [Installing kubectl](/docs/tasks/tools/#kubectl);
-for a quick guide, see the [cheat sheet](/docs/reference/kubectl/cheatsheet/).
-If you're used to using the `docker` command-line tool, [`kubectl` for Docker Users](/docs/reference/kubectl/docker-cli-to-kubectl/) explains some equivalent commands for Kubernetes.
+For installation instructions, see [Installing kubectl](/docs/kubernetes/en/tasks/tools/#kubectl);
+for a quick guide, see the [cheat sheet](/docs/kubernetes/en/reference/kubectl/cheatsheet/).
+If you're used to using the `docker` command-line tool, [`kubectl` for Docker Users](/docs/kubernetes/en/reference/kubectl/docker-cli-to-kubectl/) explains some equivalent commands for Kubernetes.
 
 <!-- body -->
 
@@ -65,7 +65,7 @@ for example `create`, `get`, `describe`, `delete`.
 
    * To specify resources with one or more files:  `-f file1 -f file2 -f file<#>`
 
-      * [Use YAML rather than JSON](/docs/concepts/configuration/overview/#general-configuration-tips) since YAML tends to be more user-friendly, especially for configuration files.<br/>
+      * [Use YAML rather than JSON](/docs/kubernetes/en/concepts/configuration/overview/#general-configuration-tips) since YAML tends to be more user-friendly, especially for configuration files.<br/>
      Example: `kubectl get -f ./pod.yaml`
 
 * `flags`: Specifies optional flags. For example, you can use the `-s` or `--server` flags to specify the address and port of the Kubernetes API server.<br/>
@@ -160,7 +160,7 @@ Operation       | Syntax    |       Description
 `version`        | `kubectl version [--client] [flags]` | Display the Kubernetes version running on the client and server.
 `wait`    | <code>kubectl wait ([-f FILENAME] &#124; resource.group/resource.name &#124; resource.group [(-l label &#124; --all)]) [--for=delete&#124;--for condition=available] [options]</code> | Experimental: Wait for a specific condition on one or many resources.
 
-To learn more about command operations, see the [kubectl](/docs/reference/kubectl/kubectl/) reference documentation.
+To learn more about command operations, see the [kubectl](/docs/kubernetes/en/reference/kubectl/kubectl/) reference documentation.
 
 ## Resource types
 
@@ -229,7 +229,7 @@ The following table includes a list of all the supported resource types and thei
 
 ## Output options
 
-Use the following sections for information about how you can format or sort the output of certain commands. For details about which commands support the various output options, see the [kubectl](/docs/reference/kubectl/kubectl/) reference documentation.
+Use the following sections for information about how you can format or sort the output of certain commands. For details about which commands support the various output options, see the [kubectl](/docs/kubernetes/en/reference/kubectl/kubectl/) reference documentation.
 
 ### Formatting output
 
@@ -248,8 +248,8 @@ Output format | Description
 `-o custom-columns=<spec>` | Print a table using a comma separated list of [custom columns](#custom-columns).
 `-o custom-columns-file=<filename>` | Print a table using the [custom columns](#custom-columns) template in the `<filename>` file.
 `-o json`     | Output a JSON formatted API object.
-`-o jsonpath=<template>` | Print the fields defined in a [jsonpath](/docs/reference/kubectl/jsonpath/) expression.
-`-o jsonpath-file=<filename>` | Print the fields defined by the [jsonpath](/docs/reference/kubectl/jsonpath/) expression in the `<filename>` file.
+`-o jsonpath=<template>` | Print the fields defined in a [jsonpath](/docs/kubernetes/en/reference/kubectl/jsonpath/) expression.
+`-o jsonpath-file=<filename>` | Print the fields defined by the [jsonpath](/docs/kubernetes/en/reference/kubectl/jsonpath/) expression in the `<filename>` file.
 `-o name`     | Print only the resource name and nothing else.
 `-o wide`     | Output in the plain-text format with any additional information. For pods, the node name is included.
 `-o yaml`     | Output a YAML formatted API object.
@@ -262,7 +262,7 @@ In this example, the following command outputs the details for a single pod as a
 kubectl get pod web-pod-13je7 -o yaml
 ```
 
-Remember: See the [kubectl](/docs/reference/kubectl/kubectl/) reference documentation
+Remember: See the [kubectl](/docs/kubernetes/en/reference/kubectl/kubectl/) reference documentation
 for details about which output format is supported by each command.
 
 #### Custom columns
@@ -323,7 +323,7 @@ pod-name   1m
 
 ### Sorting list objects
 
-To output objects to a sorted list in your terminal window, you can add the `--sort-by` flag to a supported `kubectl` command. Sort your objects by specifying any numeric or string field with the `--sort-by` flag. To specify a field, use a [jsonpath](/docs/reference/kubectl/jsonpath/) expression.
+To output objects to a sorted list in your terminal window, you can add the `--sort-by` flag to a supported `kubectl` command. Sort your objects by specifying any numeric or string field with the `--sort-by` flag. To specify a field, use a [jsonpath](/docs/kubernetes/en/reference/kubectl/jsonpath/) expression.
 
 #### Syntax
 
@@ -555,9 +555,9 @@ Current user: plugins-user
 ## {{% heading "whatsnext" %}}
 
 * Read the `kubectl` reference documentation:
-  * the kubectl [command reference](/docs/reference/kubectl/kubectl/)
-  * the [command line arguments](/docs/reference/generated/kubectl/kubectl-commands/) reference
-* Learn about [`kubectl` usage conventions](/docs/reference/kubectl/conventions/)
-* Read about [JSONPath support](/docs/reference/kubectl/jsonpath/) in kubectl
-* Read about how to [extend kubectl with plugins](/docs/tasks/extend-kubectl/kubectl-plugins)
+  * the kubectl [command reference](/docs/kubernetes/en/reference/kubectl/kubectl/)
+  * the [command line arguments](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/) reference
+* Learn about [`kubectl` usage conventions](/docs/kubernetes/en/reference/kubectl/conventions/)
+* Read about [JSONPath support](/docs/kubernetes/en/reference/kubectl/jsonpath/) in kubectl
+* Read about how to [extend kubectl with plugins](/docs/kubernetes/en/tasks/extend-kubectl/kubectl-plugins)
   * To find out more about plugins, take a look at the [example CLI plugin](https://github.com/kubernetes/sample-cli-plugin).

@@ -10,7 +10,7 @@ In Kubernetes, some objects are *owners* of other objects. For example, a
 {{<glossary_tooltip text="ReplicaSet" term_id="replica-set">}} is the owner of a set of Pods. These owned objects are *dependents*
 of their owner. 
 
-Ownership is different from the [labels and selectors](/docs/concepts/overview/working-with-objects/labels/)
+Ownership is different from the [labels and selectors](/docs/kubernetes/en/concepts/overview/working-with-objects/labels/)
 mechanism that some resources also use. For example, consider a Service that 
 creates `EndpointSlice` objects. The Service uses labels to allow the control plane to
 determine which `EndpointSlice` objects are used for that Service. In addition
@@ -63,7 +63,7 @@ You can check for that kind of Event by running
 ## Ownership and finalizers
 
 When you tell Kubernetes to delete a resource, the API server allows the
-managing controller to process any [finalizer rules](/docs/concepts/overview/working-with-objects/finalizers/)
+managing controller to process any [finalizer rules](/docs/kubernetes/en/concepts/overview/working-with-objects/finalizers/)
 for the resource. {{<glossary_tooltip text="Finalizers" term_id="finalizer">}}
 prevent accidental deletion of resources your cluster may still need to function
 correctly. For example, if you try to delete a `PersistentVolume` that is still
@@ -74,7 +74,7 @@ the finalizer, which only happens after the `PersistentVolume` is no longer
 bound to a Pod. 
 
 Kubernetes also adds finalizers to an owner resource when you use either
-[foreground or orphan cascading deletion](/docs/concepts/architecture/garbage-collection/#cascading-deletion).
+[foreground or orphan cascading deletion](/docs/kubernetes/en/concepts/architecture/garbage-collection/#cascading-deletion).
 In foreground deletion, it adds the `foreground` finalizer so that the
 controller must delete dependent resources that also have
 `ownerReferences.blockOwnerDeletion=true` before it deletes the owner. If you
@@ -84,6 +84,6 @@ object.
 
 ## {{% heading "whatsnext" %}}
 
-* Learn more about [Kubernetes finalizers](/docs/concepts/overview/working-with-objects/finalizers/).
-* Learn about [garbage collection](/docs/concepts/architecture/garbage-collection).
-* Read the API reference for [object metadata](/docs/reference/kubernetes-api/common-definitions/object-meta/#System).
+* Learn more about [Kubernetes finalizers](/docs/kubernetes/en/concepts/overview/working-with-objects/finalizers/).
+* Learn about [garbage collection](/docs/kubernetes/en/concepts/architecture/garbage-collection).
+* Read the API reference for [object metadata](/docs/kubernetes/en/reference/kubernetes-api/common-definitions/object-meta/#System).

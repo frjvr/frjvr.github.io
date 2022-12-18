@@ -27,7 +27,7 @@ control, available resources, and expertise required to operate and manage a clu
 You can [download Kubernetes](/releases/download/) to deploy a Kubernetes cluster
 on a local machine, into the cloud, or for your own datacenter.
 
-Several [Kubernetes components](/docs/concepts/overview/components/) such as {{< glossary_tooltip text="kube-apiserver" term_id="kube-apiserver" >}} or {{< glossary_tooltip text="kube-proxy" term_id="kube-proxy" >}} can also be
+Several [Kubernetes components](/docs/kubernetes/en/concepts/overview/components/) such as {{< glossary_tooltip text="kube-apiserver" term_id="kube-apiserver" >}} or {{< glossary_tooltip text="kube-proxy" term_id="kube-proxy" >}} can also be
 deployed as [container images](/releases/download/#container-images) within the cluster.
 
 It is **recommended** to run Kubernetes components as container images wherever
@@ -35,7 +35,7 @@ that is possible, and to have Kubernetes manage those components.
 Components that run containers - notably, the kubelet - can't be included in this category.
 
 If you don't want to manage a Kubernetes cluster yourself, you could pick a managed service, including
-[certified platforms](/docs/setup/production-environment/turnkey-solutions/).
+[certified platforms](/docs/kubernetes/en/setup/production-environment/turnkey-solutions/).
 There are also other standardized and custom solutions across a wide range of cloud and
 bare metal environments.
 
@@ -45,27 +45,27 @@ bare metal environments.
 
 If you're learning Kubernetes, use the tools supported by the Kubernetes community,
 or tools in the ecosystem to set up a Kubernetes cluster on a local machine.
-See [Install tools](/docs/tasks/tools/).
+See [Install tools](/docs/kubernetes/en/tasks/tools/).
 
 ## Production environment
 
 When evaluating a solution for a
-[production environment](/docs/setup/production-environment/), consider which aspects of
+[production environment](/docs/kubernetes/en/setup/production-environment/), consider which aspects of
 operating a Kubernetes cluster (or _abstractions_) you want to manage yourself and which you
 prefer to hand off to a provider.
 
 For a cluster you're managing yourself, the officially supported tool
-for deploying Kubernetes is [kubeadm](/docs/setup/production-environment/tools/kubeadm/).
+for deploying Kubernetes is [kubeadm](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/).
 
 ## {{% heading "whatsnext" %}}
 
 - [Download Kubernetes](/releases/download/)
-- Download and [install tools](/docs/tasks/tools/) including `kubectl`
-- Select a [container runtime](/docs/setup/production-environment/container-runtimes/) for your new cluster
-- Learn about [best practices](/docs/setup/best-practices/) for cluster setup
+- Download and [install tools](/docs/kubernetes/en/tasks/tools/) including `kubectl`
+- Select a [container runtime](/docs/kubernetes/en/setup/production-environment/container-runtimes/) for your new cluster
+- Learn about [best practices](/docs/kubernetes/en/setup/best-practices/) for cluster setup
 
 Kubernetes is designed for its {{< glossary_tooltip term_id="control-plane" text="control plane" >}} to
 run on Linux. Within your cluster you can run applications on Linux or other operating systems, including
 Windows.
 
-- Learn to [set up clusters with Windows nodes](/docs/concepts/windows/)
+- Learn to [set up clusters with Windows nodes](/docs/kubernetes/en/concepts/windows/)

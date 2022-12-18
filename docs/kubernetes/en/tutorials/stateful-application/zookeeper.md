@@ -14,24 +14,24 @@ weight: 40
 
 <!-- overview -->
 This tutorial demonstrates running [Apache Zookeeper](https://zookeeper.apache.org) on
-Kubernetes using [StatefulSets](/docs/concepts/workloads/controllers/statefulset/),
-[PodDisruptionBudgets](/docs/concepts/workloads/pods/disruptions/#pod-disruption-budget),
-and [PodAntiAffinity](/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity).
+Kubernetes using [StatefulSets](/docs/kubernetes/en/concepts/workloads/controllers/statefulset/),
+[PodDisruptionBudgets](/docs/kubernetes/en/concepts/workloads/pods/disruptions/#pod-disruption-budget),
+and [PodAntiAffinity](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity).
 
 ## {{% heading "prerequisites" %}}
 
 Before starting this tutorial, you should be familiar with the following
 Kubernetes concepts:
 
-- [Pods](/docs/concepts/workloads/pods/)
-- [Cluster DNS](/docs/concepts/services-networking/dns-pod-service/)
-- [Headless Services](/docs/concepts/services-networking/service/#headless-services)
-- [PersistentVolumes](/docs/concepts/storage/volumes/)
+- [Pods](/docs/kubernetes/en/concepts/workloads/pods/)
+- [Cluster DNS](/docs/kubernetes/en/concepts/services-networking/dns-pod-service/)
+- [Headless Services](/docs/kubernetes/en/concepts/services-networking/service/#headless-services)
+- [PersistentVolumes](/docs/kubernetes/en/concepts/storage/volumes/)
 - [PersistentVolume Provisioning](https://github.com/kubernetes/examples/tree/master/staging/persistent-volume-provisioning/)
-- [StatefulSets](/docs/concepts/workloads/controllers/statefulset/)
-- [PodDisruptionBudgets](/docs/concepts/workloads/pods/disruptions/#pod-disruption-budget)
-- [PodAntiAffinity](/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity)
-- [kubectl CLI](/docs/reference/kubectl/kubectl/)
+- [StatefulSets](/docs/kubernetes/en/concepts/workloads/controllers/statefulset/)
+- [PodDisruptionBudgets](/docs/kubernetes/en/concepts/workloads/pods/disruptions/#pod-disruption-budget)
+- [PodAntiAffinity](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity)
+- [kubectl CLI](/docs/kubernetes/en/reference/kubectl/kubectl/)
 
 You must have a cluster with at least four nodes, and each node requires at least 2 CPUs and 4 GiB of memory. In this tutorial you will cordon and drain the cluster's nodes. **This means that the cluster will terminate and evict all Pods on its nodes, and the nodes will temporarily become unschedulable.** You should use a dedicated cluster for this tutorial, or you should ensure that the disruption you cause will not interfere with other tenants.
 
@@ -69,15 +69,15 @@ ZooKeeper servers keep their entire state machine in memory, and write every mut
 ## Creating a ZooKeeper ensemble
 
 The manifest below contains a
-[Headless Service](/docs/concepts/services-networking/service/#headless-services),
-a [Service](/docs/concepts/services-networking/service/),
-a [PodDisruptionBudget](/docs/concepts/workloads/pods/disruptions/#pod-disruption-budgets),
-and a [StatefulSet](/docs/concepts/workloads/controllers/statefulset/).
+[Headless Service](/docs/kubernetes/en/concepts/services-networking/service/#headless-services),
+a [Service](/docs/kubernetes/en/concepts/services-networking/service/),
+a [PodDisruptionBudget](/docs/kubernetes/en/concepts/workloads/pods/disruptions/#pod-disruption-budgets),
+and a [StatefulSet](/docs/kubernetes/en/concepts/workloads/controllers/statefulset/).
 
 {{< codenew file="application/zookeeper/zookeeper.yaml" >}}
 
 Open a terminal, and use the
-[`kubectl apply`](/docs/reference/generated/kubectl/kubectl-commands/#apply) command to create the
+[`kubectl apply`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#apply) command to create the
 manifest.
 
 ```shell
@@ -94,7 +94,7 @@ poddisruptionbudget.policy/zk-pdb created
 statefulset.apps/zk created
 ```
 
-Use [`kubectl get`](/docs/reference/generated/kubectl/kubectl-commands/#get) to watch the
+Use [`kubectl get`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#get) to watch the
 StatefulSet controller create the StatefulSet's Pods.
 
 ```shell
@@ -129,7 +129,7 @@ a [ZooKeeper](https://archive.apache.org/dist/zookeeper/stable/) server.
 
 Because there is no terminating algorithm for electing a leader in an anonymous network, Zab requires explicit membership configuration to perform leader election. Each server in the ensemble needs to have a unique identifier, all servers need to know the global set of identifiers, and each identifier needs to be associated with a network address.
 
-Use [`kubectl exec`](/docs/reference/generated/kubectl/kubectl-commands/#exec) to get the hostnames
+Use [`kubectl exec`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#exec) to get the hostnames
 of the Pods in the `zk` StatefulSet.
 
 ```shell
@@ -179,7 +179,7 @@ zk-1.zk-hs.default.svc.cluster.local
 zk-2.zk-hs.default.svc.cluster.local
 ```
 
-The A records in [Kubernetes DNS](/docs/concepts/services-networking/dns-pod-service/) resolve the FQDNs to the Pods' IP addresses. If Kubernetes reschedules the Pods, it will update the A records with the Pods' new IP addresses, but the A records names will not change.
+The A records in [Kubernetes DNS](/docs/kubernetes/en/concepts/services-networking/dns-pod-service/) resolve the FQDNs to the Pods' IP addresses. If Kubernetes reschedules the Pods, it will update the A records with the Pods' new IP addresses, but the A records names will not change.
 
 ZooKeeper stores its application configuration in a file named `zoo.cfg`. Use `kubectl exec` to view the contents of the `zoo.cfg` file in the `zk-0` Pod.
 
@@ -311,7 +311,7 @@ in memory state, to storage media. Using WALs to provide durability is a common
 technique for applications that use consensus protocols to achieve a replicated
 state machine.
 
-Use the [`kubectl delete`](/docs/reference/generated/kubectl/kubectl-commands/#delete) command to delete the
+Use the [`kubectl delete`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#delete) command to delete the
 `zk` StatefulSet.
 
 ```shell
@@ -527,7 +527,7 @@ Because the applications write logs to standard out, Kubernetes will handle log 
 Kubernetes also implements a sane retention policy that ensures application logs written to
 standard out and standard error do not exhaust local storage media.
 
-Use [`kubectl logs`](/docs/reference/generated/kubectl/kubectl-commands/#logs) to retrieve the last 20 log lines from one of the Pods.
+Use [`kubectl logs`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#logs) to retrieve the last 20 log lines from one of the Pods.
 
 ```shell
 kubectl logs zk-0 --tail 20
@@ -560,14 +560,14 @@ You can view application logs written to standard out or standard error using `k
 
 Kubernetes integrates with many logging solutions. You can choose a logging solution
 that best fits your cluster and applications. For cluster-level logging and aggregation,
-consider deploying a [sidecar container](/docs/concepts/cluster-administration/logging#sidecar-container-with-logging-agent) to rotate and ship your logs.
+consider deploying a [sidecar container](/docs/kubernetes/en/concepts/cluster-administration/logging#sidecar-container-with-logging-agent) to rotate and ship your logs.
 
 ### Configuring a non-privileged user
 
 The best practices to allow an application to run as a privileged
 user inside of a container are a matter of debate. If your organization requires
 that applications run as a non-privileged user you can use a
-[SecurityContext](/docs/tasks/configure-pod-container/security-context/) to control the user that
+[SecurityContext](/docs/kubernetes/en/tasks/configure-pod-container/security-context/) to control the user that
 the entry point runs as.
 
 The `zk` `StatefulSet`'s Pod `template` contains a `SecurityContext`.
@@ -684,7 +684,7 @@ statefulset.apps/zk rolled back
 
 ### Handling process failure
 
-[Restart Policies](/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy) control how
+[Restart Policies](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#restart-policy) control how
 Kubernetes handles process failures for the entry point of the container in a Pod.
 For Pods in a `StatefulSet`, the only appropriate `RestartPolicy` is Always, and this
 is the default value. For stateful applications you should **never** override
@@ -898,7 +898,7 @@ Use this command to get the nodes in your cluster.
 kubectl get nodes
 ```
 
-This tutorial assumes a cluster with at least four nodes. If the cluster has more than four, use [`kubectl cordon`](/docs/reference/generated/kubectl/kubectl-commands/#cordon) to cordon all but four nodes. Constraining to four nodes will ensure Kubernetes encounters affinity and PodDisruptionBudget constraints when scheduling zookeeper Pods in the following maintenance simulation.
+This tutorial assumes a cluster with at least four nodes. If the cluster has more than four, use [`kubectl cordon`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#cordon) to cordon all but four nodes. Constraining to four nodes will ensure Kubernetes encounters affinity and PodDisruptionBudget constraints when scheduling zookeeper Pods in the following maintenance simulation.
 
 ```shell
 kubectl cordon <node-name>
@@ -938,7 +938,7 @@ kubernetes-node-ixsl
 kubernetes-node-i4c4
 ```
 
-Use [`kubectl drain`](/docs/reference/generated/kubectl/kubectl-commands/#drain) to cordon and
+Use [`kubectl drain`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#drain) to cordon and
 drain the node on which the `zk-0` Pod is scheduled.
 
 ```shell
@@ -1070,7 +1070,7 @@ dataLength = 5
 numChildren = 0
 ```
 
-Use [`kubectl uncordon`](/docs/reference/generated/kubectl/kubectl-commands/#uncordon) to uncordon the first node.
+Use [`kubectl uncordon`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#uncordon) to uncordon the first node.
 
 ```shell
 kubectl uncordon kubernetes-node-pb41

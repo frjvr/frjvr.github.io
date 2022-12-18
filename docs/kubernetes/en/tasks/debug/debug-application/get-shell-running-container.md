@@ -154,4 +154,4 @@ The short options `-i` and `-t` are the same as the long options `--stdin` and `
 ## {{% heading "whatsnext" %}}
 
 
-* Read about [kubectl exec](/docs/reference/generated/kubectl/kubectl-commands/#exec)
+* Read about [kubectl exec](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#exec)

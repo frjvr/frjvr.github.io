@@ -8,18 +8,18 @@ no_list: true
 ## kubectl
 
 <!-- overview -->
-The Kubernetes command-line tool, [kubectl](/docs/reference/kubectl/kubectl/), allows
+The Kubernetes command-line tool, [kubectl](/docs/kubernetes/en/reference/kubectl/kubectl/), allows
 you to run commands against Kubernetes clusters.
 You can use kubectl to deploy applications, inspect and manage cluster resources,
 and view logs. For more information including a complete list of kubectl operations, see the
-[`kubectl` reference documentation](/docs/reference/kubectl/).
+[`kubectl` reference documentation](/docs/kubernetes/en/reference/kubectl/).
 
 kubectl is installable on a variety of Linux platforms, macOS and Windows. 
 Find your preferred operating system below.
 
-- [Install kubectl on Linux](/docs/tasks/tools/install-kubectl-linux)
-- [Install kubectl on macOS](/docs/tasks/tools/install-kubectl-macos)
-- [Install kubectl on Windows](/docs/tasks/tools/install-kubectl-windows)
+- [Install kubectl on Linux](/docs/kubernetes/en/tasks/tools/install-kubectl-linux)
+- [Install kubectl on macOS](/docs/kubernetes/en/tasks/tools/install-kubectl-macos)
+- [Install kubectl on Windows](/docs/kubernetes/en/tasks/tools/install-kubectl-windows)
 
 ## kind
 
@@ -46,14 +46,14 @@ on getting the tool installed.
 <a class="btn btn-primary" href="https://minikube.sigs.k8s.io/docs/start/" role="button" aria-label="View minikube Get Started! Guide">View minikube Get Started! Guide</a>
 
 Once you have `minikube` working, you can use it to
-[run a sample application](/docs/tutorials/hello-minikube/).
+[run a sample application](/docs/kubernetes/en/tutorials/hello-minikube/).
 
 ## kubeadm
 
 You can use the {{< glossary_tooltip term_id="kubeadm" text="kubeadm" >}} tool to create and manage Kubernetes clusters.
 It performs the actions necessary to get a minimum viable, secure cluster up and running in a user friendly way.
 
-[Installing kubeadm](/docs/setup/production-environment/tools/kubeadm/install-kubeadm/) shows you how to install kubeadm.
-Once installed, you can use it to [create a cluster](/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/).
+[Installing kubeadm](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/install-kubeadm/) shows you how to install kubeadm.
+Once installed, you can use it to [create a cluster](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/).
 
-<a class="btn btn-primary" href="/docs/setup/production-environment/tools/kubeadm/install-kubeadm/" role="button" aria-label="View kubeadm Install Guide">View kubeadm Install Guide</a>
+<a class="btn btn-primary" href="/docs/kubernetes/en/setup/production-environment/tools/kubeadm/install-kubeadm/" role="button" aria-label="View kubeadm Install Guide">View kubeadm Install Guide</a>

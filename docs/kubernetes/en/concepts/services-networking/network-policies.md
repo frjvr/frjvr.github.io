@@ -30,7 +30,7 @@ Meanwhile, when IP based NetworkPolicies are created, we define policies based o
 <!-- body -->
 ## Prerequisites
 
-Network policies are implemented by the [network plugin](/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/). To use network policies, you must be using a networking solution which supports NetworkPolicy. Creating a NetworkPolicy resource without a controller that implements it will have no effect.
+Network policies are implemented by the [network plugin](/docs/kubernetes/en/concepts/extend-kubernetes/compute-storage-net/network-plugins/). To use network policies, you must be using a networking solution which supports NetworkPolicy. Creating a NetworkPolicy resource without a controller that implements it will have no effect.
 
 ## The Two Sorts of Pod Isolation
 
@@ -46,7 +46,7 @@ For a connection from a source pod to a destination pod to be allowed, both the 
 
 ## The NetworkPolicy resource {#networkpolicy-resource}
 
-See the [NetworkPolicy](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#networkpolicy-v1-networking-k8s-io) reference for a full definition of the resource.
+See the [NetworkPolicy](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#networkpolicy-v1-networking-k8s-io) reference for a full definition of the resource.
 
 An example NetworkPolicy might look like this:
 
@@ -59,8 +59,8 @@ POSTing this to the API server for your cluster will have no effect unless your 
 __Mandatory Fields__: As with all other Kubernetes config, a NetworkPolicy
 needs `apiVersion`, `kind`, and `metadata` fields.  For general information
 about working with config files, see
-[Configure a Pod to Use a ConfigMap](/docs/tasks/configure-pod-container/configure-pod-configmap/),
-and [Object Management](/docs/concepts/overview/working-with-objects/object-management).
+[Configure a Pod to Use a ConfigMap](/docs/kubernetes/en/tasks/configure-pod-container/configure-pod-configmap/),
+and [Object Management](/docs/kubernetes/en/concepts/overview/working-with-objects/object-management).
 
 __spec__: NetworkPolicy [spec](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status) has all the information needed to define a particular network policy in the given namespace.
 
@@ -82,7 +82,7 @@ So, the example NetworkPolicy:
    * IP addresses in the ranges 172.17.0.0–172.17.0.255 and 172.17.2.0–172.17.255.255 (ie, all of 172.17.0.0/16 except 172.17.1.0/24)
 3. (Egress rules) allows connections from any pod in the "default" namespace with the label "role=db" to CIDR 10.0.0.0/24 on TCP port 5978
 
-See the [Declare Network Policy](/docs/tasks/administer-cluster/declare-network-policy/) walkthrough for further examples.
+See the [Declare Network Policy](/docs/kubernetes/en/tasks/administer-cluster/declare-network-policy/) walkthrough for further examples.
 
 ## Behavior of `to` and `from` selectors
 
@@ -191,7 +191,7 @@ This ensures that even pods that aren't selected by any other NetworkPolicy will
 
 {{< feature-state for_k8s_version="v1.20" state="stable" >}}
 
-As a stable feature, this is enabled by default. To disable SCTP at a cluster level, you (or your cluster administrator) will need to disable the `SCTPSupport` [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) for the API server with `--feature-gates=SCTPSupport=false,…`.
+As a stable feature, this is enabled by default. To disable SCTP at a cluster level, you (or your cluster administrator) will need to disable the `SCTPSupport` [feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) for the API server with `--feature-gates=SCTPSupport=false,…`.
 When the feature gate is enabled, you can set the `protocol` field of a NetworkPolicy to `SCTP`.
 
 {{< note >}}
@@ -240,7 +240,7 @@ The following restrictions apply when using this field:
 {{< note >}}
 Your cluster must be using a {{< glossary_tooltip text="CNI" term_id="cni" >}} plugin that
 supports the `endPort` field in NetworkPolicy specifications.
-If your [network plugin](/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/) 
+If your [network plugin](/docs/kubernetes/en/concepts/extend-kubernetes/compute-storage-net/network-plugins/) 
 does not support the `endPort` field and you specify a NetworkPolicy with that,
 the policy will be applied only for the single `port` field.
 {{< /note >}}
@@ -251,7 +251,7 @@ the policy will be applied only for the single `port` field.
 
 The Kubernetes control plane sets an immutable label `kubernetes.io/metadata.name` on all
 namespaces, provided that the `NamespaceDefaultLabelName`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/) is enabled.
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) is enabled.
 The value of the label is the namespace name.
 
 While NetworkPolicy cannot target a namespace by its name with some object field, you can use the
@@ -275,6 +275,6 @@ As of Kubernetes {{< skew currentVersion >}}, the following functionality does n
 ## {{% heading "whatsnext" %}}
 
 
-- See the [Declare Network Policy](/docs/tasks/administer-cluster/declare-network-policy/)
+- See the [Declare Network Policy](/docs/kubernetes/en/tasks/administer-cluster/declare-network-policy/)
   walkthrough for further examples.
 - See more [recipes](https://github.com/ahmetb/kubernetes-network-policy-recipes) for common scenarios enabled by the NetworkPolicy resource.

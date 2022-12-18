@@ -44,11 +44,11 @@ PersistentVolumeClaim is a user's request for and claim to a persistent volume
 
 - **spec** (<a href="{{< ref "../config-and-storage-resources/persistent-volume-claim-v1#PersistentVolumeClaimSpec" >}}">PersistentVolumeClaimSpec</a>)
 
-  spec defines the desired characteristics of a volume requested by a pod author. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+  spec defines the desired characteristics of a volume requested by a pod author. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/persistent-volumes#persistentvolumeclaims
 
 - **status** (<a href="{{< ref "../config-and-storage-resources/persistent-volume-claim-v1#PersistentVolumeClaimStatus" >}}">PersistentVolumeClaimStatus</a>)
 
-  status represents the current information/status of a persistent volume claim. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+  status represents the current information/status of a persistent volume claim. Read-only. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/persistent-volumes#persistentvolumeclaims
 
 
 
@@ -62,7 +62,7 @@ PersistentVolumeClaimSpec describes the common attributes of storage devices and
 
 - **accessModes** ([]string)
 
-  accessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
+  accessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/persistent-volumes#access-modes-1
 
 - **selector** (<a href="{{< ref "../common-definitions/label-selector#LabelSelector" >}}">LabelSelector</a>)
 
@@ -70,7 +70,7 @@ PersistentVolumeClaimSpec describes the common attributes of storage devices and
 
 - **resources** (ResourceRequirements)
 
-  resources represents the minimum resources the volume should have. If RecoverVolumeExpansionFailure feature is enabled users are allowed to specify resource requirements that are lower than previous value but must still be higher than capacity recorded in the status field of the claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+  resources represents the minimum resources the volume should have. If RecoverVolumeExpansionFailure feature is enabled users are allowed to specify resource requirements that are lower than previous value but must still be higher than capacity recorded in the status field of the claim. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/persistent-volumes#resources
 
   <a name="ResourceRequirements"></a>
   *ResourceRequirements describes the compute resource requirements.*
@@ -94,11 +94,11 @@ PersistentVolumeClaimSpec describes the common attributes of storage devices and
 
   - **resources.limits** (map[string]<a href="{{< ref "../common-definitions/quantity#Quantity" >}}">Quantity</a>)
 
-    Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+    Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/kubernetes/en/concepts/configuration/manage-resources-containers/
 
   - **resources.requests** (map[string]<a href="{{< ref "../common-definitions/quantity#Quantity" >}}">Quantity</a>)
 
-    Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+    Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/kubernetes/en/concepts/configuration/manage-resources-containers/
 
 - **volumeName** (string)
 
@@ -106,7 +106,7 @@ PersistentVolumeClaimSpec describes the common attributes of storage devices and
 
 - **storageClassName** (string)
 
-  storageClassName is the name of the StorageClass required by the claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1
+  storageClassName is the name of the StorageClass required by the claim. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/persistent-volumes#class-1
 
 - **volumeMode** (string)
 
@@ -161,7 +161,7 @@ PersistentVolumeClaimStatus is the current status of a persistent volume claim.
 
 - **accessModes** ([]string)
 
-  accessModes contains the actual access modes the volume backing the PVC has. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
+  accessModes contains the actual access modes the volume backing the PVC has. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/persistent-volumes#access-modes-1
 
 - **allocatedResources** (map[string]<a href="{{< ref "../common-definitions/quantity#Quantity" >}}">Quantity</a>)
 
@@ -240,7 +240,7 @@ PersistentVolumeClaimList is a list of PersistentVolumeClaim items.
 
 - **items** ([]<a href="{{< ref "../config-and-storage-resources/persistent-volume-claim-v1#PersistentVolumeClaim" >}}">PersistentVolumeClaim</a>), required
 
-  items is a list of persistent volume claims. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+  items is a list of persistent volume claims. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/persistent-volumes#persistentvolumeclaims
 
 
 

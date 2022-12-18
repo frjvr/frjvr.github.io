@@ -19,17 +19,17 @@ This document serves both as a reference to the values and as a coordination poi
 
 Example: `app.kubernetes.io/component: "database"`
 
-Used on: All Objects (typically used on [workload resources](/docs/reference/kubernetes-api/workload-resources/)).
+Used on: All Objects (typically used on [workload resources](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/)).
 
 The component within the architecture.
 
-One of the [recommended labels](/docs/concepts/overview/working-with-objects/common-labels/#labels).
+One of the [recommended labels](/docs/kubernetes/en/concepts/overview/working-with-objects/common-labels/#labels).
 
 ### app.kubernetes.io/created-by (deprecated)
 
 Example: `app.kubernetes.io/created-by: "controller-manager"`
 
-Used on: All Objects (typically used on [workload resources](/docs/reference/kubernetes-api/workload-resources/)).
+Used on: All Objects (typically used on [workload resources](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/)).
 
 The controller/user who created this resource.
 
@@ -41,47 +41,47 @@ Starting from v1.9, this label is deprecated.
 
 Example: `app.kubernetes.io/instance: "mysql-abcxzy"`
 
-Used on: All Objects (typically used on [workload resources](/docs/reference/kubernetes-api/workload-resources/)).
+Used on: All Objects (typically used on [workload resources](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/)).
 
 A unique name identifying the instance of an application. To assign a non-unique name, use [app.kubernetes.io/name](#app-kubernetes-io-name).
 
-One of the [recommended labels](/docs/concepts/overview/working-with-objects/common-labels/#labels).
+One of the [recommended labels](/docs/kubernetes/en/concepts/overview/working-with-objects/common-labels/#labels).
 
 ### app.kubernetes.io/managed-by
 
 Example: `app.kubernetes.io/managed-by: "helm"`
 
-Used on: All Objects (typically used on [workload resources](/docs/reference/kubernetes-api/workload-resources/)).
+Used on: All Objects (typically used on [workload resources](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/)).
 
 The tool being used to manage the operation of an application.
 
-One of the [recommended labels](/docs/concepts/overview/working-with-objects/common-labels/#labels).
+One of the [recommended labels](/docs/kubernetes/en/concepts/overview/working-with-objects/common-labels/#labels).
 
 ### app.kubernetes.io/name
 
 Example: `app.kubernetes.io/name: "mysql"`
 
-Used on: All Objects (typically used on [workload resources](/docs/reference/kubernetes-api/workload-resources/)).
+Used on: All Objects (typically used on [workload resources](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/)).
 
 The name of the application.
 
-One of the [recommended labels](/docs/concepts/overview/working-with-objects/common-labels/#labels).
+One of the [recommended labels](/docs/kubernetes/en/concepts/overview/working-with-objects/common-labels/#labels).
 
 ### app.kubernetes.io/part-of
 
 Example: `app.kubernetes.io/part-of: "wordpress"`
 
-Used on: All Objects (typically used on [workload resources](/docs/reference/kubernetes-api/workload-resources/)).
+Used on: All Objects (typically used on [workload resources](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/)).
 
 The name of a higher-level application this one is part of.
 
-One of the [recommended labels](/docs/concepts/overview/working-with-objects/common-labels/#labels).
+One of the [recommended labels](/docs/kubernetes/en/concepts/overview/working-with-objects/common-labels/#labels).
 
 ### app.kubernetes.io/version
 
 Example: `app.kubernetes.io/version: "5.7.21"`
 
-Used on: All Objects (typically used on [workload resources](/docs/reference/kubernetes-api/workload-resources/)).
+Used on: All Objects (typically used on [workload resources](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/)).
 
 The current version of the application.
 
@@ -90,7 +90,7 @@ Common forms of values include:
 - [semantic version](https://semver.org/spec/v1.0.0.html)
 - the Git [revision hash](https://git-scm.com/book/en/v2/Git-Tools-Revision-Selection#_single_revisions) for the source code.
 
-One of the [recommended labels](/docs/concepts/overview/working-with-objects/common-labels/#labels).
+One of the [recommended labels](/docs/kubernetes/en/concepts/overview/working-with-objects/common-labels/#labels).
 
 ### cluster-autoscaler.kubernetes.io/safe-to-evict
 
@@ -145,7 +145,7 @@ You can define a default request or default limit for pods. You do this by creat
 Pods deployed after you define a LimitRange will have these limits applied to them.
 The annotation `kubernetes.io/limit-ranger` records that resource defaults were specified for the Pod,
 and they were applied successfully.
-For more details, read about [LimitRanges](/docs/concepts/policy/limit-range).
+For more details, read about [LimitRanges](/docs/kubernetes/en/concepts/policy/limit-range).
 
 ### beta.kubernetes.io/arch (deprecated)
 
@@ -209,7 +209,7 @@ Example: `controller.kubernetes.io/pod-deletion-cost: "10"`
 
 Used on: Pod
 
-This annotation is used to set [Pod Deletion Cost](/docs/concepts/workloads/controllers/replicaset/#pod-deletion-cost)
+This annotation is used to set [Pod Deletion Cost](/docs/kubernetes/en/concepts/workloads/controllers/replicaset/#pod-deletion-cost)
 which allows users to influence ReplicaSet downscaling order. The annotation parses into an `int32` type.
 
 ### cluster-autoscaler.kubernetes.io/enable-ds-eviction
@@ -245,7 +245,7 @@ You can apply quality-of-service traffic shaping to a pod and effectively limit 
 Ingress traffic (to the pod) is handled by shaping queued packets to effectively handle data.
 To limit the bandwidth on a pod, write an object definition JSON file and specify the data traffic
 speed using `kubernetes.io/ingress-bandwidth` annotation. The unit used for specifying ingress
-rate is bits per second, as a [Quantity](/docs/reference/kubernetes-api/common-definitions/quantity/).
+rate is bits per second, as a [Quantity](/docs/kubernetes/en/reference/kubernetes-api/common-definitions/quantity/).
 For example, `10M` means 10 megabits per second.
 
 ### kubernetes.io/egress-bandwidth
@@ -264,7 +264,7 @@ Egress traffic (from the pod) is handled by policing, which simply drops packets
 The limits you place on a pod do not affect the bandwidth of other pods.
 To limit the bandwidth on a pod, write an object definition JSON file and specify the data traffic
 speed using `kubernetes.io/egress-bandwidth` annotation. The unit used for specifying egress
-rate is bits per second, as a [Quantity](/docs/reference/kubernetes-api/common-definitions/quantity/).
+rate is bits per second, as a [Quantity](/docs/kubernetes/en/reference/kubernetes-api/common-definitions/quantity/).
 For example, `10M` means 10 megabits per second.
 
 ### beta.kubernetes.io/instance-type (deprecated)
@@ -303,7 +303,7 @@ Example:
 When a StatefulSet controller creates a Pod for the StatefulSet, the control plane
 sets this label on that Pod. The value of the label is the name of the Pod being created.
 
-See [Pod Name Label](/docs/concepts/workloads/controllers/statefulset/#pod-name-label) in the
+See [Pod Name Label](/docs/kubernetes/en/concepts/workloads/controllers/statefulset/#pod-name-label) in the
 StatefulSet topic for more details.
 
 ### scheduler.alpha.kubernetes.io/node-selector {#schedulerkubernetesnode-selector}
@@ -312,7 +312,7 @@ Example: `scheduler.alpha.kubernetes.io/node-selector: "name-of-node-selector"`
 
 Used on: Namespace
 
-The [PodNodeSelector](/docs/reference/access-authn-authz/admission-controllers/#podnodeselector) uses this annotation key to assign node selectors to pods in namespaces.
+The [PodNodeSelector](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/#podnodeselector) uses this annotation key to assign node selectors to pods in namespaces.
 
 ### topology.kubernetes.io/region {#topologykubernetesioregion}
 
@@ -367,7 +367,7 @@ Example : `volume.beta.kubernetes.io/mount-options: "ro,soft"`
 
 Used on: PersistentVolume
 
-A Kubernetes administrator can specify additional [mount options](/docs/concepts/storage/persistent-volumes/#mount-options) for when a PersistentVolume is mounted on a node.
+A Kubernetes administrator can specify additional [mount options](/docs/kubernetes/en/concepts/storage/persistent-volumes/#mount-options) for when a PersistentVolume is mounted on a node.
 
 This annotation has been deprecated.
 
@@ -401,8 +401,8 @@ Example: `kubernetes.io/service-name: "my-website"`
 
 Used on: EndpointSlice
 
-Kubernetes associates [EndpointSlices](/docs/concepts/services-networking/endpoint-slices/) with
-[Services](/docs/concepts/services-networking/service/) using this label.
+Kubernetes associates [EndpointSlices](/docs/kubernetes/en/concepts/services-networking/endpoint-slices/) with
+[Services](/docs/kubernetes/en/concepts/services-networking/service/) using this label.
 
 This label records the {{< glossary_tooltip term_id="name" text="name">}} of the
 Service that the EndpointSlice is backing. All EndpointSlices should have this label set to
@@ -517,7 +517,7 @@ Example: `batch.kubernetes.io/job-completion-index: "3"`
 Used on: Pod
 
 The Job controller in the kube-controller-manager sets this annotation for Pods
-created with Indexed [completion mode](/docs/concepts/workloads/controllers/job/#completion-mode).
+created with Indexed [completion mode](/docs/kubernetes/en/concepts/workloads/controllers/job/#completion-mode).
 
 ### kubectl.kubernetes.io/default-container
 
@@ -531,7 +531,7 @@ Example: `endpoints.kubernetes.io/over-capacity:truncated`
 
 Used on: Endpoints
 
-The {{< glossary_tooltip text="control plane" term_id="control-plane" >}} adds this annotation to an [Endpoints](/docs/concepts/services-networking/service/#endpoints) object if the associated {{< glossary_tooltip term_id="service" >}} has more than 1000 backing endpoints. The annotation indicates that the Endpoints object is over capacity and the number of endpoints has been truncated to 1000.
+The {{< glossary_tooltip text="control plane" term_id="control-plane" >}} adds this annotation to an [Endpoints](/docs/kubernetes/en/concepts/services-networking/service/#endpoints) object if the associated {{< glossary_tooltip term_id="service" >}} has more than 1000 backing endpoints. The annotation indicates that the Endpoints object is over capacity and the number of endpoints has been truncated to 1000.
 
 If the number of backend endpoints falls below 1000, the control plane removes this annotation.
 
@@ -542,7 +542,7 @@ Example: `batch.kubernetes.io/job-tracking: ""`
 Used on: Jobs
 
 The presence of this annotation on a Job indicates that the control plane is
-[tracking the Job status using finalizers](/docs/concepts/workloads/controllers/job/#job-tracking-with-finalizers).
+[tracking the Job status using finalizers](/docs/kubernetes/en/concepts/workloads/controllers/job/#job-tracking-with-finalizers).
 The control plane uses this annotation to safely transition to tracking Jobs
 using finalizers, while the feature is in development.
 You should **not** manually add or remove this annotation. 
@@ -559,15 +559,15 @@ Example: `scheduler.alpha.kubernetes.io/defaultTolerations: '[{"operator": "Equa
 
 Used on: Namespace
 
-This annotation requires the [PodTolerationRestriction](/docs/reference/access-authn-authz/admission-controllers/#podtolerationrestriction) admission controller to be enabled. This annotation key allows assigning tolerations to a namespace and any new pods created in this namespace would get these tolerations added.
+This annotation requires the [PodTolerationRestriction](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/#podtolerationrestriction) admission controller to be enabled. This annotation key allows assigning tolerations to a namespace and any new pods created in this namespace would get these tolerations added.
 
 ### scheduler.alpha.kubernetes.io/preferAvoidPods (deprecated) {#scheduleralphakubernetesio-preferavoidpods}
 
 Used on: Nodes
 
-This annotation requires the [NodePreferAvoidPods scheduling plugin](/docs/reference/scheduling/config/#scheduling-plugins)
+This annotation requires the [NodePreferAvoidPods scheduling plugin](/docs/kubernetes/en/reference/scheduling/config/#scheduling-plugins)
 to be enabled. The plugin is deprecated since Kubernetes 1.22.
-Use [Taints and Tolerations](/docs/concepts/scheduling-eviction/taint-and-toleration/) instead.
+Use [Taints and Tolerations](/docs/kubernetes/en/concepts/scheduling-eviction/taint-and-toleration/) instead.
 
 **The taints listed below are always used on Nodes**
 
@@ -581,7 +581,7 @@ The node controller detects whether a node is ready by monitoring its health and
 
 Example: `node.kubernetes.io/unreachable: "NoExecute"`
 
-The node controller adds the taint to a node corresponding to the [NodeCondition](/docs/concepts/architecture/nodes/#condition) `Ready` being `Unknown`.
+The node controller adds the taint to a node corresponding to the [NodeCondition](/docs/kubernetes/en/concepts/architecture/nodes/#condition) `Ready` being `Unknown`.
 
 ### node.kubernetes.io/unschedulable
 
@@ -618,12 +618,12 @@ The kubelet checks D-value of the size of `/proc/sys/kernel/pid_max` and the PID
 Example: `node.kubernetes.io/out-of-service:NoExecute`
 
 A user can manually add the taint to a Node marking it out-of-service. If the `NodeOutOfServiceVolumeDetach`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/) is enabled on
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) is enabled on
 `kube-controller-manager`, and a Node is marked out-of-service with this taint, the pods on the node will be forcefully deleted if there are no matching tolerations on it and volume detach operations for the pods terminating on the node will happen immediately. This allows the Pods on the out-of-service node to recover quickly on a different node.
 
 {{< caution >}}
 Refer to
-[Non-graceful node shutdown](/docs/concepts/architecture/nodes/#non-graceful-node-shutdown)
+[Non-graceful node shutdown](/docs/kubernetes/en/concepts/architecture/nodes/#non-graceful-node-shutdown)
 for further details about when and how to use this taint.
 {{< /caution >}}
 
@@ -647,11 +647,11 @@ Example: `pod-security.kubernetes.io/enforce: "baseline"`
 Used on: Namespace
 
 Value **must** be one of `privileged`, `baseline`, or `restricted` which correspond to
-[Pod Security Standard](/docs/concepts/security/pod-security-standards) levels. Specifically,
+[Pod Security Standard](/docs/kubernetes/en/concepts/security/pod-security-standards) levels. Specifically,
 the `enforce` label _prohibits_ the creation of any Pod in the labeled Namespace which does not meet
 the requirements outlined in the indicated level.
 
-See [Enforcing Pod Security at the Namespace Level](/docs/concepts/security/pod-security-admission)
+See [Enforcing Pod Security at the Namespace Level](/docs/kubernetes/en/concepts/security/pod-security-admission)
 for more information.
 
 ### pod-security.kubernetes.io/enforce-version
@@ -661,10 +661,10 @@ Example: `pod-security.kubernetes.io/enforce-version: "{{< skew currentVersion >
 Used on: Namespace
 
 Value **must** be `latest` or a valid Kubernetes version in the format `v<MAJOR>.<MINOR>`.
-This determines the version of the [Pod Security Standard](/docs/concepts/security/pod-security-standards)
+This determines the version of the [Pod Security Standard](/docs/kubernetes/en/concepts/security/pod-security-standards)
 policies to apply when validating a submitted Pod.
 
-See [Enforcing Pod Security at the Namespace Level](/docs/concepts/security/pod-security-admission)
+See [Enforcing Pod Security at the Namespace Level](/docs/kubernetes/en/concepts/security/pod-security-admission)
 for more information.
 
 ### pod-security.kubernetes.io/audit
@@ -674,11 +674,11 @@ Example: `pod-security.kubernetes.io/audit: "baseline"`
 Used on: Namespace
 
 Value **must** be one of `privileged`, `baseline`, or `restricted` which correspond to
-[Pod Security Standard](/docs/concepts/security/pod-security-standards) levels. Specifically,
+[Pod Security Standard](/docs/kubernetes/en/concepts/security/pod-security-standards) levels. Specifically,
 the `audit` label does not prevent the creation of a Pod in the labeled Namespace which does not meet
 the requirements outlined in the indicated level, but adds an audit annotation to that Pod.
 
-See [Enforcing Pod Security at the Namespace Level](/docs/concepts/security/pod-security-admission)
+See [Enforcing Pod Security at the Namespace Level](/docs/kubernetes/en/concepts/security/pod-security-admission)
 for more information.
 
 ### pod-security.kubernetes.io/audit-version
@@ -688,10 +688,10 @@ Example: `pod-security.kubernetes.io/audit-version: "{{< skew currentVersion >}}
 Used on: Namespace
 
 Value **must** be `latest` or a valid Kubernetes version in the format `v<MAJOR>.<MINOR>`.
-This determines the version of the [Pod Security Standard](/docs/concepts/security/pod-security-standards)
+This determines the version of the [Pod Security Standard](/docs/kubernetes/en/concepts/security/pod-security-standards)
 policies to apply when validating a submitted Pod.
 
-See [Enforcing Pod Security at the Namespace Level](/docs/concepts/security/pod-security-admission)
+See [Enforcing Pod Security at the Namespace Level](/docs/kubernetes/en/concepts/security/pod-security-admission)
 for more information.
 
 ### pod-security.kubernetes.io/warn
@@ -701,13 +701,13 @@ Example: `pod-security.kubernetes.io/warn: "baseline"`
 Used on: Namespace
 
 Value **must** be one of `privileged`, `baseline`, or `restricted` which correspond to
-[Pod Security Standard](/docs/concepts/security/pod-security-standards) levels. Specifically,
+[Pod Security Standard](/docs/kubernetes/en/concepts/security/pod-security-standards) levels. Specifically,
 the `warn` label does not prevent the creation of a Pod in the labeled Namespace which does not meet the
 requirements outlined in the indicated level, but returns a warning to the user after doing so.
 Note that warnings are also displayed when creating or updating objects that contain Pod templates,
 such as Deployments, Jobs, StatefulSets, etc.
 
-See [Enforcing Pod Security at the Namespace Level](/docs/concepts/security/pod-security-admission)
+See [Enforcing Pod Security at the Namespace Level](/docs/kubernetes/en/concepts/security/pod-security-admission)
 for more information.
 
 ### pod-security.kubernetes.io/warn-version
@@ -717,11 +717,11 @@ Example: `pod-security.kubernetes.io/warn-version: "{{< skew currentVersion >}}"
 Used on: Namespace
 
 Value **must** be `latest` or a valid Kubernetes version in the format `v<MAJOR>.<MINOR>`.
-This determines the version of the [Pod Security Standard](/docs/concepts/security/pod-security-standards)
+This determines the version of the [Pod Security Standard](/docs/kubernetes/en/concepts/security/pod-security-standards)
 policies to apply when validating a submitted Pod. Note that warnings are also displayed when creating
 or updating objects that contain Pod templates, such as Deployments, Jobs, StatefulSets, etc.
 
-See [Enforcing Pod Security at the Namespace Level](/docs/concepts/security/pod-security-admission)
+See [Enforcing Pod Security at the Namespace Level](/docs/kubernetes/en/concepts/security/pod-security-admission)
 for more information.
 
 ### kubernetes.io/psp (deprecated) {#kubernetes-io-psp}
@@ -730,7 +730,7 @@ Example: `kubernetes.io/psp: restricted`
 
 Used on: Pod
 
-This annotation was only relevant if you were using [PodSecurityPolicies](/docs/concepts/security/pod-security-policy/).
+This annotation was only relevant if you were using [PodSecurityPolicies](/docs/kubernetes/en/concepts/security/pod-security-policy/).
 Kubernetes v{{< skew currentVersion >}} does not support the PodSecurityPolicy API.
 
 When the PodSecurityPolicy admission controller admitted a Pod, the admission controller
@@ -742,15 +742,15 @@ The value of the annotation was the name of the PodSecurityPolicy that was used 
 This annotation has been deprecated since Kubernetes v1.19 and will become non-functional in a future release.
 please use the corresponding pod or container `securityContext.seccompProfile` field instead.
 To specify security settings for a Pod, include the `securityContext` field in the Pod specification.
-The [`securityContext`](/docs/reference/kubernetes-api/workload-resources/pod-v1/#security-context) field within a Pod's `.spec` defines pod-level security attributes.
-When you [specify the security context for a Pod](/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod),
+The [`securityContext`](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/pod-v1/#security-context) field within a Pod's `.spec` defines pod-level security attributes.
+When you [specify the security context for a Pod](/docs/kubernetes/en/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod),
 the settings you specify apply to all containers in that Pod.
 
 ### container.seccomp.security.alpha.kubernetes.io/[NAME] (deprecated) {#container-seccomp-security-alpha-kubernetes-io}
 
 This annotation has been deprecated since Kubernetes v1.19 and will become non-functional in a future release.
 please use the corresponding pod or container `securityContext.seccompProfile` field instead.
-The tutorial [Restrict a Container's Syscalls with seccomp](/docs/tutorials/security/seccomp/) takes
+The tutorial [Restrict a Container's Syscalls with seccomp](/docs/kubernetes/en/tutorials/security/seccomp/) takes
 you through the steps you follow to apply a seccomp profile to a Pod or to one of
 its containers. That tutorial covers the supported mechanism for configuring seccomp in Kubernetes,
 based on setting `securityContext` within the Pod's `.spec`.
@@ -766,21 +766,21 @@ This determines whether a user can modify the mode of the source volume when a
 {{< glossary_tooltip text="PersistentVolumeClaim" term_id="persistent-volume-claim" >}} is being
 created from a VolumeSnapshot.
 
-Refer to [Converting the volume mode of a Snapshot](/docs/concepts/storage/volume-snapshots/#convert-volume-mode)
+Refer to [Converting the volume mode of a Snapshot](/docs/kubernetes/en/concepts/storage/volume-snapshots/#convert-volume-mode)
 and the [Kubernetes CSI Developer Documentation](https://kubernetes-csi.github.io/docs/) for more information.
 
 ## Annotations used for audit
 
 <!-- sorted by annotation -->
-- [`authorization.k8s.io/decision`](/docs/reference/labels-annotations-taints/audit-annotations/#authorization-k8s-io-decision)
-- [`authorization.k8s.io/reason`](/docs/reference/labels-annotations-taints/audit-annotations/#authorization-k8s-io-reason)
-- [`insecure-sha1.invalid-cert.kubernetes.io/$hostname`](/docs/reference/labels-annotations-taints/audit-annotations/#insecure-sha1-invalid-cert-kubernetes-io-hostname)
-- [`missing-san.invalid-cert.kubernetes.io/$hostname`](/docs/reference/labels-annotations-taints/audit-annotations/#missing-san-invalid-cert-kubernetes-io-hostname)
-- [`pod-security.kubernetes.io/audit-violations`](/docs/reference/labels-annotations-taints/audit-annotations/#pod-security-kubernetes-io-audit-violations)
-- [`pod-security.kubernetes.io/enforce-policy`](/docs/reference/labels-annotations-taints/audit-annotations/#pod-security-kubernetes-io-enforce-policy)
-- [`pod-security.kubernetes.io/exempt`](/docs/reference/labels-annotations-taints/audit-annotations/#pod-security-kubernetes-io-exempt)
+- [`authorization.k8s.io/decision`](/docs/kubernetes/en/reference/labels-annotations-taints/audit-annotations/#authorization-k8s-io-decision)
+- [`authorization.k8s.io/reason`](/docs/kubernetes/en/reference/labels-annotations-taints/audit-annotations/#authorization-k8s-io-reason)
+- [`insecure-sha1.invalid-cert.kubernetes.io/$hostname`](/docs/kubernetes/en/reference/labels-annotations-taints/audit-annotations/#insecure-sha1-invalid-cert-kubernetes-io-hostname)
+- [`missing-san.invalid-cert.kubernetes.io/$hostname`](/docs/kubernetes/en/reference/labels-annotations-taints/audit-annotations/#missing-san-invalid-cert-kubernetes-io-hostname)
+- [`pod-security.kubernetes.io/audit-violations`](/docs/kubernetes/en/reference/labels-annotations-taints/audit-annotations/#pod-security-kubernetes-io-audit-violations)
+- [`pod-security.kubernetes.io/enforce-policy`](/docs/kubernetes/en/reference/labels-annotations-taints/audit-annotations/#pod-security-kubernetes-io-enforce-policy)
+- [`pod-security.kubernetes.io/exempt`](/docs/kubernetes/en/reference/labels-annotations-taints/audit-annotations/#pod-security-kubernetes-io-exempt)
 
-See more details on the [Audit Annotations](/docs/reference/labels-annotations-taints/audit-annotations/) page.
+See more details on the [Audit Annotations](/docs/kubernetes/en/reference/labels-annotations-taints/audit-annotations/) page.
 
 ## kubeadm
 

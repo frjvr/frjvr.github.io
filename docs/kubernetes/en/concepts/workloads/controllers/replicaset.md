@@ -30,7 +30,7 @@ it should create to meet the number of replicas criteria. A ReplicaSet then fulf
 and deleting Pods as needed to reach the desired number. When a ReplicaSet needs to create new Pods, it uses its Pod
 template.
 
-A ReplicaSet is linked to its Pods via the Pods' [metadata.ownerReferences](/docs/concepts/architecture/garbage-collection/#owners-and-dependents)
+A ReplicaSet is linked to its Pods via the Pods' [metadata.ownerReferences](/docs/kubernetes/en/concepts/architecture/garbage-collection/#owners-and-dependents)
 field, which specifies what resource the current object is owned by. All Pods acquired by a ReplicaSet have their owning
 ReplicaSet's identifying information within their ownerReferences field. It's through this link that the ReplicaSet
 knows of the state of the Pods it is maintaining and plans accordingly.
@@ -230,25 +230,25 @@ For ReplicaSets, the `kind` is always a ReplicaSet.
 
 When the control plane creates new Pods for a ReplicaSet, the `.metadata.name` of the
 ReplicaSet is part of the basis for naming those Pods.  The name of a ReplicaSet must be a valid
-[DNS subdomain](/docs/concepts/overview/working-with-objects/names#dns-subdomain-names)
+[DNS subdomain](/docs/kubernetes/en/concepts/overview/working-with-objects/names#dns-subdomain-names)
 value, but this can produce unexpected results for the Pod hostnames.  For best compatibility,
 the name should follow the more restrictive rules for a
-[DNS label](/docs/concepts/overview/working-with-objects/names#dns-label-names).
+[DNS label](/docs/kubernetes/en/concepts/overview/working-with-objects/names#dns-label-names).
 
 A ReplicaSet also needs a [`.spec` section](https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status).
 
 ### Pod Template
 
-The `.spec.template` is a [pod template](/docs/concepts/workloads/pods/#pod-templates) which is also
+The `.spec.template` is a [pod template](/docs/kubernetes/en/concepts/workloads/pods/#pod-templates) which is also
 required to have labels in place. In our `frontend.yaml` example we had one label: `tier: frontend`.
 Be careful not to overlap with the selectors of other controllers, lest they try to adopt this Pod.
 
-For the template's [restart policy](/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy) field,
+For the template's [restart policy](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#restart-policy) field,
 `.spec.template.spec.restartPolicy`, the only allowed value is `Always`, which is the default.
 
 ### Pod Selector
 
-The `.spec.selector` field is a [label selector](/docs/concepts/overview/working-with-objects/labels/). As discussed
+The `.spec.selector` field is a [label selector](/docs/kubernetes/en/concepts/overview/working-with-objects/labels/). As discussed
 [earlier](#how-a-replicaset-works) these are the labels used to identify potential Pods to acquire. In our
 `frontend.yaml` example, the selector was:
 
@@ -278,8 +278,8 @@ If you do not specify `.spec.replicas`, then it defaults to 1.
 ### Deleting a ReplicaSet and its Pods
 
 To delete a ReplicaSet and all of its Pods, use
-[`kubectl delete`](/docs/reference/generated/kubectl/kubectl-commands#delete). The
-[Garbage collector](/docs/concepts/architecture/garbage-collection/) automatically deletes all of
+[`kubectl delete`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands#delete). The
+[Garbage collector](/docs/kubernetes/en/concepts/architecture/garbage-collection/) automatically deletes all of
 the dependent Pods by default.
 
 When using the REST API or the `client-go` library, you must set `propagationPolicy` to
@@ -295,7 +295,7 @@ curl -X DELETE  'localhost:8080/apis/apps/v1/namespaces/default/replicasets/fron
 ### Deleting just a ReplicaSet
 
 You can delete a ReplicaSet without affecting any of its Pods using
-[`kubectl delete`](/docs/reference/generated/kubectl/kubectl-commands#delete)
+[`kubectl delete`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands#delete)
 with the `--cascade=orphan` option.
 When using the REST API or the `client-go` library, you must set `propagationPolicy` to `Orphan`.
 For example:
@@ -311,7 +311,7 @@ Once the original is deleted, you can create a new ReplicaSet to replace it.  As
 as the old and new `.spec.selector` are the same, then the new one will adopt the old Pods.
 However, it will not make any effort to make existing Pods match a new, different pod template.
 To update Pods to a new spec in a controlled way, use a
-[Deployment](/docs/concepts/workloads/controllers/deployment/#creating-a-deployment), as
+[Deployment](/docs/kubernetes/en/concepts/workloads/controllers/deployment/#creating-a-deployment), as
 ReplicaSets do not support a rolling update directly.
 
 ### Isolating Pods from a ReplicaSet
@@ -334,7 +334,7 @@ prioritize scaling down pods based on the following general algorithm:
 1. Pods on nodes with more replicas come before pods on nodes with fewer replicas.
 1. If the pods' creation times differ, the pod that was created more recently
    comes before the older pod (the creation times are bucketed on an integer log scale
-   when the `LogarithmicScaleDown` [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) is enabled)
+   when the `LogarithmicScaleDown` [feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) is enabled)
     
 If all of the above match, then selection is random.
 
@@ -342,7 +342,7 @@ If all of the above match, then selection is random.
 
 {{< feature-state for_k8s_version="v1.22" state="beta" >}}
 
-Using the [`controller.kubernetes.io/pod-deletion-cost`](/docs/reference/labels-annotations-taints/#pod-deletion-cost) 
+Using the [`controller.kubernetes.io/pod-deletion-cost`](/docs/kubernetes/en/reference/labels-annotations-taints/#pod-deletion-cost) 
 annotation, users can set a preference regarding which pods to remove first when downscaling a ReplicaSet.
 
 The annotation should be set on the pod, the range is [-2147483647, 2147483647]. It represents the cost of
@@ -353,7 +353,7 @@ The implicit value for this annotation for pods that don't set it is 0; negative
 Invalid values will be rejected by the API server.
 
 This feature is beta and enabled by default. You can disable it using the
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/)
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/)
 `PodDeletionCost` in both kube-apiserver and kube-controller-manager.
 
 {{< note >}}
@@ -373,7 +373,7 @@ the down scaling; for example, the driver pod of a Spark deployment.
 ### ReplicaSet as a Horizontal Pod Autoscaler Target
 
 A ReplicaSet can also be a target for
-[Horizontal Pod Autoscalers (HPA)](/docs/tasks/run-application/horizontal-pod-autoscale/). That is,
+[Horizontal Pod Autoscalers (HPA)](/docs/kubernetes/en/tasks/run-application/horizontal-pod-autoscale/). That is,
 a ReplicaSet can be auto-scaled by an HPA. Here is an example HPA targeting
 the ReplicaSet we created in the previous example.
 
@@ -398,7 +398,7 @@ kubectl autoscale rs frontend --max=10 --min=3 --cpu-percent=50
 
 ### Deployment (recommended)
 
-[`Deployment`](/docs/concepts/workloads/controllers/deployment/) is an object which can own ReplicaSets and update
+[`Deployment`](/docs/kubernetes/en/concepts/workloads/controllers/deployment/) is an object which can own ReplicaSets and update
 them and their Pods via declarative, server-side rolling updates.
 While ReplicaSets can be used independently, today they're  mainly used by Deployments as a mechanism to orchestrate Pod
 creation, deletion and updates. When you use Deployments you don't have to worry about managing the ReplicaSets that
@@ -416,32 +416,32 @@ ReplicaSet delegates local container restarts to some agent on the node such as 
 
 ### Job
 
-Use a [`Job`](/docs/concepts/workloads/controllers/job/) instead of a ReplicaSet for Pods that are
+Use a [`Job`](/docs/kubernetes/en/concepts/workloads/controllers/job/) instead of a ReplicaSet for Pods that are
 expected to terminate on their own (that is, batch jobs).
 
 ### DaemonSet
 
-Use a [`DaemonSet`](/docs/concepts/workloads/controllers/daemonset/) instead of a ReplicaSet for Pods that provide a
+Use a [`DaemonSet`](/docs/kubernetes/en/concepts/workloads/controllers/daemonset/) instead of a ReplicaSet for Pods that provide a
 machine-level function, such as machine monitoring or machine logging.  These Pods have a lifetime that is tied
 to a machine lifetime: the Pod needs to be running on the machine before other Pods start, and are
 safe to terminate when the machine is otherwise ready to be rebooted/shutdown.
 
 ### ReplicationController
 
-ReplicaSets are the successors to [ReplicationControllers](/docs/concepts/workloads/controllers/replicationcontroller/).
+ReplicaSets are the successors to [ReplicationControllers](/docs/kubernetes/en/concepts/workloads/controllers/replicationcontroller/).
 The two serve the same purpose, and behave similarly, except that a ReplicationController does not support set-based
-selector requirements as described in the [labels user guide](/docs/concepts/overview/working-with-objects/labels/#label-selectors).
+selector requirements as described in the [labels user guide](/docs/kubernetes/en/concepts/overview/working-with-objects/labels/#label-selectors).
 As such, ReplicaSets are preferred over ReplicationControllers
 
 ## {{% heading "whatsnext" %}}
 
-* Learn about [Pods](/docs/concepts/workloads/pods).
-* Learn about [Deployments](/docs/concepts/workloads/controllers/deployment/).
-* [Run a Stateless Application Using a Deployment](/docs/tasks/run-application/run-stateless-application-deployment/),
+* Learn about [Pods](/docs/kubernetes/en/concepts/workloads/pods).
+* Learn about [Deployments](/docs/kubernetes/en/concepts/workloads/controllers/deployment/).
+* [Run a Stateless Application Using a Deployment](/docs/kubernetes/en/tasks/run-application/run-stateless-application-deployment/),
   which relies on ReplicaSets to work.
 * `ReplicaSet` is a top-level resource in the Kubernetes REST API.
   Read the {{< api-reference page="workload-resources/replica-set-v1" >}}
   object definition to understand the API for replica sets.
-* Read about [PodDisruptionBudget](/docs/concepts/workloads/pods/disruptions/) and how
+* Read about [PodDisruptionBudget](/docs/kubernetes/en/concepts/workloads/pods/disruptions/) and how
   you can use it to manage application availability during disruptions.
 

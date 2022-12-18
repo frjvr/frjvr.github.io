@@ -8,7 +8,7 @@ weight: 110
 
 This page shows how to use a Volume to communicate between two Containers running
 in the same Pod. See also how to allow processes to communicate by
-[sharing process namespace](/docs/tasks/configure-pod-container/share-process-namespace/)
+[sharing process namespace](/docs/kubernetes/en/tasks/configure-pod-container/share-process-namespace/)
 between containers.
 
 ## {{% heading "prerequisites" %}}
@@ -131,11 +131,11 @@ the shared Volume is lost.
 
 * Learn about [composite containers for modular architecture](https://www.slideshare.net/Docker/slideshare-burns).
 
-* See [Configuring a Pod to Use a Volume for Storage](/docs/tasks/configure-pod-container/configure-volume-storage/).
+* See [Configuring a Pod to Use a Volume for Storage](/docs/kubernetes/en/tasks/configure-pod-container/configure-volume-storage/).
 
-* See [Configure a Pod to share process namespace between containers in a Pod](/docs/tasks/configure-pod-container/share-process-namespace/)
+* See [Configure a Pod to share process namespace between containers in a Pod](/docs/kubernetes/en/tasks/configure-pod-container/share-process-namespace/)
 
-* See [Volume](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#volume-v1-core).
+* See [Volume](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#volume-v1-core).
 
-* See [Pod](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#pod-v1-core).
+* See [Pod](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#pod-v1-core).
 

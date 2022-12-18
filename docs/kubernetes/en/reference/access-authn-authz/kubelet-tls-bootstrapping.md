@@ -117,7 +117,7 @@ containing the signing certificate, for example
 ### Initial bootstrap authentication
 
 In order for the bootstrapping kubelet to connect to kube-apiserver and request a certificate, it must first authenticate to the server.
-You can use any [authenticator](/docs/reference/access-authn-authz/authentication/) that can authenticate the kubelet.
+You can use any [authenticator](/docs/kubernetes/en/reference/access-authn-authz/authentication/) that can authenticate the kubelet.
 
 While any authentication strategy can be used for the kubelet's initial
 bootstrap credentials, the following two authenticators are recommended for ease
@@ -137,14 +137,14 @@ A kubelet authenticating using bootstrap tokens is authenticated as a user in th
 
 As this feature matures, you
 should ensure tokens are bound to a Role Based Access Control (RBAC) policy
-which limits requests (using the [bootstrap token](/docs/reference/access-authn-authz/bootstrap-tokens/)) strictly to client
+which limits requests (using the [bootstrap token](/docs/kubernetes/en/reference/access-authn-authz/bootstrap-tokens/)) strictly to client
 requests related to certificate provisioning. With RBAC in place, scoping the
 tokens to a group allows for great flexibility. For example, you could disable a
 particular bootstrap group's access when you are done provisioning the nodes.
 
 #### Bootstrap tokens
 
-Bootstrap tokens are described in detail [here](/docs/reference/access-authn-authz/bootstrap-tokens/). These are tokens that are stored as secrets in the Kubernetes cluster,
+Bootstrap tokens are described in detail [here](/docs/kubernetes/en/reference/access-authn-authz/bootstrap-tokens/). These are tokens that are stored as secrets in the Kubernetes cluster,
 and then issued to the individual kubelet. You can use a single token for an entire cluster, or issue one per worker node.
 
 The process is two-fold:
@@ -157,7 +157,7 @@ From the kube-apiserver's perspective, however, the bootstrap token is special. 
 and grants anyone authenticating with that token special bootstrap rights, notably treating them as a member of the `system:bootstrappers` group. This fulfills a basic requirement
 for TLS bootstrapping.
 
-The details for creating the secret are available [here](/docs/reference/access-authn-authz/bootstrap-tokens/).
+The details for creating the secret are available [here](/docs/kubernetes/en/reference/access-authn-authz/bootstrap-tokens/).
 
 If you want to use bootstrap tokens, you must enable it on kube-apiserver with the flag:
 
@@ -187,7 +187,7 @@ values can be anything and the quoted group name should be as depicted:
 
 Add the `--token-auth-file=FILENAME` flag to the kube-apiserver command (in your
 systemd unit file perhaps) to enable the token file. See docs
-[here](/docs/reference/access-authn-authz/authentication/#static-token-file) for
+[here](/docs/kubernetes/en/reference/access-authn-authz/authentication/#static-token-file) for
 further details.
 
 ### Authorize kubelet to create CSR
@@ -309,7 +309,7 @@ roleRef:
 The `csrapproving` controller that ships as part of
 [kube-controller-manager](/docs/admin/kube-controller-manager/) and is enabled
 by default. The controller uses the
-[`SubjectAccessReview` API](/docs/reference/access-authn-authz/authorization/#checking-api-access) to
+[`SubjectAccessReview` API](/docs/kubernetes/en/reference/access-authn-authz/authorization/#checking-api-access) to
 determine if a given user is authorized to request a CSR, then approves based on
 the authorization outcome. To prevent conflicts with other approvers, the
 built-in approver doesn't explicitly deny CSRs. It only ignores unauthorized
@@ -411,7 +411,7 @@ feature flag on the kubelet (enabled by default).
 
 You can configure the kubelet to rotate its client certificates by creating new CSRs
 as its existing credentials expire. To enable this feature, use the `rotateCertificates`
-field of [kubelet configuration file](/docs/tasks/administer-cluster/kubelet-config-file/)
+field of [kubelet configuration file](/docs/kubernetes/en/tasks/administer-cluster/kubelet-config-file/)
 or pass the following command line argument to the kubelet (deprecated):
 
 ```
@@ -421,7 +421,7 @@ or pass the following command line argument to the kubelet (deprecated):
 Enabling `RotateKubeletServerCertificate` causes the kubelet **both** to request a serving
 certificate after bootstrapping its client credentials **and** to rotate that
 certificate. To enable this behavior, use the field `serverTLSBootstrap`  of 
-the [kubelet configuration file](/docs/tasks/administer-cluster/kubelet-config-file/)
+the [kubelet configuration file](/docs/kubernetes/en/tasks/administer-cluster/kubelet-config-file/)
 or pass the following command line argument to the kubelet (deprecated):
 
 ```

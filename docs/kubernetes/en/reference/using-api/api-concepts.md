@@ -23,7 +23,7 @@ Kubernetes supports efficient change notifications on resources via *watches*.
 Kubernetes also provides consistent list operations so that API clients can
 effectively cache, track, and synchronize the state of resources.
 
-You can view the [API reference](/docs/reference/kubernetes-api/) online,
+You can view the [API reference](/docs/kubernetes/en/reference/kubernetes-api/) online,
 or read on to learn about the API in general.
 
 <!-- body -->
@@ -39,7 +39,7 @@ API concepts:
 * For some resource types, the API includes one or more *sub-resources*, which are represented as URI paths below the resource
 
 Most Kubernetes API resource types are
-[objects](/docs/concepts/overview/working-with-objects/kubernetes-objects/#kubernetes-objects):
+[objects](/docs/kubernetes/en/concepts/overview/working-with-objects/kubernetes-objects/#kubernetes-objects):
 they represent a concrete instance of a concept on the cluster, like a
 pod or namespace. A smaller number of API resource types are *virtual* in
 that they often represent operations on objects, rather than objects, such
@@ -47,7 +47,7 @@ as a permission check
 (use a POST with a JSON-encoded body of `SubjectAccessReview` to the
 `subjectaccessreviews` resource), or the `eviction` sub-resource of a Pod
 (used to trigger
-[API-initiated eviction](/docs/concepts/scheduling-eviction/api-eviction/)).
+[API-initiated eviction](/docs/kubernetes/en/concepts/scheduling-eviction/api-eviction/)).
 
 ### Object names
 
@@ -105,7 +105,7 @@ a particular namespace with `GET /api/v1/namespaces/NAME`.
 * Namespace-scoped subresource: `GET /apis/GROUP/VERSION/namespaces/NAMESPACE/RESOURCETYPE/NAME/SUBRESOURCE`
 
 The verbs supported for each subresource will differ depending on the object -
-see the [API reference](/docs/reference/kubernetes-api/) for more information. It
+see the [API reference](/docs/kubernetes/en/reference/kubernetes-api/) for more information. It
 is not possible to access sub-resources across multiple resources - generally a new
 virtual resource type would be used if that becomes necessary.
 
@@ -227,7 +227,7 @@ encoded JSON. Retrieving all pods across all namespaces may result in a very lar
 response (10-20MB) and consume a large amount of server resources.
 
 Provided that you don't explicitly disable the `APIListChunking`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/), the
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/), the
 Kubernetes API server supports the ability to break a single large collection request
 into many smaller chunks while preserving the consistency of the total request. Each
 chunk can be returned sequentially which reduces both the total size of the request and
@@ -345,7 +345,7 @@ When you query the API for a particular type, all items returned by that query a
 of that type.
 For example, when you **list** Services, the collection response
 has `kind` set to
-[`ServiceList`](/docs/reference/kubernetes-api/service-resources/service-v1/#ServiceList); each item in that collection represents a single Service. For example:
+[`ServiceList`](/docs/kubernetes/en/reference/kubernetes-api/service-resources/service-v1/#ServiceList); each item in that collection represents a single Service. For example:
 
 ```
 GET /api/v1/services
@@ -372,7 +372,7 @@ GET /api/v1/services
 There are dozens of collection types (such as `PodList`, `ServiceList`,
 and `NodeList`) defined in the Kubernetes API.
 You can get more information about each collection type from the
-[Kubernetes API](/docs/reference/kubernetes-api/) documentation.
+[Kubernetes API](/docs/kubernetes/en/reference/kubernetes-api/) documentation.
 
 Some tools, such as `kubectl`, represent the Kubernetes collection
 mechanism slightly differently from the Kubernetes API itself.
@@ -493,7 +493,7 @@ Content-Type: application/json
 Not all API resource types support a Table response; for example, a
 {{< glossary_tooltip term_id="CustomResourceDefinition" text="CustomResourceDefinitions" >}}
 might not define field-to-table mappings, and an APIService that
-[extends the core Kubernetes API](/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/)
+[extends the core Kubernetes API](/docs/kubernetes/en/concepts/extend-kubernetes/api-extension/apiserver-aggregation/)
 might not serve Table responses at all. If you are implementing a client that
 uses the Table information and must work against all resource types, including
 extensions, you should make requests that specify multiple content types in the
@@ -520,7 +520,7 @@ format is supported, or the `406 Not acceptable` error if none of the media type
 requested are supported. All built-in resource types support the `application/json`
 media type.
 
-See the Kubernetes [API reference](/docs/reference/kubernetes-api/) for a list of
+See the Kubernetes [API reference](/docs/kubernetes/en/reference/kubernetes-api/) for a list of
 supported content types for each API.
 
 For example:
@@ -692,7 +692,7 @@ These situations are:
 
   {{< feature-state for_k8s_version="v1.25" state="beta" >}}
 
-Provided that the `ServerSideFieldValidation` [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) is enabled (disabled
+Provided that the `ServerSideFieldValidation` [feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) is enabled (disabled
 by default in 1.23 and 1.24, enabled by default starting in 1.25), you can take
 advantage of server side field validation to catch these unrecognized fields.
 
@@ -782,7 +782,7 @@ If the non-dry-run version of a request would trigger an admission controller th
 side effects, the request will be failed rather than risk an unwanted side effect. All
 built in admission control plugins support dry-run. Additionally, admission webhooks can
 declare in their
-[configuration object](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#validatingwebhook-v1-admissionregistration-k8s-io)
+[configuration object](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#validatingwebhook-v1-admissionregistration-k8s-io)
 that they do not have side effects, by setting their `sideEffects` field to `None`.
 
 {{< note >}}
@@ -813,7 +813,7 @@ request is made. Some of these fields are:
 
 * `name`: if `generateName` is set, `name` will have a unique random name
 * `creationTimestamp` / `deletionTimestamp`: records the time of creation/deletion
-* `UID`: [uniquely identifies](/docs/concepts/overview/working-with-objects/names/#uids) the object and is randomly generated (non-deterministic)
+* `UID`: [uniquely identifies](/docs/kubernetes/en/concepts/overview/working-with-objects/names/#uids) the object and is randomly generated (non-deterministic)
 * `resourceVersion`: tracks the persisted version of the object
 * Any field set by a mutating admission controller
 * For the `Service` resource: Ports or IP addresses that the kube-apiserver assigns to Service objects
@@ -835,18 +835,18 @@ rules:
   verbs: ["patch"]
 ```
 
-See [Authorization Overview](/docs/reference/access-authn-authz/authorization/).
+See [Authorization Overview](/docs/kubernetes/en/reference/access-authn-authz/authorization/).
 
 ## Server Side Apply
 
-Kubernetes' [Server Side Apply](/docs/reference/using-api/server-side-apply/)
+Kubernetes' [Server Side Apply](/docs/kubernetes/en/reference/using-api/server-side-apply/)
 feature allows the control plane to track managed fields for newly created objects.
 Server Side Apply provides a clear pattern for managing field conflicts,
 offers server-side `Apply` and `Update` operations, and replaces the
 client-side functionality of `kubectl apply`.
 
 The API verb for Server-Side Apply is **apply**.
-See [Server Side Apply](/docs/reference/using-api/server-side-apply/) for more details.
+See [Server Side Apply](/docs/kubernetes/en/reference/using-api/server-side-apply/) for more details.
 
 ## Resource versions
 
@@ -865,9 +865,9 @@ resource versions for greater-than or less-than relationships).
 Clients find resource versions in resources, including the resources from the response
 stream for a **watch**, or when using **list** to enumerate resources.
 
-[v1.meta/ObjectMeta](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#objectmeta-v1-meta) - The `metadata.resourceVersion` of a resource instance identifies the resource version the instance was last modified at.
+[v1.meta/ObjectMeta](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#objectmeta-v1-meta) - The `metadata.resourceVersion` of a resource instance identifies the resource version the instance was last modified at.
 
-[v1.meta/ListMeta](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#listmeta-v1-meta) - The `metadata.resourceVersion` of a resource collection (the response to a **list**) identifies the resource version at which the collection was constructed.
+[v1.meta/ListMeta](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#listmeta-v1-meta) - The `metadata.resourceVersion` of a resource collection (the response to a **list**) identifies the resource version at which the collection was constructed.
 
 ### `resourceVersion` parameters in query strings {#the-resourceversion-parameter}
 
@@ -966,8 +966,8 @@ Continue Token, Exact
 
 {{< note >}}
 When you **list** resources and receive a collection response, the response includes the
-[metadata](/docs/reference/generated/kubernetes-api/v1.21/#listmeta-v1-meta) of the collection as
-well as [object metadata](/docs/reference/generated/kubernetes-api/v1.21/#listmeta-v1-meta)
+[metadata](/docs/kubernetes/en/reference/generated/kubernetes-api/v1.21/#listmeta-v1-meta) of the collection as
+well as [object metadata](/docs/kubernetes/en/reference/generated/kubernetes-api/v1.21/#listmeta-v1-meta)
 for each item in that collection. For individual objects found within a collection response,
 `.metadata.resourceVersion` tracks when that object was last updated, and not how up-to-date
 the object is when served.

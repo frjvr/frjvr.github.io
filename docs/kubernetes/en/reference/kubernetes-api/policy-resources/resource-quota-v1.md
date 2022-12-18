@@ -62,7 +62,7 @@ ResourceQuotaSpec defines the desired hard limits to enforce for Quota.
 
 - **hard** (map[string]<a href="{{< ref "../common-definitions/quantity#Quantity" >}}">Quantity</a>)
 
-  hard is the set of desired hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/
+  hard is the set of desired hard limits for each named resource. More info: https://kubernetes.io/docs/kubernetes/en/concepts/policy/resource-quotas/
 
 - **scopeSelector** (ScopeSelector)
 
@@ -110,7 +110,7 @@ ResourceQuotaStatus defines the enforced hard limits and observed use.
 
 - **hard** (map[string]<a href="{{< ref "../common-definitions/quantity#Quantity" >}}">Quantity</a>)
 
-  Hard is the set of enforced hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/
+  Hard is the set of enforced hard limits for each named resource. More info: https://kubernetes.io/docs/kubernetes/en/concepts/policy/resource-quotas/
 
 - **used** (map[string]<a href="{{< ref "../common-definitions/quantity#Quantity" >}}">Quantity</a>)
 
@@ -138,7 +138,7 @@ ResourceQuotaList is a list of ResourceQuota items.
 
 - **items** ([]<a href="{{< ref "../policy-resources/resource-quota-v1#ResourceQuota" >}}">ResourceQuota</a>), required
 
-  Items is a list of ResourceQuota objects. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/
+  Items is a list of ResourceQuota objects. More info: https://kubernetes.io/docs/kubernetes/en/concepts/policy/resource-quotas/
 
 
 

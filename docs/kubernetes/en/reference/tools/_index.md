@@ -20,7 +20,7 @@ container runtimes.
 
 ## Dashboard
 
-[`Dashboard`](/docs/tasks/access-application-cluster/web-ui-dashboard/), the web-based user interface of Kubernetes, allows you to deploy containerized applications
+[`Dashboard`](/docs/kubernetes/en/tasks/access-application-cluster/web-ui-dashboard/), the web-based user interface of Kubernetes, allows you to deploy containerized applications
 to a Kubernetes cluster, troubleshoot them, and manage the cluster and its
 resources itself.
 

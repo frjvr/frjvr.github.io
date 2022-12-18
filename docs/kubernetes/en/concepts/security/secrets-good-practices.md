@@ -28,15 +28,15 @@ improve the security of confidential information in the cluster.
 By default, Secret objects are stored unencrypted in {{<glossary_tooltip
 term_id="etcd" text="etcd">}}. You should configure encryption of your Secret
 data in `etcd`. For instructions, refer to
-[Encrypt Secret Data at Rest](/docs/tasks/administer-cluster/encrypt-data/).
+[Encrypt Secret Data at Rest](/docs/kubernetes/en/tasks/administer-cluster/encrypt-data/).
 
 ### Configure least-privilege access to Secrets {#least-privilege-secrets}
 
 When planning your access control mechanism, such as Kubernetes
-{{<glossary_tooltip term_id="rbac" text="Role-based Access Control">}} [(RBAC)](/docs/reference/access-authn-authz/rbac/),
+{{<glossary_tooltip term_id="rbac" text="Role-based Access Control">}} [(RBAC)](/docs/kubernetes/en/reference/access-authn-authz/rbac/),
 consider the following guidelines for access to `Secret` objects. You should
 also follow the other guidelines in
-[RBAC good practices](/docs/concepts/security/rbac-good-practices).
+[RBAC good practices](/docs/kubernetes/en/concepts/security/rbac-good-practices).
 
 - **Components**: Restrict `watch` or `list` access to only the most
   privileged, system-level components. Only grant `get` access for Secrets if

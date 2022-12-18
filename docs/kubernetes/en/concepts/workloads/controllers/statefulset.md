@@ -34,8 +34,8 @@ In the above, stable is synonymous with persistence across Pod (re)scheduling.
 If an application doesn't require any stable identifiers or ordered deployment,
 deletion, or scaling, you should deploy your application using a workload object
 that provides a set of stateless replicas.
-[Deployment](/docs/concepts/workloads/controllers/deployment/) or
-[ReplicaSet](/docs/concepts/workloads/controllers/replicaset/) may be better suited to your stateless needs.
+[Deployment](/docs/kubernetes/en/concepts/workloads/controllers/deployment/) or
+[ReplicaSet](/docs/kubernetes/en/concepts/workloads/controllers/replicaset/) may be better suited to your stateless needs.
 
 ## Limitations
 
@@ -45,7 +45,7 @@ that provides a set of stateless replicas.
 * Deleting and/or scaling a StatefulSet down will *not* delete the volumes associated with the
   StatefulSet. This is done to ensure data safety, which is generally more valuable than an
   automatic purge of all related StatefulSet resources.
-* StatefulSets currently require a [Headless Service](/docs/concepts/services-networking/service/#headless-services)
+* StatefulSets currently require a [Headless Service](/docs/kubernetes/en/concepts/services-networking/service/#headless-services)
   to be responsible for the network identity of the Pods. You are responsible for creating this
   Service.
 * StatefulSets do not provide any guarantees on the termination of pods when a StatefulSet is
@@ -117,11 +117,11 @@ In the above example:
 * A Headless Service, named `nginx`, is used to control the network domain.
 * The StatefulSet, named `web`, has a Spec that indicates that 3 replicas of the nginx container will be launched in unique Pods.
 * The `volumeClaimTemplates` will provide stable storage using
-  [PersistentVolumes](/docs/concepts/storage/persistent-volumes/) provisioned by a
+  [PersistentVolumes](/docs/kubernetes/en/concepts/storage/persistent-volumes/) provisioned by a
   PersistentVolume Provisioner.
 
 The name of a StatefulSet object must be a valid
-[DNS label](/docs/concepts/overview/working-with-objects/names#dns-label-names).
+[DNS label](/docs/kubernetes/en/concepts/overview/working-with-objects/names#dns-label-names).
 
 ### Pod Selector
 
@@ -132,7 +132,7 @@ validation error during StatefulSet creation.
 ### Volume Claim Templates
 
 You can set the `.spec.volumeClaimTemplates` which can provide stable storage using
-[PersistentVolumes](/docs/concepts/storage/persistent-volumes/) provisioned by a PersistentVolume
+[PersistentVolumes](/docs/kubernetes/en/concepts/storage/persistent-volumes/) provisioned by a PersistentVolume
 Provisioner.
 
 
@@ -144,7 +144,7 @@ Provisioner.
 created Pod should be running and ready without any of its containers crashing, for it to be considered available.
 This is used to check progression of a rollout when using a [Rolling Update](#rolling-updates) strategy.
 This field defaults to 0 (the Pod will be considered available as soon as it is ready). To learn more about when
-a Pod is considered ready, see [Container Probes](/docs/concepts/workloads/pods/pod-lifecycle/#container-probes).
+a Pod is considered ready, see [Container Probes](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#container-probes).
 
 ## Pod Identity
 
@@ -165,7 +165,7 @@ pods will be assigned ordinals from 0 up through N-1.
 `.spec.ordinals` is an optional field that allows you to configure the integer
 ordinals assigned to each Pod. It defaults to nil. You must enable the
 `StatefulSetStartOrdinal`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/) to
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) to
 use this field. Once enabled, you can configure the following options:
 
 * `.spec.ordinals.start`: If the `.spec.ordinals.start` field is set, Pods will
@@ -178,7 +178,7 @@ Each Pod in a StatefulSet derives its hostname from the name of the StatefulSet
 and the ordinal of the Pod. The pattern for the constructed hostname
 is `$(statefulset name)-$(ordinal)`. The example above will create three Pods
 named `web-0,web-1,web-2`.
-A StatefulSet can use a [Headless Service](/docs/concepts/services-networking/service/#headless-services)
+A StatefulSet can use a [Headless Service](/docs/kubernetes/en/concepts/services-networking/service/#headless-services)
 to control the domain of its Pods. The domain managed by this Service takes the form:
 `$(service name).$(namespace).svc.cluster.local`, where "cluster.local" is the
 cluster domain.
@@ -199,7 +199,7 @@ If you need to discover Pods promptly after they are created, you have a few opt
   config map for CoreDNS, which currently caches for 30 seconds).
 
 As mentioned in the [limitations](#limitations) section, you are responsible for
-creating the [Headless Service](/docs/concepts/services-networking/service/#headless-services)
+creating the [Headless Service](/docs/kubernetes/en/concepts/services-networking/service/#headless-services)
 responsible for the network identity of the pods.
 
 Here are some examples of choices for Cluster Domain, Service name,
@@ -213,7 +213,7 @@ Cluster Domain | Service (ns/name) | StatefulSet (ns/name)  | StatefulSet Domain
 
 {{< note >}}
 Cluster Domain will be set to `cluster.local` unless
-[otherwise configured](/docs/concepts/services-networking/dns-pod-service/).
+[otherwise configured](/docs/kubernetes/en/concepts/services-networking/dns-pod-service/).
 {{< /note >}}
 
 ### Stable Storage
@@ -243,11 +243,11 @@ the StatefulSet.
 
 The StatefulSet should not specify a `pod.Spec.TerminationGracePeriodSeconds` of 0. This practice
 is unsafe and strongly discouraged. For further explanation, please refer to
-[force deleting StatefulSet Pods](/docs/tasks/run-application/force-delete-stateful-set-pod/).
+[force deleting StatefulSet Pods](/docs/kubernetes/en/tasks/run-application/force-delete-stateful-set-pod/).
 
 When the nginx example above is created, three Pods will be deployed in the order
 web-0, web-1, web-2. web-1 will not be deployed before web-0 is
-[Running and Ready](/docs/concepts/workloads/pods/pod-lifecycle/), and web-2 will not be deployed until
+[Running and Ready](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/), and web-2 will not be deployed until
 web-1 is Running and Ready. If web-0 should fail, after web-1 is Running and Ready, but before
 web-2 is launched, web-2 will not be launched until web-0 is successfully relaunched and
 becomes Running and Ready.
@@ -333,7 +333,7 @@ unavailable Pod in the range `0` to `replicas - 1`, it will be counted towards
 {{< note >}}
 The `maxUnavailable` field is in Alpha stage and it is honored only by API servers
 that are running with the `MaxUnavailableStatefulSet`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/)
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/)
 enabled.
 {{< /note >}}
 
@@ -364,7 +364,7 @@ StatefulSet will then begin to recreate the Pods using the reverted template.
 
 The optional `.spec.persistentVolumeClaimRetentionPolicy` field controls if
 and how PVCs are deleted during the lifecycle of a StatefulSet. You must enable the
-`StatefulSetAutoDeletePVC` [feature gate](/docs/reference/command-line-tools-reference/feature-gates/)
+`StatefulSetAutoDeletePVC` [feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/)
 on the API server and the controller manager to use this field. 
 Once enabled, there are two policies you can configure for each StatefulSet:
 
@@ -410,7 +410,7 @@ spec:
 ```
 
 The StatefulSet {{<glossary_tooltip text="controller" term_id="controller">}} adds
-[owner references](/docs/concepts/overview/working-with-objects/owners-dependents/#owner-references-in-object-specifications)
+[owner references](/docs/kubernetes/en/concepts/overview/working-with-objects/owners-dependents/#owner-references-in-object-specifications)
 to its PVCs, which are then deleted by the {{<glossary_tooltip text="garbage collector"
 term_id="garbage-collection">}} after the Pod is terminated. This enables the Pod to
 cleanly unmount all volumes before the PVCs are deleted (and before the backing PV and
@@ -446,7 +446,7 @@ based on a manifest (for example: by running `kubectl apply -f
 statefulset.yaml`), then applying that manifest overwrites the manual scaling
 that you previously did.
 
-If a [HorizontalPodAutoscaler](/docs/tasks/run-application/horizontal-pod-autoscale/)
+If a [HorizontalPodAutoscaler](/docs/kubernetes/en/tasks/run-application/horizontal-pod-autoscale/)
 (or any similar API for horizontal scaling) is managing scaling for a
 Statefulset, don't set `.spec.replicas`. Instead, allow the Kubernetes
 {{<glossary_tooltip text="control plane" term_id="control-plane" >}} to manage
@@ -454,18 +454,18 @@ the `.spec.replicas` field automatically.
 
 ## {{% heading "whatsnext" %}}
 
-* Learn about [Pods](/docs/concepts/workloads/pods).
+* Learn about [Pods](/docs/kubernetes/en/concepts/workloads/pods).
 * Find out how to use StatefulSets
-  * Follow an example of [deploying a stateful application](/docs/tutorials/stateful-application/basic-stateful-set/).
-  * Follow an example of [deploying Cassandra with Stateful Sets](/docs/tutorials/stateful-application/cassandra/).
-  * Follow an example of [running a replicated stateful application](/docs/tasks/run-application/run-replicated-stateful-application/).
-  * Learn how to [scale a StatefulSet](/docs/tasks/run-application/scale-stateful-set/).
-  * Learn what's involved when you [delete a StatefulSet](/docs/tasks/run-application/delete-stateful-set/).
-  * Learn how to [configure a Pod to use a volume for storage](/docs/tasks/configure-pod-container/configure-volume-storage/).
-  * Learn how to [configure a Pod to use a PersistentVolume for storage](/docs/tasks/configure-pod-container/configure-persistent-volume-storage/).
+  * Follow an example of [deploying a stateful application](/docs/kubernetes/en/tutorials/stateful-application/basic-stateful-set/).
+  * Follow an example of [deploying Cassandra with Stateful Sets](/docs/kubernetes/en/tutorials/stateful-application/cassandra/).
+  * Follow an example of [running a replicated stateful application](/docs/kubernetes/en/tasks/run-application/run-replicated-stateful-application/).
+  * Learn how to [scale a StatefulSet](/docs/kubernetes/en/tasks/run-application/scale-stateful-set/).
+  * Learn what's involved when you [delete a StatefulSet](/docs/kubernetes/en/tasks/run-application/delete-stateful-set/).
+  * Learn how to [configure a Pod to use a volume for storage](/docs/kubernetes/en/tasks/configure-pod-container/configure-volume-storage/).
+  * Learn how to [configure a Pod to use a PersistentVolume for storage](/docs/kubernetes/en/tasks/configure-pod-container/configure-persistent-volume-storage/).
 * `StatefulSet` is a top-level resource in the Kubernetes REST API.
   Read the {{< api-reference page="workload-resources/stateful-set-v1" >}}
   object definition to understand the API for stateful sets.
-* Read about [PodDisruptionBudget](/docs/concepts/workloads/pods/disruptions/) and how
+* Read about [PodDisruptionBudget](/docs/kubernetes/en/concepts/workloads/pods/disruptions/) and how
   you can use it to manage application availability during disruptions.
 

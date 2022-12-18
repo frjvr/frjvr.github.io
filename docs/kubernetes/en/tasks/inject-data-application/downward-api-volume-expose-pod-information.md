@@ -7,13 +7,13 @@ weight: 40
 <!-- overview -->
 
 This page shows how a Pod can use a
-[`downwardAPI` volume](/docs/concepts/storage/volumes/#downwardapi),
+[`downwardAPI` volume](/docs/kubernetes/en/concepts/storage/volumes/#downwardapi),
 to expose information about itself to containers running in the Pod.
 A `downwardAPI` volume can expose Pod fields and container fields.
 
 In Kubernetes, there are two ways to expose Pod and container fields to a running container:
 
-* [Environment variables](/docs/tasks/inject-data-application/environment-variable-expose-pod-information/)
+* [Environment variables](/docs/kubernetes/en/tasks/inject-data-application/environment-variable-expose-pod-information/)
 * Volume files, as explained in this task
 
 Together, these two ways of exposing Pod and container fields are called the
@@ -135,7 +135,7 @@ atomically using [rename(2)](http://man7.org/linux/man-pages/man2/rename.2.html)
 
 {{< note >}}
 A container using Downward API as a
-[subPath](/docs/concepts/storage/volumes/#using-subpath) volume mount will not
+[subPath](/docs/kubernetes/en/concepts/storage/volumes/#using-subpath) volume mount will not
 receive Downward API updates.
 {{< /note >}}
 
@@ -151,14 +151,14 @@ The preceding exercise, you made Pod-level fields accessible using the
 downward API.
 In this next exercise, you are going to pass fields that are part of the Pod
 definition, but taken from the specific
-[container](/docs/reference/kubernetes-api/workload-resources/pod-v1/#Container)
+[container](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/pod-v1/#Container)
 rather than from the Pod overall. Here is a manifest for a Pod that again has
 just one container:
 
 {{< codenew file="pods/inject/dapi-volume-resources.yaml" >}}
 
 In the manifest, you can see that the Pod has a
-[`downwardAPI` volume](/docs/concepts/storage/volumes/#downwardapi),
+[`downwardAPI` volume](/docs/kubernetes/en/concepts/storage/volumes/#downwardapi),
 and that the single container in that Pod mounts the volume at `/etc/podinfo`.
 
 Look at the `items` array under `downwardAPI`. Each element of the array
@@ -198,22 +198,22 @@ You can use similar commands to view the `cpu_request`, `mem_limit` and
 
 You can project keys to specific paths and specific permissions on a per-file
 basis. For more information, see
-[Secrets](/docs/concepts/configuration/secret/).
+[Secrets](/docs/kubernetes/en/concepts/configuration/secret/).
 
 ## {{% heading "whatsnext" %}}
 
-* Read the [`spec`](/docs/reference/kubernetes-api/workload-resources/pod-v1/#PodSpec)
+* Read the [`spec`](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/pod-v1/#PodSpec)
   API definition for Pod. This includes the definition of Container (part of Pod).
-* Read the list of [available fields](/docs/concepts/workloads/pods/downward-api/#available-fields) that you
+* Read the list of [available fields](/docs/kubernetes/en/concepts/workloads/pods/downward-api/#available-fields) that you
   can expose using the downward API.
 
 Read about volumes in the legacy API reference:
-* Check the [`Volume`](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#volume-v1-core)
+* Check the [`Volume`](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#volume-v1-core)
   API definition which defines a generic volume in a Pod for containers to access.
-* Check the [`DownwardAPIVolumeSource`](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#downwardapivolumesource-v1-core)
+* Check the [`DownwardAPIVolumeSource`](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#downwardapivolumesource-v1-core)
   API definition which defines a volume that contains Downward API information.
-* Check the [`DownwardAPIVolumeFile`](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#downwardapivolumefile-v1-core)
+* Check the [`DownwardAPIVolumeFile`](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#downwardapivolumefile-v1-core)
   API definition which contains references to object or resource fields for
   populating a file in the Downward API volume.
-* Check the [`ResourceFieldSelector`](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#resourcefieldselector-v1-core)
+* Check the [`ResourceFieldSelector`](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#resourcefieldselector-v1-core)
   API definition which specifies the container resources and their output format.

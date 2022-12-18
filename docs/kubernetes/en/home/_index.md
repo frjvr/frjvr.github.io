@@ -45,7 +45,7 @@ cards:
   title: Look up reference information
   description: Browse terminology, command line syntax, API resource types, and setup tool documentation.
   button: View Reference
-  button_path: /docs/kubernetes/docs/reference
+  button_path: /docs/kubernetes/docs/kubernetes/en/reference
   title: K8s Release Notes
   description: If you are installing Kubernetes or upgrading to the newest version, refer to the current release notes.
   button: "Download Kubernetes"

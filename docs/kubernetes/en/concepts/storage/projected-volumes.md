@@ -10,7 +10,7 @@ weight: 21 # just after persistent volumes
 
 <!-- overview -->
 
-This document describes _projected volumes_ in Kubernetes. Familiarity with [volumes](/docs/concepts/storage/volumes/) is suggested.
+This document describes _projected volumes_ in Kubernetes. Familiarity with [volumes](/docs/kubernetes/en/concepts/storage/volumes/) is suggested.
 
 <!-- body -->
 
@@ -20,9 +20,9 @@ A `projected` volume maps several existing volume sources into the same director
 
 Currently, the following types of volume sources can be projected:
 
-* [`secret`](/docs/concepts/storage/volumes/#secret)
-* [`downwardAPI`](/docs/concepts/storage/volumes/#downwardapi)
-* [`configMap`](/docs/concepts/storage/volumes/#configmap)
+* [`secret`](/docs/kubernetes/en/concepts/storage/volumes/#secret)
+* [`downwardAPI`](/docs/kubernetes/en/concepts/storage/volumes/#downwardapi)
+* [`configMap`](/docs/kubernetes/en/concepts/storage/volumes/#configmap)
 * [`serviceAccountToken`](#serviceaccounttoken)
 
 All sources are required to be in the same namespace as the Pod. For more details,
@@ -46,14 +46,14 @@ parameters are nearly the same with two exceptions:
   for each individual projection.
 
 ## serviceAccountToken projected volumes {#serviceaccounttoken}
-You can inject the token for the current [service account](/docs/reference/access-authn-authz/authentication/#service-account-tokens)
+You can inject the token for the current [service account](/docs/kubernetes/en/reference/access-authn-authz/authentication/#service-account-tokens)
 into a Pod at a specified path. For example:
 
 {{< codenew file="pods/storage/projected-service-account-token.yaml" >}}
 
 The example Pod has a projected volume containing the injected service account
 token. Containers in this Pod can use that token to access the Kubernetes API
-server, authenticating with the identity of [the pod's ServiceAccount](/docs/tasks/configure-pod-container/configure-service-account/).
+server, authenticating with the identity of [the pod's ServiceAccount](/docs/kubernetes/en/tasks/configure-pod-container/configure-service-account/).
 The `audience` field contains the intended audience of the
 token. A recipient of the token must identify itself with an identifier specified
 in the audience of the token, and otherwise should reject the token. This field
@@ -66,7 +66,7 @@ option for the API server. The `path` field specifies a relative path to the mou
 of the projected volume.
 
 {{< note >}}
-A container using a projected volume source as a [`subPath`](/docs/concepts/storage/volumes/#using-subpath)
+A container using a projected volume source as a [`subPath`](/docs/kubernetes/en/concepts/storage/volumes/#using-subpath)
 volume mount will not receive updates for those volume sources.
 {{< /note >}}
 
@@ -77,14 +77,14 @@ The [proposal](https://git.k8s.io/enhancements/keps/sig-storage/2451-service-acc
 ### Linux
 
 In Linux pods that have a projected volume and `RunAsUser` set in the Pod
-[`SecurityContext`](/docs/reference/kubernetes-api/workload-resources/pod-v1/#security-context),
+[`SecurityContext`](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/pod-v1/#security-context),
 the projected files have the correct ownership set including container user
 ownership.
 
 When all containers in a pod have the same `runAsUser` set in their
-[`PodSecurityContext`](/docs/reference/kubernetes-api/workload-resources/pod-v1/#security-context)
+[`PodSecurityContext`](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/pod-v1/#security-context)
 or container
-[`SecurityContext`](/docs/reference/kubernetes-api/workload-resources/pod-v1/#security-context-1),
+[`SecurityContext`](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/pod-v1/#security-context-1),
 then the kubelet ensures that the contents of the `serviceAccountToken` volume are owned by that user,
 and the token file has its permission mode set to `0600`.
 

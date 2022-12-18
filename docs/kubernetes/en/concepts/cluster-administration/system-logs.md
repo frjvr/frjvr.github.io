@@ -22,7 +22,7 @@ scheduler decisions).
 klog is the Kubernetes logging library. [klog](https://github.com/kubernetes/klog)
 generates log messages for the Kubernetes system components.
 
-For more information about klog configuration, see the [Command line tool reference](/docs/reference/command-line-tools-reference/).
+For more information about klog configuration, see the [Command line tool reference](/docs/kubernetes/en/reference/command-line-tools-reference/).
 
 Kubernetes is in the process of simplifying logging in its components.
 The following klog command line flags
@@ -170,7 +170,7 @@ I0404 18:03:31.171962  452150 logger.go:95] "another runtime" duration="1m0s"
 
 {{<warning >}}
 JSON output does not support many standard klog flags. For list of unsupported klog flags, see the
-[Command line tool reference](/docs/reference/command-line-tools-reference/).
+[Command line tool reference](/docs/kubernetes/en/reference/command-line-tools-reference/).
 
 Not all logs are guaranteed to be written in JSON format (for example, during process start).
 If you intend to parse logs, make sure you can handle log lines that are not JSON as well.
@@ -233,7 +233,7 @@ The `logrotate` tool rotates logs daily, or once the log size is greater than 10
 
 ## {{% heading "whatsnext" %}}
 
-* Read about the [Kubernetes Logging Architecture](/docs/concepts/cluster-administration/logging/)
+* Read about the [Kubernetes Logging Architecture](/docs/kubernetes/en/concepts/cluster-administration/logging/)
 * Read about [Structured Logging](https://github.com/kubernetes/enhancements/tree/master/keps/sig-instrumentation/1602-structured-logging)
 * Read about [Contextual Logging](https://github.com/kubernetes/enhancements/tree/master/keps/sig-instrumentation/3077-contextual-logging)
 * Read about [deprecation of klog flags](https://github.com/kubernetes/enhancements/tree/master/keps/sig-instrumentation/2845-deprecate-klog-specific-flags-in-k8s-components)

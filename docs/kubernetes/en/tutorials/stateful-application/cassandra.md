@@ -13,7 +13,7 @@ In this example, a custom Cassandra seed provider lets the database discover new
 
 *StatefulSets* make it easier to deploy stateful applications into your Kubernetes cluster.
 For more information on the features used in this tutorial, see
-[StatefulSet](/docs/concepts/workloads/controllers/statefulset/).
+[StatefulSet](/docs/kubernetes/en/concepts/workloads/controllers/statefulset/).
 
 {{< note >}}
 Cassandra and Kubernetes both use the term _node_ to mean a member of a cluster. In this
@@ -93,7 +93,7 @@ cassandra   ClusterIP   None         <none>        9042/TCP   45s
 ```
 
 If you don't see a Service named `cassandra`, that means creation failed. Read
-[Debug Services](/docs/tasks/debug/debug-application/debug-service/)
+[Debug Services](/docs/kubernetes/en/tasks/debug/debug-application/debug-service/)
 for help troubleshooting common issues.
 
 ## Using a StatefulSet to create a Cassandra ring
@@ -283,7 +283,7 @@ By using environment variables you can change values that are inserted into `cas
 ## {{% heading "whatsnext" %}}
 
 
-* Learn how to [Scale a StatefulSet](/docs/tasks/run-application/scale-stateful-set/).
+* Learn how to [Scale a StatefulSet](/docs/kubernetes/en/tasks/run-application/scale-stateful-set/).
 * Learn more about the [*KubernetesSeedProvider*](https://github.com/kubernetes/examples/blob/master/cassandra/java/src/main/java/io/k8s/cassandra/KubernetesSeedProvider.java)
 * See more custom [Seed Provider Configurations](https://git.k8s.io/examples/cassandra/java/README.md)
 

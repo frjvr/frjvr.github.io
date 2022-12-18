@@ -10,7 +10,7 @@ weight: 70
 
 {{< feature-state for_k8s_version="v1.14" state="beta" >}}
 
-[kube-scheduler](/docs/concepts/scheduling-eviction/kube-scheduler/#kube-scheduler)
+[kube-scheduler](/docs/kubernetes/en/concepts/scheduling-eviction/kube-scheduler/#kube-scheduler)
 is the Kubernetes default scheduler. It is responsible for placement of Pods
 on Nodes in a cluster.
 
@@ -43,7 +43,7 @@ If you set `percentageOfNodesToScore` above 100, kube-scheduler acts as if you
 had set a value of 100.
 
 To change the value, edit the
-[kube-scheduler configuration file](/docs/reference/config-api/kube-scheduler-config.v1beta3/)
+[kube-scheduler configuration file](/docs/kubernetes/en/reference/config-api/kube-scheduler-config.v1beta3/)
 and then restart the scheduler.
 In many cases, the configuration file can be found at `/etc/kubernetes/config/kube-scheduler.yaml`.
 
@@ -66,7 +66,7 @@ of all the nodes in your cluster. The kube-scheduler converts this into an
 integer number of nodes. During scheduling, if the kube-scheduler has identified
 enough feasible nodes to exceed the configured percentage, the kube-scheduler
 stops searching for more feasible nodes and moves on to the
-[scoring phase](/docs/concepts/scheduling-eviction/kube-scheduler/#kube-scheduler-implementation).
+[scoring phase](/docs/kubernetes/en/concepts/scheduling-eviction/kube-scheduler/#kube-scheduler-implementation).
 
 [How the scheduler iterates over Nodes](#how-the-scheduler-iterates-over-nodes)
 describes the process in detail.
@@ -161,5 +161,5 @@ After going over all the Nodes, it goes back to Node 1.
 
 ## {{% heading "whatsnext" %}}
 
-* Check the [kube-scheduler configuration reference (v1beta3)](/docs/reference/config-api/kube-scheduler-config.v1beta3/)
+* Check the [kube-scheduler configuration reference (v1beta3)](/docs/kubernetes/en/reference/config-api/kube-scheduler-config.v1beta3/)
 

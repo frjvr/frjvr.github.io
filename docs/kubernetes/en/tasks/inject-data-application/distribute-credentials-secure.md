@@ -247,11 +247,11 @@ This functionality is available in Kubernetes v1.6 and later.
 
 ### References
 
-* [Secret](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#secret-v1-core)
-* [Volume](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#volume-v1-core)
-* [Pod](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#pod-v1-core)
+* [Secret](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#secret-v1-core)
+* [Volume](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#volume-v1-core)
+* [Pod](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#pod-v1-core)
 
 ## {{% heading "whatsnext" %}}
 
-* Learn more about [Secrets](/docs/concepts/configuration/secret/).
-* Learn about [Volumes](/docs/concepts/storage/volumes/).
+* Learn more about [Secrets](/docs/kubernetes/en/concepts/configuration/secret/).
+* Learn about [Volumes](/docs/kubernetes/en/concepts/storage/volumes/).

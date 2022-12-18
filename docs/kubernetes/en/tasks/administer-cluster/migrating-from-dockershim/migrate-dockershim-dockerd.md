@@ -27,7 +27,7 @@ lets you use Docker Engine through the {{<glossary_tooltip term_id="cri" text="C
 
 {{<note>}}
 If you already use `cri-dockerd`, you aren't affected by the dockershim removal.
-Before you begin, [Check whether your nodes use the dockershim](/docs/tasks/administer-cluster/migrating-from-dockershim/find-out-runtime-you-use/).
+Before you begin, [Check whether your nodes use the dockershim](/docs/kubernetes/en/tasks/administer-cluster/migrating-from-dockershim/find-out-runtime-you-use/).
 {{</note>}}
 
 If you want to migrate to `cri-dockerd` so that you can continue using Docker
@@ -49,7 +49,7 @@ to `cri-dockerd`.
 
 *   [`cri-dockerd`](https://github.com/mirantis/cri-dockerd#build-and-install)
     installed and started on each node.
-*   A [network plugin](/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/).
+*   A [network plugin](/docs/kubernetes/en/concepts/extend-kubernetes/compute-storage-net/network-plugins/).
 
 ## Cordon and drain the node
 
@@ -104,7 +104,7 @@ systemctl restart kubelet
 ## Verify that the node is healthy
 
 To check whether the node uses the `cri-dockerd` endpoint, follow the
-instructions in [Find out which runtime you use](/docs/tasks/administer-cluster/migrating-from-dockershim/find-out-runtime-you-use/).
+instructions in [Find out which runtime you use](/docs/kubernetes/en/tasks/administer-cluster/migrating-from-dockershim/find-out-runtime-you-use/).
 The `--container-runtime-endpoint` flag for the kubelet should be `unix:///var/run/cri-dockerd.sock`.
 
 ## Uncordon the node
@@ -118,4 +118,4 @@ kubectl uncordon <NODE_NAME>
 ## {{% heading "whatsnext" %}}
 
 *   Read the [dockershim removal FAQ](/dockershim/).
-*   [Learn how to migrate from Docker Engine with dockershim to containerd](/docs/tasks/administer-cluster/migrating-from-dockershim/change-runtime-containerd/).
+*   [Learn how to migrate from Docker Engine with dockershim to containerd](/docs/kubernetes/en/tasks/administer-cluster/migrating-from-dockershim/change-runtime-containerd/).

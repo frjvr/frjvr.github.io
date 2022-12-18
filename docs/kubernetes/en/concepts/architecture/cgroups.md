@@ -11,7 +11,7 @@ constrain resources that are allocated to processes.
 
 The {{< glossary_tooltip text="kubelet" term_id="kubelet" >}} and the
 underlying container runtime need to interface with cgroups to enforce
-[resource management for pods and containers](/docs/concepts/configuration/manage-resources-containers/) which
+[resource management for pods and containers](/docs/kubernetes/en/concepts/configuration/manage-resources-containers/) which
 includes cpu/memory requests and limits for containerized workloads.
 
 There are two versions of cgroups in Linux: cgroup v1 and cgroup v2. cgroup v2 is
@@ -58,7 +58,7 @@ cgroup v2 has the following requirements:
 * Container runtime supports cgroup v2. For example:
   * [containerd](https://containerd.io/) v1.4 and later
   * [cri-o](https://cri-o.io/) v1.20 and later
-* The kubelet and the container runtime are configured to use the [systemd cgroup driver](/docs/setup/production-environment/container-runtimes#systemd-cgroup-driver)
+* The kubelet and the container runtime are configured to use the [systemd cgroup driver](/docs/kubernetes/en/setup/production-environment/container-runtimes#systemd-cgroup-driver)
 
 ### Linux Distribution cgroup v2 support
 
@@ -122,5 +122,5 @@ For cgroup v1, the output is `tmpfs.`
 ## {{% heading "whatsnext" %}}
 
 - Learn more about [cgroups](https://man7.org/linux/man-pages/man7/cgroups.7.html)
-- Learn more about [container runtime](/docs/concepts/architecture/cri)
-- Learn more about [cgroup drivers](/docs/setup/production-environment/container-runtimes#cgroup-drivers)
+- Learn more about [container runtime](/docs/kubernetes/en/concepts/architecture/cri)
+- Learn more about [cgroup drivers](/docs/kubernetes/en/setup/production-environment/container-runtimes#cgroup-drivers)

@@ -49,7 +49,7 @@ heterogeneous node configurations, see [Scheduling](#scheduling) below.
 {{< /note >}}
 
 The configurations have a corresponding `handler` name, referenced by the RuntimeClass. The
-handler must be a valid [DNS label name](/docs/concepts/overview/working-with-objects/names/#dns-label-names).
+handler must be a valid [DNS label name](/docs/kubernetes/en/concepts/overview/working-with-objects/names/#dns-label-names).
 
 ### 2. Create the corresponding RuntimeClass resources
 
@@ -72,12 +72,12 @@ handler: myconfiguration
 ```
 
 The name of a RuntimeClass object must be a valid
-[DNS subdomain name](/docs/concepts/overview/working-with-objects/names#dns-subdomain-names).
+[DNS subdomain name](/docs/kubernetes/en/concepts/overview/working-with-objects/names#dns-subdomain-names).
 
 {{< note >}}
 It is recommended that RuntimeClass write operations (create/update/patch/delete) be
 restricted to the cluster administrator. This is typically the default. See
-[Authorization Overview](/docs/reference/access-authn-authz/authorization/) for more details.
+[Authorization Overview](/docs/kubernetes/en/reference/access-authn-authz/authorization/) for more details.
 {{< /note >}}
 
 ## Usage
@@ -97,8 +97,8 @@ spec:
 
 This will instruct the kubelet to use the named RuntimeClass to run this pod. If the named
 RuntimeClass does not exist, or the CRI cannot run the corresponding handler, the pod will enter the
-`Failed` terminal [phase](/docs/concepts/workloads/pods/pod-lifecycle/#pod-phase). Look for a
-corresponding [event](/docs/tasks/debug/debug-application/debug-running-pod/) for an
+`Failed` terminal [phase](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#pod-phase). Look for a
+corresponding [event](/docs/kubernetes/en/tasks/debug/debug-application/debug-running-pod/) for an
 error message.
 
 If no `runtimeClassName` is specified, the default RuntimeHandler will be used, which is equivalent
@@ -106,7 +106,7 @@ to the behavior when the RuntimeClass feature is disabled.
 
 ### CRI Configuration
 
-For more details on setting up CRI runtimes, see [CRI installation](/docs/setup/production-environment/container-runtimes/).
+For more details on setting up CRI runtimes, see [CRI installation](/docs/kubernetes/en/setup/production-environment/container-runtimes/).
 
 #### {{< glossary_tooltip term_id="containerd" >}}
 
@@ -153,7 +153,7 @@ with the pod's tolerations in admission, effectively taking the union of the set
 by each.
 
 To learn more about configuring the node selector and tolerations, see
-[Assigning Pods to Nodes](/docs/concepts/scheduling-eviction/assign-pod-node/).
+[Assigning Pods to Nodes](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node/).
 
 ### Pod Overhead
 
@@ -170,6 +170,6 @@ are accounted for in Kubernetes.
 
 - [RuntimeClass Design](https://github.com/kubernetes/enhancements/blob/master/keps/sig-node/585-runtime-class/README.md)
 - [RuntimeClass Scheduling Design](https://github.com/kubernetes/enhancements/blob/master/keps/sig-node/585-runtime-class/README.md#runtimeclass-scheduling)
-- Read about the [Pod Overhead](/docs/concepts/scheduling-eviction/pod-overhead/) concept
+- Read about the [Pod Overhead](/docs/kubernetes/en/concepts/scheduling-eviction/pod-overhead/) concept
 - [PodOverhead Feature Design](https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/688-pod-overhead)
 

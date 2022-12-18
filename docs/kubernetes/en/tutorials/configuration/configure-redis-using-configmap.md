@@ -8,7 +8,7 @@ content_type: tutorial
 
 <!-- overview -->
 
-This page provides a real world example of how to configure Redis using a ConfigMap and builds upon the [Configure a Pod to Use a ConfigMap](/docs/tasks/configure-pod-container/configure-pod-configmap/) task. 
+This page provides a real world example of how to configure Redis using a ConfigMap and builds upon the [Configure a Pod to Use a ConfigMap](/docs/kubernetes/en/tasks/configure-pod-container/configure-pod-configmap/) task. 
 
 
 
@@ -27,7 +27,7 @@ This page provides a real world example of how to configure Redis using a Config
 {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
 
 * The example shown on this page works with `kubectl` 1.14 and above.
-* Understand [Configure a Pod to Use a ConfigMap](/docs/tasks/configure-pod-container/configure-pod-configmap/).
+* Understand [Configure a Pod to Use a ConfigMap](/docs/kubernetes/en/tasks/configure-pod-container/configure-pod-configmap/).
 
 
 
@@ -250,4 +250,4 @@ kubectl delete pod/redis configmap/example-redis-config
 ## {{% heading "whatsnext" %}}
 
 
-* Learn more about [ConfigMaps](/docs/tasks/configure-pod-container/configure-pod-configmap/).
+* Learn more about [ConfigMaps](/docs/kubernetes/en/tasks/configure-pod-container/configure-pod-configmap/).

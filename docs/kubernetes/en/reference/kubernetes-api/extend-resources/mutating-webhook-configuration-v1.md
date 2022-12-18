@@ -157,7 +157,7 @@ MutatingWebhookConfiguration describes the configuration of and admission webhoo
       ]
     }
     
-    See https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/ for more examples of label selectors.
+    See https://kubernetes.io/docs/kubernetes/en/concepts/overview/working-with-objects/labels/ for more examples of label selectors.
     
     Default to the empty LabelSelector, which matches everything.
 

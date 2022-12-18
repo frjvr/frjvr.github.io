@@ -10,7 +10,7 @@ weight: 80
 
 <!-- overview -->
 
-In the [scheduling-plugin](/docs/reference/scheduling/config/#scheduling-plugins)  `NodeResourcesFit` of kube-scheduler, there are two 
+In the [scheduling-plugin](/docs/kubernetes/en/reference/scheduling/config/#scheduling-plugins)  `NodeResourcesFit` of kube-scheduler, there are two 
 scoring strategies that support the bin packing of resources: `MostAllocated` and `RequestedToCapacityRatio`.
 
 <!-- body -->
@@ -20,7 +20,7 @@ The `MostAllocated` strategy scores the nodes based on the utilization of resour
 For each resource type, you can set a weight to modify its influence in the node score.
 
 To set the `MostAllocated` strategy for the `NodeResourcesFit` plugin, use a
-[scheduler configuration](/docs/reference/scheduling/config) similar to the following:
+[scheduler configuration](/docs/kubernetes/en/reference/scheduling/config) similar to the following:
 
 ```yaml
 apiVersion: kubescheduler.config.k8s.io/v1beta3
@@ -43,7 +43,7 @@ profiles:
 ```
 
 To learn more about other parameters and their default configuration, see the API documentation for 
-[`NodeResourcesFitArgs`](/docs/reference/config-api/kube-scheduler-config.v1beta3/#kubescheduler-config-k8s-io-v1beta3-NodeResourcesFitArgs).
+[`NodeResourcesFitArgs`](/docs/kubernetes/en/reference/config-api/kube-scheduler-config.v1beta3/#kubescheduler-config-k8s-io-v1beta3-NodeResourcesFitArgs).
 
 ## Enabling bin packing using RequestedToCapacityRatio
 
@@ -53,7 +53,7 @@ allows users to bin pack extended resources by using appropriate parameters
 to improve the utilization of scarce resources in large clusters. It favors nodes according to a
 configured function of the allocated resources. The behavior of the `RequestedToCapacityRatio` in
 the `NodeResourcesFit` score function can be controlled by the
-[scoringStrategy](/docs/reference/config-api/kube-scheduler-config.v1beta3/#kubescheduler-config-k8s-io-v1beta3-ScoringStrategy) field.
+[scoringStrategy](/docs/kubernetes/en/reference/config-api/kube-scheduler-config.v1beta3/#kubescheduler-config-k8s-io-v1beta3-ScoringStrategy) field.
 Within the `scoringStrategy` field, you can configure two parameters: `requestedToCapacityRatio` and
 `resources`. The `shape` in the `requestedToCapacityRatio` 
 parameter allows the user to tune the function as least requested or most 
@@ -92,7 +92,7 @@ flag `--config=/path/to/config/file` will pass the configuration to the
 scheduler.
 
 To learn more about other parameters and their default configuration, see the API documentation for 
-[`NodeResourcesFitArgs`](/docs/reference/config-api/kube-scheduler-config.v1beta3/#kubescheduler-config-k8s-io-v1beta3-NodeResourcesFitArgs).
+[`NodeResourcesFitArgs`](/docs/kubernetes/en/reference/config-api/kube-scheduler-config.v1beta3/#kubescheduler-config-k8s-io-v1beta3-NodeResourcesFitArgs).
 
 ### Tuning the score function
 
@@ -249,6 +249,6 @@ NodeScore   =  (5 * 5) + (7 * 1) + (10 * 3) / (5 + 1 + 3)
 
 ## {{% heading "whatsnext" %}}
 
-- Read more about the [scheduling framework](/docs/concepts/scheduling-eviction/scheduling-framework/)
-- Read more about [scheduler configuration](/docs/reference/scheduling/config/)
+- Read more about the [scheduling framework](/docs/kubernetes/en/concepts/scheduling-eviction/scheduling-framework/)
+- Read more about [scheduler configuration](/docs/kubernetes/en/reference/scheduling/config/)
 

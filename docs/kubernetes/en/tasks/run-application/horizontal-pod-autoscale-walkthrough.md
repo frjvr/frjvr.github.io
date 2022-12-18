@@ -12,7 +12,7 @@ min-kubernetes-server-version: 1.23
 
 <!-- overview -->
 
-A [HorizontalPodAutoscaler](/docs/tasks/run-application/horizontal-pod-autoscale/)
+A [HorizontalPodAutoscaler](/docs/kubernetes/en/tasks/run-application/horizontal-pod-autoscale/)
 (HPA for short)
 automatically updates a workload resource (such as
 a {{< glossary_tooltip text="Deployment" term_id="deployment" >}} or
@@ -43,8 +43,8 @@ To follow this walkthrough, you also need to use a cluster that has a
 [Metrics Server](https://github.com/kubernetes-sigs/metrics-server#readme) deployed and configured.
 The Kubernetes Metrics Server collects resource metrics from
 the {{<glossary_tooltip term_id="kubelet" text="kubelets">}} in your cluster, and exposes those metrics
-through the [Kubernetes API](/docs/concepts/overview/kubernetes-api/),
-using an [APIService](/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/) to add
+through the [Kubernetes API](/docs/kubernetes/en/concepts/overview/kubernetes-api/),
+using an [APIService](/docs/kubernetes/en/concepts/extend-kubernetes/api-extension/apiserver-aggregation/) to add
 new kinds of resource that represent metric readings.
 
 To learn how to deploy the Metrics Server, see the
@@ -74,7 +74,7 @@ service/php-apache created
 ## Create the HorizontalPodAutoscaler {#create-horizontal-pod-autoscaler}
 
 Now that the server is running, create the autoscaler using `kubectl`. There is
-[`kubectl autoscale`](/docs/reference/generated/kubectl/kubectl-commands#autoscale) subcommand,
+[`kubectl autoscale`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands#autoscale) subcommand,
 part of `kubectl`, that helps you do this.
 
 You will shortly run a command that creates a HorizontalPodAutoscaler that maintains
@@ -87,7 +87,7 @@ The Deployment then updates the ReplicaSet - this is part of how all Deployments
 and then the ReplicaSet either adds or removes Pods based on the change to its `.spec`.
 
 Since each pod requests 200 milli-cores by `kubectl run`, this means an average CPU usage of 100 milli-cores.
-See [Algorithm details](/docs/tasks/run-application/horizontal-pod-autoscale/#algorithm-details) for more details
+See [Algorithm details](/docs/kubernetes/en/tasks/run-application/horizontal-pod-autoscale/#algorithm-details) for more details
 on the algorithm.
 
 

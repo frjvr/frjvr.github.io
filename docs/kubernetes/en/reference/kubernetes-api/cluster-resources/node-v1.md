@@ -140,7 +140,7 @@ NodeSpec describes the attributes that a node is created with.
 
 - **unschedulable** (boolean)
 
-  Unschedulable controls node schedulability of new pods. By default, node is schedulable. More info: https://kubernetes.io/docs/concepts/nodes/node/#manual-node-administration
+  Unschedulable controls node schedulability of new pods. By default, node is schedulable. More info: https://kubernetes.io/docs/kubernetes/en/concepts/nodes/node/#manual-node-administration
 
 
 
@@ -156,7 +156,7 @@ NodeStatus is information about the current status of a node.
 
   *Patch strategy: merge on key `type`*
   
-  List of addresses reachable to the node. Queried from cloud provider, if available. More info: https://kubernetes.io/docs/concepts/nodes/node/#addresses Note: This field is declared as mergeable, but the merge key is not sufficiently unique, which can cause data corruption when it is merged. Callers should instead use a full-replacement patch. See https://pr.k8s.io/79391 for an example.
+  List of addresses reachable to the node. Queried from cloud provider, if available. More info: https://kubernetes.io/docs/kubernetes/en/concepts/nodes/node/#addresses Note: This field is declared as mergeable, but the merge key is not sufficiently unique, which can cause data corruption when it is merged. Callers should instead use a full-replacement patch. See https://pr.k8s.io/79391 for an example.
 
   <a name="NodeAddress"></a>
   *NodeAddress contains information for the node's address.*
@@ -175,13 +175,13 @@ NodeStatus is information about the current status of a node.
 
 - **capacity** (map[string]<a href="{{< ref "../common-definitions/quantity#Quantity" >}}">Quantity</a>)
 
-  Capacity represents the total resources of a node. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity
+  Capacity represents the total resources of a node. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/persistent-volumes#capacity
 
 - **conditions** ([]NodeCondition)
 
   *Patch strategy: merge on key `type`*
   
-  Conditions is an array of current observed node conditions. More info: https://kubernetes.io/docs/concepts/nodes/node/#condition
+  Conditions is an array of current observed node conditions. More info: https://kubernetes.io/docs/kubernetes/en/concepts/nodes/node/#condition
 
   <a name="NodeCondition"></a>
   *NodeCondition contains condition information for a node.*
@@ -364,7 +364,7 @@ NodeStatus is information about the current status of a node.
 
 - **nodeInfo** (NodeSystemInfo)
 
-  Set of ids/uuids to uniquely identify the node. More info: https://kubernetes.io/docs/concepts/nodes/node/#info
+  Set of ids/uuids to uniquely identify the node. More info: https://kubernetes.io/docs/kubernetes/en/concepts/nodes/node/#info
 
   <a name="NodeSystemInfo"></a>
   *NodeSystemInfo is a set of ids/uuids to uniquely identify the node.*
@@ -411,7 +411,7 @@ NodeStatus is information about the current status of a node.
 
 - **phase** (string)
 
-  NodePhase is the recently observed lifecycle phase of the node. More info: https://kubernetes.io/docs/concepts/nodes/node/#phase The field is never populated, and now is deprecated.
+  NodePhase is the recently observed lifecycle phase of the node. More info: https://kubernetes.io/docs/kubernetes/en/concepts/nodes/node/#phase The field is never populated, and now is deprecated.
   
   
 

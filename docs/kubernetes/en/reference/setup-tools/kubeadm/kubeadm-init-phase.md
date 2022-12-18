@@ -8,7 +8,7 @@ content_type: concept
 Hence, you can let kubeadm do some of the work and you can fill in the gaps
 if you wish to apply customization.
 
-`kubeadm init phase` is consistent with the [kubeadm init workflow](/docs/reference/setup-tools/kubeadm/kubeadm-init/#init-workflow),
+`kubeadm init phase` is consistent with the [kubeadm init workflow](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-init/#init-workflow),
 and behind the scene both use the same code.
 
 ## kubeadm init phase preflight {#cmd-phase-preflight}
@@ -85,7 +85,7 @@ Use the following phase to create a local etcd instance based on a static Pod fi
 ## kubeadm init phase upload-config {#cmd-phase-upload-config}
 
 You can use this command to upload the kubeadm configuration to your cluster.
-Alternatively, you can use [kubeadm config](/docs/reference/setup-tools/kubeadm/kubeadm-config/).
+Alternatively, you can use [kubeadm config](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-config/).
 
 {{< tabs name="upload-config" >}}
 {{< tab name="upload-config" include="generated/kubeadm_init_phase_upload-config.md" />}}
@@ -144,11 +144,11 @@ install them selectively.
 {{< /tabs >}}
 
 For more details on each field in the `v1beta3` configuration you can navigate to our
-[API reference pages.](/docs/reference/config-api/kubeadm-config.v1beta3/)
+[API reference pages.](/docs/kubernetes/en/reference/config-api/kubeadm-config.v1beta3/)
 
 ## {{% heading "whatsnext" %}}
 
-* [kubeadm init](/docs/reference/setup-tools/kubeadm/kubeadm-init/) to bootstrap a Kubernetes control-plane node
-* [kubeadm join](/docs/reference/setup-tools/kubeadm/kubeadm-join/) to connect a node to the cluster
-* [kubeadm reset](/docs/reference/setup-tools/kubeadm/kubeadm-reset/) to revert any changes made to this host by `kubeadm init` or `kubeadm join`
-* [kubeadm alpha](/docs/reference/setup-tools/kubeadm/kubeadm-alpha/) to try experimental functionality
+* [kubeadm init](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-init/) to bootstrap a Kubernetes control-plane node
+* [kubeadm join](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-join/) to connect a node to the cluster
+* [kubeadm reset](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-reset/) to revert any changes made to this host by `kubeadm init` or `kubeadm join`
+* [kubeadm alpha](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-alpha/) to try experimental functionality

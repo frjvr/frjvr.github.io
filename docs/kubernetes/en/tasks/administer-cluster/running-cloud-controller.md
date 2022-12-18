@@ -86,6 +86,6 @@ As this initiative evolves, changes will be made to address these issues in upco
 ## {{% heading "whatsnext" %}}
 
 
-To build and develop your own cloud controller manager, read [Developing Cloud Controller Manager](/docs/tasks/administer-cluster/developing-cloud-controller-manager/).
+To build and develop your own cloud controller manager, read [Developing Cloud Controller Manager](/docs/kubernetes/en/tasks/administer-cluster/developing-cloud-controller-manager/).
 
 

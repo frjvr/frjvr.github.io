@@ -49,7 +49,7 @@ management policies to determine some placement preferences on the node.
 ### Configuration
 
 The CPU Manager policy is set with the `--cpu-manager-policy` kubelet
-flag or the `cpuManagerPolicy` field in [KubeletConfiguration](/docs/reference/config-api/kubelet-config.v1beta1/).
+flag or the `cpuManagerPolicy` field in [KubeletConfiguration](/docs/kubernetes/en/reference/config-api/kubelet-config.v1beta1/).
 There are two supported policies:
 
 * [`none`](#none-policy): the default policy.
@@ -65,7 +65,7 @@ duration as `--node-status-update-frequency`.
 The behavior of the static policy can be fine-tuned using the `--cpu-manager-policy-options` flag.
 The flag takes a comma-separated list of `key=value` policy options.
 If you disable the `CPUManagerPolicyOptions`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/)
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/)
 then you cannot fine-tune CPU manager policies. In that case, the CPU manager
 operates only using its default settings.
 
@@ -82,7 +82,7 @@ Since the CPU manager policy can only be applied when kubelet spawns new pods, s
 "none" to "static" won't apply to existing pods. So in order to properly change the CPU manager
 policy on a node, perform the following steps:
 
-1. [Drain](/docs/tasks/administer-cluster/safely-drain-node) the node.
+1. [Drain](/docs/kubernetes/en/tasks/administer-cluster/safely-drain-node) the node.
 2. Stop kubelet.
 3. Remove the old CPU manager state file. The path to this file is
 `/var/lib/kubelet/cpu_manager_state` by default. This clears the state maintained by the
@@ -102,8 +102,8 @@ could not restore state from checkpoint: configured policy "static" differs from
 The `none` policy explicitly enables the existing default CPU
 affinity scheme, providing no affinity beyond what the OS scheduler does
 automatically.  Limits on CPU usage for
-[Guaranteed pods](/docs/tasks/configure-pod-container/quality-service-pod/) and
-[Burstable pods](/docs/tasks/configure-pod-container/quality-service-pod/)
+[Guaranteed pods](/docs/kubernetes/en/tasks/configure-pod-container/quality-service-pod/) and
+[Burstable pods](/docs/kubernetes/en/tasks/configure-pod-container/quality-service-pod/)
 are enforced using CFS quota.
 
 ### Static policy

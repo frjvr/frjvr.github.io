@@ -25,9 +25,9 @@ Kubernetes {{< glossary_tooltip term_id="service" >}} object.
 {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
 
 This task uses
-[Services with external load balancers](/docs/tasks/access-application-cluster/create-external-load-balancer/), which
+[Services with external load balancers](/docs/kubernetes/en/tasks/access-application-cluster/create-external-load-balancer/), which
 require a supported environment. If your environment does not support this, you can use a Service of type
-[NodePort](/docs/concepts/services-networking/service/#type-nodeport) instead.
+[NodePort](/docs/kubernetes/en/concepts/services-networking/service/#type-nodeport) instead.
 
 <!-- lessoncontent -->
 
@@ -155,7 +155,7 @@ service/frontend created
 The nginx configuration is baked into the
 [container image](/examples/service/access/Dockerfile). A better way to do this would
 be to use a
-[ConfigMap](/docs/tasks/configure-pod-container/configure-pod-configmap/),
+[ConfigMap](/docs/kubernetes/en/tasks/configure-pod-container/configure-pod-configmap/),
 so that you can change the configuration more easily.
 {{< /note >}}
 
@@ -218,6 +218,6 @@ kubectl delete deployment frontend backend
 
 ## {{% heading "whatsnext" %}}
 
-* Learn more about [Services](/docs/concepts/services-networking/service/)
-* Learn more about [ConfigMaps](/docs/tasks/configure-pod-container/configure-pod-configmap/)
-* Learn more about [DNS for Service and Pods](/docs/concepts/services-networking/dns-pod-service/)
+* Learn more about [Services](/docs/kubernetes/en/concepts/services-networking/service/)
+* Learn more about [ConfigMaps](/docs/kubernetes/en/tasks/configure-pod-container/configure-pod-configmap/)
+* Learn more about [DNS for Service and Pods](/docs/kubernetes/en/concepts/services-networking/dns-pod-service/)

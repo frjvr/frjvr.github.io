@@ -16,8 +16,8 @@ This page describes these API endpoints and explains how you can use them.
 
 The Kubernetes API server provides 3 API endpoints (`healthz`, `livez` and `readyz`) to indicate the current status of the API server.
 The `healthz` endpoint is deprecated (since Kubernetes v1.16), and you should use the more specific `livez` and `readyz` endpoints instead.
-The `livez` endpoint can be used with the `--livez-grace-period` [flag](/docs/reference/command-line-tools-reference/kube-apiserver) to specify the startup duration.
-For a graceful shutdown you can specify the `--shutdown-delay-duration` [flag](/docs/reference/command-line-tools-reference/kube-apiserver) with the `/readyz` endpoint.
+The `livez` endpoint can be used with the `--livez-grace-period` [flag](/docs/kubernetes/en/reference/command-line-tools-reference/kube-apiserver) to specify the startup duration.
+For a graceful shutdown you can specify the `--shutdown-delay-duration` [flag](/docs/kubernetes/en/reference/command-line-tools-reference/kube-apiserver) with the `/readyz` endpoint.
 Machines that check the `healthz`/`livez`/`readyz` of the API server should rely on the HTTP status code.
 A status code `200` indicates the API server is `healthy`/`live`/`ready`, depending on the called endpoint.
 The more verbose options shown below are intended to be used by human operators to debug their cluster or understand the state of the API server.

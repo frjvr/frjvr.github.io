@@ -2,7 +2,7 @@
 title: LimitRange
 id: limitrange
 date: 2019-04-15
-full_link:  /docs/concepts/policy/limit-range/
+full_link:  /docs/kubernetes/en/concepts/policy/limit-range/
 short_description: >
   Provides constraints to limit resource consumption per Containers or Pods in a namespace.
 

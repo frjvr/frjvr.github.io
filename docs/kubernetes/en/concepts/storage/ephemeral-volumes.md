@@ -13,7 +13,7 @@ weight: 30
 <!-- overview -->
 
 This document describes _ephemeral volumes_ in Kubernetes. Familiarity
-with [volumes](/docs/concepts/storage/volumes/) is suggested, in
+with [volumes](/docs/kubernetes/en/concepts/storage/volumes/) is suggested, in
 particular PersistentVolumeClaim and PersistentVolume.
 
 <!-- body -->
@@ -39,12 +39,12 @@ simplifies application deployment and management.
 
 Kubernetes supports several different kinds of ephemeral volumes for
 different purposes:
-- [emptyDir](/docs/concepts/storage/volumes/#emptydir): empty at Pod startup,
+- [emptyDir](/docs/kubernetes/en/concepts/storage/volumes/#emptydir): empty at Pod startup,
   with storage coming locally from the kubelet base directory (usually
   the root disk) or RAM
-- [configMap](/docs/concepts/storage/volumes/#configmap),
-  [downwardAPI](/docs/concepts/storage/volumes/#downwardapi),
-  [secret](/docs/concepts/storage/volumes/#secret): inject different
+- [configMap](/docs/kubernetes/en/concepts/storage/volumes/#configmap),
+  [downwardAPI](/docs/kubernetes/en/concepts/storage/volumes/#downwardapi),
+  [secret](/docs/kubernetes/en/concepts/storage/volumes/#secret): inject different
   kinds of Kubernetes data into a Pod
 - [CSI ephemeral volumes](#csi-ephemeral-volumes):
   similar to the previous volume kinds, but provided by special
@@ -55,7 +55,7 @@ different purposes:
 
 `emptyDir`, `configMap`, `downwardAPI`, `secret` are provided as
 [local ephemeral
-storage](/docs/concepts/configuration/manage-resources-containers/#local-ephemeral-storage).
+storage](/docs/kubernetes/en/concepts/configuration/manage-resources-containers/#local-ephemeral-storage).
 They are managed by kubelet on each node.
 
 CSI ephemeral volumes *must* be provided by third-party CSI storage
@@ -88,7 +88,7 @@ Conceptually, CSI ephemeral volumes are similar to `configMap`,
 scheduled onto a node. Kubernetes has no concept of rescheduling Pods
 anymore at this stage. Volume creation has to be unlikely to fail,
 otherwise Pod startup gets stuck. In particular, [storage capacity
-aware Pod scheduling](/docs/concepts/storage/storage-capacity/) is *not*
+aware Pod scheduling](/docs/kubernetes/en/concepts/storage/storage-capacity/) is *not*
 supported for these volumes. They are currently also not covered by
 the storage resource usage limits of a Pod, because that is something
 that kubelet can only enforce for storage that it manages itself.
@@ -136,7 +136,7 @@ allowed to be used as inline volumes within a Pod spec may do so by:
 
 - Removing `Ephemeral` from `volumeLifecycleModes` in the CSIDriver spec, which prevents the
   driver from being used as an inline ephemeral volume.
-- Using an [admission webhook](/docs/reference/access-authn-authz/extensible-admission-controllers/)
+- Using an [admission webhook](/docs/kubernetes/en/reference/access-authn-authz/extensible-admission-controllers/)
   to restrict how this driver is used.
 
 ### Generic ephemeral volumes
@@ -154,10 +154,10 @@ features:
   parameters.
 - Typical operations on volumes are supported assuming that the driver
   supports them, including
-  [snapshotting](/docs/concepts/storage/volume-snapshots/),
-  [cloning](/docs/concepts/storage/volume-pvc-datasource/),
-  [resizing](/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims),
-  and [storage capacity tracking](/docs/concepts/storage/storage-capacity/).
+  [snapshotting](/docs/kubernetes/en/concepts/storage/volume-snapshots/),
+  [cloning](/docs/kubernetes/en/concepts/storage/volume-pvc-datasource/),
+  [resizing](/docs/kubernetes/en/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims),
+  and [storage capacity tracking](/docs/kubernetes/en/concepts/storage/storage-capacity/).
 
 Example:
 
@@ -192,7 +192,7 @@ spec:
 ### Lifecycle and PersistentVolumeClaim
 
 The key design idea is that the
-[parameters for a volume claim](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#ephemeralvolumesource-v1alpha1-core)
+[parameters for a volume claim](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#ephemeralvolumesource-v1alpha1-core)
 are allowed inside a volume source of the Pod. Labels, annotations and
 the whole set of fields for a PersistentVolumeClaim are supported. When such a Pod gets
 created, the ephemeral volume controller then creates an actual PersistentVolumeClaim
@@ -207,7 +207,7 @@ because then the scheduler is free to choose a suitable node for
 the Pod. With immediate binding, the scheduler is forced to select a node that has
 access to the volume once it is available.
 
-In terms of [resource ownership](/docs/concepts/architecture/garbage-collection/#owners-dependents),
+In terms of [resource ownership](/docs/kubernetes/en/concepts/architecture/garbage-collection/#owners-dependents),
 a Pod that has generic ephemeral storage is the owner of the PersistentVolumeClaim(s)
 that provide that ephemeral storage. When the Pod is deleted,
 the Kubernetes garbage collector deletes the PVC, which then usually
@@ -252,10 +252,10 @@ Enabling the GenericEphemeralVolume feature allows users to create
 PVCs indirectly if they can create Pods, even if they do not have
 permission to create PVCs directly. Cluster administrators must be
 aware of this. If this does not fit their security model, they should
-use an [admission webhook](/docs/reference/access-authn-authz/extensible-admission-controllers/)
+use an [admission webhook](/docs/kubernetes/en/reference/access-authn-authz/extensible-admission-controllers/)
 that rejects objects like Pods that have a generic ephemeral volume.
 
-The normal [namespace quota for PVCs](/docs/concepts/policy/resource-quotas/#storage-resource-quota)
+The normal [namespace quota for PVCs](/docs/kubernetes/en/concepts/policy/resource-quotas/#storage-resource-quota)
 still applies, so even if users are allowed to use this new mechanism, they cannot use
 it to circumvent other policies.
 
@@ -263,7 +263,7 @@ it to circumvent other policies.
 
 ### Ephemeral volumes managed by kubelet
 
-See [local ephemeral storage](/docs/concepts/configuration/manage-resources-containers/#local-ephemeral-storage).
+See [local ephemeral storage](/docs/kubernetes/en/concepts/configuration/manage-resources-containers/#local-ephemeral-storage).
 
 ### CSI ephemeral volumes
 

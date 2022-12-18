@@ -6,14 +6,14 @@ content_type: task
 <!--overview-->
 
 This page shows you how to specify the type of
-[cascading deletion](/docs/concepts/architecture/garbage-collection/#cascading-deletion)
+[cascading deletion](/docs/kubernetes/en/concepts/architecture/garbage-collection/#cascading-deletion)
 to use in your cluster during {{<glossary_tooltip text="garbage collection" term_id="garbage-collection">}}.
 
 ## {{% heading "prerequisites" %}}
 
 {{< include "task-tutorial-prereqs.md" >}}
 
-You also need to [create a sample Deployment](/docs/tasks/run-application/run-stateless-application-deployment/#creating-and-exploring-an-nginx-deployment) 
+You also need to [create a sample Deployment](/docs/kubernetes/en/tasks/run-application/run-stateless-application-deployment/#creating-and-exploring-an-nginx-deployment) 
 to experiment with the different types of cascading deletion. You will need to
 recreate the Deployment for each type.
 
@@ -42,7 +42,7 @@ apiVersion: v1
 
 ## Use foreground cascading deletion {#use-foreground-cascading-deletion}
 
-By default, Kubernetes uses [background cascading deletion](/docs/concepts/architecture/garbage-collection/#background-deletion)
+By default, Kubernetes uses [background cascading deletion](/docs/kubernetes/en/concepts/architecture/garbage-collection/#background-deletion)
 to delete dependents of an object. You can switch to foreground cascading deletion
 using either `kubectl` or the Kubernetes API, depending on the Kubernetes
 version your cluster runs. {{<version-check>}}
@@ -98,7 +98,7 @@ kubectl delete deployment nginx-deployment --cascade=foreground
 
 ## Use background cascading deletion {#use-background-cascading-deletion}
 
-1. [Create a sample Deployment](/docs/tasks/run-application/run-stateless-application-deployment/#creating-and-exploring-an-nginx-deployment).
+1. [Create a sample Deployment](/docs/kubernetes/en/tasks/run-application/run-stateless-application-deployment/#creating-and-exploring-an-nginx-deployment).
 1. Use either `kubectl` or the Kubernetes API to delete the Deployment,
    depending on the Kubernetes version your cluster runs. {{<version-check>}}
 
@@ -208,6 +208,6 @@ kubectl get pods -l app=nginx
 
 ## {{% heading "whatsnext" %}}
 
-* Learn about [owners and dependents](/docs/concepts/overview/working-with-objects/owners-dependents/) in Kubernetes.
-* Learn about Kubernetes [finalizers](/docs/concepts/overview/working-with-objects/finalizers/).
-* Learn about [garbage collection](/docs/concepts/architecture/garbage-collection/).
+* Learn about [owners and dependents](/docs/kubernetes/en/concepts/overview/working-with-objects/owners-dependents/) in Kubernetes.
+* Learn about Kubernetes [finalizers](/docs/kubernetes/en/concepts/overview/working-with-objects/finalizers/).
+* Learn about [garbage collection](/docs/kubernetes/en/concepts/architecture/garbage-collection/).

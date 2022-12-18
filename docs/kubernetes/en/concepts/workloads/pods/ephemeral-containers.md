@@ -43,7 +43,7 @@ are incompatible and disallowed for ephemeral containers.
   `livenessProbe`, `readinessProbe` are disallowed.
 - Pod resource allocations are immutable, so setting `resources` is disallowed.
 - For a complete list of allowed fields, see the [EphemeralContainer reference
-  documentation](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#ephemeralcontainer-v1-core).
+  documentation](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#ephemeralcontainer-v1-core).
 
 Ephemeral containers are created using a special `ephemeralcontainers` handler
 in the API rather than by adding them directly to `pod.spec`, so it's not
@@ -53,7 +53,7 @@ Like regular containers, you may not change or remove an ephemeral container
 after you have added it to a Pod.
 
 {{< note >}}
-Ephemeral containers are not supported by [static pods](/docs/tasks/configure-pod-container/static-pod/).
+Ephemeral containers are not supported by [static pods](/docs/kubernetes/en/tasks/configure-pod-container/static-pod/).
 {{< /note >}}
 
 ## Uses for ephemeral containers
@@ -69,10 +69,10 @@ shell or any debugging utilities, it's difficult to troubleshoot distroless
 images using `kubectl exec` alone.
 
 When using ephemeral containers, it's helpful to enable [process namespace
-sharing](/docs/tasks/configure-pod-container/share-process-namespace/) so
+sharing](/docs/kubernetes/en/tasks/configure-pod-container/share-process-namespace/) so
 you can view processes in other containers.
 
 ## {{% heading "whatsnext" %}}
 
-* Learn how to [debug pods using ephemeral containers](/docs/tasks/debug/debug-application/debug-running-pod/#ephemeral-container).
+* Learn how to [debug pods using ephemeral containers](/docs/kubernetes/en/tasks/debug/debug-application/debug-running-pod/#ephemeral-container).
 

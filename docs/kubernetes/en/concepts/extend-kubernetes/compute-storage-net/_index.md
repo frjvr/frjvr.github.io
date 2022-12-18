@@ -8,14 +8,14 @@ This section covers extensions to your cluster that do not come as part as Kuber
 You can use these extensions to enhance the nodes in your cluster, or to provide the network
 fabric that links Pods together.
 
-* [CSI](/docs/concepts/storage/volumes/#csi) and [FlexVolume](/docs/concepts/storage/volumes/#flexvolume) storage plugins
+* [CSI](/docs/kubernetes/en/concepts/storage/volumes/#csi) and [FlexVolume](/docs/kubernetes/en/concepts/storage/volumes/#flexvolume) storage plugins
 
   {{< glossary_tooltip text="Container Storage Interface" term_id="csi" >}} (CSI) plugins
   provide a way to extend Kubernetes with supports for new kinds of volumes. The volumes can
   be backed by durable external storage, or provide ephemeral storage, or they might offer a
   read-only interface to information using a filesystem paradigm.
 
-  Kubernetes also includes support for [FlexVolume](/docs/concepts/storage/volumes/#flexvolume)
+  Kubernetes also includes support for [FlexVolume](/docs/kubernetes/en/concepts/storage/volumes/#flexvolume)
   plugins, which are deprecated since Kubernetes v1.23 (in favour of CSI).
 
   FlexVolume plugins allow users to mount volume types that aren't natively
@@ -27,13 +27,13 @@ fabric that links Pods together.
   The [Kubernetes Volume Plugin FAQ for Storage Vendors](https://github.com/kubernetes/community/blob/master/sig-storage/volume-plugin-faq.md#kubernetes-volume-plugin-faq-for-storage-vendors)
   includes general information on storage plugins.
 
-* [Device plugins](/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/)
+* [Device plugins](/docs/kubernetes/en/concepts/extend-kubernetes/compute-storage-net/device-plugins/)
 
   Device plugins allow a node to discover new Node facilities (in addition to the
   built-in node resources such as `cpu` and `memory`), and provide these custom node-local
   facilities to Pods that request them.
 
-* [Network plugins](/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/)
+* [Network plugins](/docs/kubernetes/en/concepts/extend-kubernetes/compute-storage-net/network-plugins/)
 
   A network plugin allow Kubernetes to work with different networking topologies and technologies.
   Your Kubernetes cluster needs a _network plugin_ in order to have a working Pod network

@@ -53,7 +53,7 @@ that version of Kubernetes.
 In Kubernetes {{< skew currentVersion >}}, the HostProcess container feature is enabled by default. The kubelet will
 communicate with containerd directly by passing the hostprocess flag via CRI. You can use the
 latest version of containerd (v1.6+) to run HostProcess containers.
-[How to install containerd.](/docs/setup/production-environment/container-runtimes/#containerd)
+[How to install containerd.](/docs/kubernetes/en/setup/production-environment/container-runtimes/#containerd)
 
 ## Limitations
 
@@ -79,7 +79,7 @@ These limitations are relevant for Kubernetes v{{< skew currentVersion >}}:
 ## HostProcess Pod configuration requirements
 
 Enabling a Windows HostProcess pod requires setting the right configurations in the pod security
-configuration. Of the policies defined in the [Pod Security Standards](/docs/concepts/security/pod-security-standards)
+configuration. Of the policies defined in the [Pod Security Standards](/docs/kubernetes/en/concepts/security/pod-security-standards)
 HostProcess pods are disallowed by the baseline and restricted policies. It is therefore recommended
 that HostProcess pods run in alignment with the privileged profile.
 
@@ -96,9 +96,9 @@ the configurations which need to be set to enable the creation of a HostProcess 
   </thead>
   <tbody>
     <tr>
-      <td style="white-space: nowrap"><a href="/docs/concepts/security/pod-security-standards"><tt>securityContext.windowsOptions.hostProcess</tt></a></td>
+      <td style="white-space: nowrap"><a href="/docs/kubernetes/en/concepts/security/pod-security-standards"><tt>securityContext.windowsOptions.hostProcess</tt></a></td>
       <td>
-        <p>Windows pods offer the ability to run <a href="/docs/tasks/configure-pod-container/create-hostprocess-pod">
+        <p>Windows pods offer the ability to run <a href="/docs/kubernetes/en/tasks/configure-pod-container/create-hostprocess-pod">
         HostProcess containers</a> which enables privileged access to the Windows node. </p>
         <p><strong>Allowed Values</strong></p>
         <ul>
@@ -107,7 +107,7 @@ the configurations which need to be set to enable the creation of a HostProcess 
       </td>
     </tr>
     <tr>
-      <td style="white-space: nowrap"><a href="/docs/concepts/security/pod-security-standards"><tt>hostNetwork</tt></a></td>
+      <td style="white-space: nowrap"><a href="/docs/kubernetes/en/concepts/security/pod-security-standards"><tt>hostNetwork</tt></a></td>
       <td>
         <p>Pods container HostProcess containers must use the host's network namespace.</p>
         <p><strong>Allowed Values</strong></p>
@@ -117,7 +117,7 @@ the configurations which need to be set to enable the creation of a HostProcess 
       </td>
     </tr>
     <tr>
-      <td style="white-space: nowrap"><a href="/docs/tasks/configure-pod-container/configure-runasusername/"><tt>securityContext.windowsOptions.runAsUserName</tt></a></td>
+      <td style="white-space: nowrap"><a href="/docs/kubernetes/en/tasks/configure-pod-container/configure-runasusername/"><tt>securityContext.windowsOptions.runAsUserName</tt></a></td>
       <td>
         <p>Specification of which user the HostProcess container should run as is required for the pod spec.</p>
         <p><strong>Allowed Values</strong></p>
@@ -130,7 +130,7 @@ the configurations which need to be set to enable the creation of a HostProcess 
       </td>
     </tr>
     <tr>
-      <td style="white-space: nowrap"><a href="/docs/concepts/security/pod-security-standards"><tt>runAsNonRoot</tt></a></td>
+      <td style="white-space: nowrap"><a href="/docs/kubernetes/en/concepts/security/pod-security-standards"><tt>runAsNonRoot</tt></a></td>
       <td>
         <p>Because HostProcess containers have privileged access to the host, the <tt>runAsNonRoot</tt> field cannot be set to true.</p>
         <p><strong>Allowed Values</strong></p>

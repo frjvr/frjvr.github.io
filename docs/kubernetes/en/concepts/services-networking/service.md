@@ -75,7 +75,7 @@ A Service in Kubernetes is a REST object, similar to a Pod.  Like all of the
 REST objects, you can `POST` a Service definition to the API server to create
 a new instance.
 The name of a Service object must be a valid
-[RFC 1035 label name](/docs/concepts/overview/working-with-objects/names#rfc-1035-label-names).
+[RFC 1035 label name](/docs/kubernetes/en/concepts/overview/working-with-objects/names#rfc-1035-label-names).
 
 For example, suppose you have a set of Pods where each listens on TCP port 9376
 and contains a label `app.kubernetes.io/name=MyApp`:
@@ -153,8 +153,8 @@ your Services. For example, you can change the port numbers that Pods expose
 in the next version of your backend software, without breaking clients.
 
 The default protocol for Services is
-[TCP](/docs/reference/networking/service-protocols/#protocol-tcp); you can also
-use any other [supported protocol](/docs/reference/networking/service-protocols/).
+[TCP](/docs/kubernetes/en/reference/networking/service-protocols/#protocol-tcp); you can also
+use any other [supported protocol](/docs/kubernetes/en/reference/networking/service-protocols/).
 
 As many Services need to expose more than one port, Kubernetes supports multiple
 port definitions on a Service object.
@@ -238,7 +238,7 @@ as a destination.
 {{< /note >}}
 
 For an EndpointSlice that you create yourself, or in your own code,
-you should also pick a value to use for the [`endpointslice.kubernetes.io/managed-by`](/docs/reference/labels-annotations-taints/#endpointslicekubernetesiomanaged-by) label.
+you should also pick a value to use for the [`endpointslice.kubernetes.io/managed-by`](/docs/kubernetes/en/reference/labels-annotations-taints/#endpointslicekubernetesiomanaged-by) label.
 If you create your own controller code to manage EndpointSlices, consider using a
 value similar to `"my-domain.example/name-of-controller"`. If you are using a third
 party tool, use the name of the tool in all-lowercase and change spaces and other
@@ -263,7 +263,7 @@ selectors and uses DNS names instead. For more information, see the
 
 {{< feature-state for_k8s_version="v1.21" state="stable" >}}
 
-[EndpointSlices](/docs/concepts/services-networking/endpoint-slices/) are objects that
+[EndpointSlices](/docs/kubernetes/en/concepts/services-networking/endpoint-slices/) are objects that
 represent a subset (a _slice_) of the backing network endpoints for a Service.
 
 Your Kubernetes cluster tracks how many endpoints each EndpointSlice represents.
@@ -274,13 +274,13 @@ By default, Kubernetes makes a new EndpointSlice once the existing EndpointSlice
 all contain at least 100 endpoints. Kubernetes does not make the new EndpointSlice
 until an extra endpoint needs to be added.
 
-See [EndpointSlices](/docs/concepts/services-networking/endpoint-slices/) for more
+See [EndpointSlices](/docs/kubernetes/en/concepts/services-networking/endpoint-slices/) for more
 information about this API.
 
 ### Endpoints
 
 In the Kubernetes API, an
-[Endpoints](/docs/reference/kubernetes-api/service-resources/endpoints-v1/)
+[Endpoints](/docs/kubernetes/en/reference/kubernetes-api/service-resources/endpoints-v1/)
 (the resource kind is plural) defines a list of network endpoints, typically
 referenced by a Service to define which Pods the traffic can be sent to.
 
@@ -298,7 +298,7 @@ In that case, Kubernetes selects at most 1000 possible backend endpoints to stor
 into the Endpoints object, and sets an
 {{< glossary_tooltip text="annotation" term_id="annotation" >}} on the
 Endpoints:
-[`endpoints.kubernetes.io/over-capacity: truncated`](/docs/reference/labels-annotations-taints/#endpoints-kubernetes-io-over-capacity).
+[`endpoints.kubernetes.io/over-capacity: truncated`](/docs/kubernetes/en/reference/labels-annotations-taints/#endpoints-kubernetes-io-over-capacity).
 The control plane also removes that annotation if the number of backend Pods drops below 1000.
 
 Traffic is still sent to backends, but any load balancing mechanism that relies on the
@@ -406,7 +406,7 @@ worry about this ordering issue.
 ### DNS
 
 You can (and almost always should) set up a DNS service for your Kubernetes
-cluster using an [add-on](/docs/concepts/cluster-administration/addons/).
+cluster using an [add-on](/docs/kubernetes/en/concepts/cluster-administration/addons/).
 
 A cluster-aware DNS server, such as CoreDNS, watches the Kubernetes API for new
 Services and creates a set of DNS records for each one.  If DNS has been enabled
@@ -429,7 +429,7 @@ the port number for `http`, as well as the IP address.
 
 The Kubernetes DNS server is the only way to access `ExternalName` Services.
 You can find more information about `ExternalName` resolution in
-[DNS Pods and Services](/docs/concepts/services-networking/dns-pod-service/).
+[DNS Pods and Services](/docs/kubernetes/en/concepts/services-networking/dns-pod-service/).
 
 ## Headless Services
 
@@ -496,7 +496,7 @@ Compute Engine does not need to allocate a node port to make `type: LoadBalancer
 but another cloud provider integration might do). Although strict nesting is not required,
 but the Kubernetes API design for Service requires it anyway.
 
-You can also use [Ingress](/docs/concepts/services-networking/ingress/) to expose your Service.
+You can also use [Ingress](/docs/kubernetes/en/concepts/services-networking/ingress/) to expose your Service.
 Ingress is not a Service type, but it acts as the entry point for your cluster.
 It lets you consolidate your routing rules into a single resource as it can expose multiple
 services under the same IP address.
@@ -559,7 +559,7 @@ control plane).
 If you want to specify particular IP address(es) to proxy the port, you can set the
 `--nodeport-addresses` flag for kube-proxy or the equivalent `nodePortAddresses`
 field of the
-[kube-proxy configuration file](/docs/reference/config-api/kube-proxy-config.v1alpha1/)
+[kube-proxy configuration file](/docs/kubernetes/en/reference/config-api/kube-proxy-config.v1alpha1/)
 to particular IP block(s).
 
 This flag takes a comma-delimited list of IP blocks (e.g. `10.0.0.0/8`, `192.0.2.0/25`)
@@ -1036,10 +1036,10 @@ the NLB Target Group's health check on the auto-assigned
 `.spec.healthCheckNodePort` and not receive any traffic.
 
 In order to achieve even traffic, either use a DaemonSet or specify a
-[pod anti-affinity](/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity)
+[pod anti-affinity](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity)
 to not locate on the same node.
 
-You can also use NLB Services with the [internal load balancer](/docs/concepts/services-networking/service/#internal-load-balancer)
+You can also use NLB Services with the [internal load balancer](/docs/kubernetes/en/concepts/services-networking/service/#internal-load-balancer)
 annotation.
 
 In order for client traffic to reach instances behind an NLB, the Node security
@@ -1187,30 +1187,30 @@ spec:
 
 If you want to make sure that connections from a particular client are passed to
 the same Pod each time, you can configure session affinity based on the client's
-IP address. Read [session affinity](/docs/reference/networking/virtual-ips/#session-affinity)
+IP address. Read [session affinity](/docs/kubernetes/en/reference/networking/virtual-ips/#session-affinity)
 to learn more.
 
 ## API Object
 
 Service is a top-level resource in the Kubernetes REST API. You can find more details
-about the [Service API object](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#service-v1-core).
+about the [Service API object](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#service-v1-core).
 
 <!-- preserve existing hyperlinks -->
 <a id="shortcomings" /><a id="#the-gory-details-of-virtual-ips" />
 
 ## Virtual IP addressing mechanism
 
-Read [Virtual IPs and Service Proxies](/docs/reference/networking/virtual-ips/) to learn about the
+Read [Virtual IPs and Service Proxies](/docs/kubernetes/en/reference/networking/virtual-ips/) to learn about the
 mechanism Kubernetes provides to expose a Service with a virtual IP address.
 
 ## {{% heading "whatsnext" %}}
 
-* Follow the [Connecting Applications with Services](/docs/tutorials/services/connect-applications-service/) tutorial
-* Read about [Ingress](/docs/concepts/services-networking/ingress/)
-* Read about [EndpointSlices](/docs/concepts/services-networking/endpoint-slices/)
+* Follow the [Connecting Applications with Services](/docs/kubernetes/en/tutorials/services/connect-applications-service/) tutorial
+* Read about [Ingress](/docs/kubernetes/en/concepts/services-networking/ingress/)
+* Read about [EndpointSlices](/docs/kubernetes/en/concepts/services-networking/endpoint-slices/)
 
 For more context:
-* Read [Virtual IPs and Service Proxies](/docs/reference/networking/virtual-ips/)
-* Read the [API reference](/docs/reference/kubernetes-api/service-resources/service-v1/) for the Service API
-* Read the [API reference](/docs/reference/kubernetes-api/service-resources/endpoints-v1/) for the Endpoints API
-* Read the [API reference](/docs/reference/kubernetes-api/service-resources/endpoint-slice-v1/) for the EndpointSlice API
+* Read [Virtual IPs and Service Proxies](/docs/kubernetes/en/reference/networking/virtual-ips/)
+* Read the [API reference](/docs/kubernetes/en/reference/kubernetes-api/service-resources/service-v1/) for the Service API
+* Read the [API reference](/docs/kubernetes/en/reference/kubernetes-api/service-resources/endpoints-v1/) for the Endpoints API
+* Read the [API reference](/docs/kubernetes/en/reference/kubernetes-api/service-resources/endpoint-slice-v1/) for the EndpointSlice API

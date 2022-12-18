@@ -136,7 +136,7 @@ You should also revert any changes you made to the kubelet configuration.
 
 StubDomains and upstream servers specified in the `kube-dns` ConfigMap in the `kube-system` namespace
 are automatically picked up by `node-local-dns` pods. The ConfigMap contents need to follow the format
-shown in [the example](/docs/tasks/administer-cluster/dns-custom-nameservers/#example-1).
+shown in [the example](/docs/kubernetes/en/tasks/administer-cluster/dns-custom-nameservers/#example-1).
 The `node-local-dns` ConfigMap can also be modified directly with the stubDomain configuration
 in the Corefile format. Some cloud providers might not allow modifying `node-local-dns` ConfigMap directly.
 In those cases, the `kube-dns` ConfigMap can be updated.
@@ -157,7 +157,7 @@ using the `max_concurrent` option in the forward plugin.
 
 If a `node-local-dns` Pod attempts to use more memory than is available (because of total system
 resources, or because of a configured
-[resource limit](/docs/concepts/configuration/manage-resources-containers/)), the operating system
+[resource limit](/docs/kubernetes/en/concepts/configuration/manage-resources-containers/)), the operating system
 may shut down that pod's container.
 If this happens, the container that is terminated (“OOMKilled”) does not clean up the custom
 packet filtering rules that it previously added during startup.

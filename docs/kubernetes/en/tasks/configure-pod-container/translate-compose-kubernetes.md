@@ -327,7 +327,7 @@ If you are manually pushing the OpenShift artifacts using ``oc create -f``, you 
 
 ## Alternative Conversions
 
-The default `kompose` transformation will generate Kubernetes [Deployments](/docs/concepts/workloads/controllers/deployment/) and [Services](/docs/concepts/services-networking/service/), in yaml format. You have alternative option to generate json with `-j`. Also, you can alternatively generate [Replication Controllers](/docs/concepts/workloads/controllers/replicationcontroller/) objects, [Daemon Sets](/docs/concepts/workloads/controllers/daemonset/), or [Helm](https://github.com/helm/helm) charts.
+The default `kompose` transformation will generate Kubernetes [Deployments](/docs/kubernetes/en/concepts/workloads/controllers/deployment/) and [Services](/docs/kubernetes/en/concepts/services-networking/service/), in yaml format. You have alternative option to generate json with `-j`. Also, you can alternatively generate [Replication Controllers](/docs/kubernetes/en/concepts/workloads/controllers/replicationcontroller/) objects, [Daemon Sets](/docs/kubernetes/en/concepts/workloads/controllers/daemonset/), or [Helm](https://github.com/helm/helm) charts.
 
 ```sh
 kompose convert -j

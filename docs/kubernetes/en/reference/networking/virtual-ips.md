@@ -6,13 +6,13 @@ weight: 50
 
 <!-- overview -->
 Every {{< glossary_tooltip term_id="node" text="node" >}} in a Kubernetes
-cluster runs a [kube-proxy](/docs/reference/command-line-tools-reference/kube-proxy/)
+cluster runs a [kube-proxy](/docs/kubernetes/en/reference/command-line-tools-reference/kube-proxy/)
 (unless you have deployed your own alternative component in place of `kube-proxy`).
 
 The `kube-proxy` component is responsible for implementing a _virtual IP_
 mechanism for {{< glossary_tooltip term_id="service" text="Services">}}
 of `type` other than
-[`ExternalName`](/docs/concepts/services-networking/service/#externalname).
+[`ExternalName`](/docs/kubernetes/en/concepts/services-networking/service/#externalname).
 
 
 A question that pops up every now and then is why Kubernetes relies on
@@ -82,7 +82,7 @@ does not respond, the connection fails. This is different from the old `userspac
 mode: in that scenario, kube-proxy would detect that the connection to the first
 Pod had failed and would automatically retry with a different backend Pod.
 
-You can use Pod [readiness probes](/docs/concepts/workloads/pods/pod-lifecycle/#container-probes)
+You can use Pod [readiness probes](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#container-probes)
 to verify that backend Pods are working OK, so that kube-proxy in iptables mode
 only sees backends that test out as healthy. Doing this means you avoid
 having traffic sent via kube-proxy to a Pod that's known to have failed.
@@ -221,7 +221,7 @@ Service, you should manually assign an IP address from the **lower** band. That 
 reduces the risk of a conflict over allocation.
 
 If you disable the `ServiceIPStaticSubrange`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/) then Kubernetes
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) then Kubernetes
 uses a single shared pool for both manually and dynamically assigned IP addresses,
 that are used for `type: ClusterIP` Services.
 
@@ -254,7 +254,7 @@ relevant Service.
 {{< feature-state for_k8s_version="v1.26" state="beta" >}}
 
 If the `ProxyTerminatingEndpoints`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/)
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/)
 is enabled in kube-proxy and the traffic policy is `Local`, that node's
 kube-proxy uses a more complicated algorithm to select endpoints for a Service.
 With the feature enabled, kube-proxy checks if the node
@@ -276,9 +276,9 @@ should have seen the node's health check failing and fully removed the node from
 ## {{% heading "whatsnext" %}}
 
 To learn more about Services,
-read [Connecting Applications with Services](/docs/concepts/services-networking/connect-applications-service/).
+read [Connecting Applications with Services](/docs/kubernetes/en/concepts/services-networking/connect-applications-service/).
 
 You can also:
 
-* Read about [Services](/docs/concepts/services-networking/service/)
-* Read the [API reference](/docs/reference/kubernetes-api/service-resources/service-v1/) for the Service API
+* Read about [Services](/docs/kubernetes/en/concepts/services-networking/service/)
+* Read the [API reference](/docs/kubernetes/en/reference/kubernetes-api/service-resources/service-v1/) for the Service API

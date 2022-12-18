@@ -20,9 +20,9 @@ infrastructure on top of the container requests & limits.
 <!-- body -->
 
 In Kubernetes, the Pod's overhead is set at
-[admission](/docs/reference/access-authn-authz/extensible-admission-controllers/#what-are-admission-webhooks)
+[admission](/docs/kubernetes/en/reference/access-authn-authz/extensible-admission-controllers/#what-are-admission-webhooks)
 time according to the overhead associated with the Pod's
-[RuntimeClass](/docs/concepts/containers/runtime-class/).
+[RuntimeClass](/docs/kubernetes/en/concepts/containers/runtime-class/).
 
 A pod's overhead is considered in addition to the sum of container resource requests when
 scheduling a Pod. Similarly, the kubelet will include the Pod overhead when sizing the Pod cgroup,
@@ -79,7 +79,7 @@ spec:
         memory: 100Mi
 ```
 
-At admission time the RuntimeClass [admission controller](/docs/reference/access-authn-authz/admission-controllers/)
+At admission time the RuntimeClass [admission controller](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/)
 updates the workload's PodSpec to include the `overhead` as described in the RuntimeClass. If the PodSpec already has this field defined,
 the Pod will be rejected. In the given example, since only the RuntimeClass name is specified, the admission controller mutates the Pod
 to include an `overhead`.
@@ -97,7 +97,7 @@ The output is:
 map[cpu:250m memory:120Mi]
 ```
 
-If a [ResourceQuota](/docs/concepts/policy/resource-quotas/) is defined, the sum of container requests as well as the
+If a [ResourceQuota](/docs/kubernetes/en/concepts/policy/resource-quotas/) is defined, the sum of container requests as well as the
 `overhead` field are counted.
 
 When the kube-scheduler is deciding which node should run a new Pod, the scheduler considers that Pod's
@@ -193,7 +193,7 @@ running with a defined overhead.
 
 ## {{% heading "whatsnext" %}}
 
-* Learn more about [RuntimeClass](/docs/concepts/containers/runtime-class/)
+* Learn more about [RuntimeClass](/docs/kubernetes/en/concepts/containers/runtime-class/)
 * Read the [PodOverhead Design](https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/688-pod-overhead)
   enhancement proposal for extra context
 

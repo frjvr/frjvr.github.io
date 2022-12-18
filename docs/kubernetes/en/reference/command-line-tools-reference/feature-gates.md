@@ -47,7 +47,7 @@ different Kubernetes components.
 
 {{< note >}}
 For a reference to old feature gates that are removed, please refer to
-[feature gates removed](/docs/reference/command-line-tools-reference/feature-gates-removed/).
+[feature gates removed](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates-removed/).
 {{< /note >}}
 
 ### Feature gates for Alpha or Beta features
@@ -406,28 +406,28 @@ Each feature gate is designed for enabling/disabling a specific feature:
 - `APIResponseCompression`: Compress the API responses for `LIST` or `GET` requests.
 - `APIServerIdentity`: Assign each API server an ID in a cluster.
 - `APIServerTracing`: Add support for distributed tracing in the API server.
-  See [Traces for Kubernetes System Components](/docs/concepts/cluster-administration/system-traces) for more details.
+  See [Traces for Kubernetes System Components](/docs/kubernetes/en/concepts/cluster-administration/system-traces) for more details.
 - `APISelfSubjectAttributesReview`: Activate the `SelfSubjectReview` API which allows users
   to see the requesting subject's authentication information.
-  See [API access to authentication information for a client](/docs/reference/access-authn-authz/authentication/#self-subject-review)
+  See [API access to authentication information for a client](/docs/kubernetes/en/reference/access-authn-authz/authentication/#self-subject-review)
   for more details.
-- `AdvancedAuditing`: Enable [advanced auditing](/docs/tasks/debug/debug-cluster/audit/#advanced-audit)
+- `AdvancedAuditing`: Enable [advanced auditing](/docs/kubernetes/en/tasks/debug/debug-cluster/audit/#advanced-audit)
 - `AllowInsecureBackendProxy`: Enable the users to skip TLS verification of
   kubelets on Pod log requests.
 - `AnyVolumeDataSource`: Enable use of any custom resource as the `DataSource` of a
   {{< glossary_tooltip text="PVC" term_id="persistent-volume-claim" >}}.
 - `AppArmor`: Enable use of AppArmor mandatory access control for Pods running on Linux nodes.
-  See [AppArmor Tutorial](/docs/tutorials/security/apparmor/) for more details.
+  See [AppArmor Tutorial](/docs/kubernetes/en/tutorials/security/apparmor/) for more details.
 - `ContainerCheckpoint`: Enables the kubelet `checkpoint` API.
-  See [Kubelet Checkpoint API](/docs/reference/node/kubelet-checkpoint-api/) for more details.
+  See [Kubelet Checkpoint API](/docs/kubernetes/en/reference/node/kubelet-checkpoint-api/) for more details.
 - `ControllerManagerLeaderMigration`: Enables Leader Migration for
-  [kube-controller-manager](/docs/tasks/administer-cluster/controller-manager-leader-migration/#initial-leader-migration-configuration) and
-  [cloud-controller-manager](/docs/tasks/administer-cluster/controller-manager-leader-migration/#deploy-cloud-controller-manager)
+  [kube-controller-manager](/docs/kubernetes/en/tasks/administer-cluster/controller-manager-leader-migration/#initial-leader-migration-configuration) and
+  [cloud-controller-manager](/docs/kubernetes/en/tasks/administer-cluster/controller-manager-leader-migration/#deploy-cloud-controller-manager)
   which allows a cluster operator to live migrate
   controllers from the kube-controller-manager into an external controller-manager
   (e.g. the cloud-controller-manager) in an HA cluster without downtime.
 - `CPUManager`: Enable container level CPU affinity support, see
-  [CPU Management Policies](/docs/tasks/administer-cluster/cpu-management-policies/).
+  [CPU Management Policies](/docs/kubernetes/en/tasks/administer-cluster/cpu-management-policies/).
 - `CPUManagerPolicyAlphaOptions`: This allows fine-tuning of CPUManager policies,
   experimental, Alpha-quality options
   This feature gate guards *a group* of CPUManager options whose quality level is alpha.
@@ -497,43 +497,43 @@ Each feature gate is designed for enabling/disabling a specific feature:
    during a `NodeExpandVolume` CSI operation.
 - `CSIStorageCapacity`: Enables CSI drivers to publish storage capacity information
   and the Kubernetes scheduler to use that information when scheduling pods. See
-  [Storage Capacity](/docs/concepts/storage/storage-capacity/).
-  Check the [`csi` volume type](/docs/concepts/storage/volumes/#csi) documentation for more details.
+  [Storage Capacity](/docs/kubernetes/en/concepts/storage/storage-capacity/).
+  Check the [`csi` volume type](/docs/kubernetes/en/concepts/storage/volumes/#csi) documentation for more details.
 - `CSIVolumeHealth`: Enable support for CSI volume health monitoring on node.
 - `ContextualLogging`: When you enable this feature gate, Kubernetes components that support
    contextual logging add extra detail to log output.
 - `ControllerManagerLeaderMigration`: Enables leader migration for
   `kube-controller-manager` and `cloud-controller-manager`.
-- `CronJobTimeZone`: Allow the use of the `timeZone` optional field in [CronJobs](/docs/concepts/workloads/controllers/cron-jobs/)
+- `CronJobTimeZone`: Allow the use of the `timeZone` optional field in [CronJobs](/docs/kubernetes/en/concepts/workloads/controllers/cron-jobs/)
 - `CustomCPUCFSQuotaPeriod`: Enable nodes to change `cpuCFSQuotaPeriod` in
-  [kubelet config](/docs/tasks/administer-cluster/kubelet-config-file/).
+  [kubelet config](/docs/kubernetes/en/tasks/administer-cluster/kubelet-config-file/).
 - `CustomResourceValidationExpressions`: Enable expression language validation in CRD
   which will validate customer resource based on validation rules written in
   the `x-kubernetes-validations` extension.
 - `DaemonSetUpdateSurge`: Enables the DaemonSet workloads to maintain
   availability during update per node.
-  See [Perform a Rolling Update on a DaemonSet](/docs/tasks/manage-daemon/update-daemon-set/).
+  See [Perform a Rolling Update on a DaemonSet](/docs/kubernetes/en/tasks/manage-daemon/update-daemon-set/).
 - `DefaultPodTopologySpread`: Enables the use of `PodTopologySpread` scheduling plugin to do
-  [default spreading](/docs/concepts/scheduling-eviction/topology-spread-constraints/#internal-default-constraints).
+  [default spreading](/docs/kubernetes/en/concepts/scheduling-eviction/topology-spread-constraints/#internal-default-constraints).
 - `DelegateFSGroupToCSIDriver`: If supported by the CSI driver, delegates the
   role of applying `fsGroup` from a Pod's `securityContext` to the driver by
   passing `fsGroup` through the NodeStageVolume and NodePublishVolume CSI calls.
-- `DevicePlugins`: Enable the [device-plugins](/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/)
+- `DevicePlugins`: Enable the [device-plugins](/docs/kubernetes/en/concepts/extend-kubernetes/compute-storage-net/device-plugins/)
   based resource provisioning on nodes.
 - `DisableAcceleratorUsageMetrics`:
-  [Disable accelerator metrics collected by the kubelet](/docs/concepts/cluster-administration/system-metrics/#disable-accelerator-metrics).
+  [Disable accelerator metrics collected by the kubelet](/docs/kubernetes/en/concepts/cluster-administration/system-metrics/#disable-accelerator-metrics).
 - `DisableCloudProviders`: Disables any functionality in `kube-apiserver`,
   `kube-controller-manager` and `kubelet` related to the `--cloud-provider`
   component flag.
 - `DisableKubeletCloudCredentialProviders`: Disable the in-tree functionality in kubelet
   to authenticate to a cloud provider container registry for image pull credentials.
 - `DownwardAPIHugePages`: Enables usage of hugepages in
-  [downward API](/docs/tasks/inject-data-application/downward-api-volume-expose-pod-information).
-- `DryRun`: Enable server-side [dry run](/docs/reference/using-api/api-concepts/#dry-run) requests
+  [downward API](/docs/kubernetes/en/tasks/inject-data-application/downward-api-volume-expose-pod-information).
+- `DryRun`: Enable server-side [dry run](/docs/kubernetes/en/reference/using-api/api-concepts/#dry-run) requests
   so that validation, merging, and mutation can be tested without committing.
 - `DynamicKubeletConfig`: Enable the dynamic configuration of kubelet. The
   feature is no longer supported outside of supported skew policy. The feature
-  gate was removed from kubelet in 1.24. See [Reconfigure kubelet](/docs/tasks/administer-cluster/reconfigure-kubelet/).
+  gate was removed from kubelet in 1.24. See [Reconfigure kubelet](/docs/kubernetes/en/tasks/administer-cluster/reconfigure-kubelet/).
 - `EndpointSliceTerminatingCondition`: Enables EndpointSlice `terminating` and `serving`
    condition fields.
 - `EfficientWatchResumption`: Allows for storage-originated bookmark (progress
@@ -552,16 +552,16 @@ Each feature gate is designed for enabling/disabling a specific feature:
 - `ExecProbeTimeout`: Ensure kubelet respects exec probe timeouts.
   This feature gate exists in case any of your existing workloads depend on a
   now-corrected fault where Kubernetes ignored exec probe timeouts. See
-  [readiness probes](/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes).
+  [readiness probes](/docs/kubernetes/en/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes).
 - `ExpandCSIVolumes`: Enable the expanding of CSI volumes.
 - `ExpandedDNSConfig`: Enable kubelet and kube-apiserver to allow more DNS
   search paths and longer list of DNS search paths. This feature requires container
   runtime support(Containerd: v1.5.6 or higher, CRI-O: v1.22 or higher). See
-  [Expanded DNS Configuration](/docs/concepts/services-networking/dns-pod-service/#expanded-dns-configuration).
+  [Expanded DNS Configuration](/docs/kubernetes/en/concepts/services-networking/dns-pod-service/#expanded-dns-configuration).
 - `ExpandInUsePersistentVolumes`: Enable expanding in-use PVCs. See
-  [Resizing an in-use PersistentVolumeClaim](/docs/concepts/storage/persistent-volumes/#resizing-an-in-use-persistentvolumeclaim).
+  [Resizing an in-use PersistentVolumeClaim](/docs/kubernetes/en/concepts/storage/persistent-volumes/#resizing-an-in-use-persistentvolumeclaim).
 - `ExpandPersistentVolumes`: Enable the expanding of persistent volumes. See
-  [Expanding Persistent Volumes Claims](/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims).
+  [Expanding Persistent Volumes Claims](/docs/kubernetes/en/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims).
 - `ExperimentalHostUserNamespaceDefaulting`: Enabling the defaulting user
   namespace to host. This is for containers that are using other host namespaces,
   host mounts, or containers that are privileged or using specific non-namespaced
@@ -570,15 +570,15 @@ Each feature gate is designed for enabling/disabling a specific feature:
 - `GracefulNodeShutdown`: Enables support for graceful shutdown in kubelet.
   During a system shutdown, kubelet will attempt to detect the shutdown event
   and gracefully terminate pods running on the node. See
-  [Graceful Node Shutdown](/docs/concepts/architecture/nodes/#graceful-node-shutdown)
+  [Graceful Node Shutdown](/docs/kubernetes/en/concepts/architecture/nodes/#graceful-node-shutdown)
   for more details.
 - `GracefulNodeShutdownBasedOnPodPriority`: Enables the kubelet to check Pod priorities
   when shutting down a node gracefully.
 - `GRPCContainerProbe`: Enables the gRPC probe method for {Liveness,Readiness,Startup}Probe.
-  See [Configure Liveness, Readiness and Startup Probes](/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-grpc-liveness-probe).
+  See [Configure Liveness, Readiness and Startup Probes](/docs/kubernetes/en/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-grpc-liveness-probe).
 - `HonorPVReclaimPolicy`: Honor persistent volume reclaim policy when it is `Delete` irrespective of PV-PVC deletion ordering.
   For more details, check the
-  [PersistentVolume deletion protection finalizer](/docs/concepts/storage/persistent-volumes/#persistentvolume-deletion-protection-finalizer)
+  [PersistentVolume deletion protection finalizer](/docs/kubernetes/en/concepts/storage/persistent-volumes/#persistentvolume-deletion-protection-finalizer)
   documentation.
 - `HPAContainerMetrics`: Enable the `HorizontalPodAutoscaler` to scale based on
   metrics from individual containers in target pods.
@@ -589,7 +589,7 @@ Each feature gate is designed for enabling/disabling a specific feature:
   the OS of the pod authoritatively during the API server admission time.
   In Kubernetes {{< skew currentVersion >}}, the allowed values for the `pod.spec.os.name`
   are `windows` and `linux`.
-- `IndexedJob`: Allows the [Job](/docs/concepts/workloads/controllers/job/)
+- `IndexedJob`: Allows the [Job](/docs/kubernetes/en/concepts/workloads/controllers/job/)
   controller to manage Pod completions per completion index.
 - `InTreePluginAWSUnregister`: Stops registering the aws-ebs in-tree plugin in kubelet
   and volume controllers.
@@ -608,57 +608,57 @@ Each feature gate is designed for enabling/disabling a specific feature:
 - `InTreePluginvSphereUnregister`: Stops registering the vSphere in-tree plugin in kubelet
   and volume controllers.
 - `JobMutableNodeSchedulingDirectives`: Allows updating node scheduling directives in
-  the pod template of [Job](/docs/concepts/workloads/controllers/job).
+  the pod template of [Job](/docs/kubernetes/en/concepts/workloads/controllers/job).
 - `JobPodFailurePolicy`: Allow users to specify handling of pod failures based on container
   exit codes and pod conditions.
 - `JobReadyPods`: Enables tracking the number of Pods that have a `Ready`
-  [condition](/docs/concepts/workloads/pods/pod-lifecycle/#pod-conditions).
+  [condition](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#pod-conditions).
   The count of `Ready` pods is recorded in the
-  [status](/docs/reference/kubernetes-api/workload-resources/job-v1/#JobStatus)
-  of a [Job](/docs/concepts/workloads/controllers/job) status.
-- `JobTrackingWithFinalizers`: Enables tracking [Job](/docs/concepts/workloads/controllers/job)
+  [status](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/job-v1/#JobStatus)
+  of a [Job](/docs/kubernetes/en/concepts/workloads/controllers/job) status.
+- `JobTrackingWithFinalizers`: Enables tracking [Job](/docs/kubernetes/en/concepts/workloads/controllers/job)
   completions without relying on Pods remaining in the cluster indefinitely.
   The Job controller uses Pod finalizers and a field in the Job status to keep
   track of the finished Pods to count towards completion.
-- `KMSv2`: Enables KMS v2 API for encryption at rest. See [Using a KMS Provider for data encryption](/docs/tasks/administer-cluster/kms-provider) for more details.
+- `KMSv2`: Enables KMS v2 API for encryption at rest. See [Using a KMS Provider for data encryption](/docs/kubernetes/en/tasks/administer-cluster/kms-provider) for more details.
 - `KubeletCredentialProviders`: Enable kubelet exec credential providers for
   image pull credentials.
 - `KubeletInUserNamespace`: Enables support for running kubelet in a
   {{<glossary_tooltip text="user namespace" term_id="userns">}}.
-   See [Running Kubernetes Node Components as a Non-root User](/docs/tasks/administer-cluster/kubelet-in-userns/).
+   See [Running Kubernetes Node Components as a Non-root User](/docs/kubernetes/en/tasks/administer-cluster/kubelet-in-userns/).
 - `KubeletPodResources`: Enable the kubelet's pod resources gRPC endpoint. See
   [Support Device Monitoring](https://github.com/kubernetes/enhancements/blob/master/keps/sig-node/606-compute-device-assignment/README.md)
   for more details.
 - `KubeletPodResourcesGetAllocatable`: Enable the kubelet's pod resources
   `GetAllocatableResources` functionality. This API augments the
-  [resource allocation reporting](/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/#monitoring-device-plugin-resources)
+  [resource allocation reporting](/docs/kubernetes/en/concepts/extend-kubernetes/compute-storage-net/device-plugins/#monitoring-device-plugin-resources)
   with informations about the allocatable resources, enabling clients to properly
   track the free compute resources on a node.
 - `KubeletTracing`: Add support for distributed tracing in the kubelet.
   When enabled, kubelet CRI interface and authenticated http servers are instrumented to generate
   OpenTelemetry trace spans.
-  See [Traces for Kubernetes System Components](/docs/concepts/cluster-administration/system-traces) for more details.
+  See [Traces for Kubernetes System Components](/docs/kubernetes/en/concepts/cluster-administration/system-traces) for more details.
 - `LegacyServiceAccountTokenNoAutoGeneration`: Stop auto-generation of Secret-based
-  [service account tokens](/docs/reference/access-authn-authz/authentication/#service-account-tokens).
+  [service account tokens](/docs/kubernetes/en/reference/access-authn-authz/authentication/#service-account-tokens).
 - `LegacyServiceAccountTokenTracking`: Track usage of Secret-based
-  [service account tokens](/docs/reference/access-authn-authz/authentication/#service-account-tokens).
+  [service account tokens](/docs/kubernetes/en/reference/access-authn-authz/authentication/#service-account-tokens).
 - `LocalStorageCapacityIsolation`: Enable the consumption of
-  [local ephemeral storage](/docs/concepts/configuration/manage-resources-containers/)
+  [local ephemeral storage](/docs/kubernetes/en/concepts/configuration/manage-resources-containers/)
   and also the `sizeLimit` property of an
-  [emptyDir volume](/docs/concepts/storage/volumes/#emptydir).
+  [emptyDir volume](/docs/kubernetes/en/concepts/storage/volumes/#emptydir).
 - `LocalStorageCapacityIsolationFSQuotaMonitoring`: When `LocalStorageCapacityIsolation`
   is enabled for
-  [local ephemeral storage](/docs/concepts/configuration/manage-resources-containers/)
-  and the backing filesystem for [emptyDir volumes](/docs/concepts/storage/volumes/#emptydir)
+  [local ephemeral storage](/docs/kubernetes/en/concepts/configuration/manage-resources-containers/)
+  and the backing filesystem for [emptyDir volumes](/docs/kubernetes/en/concepts/storage/volumes/#emptydir)
   supports project quotas and they are enabled, use project quotas to monitor
-  [emptyDir volume](/docs/concepts/storage/volumes/#emptydir) storage consumption rather than
+  [emptyDir volume](/docs/kubernetes/en/concepts/storage/volumes/#emptydir) storage consumption rather than
   filesystem walk for better performance and accuracy.
 - `LogarithmicScaleDown`: Enable semi-random selection of pods to evict on controller scaledown
   based on logarithmic bucketing of pod timestamps.
 - `MatchLabelKeysInPodTopologySpread`: Enable the `matchLabelKeys` field for
-  [Pod topology spread constraints](/docs/concepts/scheduling-eviction/topology-spread-constraints/).
+  [Pod topology spread constraints](/docs/kubernetes/en/concepts/scheduling-eviction/topology-spread-constraints/).
 - `MaxUnavailableStatefulSet`: Enables setting the `maxUnavailable` field for the
-  [rolling update strategy](/docs/concepts/workloads/controllers/statefulset/#rolling-updates)
+  [rolling update strategy](/docs/kubernetes/en/concepts/workloads/controllers/statefulset/#rolling-updates)
   of a StatefulSet. The field specifies the maximum number of Pods
   that can be unavailable during the update.
 - `MemoryManager`: Allows setting memory affinity for a container based on
@@ -666,7 +666,7 @@ Each feature gate is designed for enabling/disabling a specific feature:
 - `MemoryQoS`: Enable memory protection and usage throttle on pod / container using
   cgroup v2 memory controller.
 - `MinDomainsInPodTopologySpread`: Enable `minDomains` in
-  [Pod topology spread constraints](/docs/concepts/scheduling-eviction/topology-spread-constraints/).
+  [Pod topology spread constraints](/docs/kubernetes/en/concepts/scheduling-eviction/topology-spread-constraints/).
 - `MixedProtocolLBService`: Enable using different protocols in the same `LoadBalancer` type
   Service instance.
 - `MultiCIDRRangeAllocator`: Enables the MultiCIDR range allocator.
@@ -674,7 +674,7 @@ Each feature gate is designed for enabling/disabling a specific feature:
   allowing the selection of a port range instead of a single port.
 - `NetworkPolicyStatus`: Enable the `status` subresource for NetworkPolicy objects.
 - `NodeInclusionPolicyInPodTopologySpread`: Enable using `nodeAffinityPolicy` and `nodeTaintsPolicy` in
-  [Pod topology spread constraints](/docs/concepts/scheduling-eviction/topology-spread-constraints/)
+  [Pod topology spread constraints](/docs/kubernetes/en/concepts/scheduling-eviction/topology-spread-constraints/)
   when calculating pod topology spread skew.
 - `NodeOutOfServiceVolumeDetach`: When a Node is marked out-of-service using the
   `node.kubernetes.io/out-of-service` taint, Pods on the node will be forcefully deleted
@@ -682,31 +682,31 @@ Each feature gate is designed for enabling/disabling a specific feature:
    on the node will happen immediately. The deleted Pods can recover quickly on different nodes.
 - `NodeSwap`: Enable the kubelet to allocate swap memory for Kubernetes workloads on a node.
   Must be used with `KubeletConfiguration.failSwapOn` set to false.
-  For more details, please see [swap memory](/docs/concepts/architecture/nodes/#swap-memory)
+  For more details, please see [swap memory](/docs/kubernetes/en/concepts/architecture/nodes/#swap-memory)
 - `NonPreemptingPriority`: Enable `preemptionPolicy` field for PriorityClass and Pod.
 - `OpenAPIEnums`: Enables populating "enum" fields of OpenAPI schemas in the
   spec returned from the API server.
 - `OpenAPIV3`: Enables the API server to publish OpenAPI v3.
 - `PDBUnhealthyPodEvictionPolicy`: Enables the `unhealthyPodEvictionPolicy` field of a `PodDisruptionBudget`. This specifies
-  when unhealthy pods should be considered for eviction. Please see [Unhealthy Pod Eviction Policy](/docs/tasks/run-application/configure-pdb/#unhealthy-pod-eviction-policy)
+  when unhealthy pods should be considered for eviction. Please see [Unhealthy Pod Eviction Policy](/docs/kubernetes/en/tasks/run-application/configure-pdb/#unhealthy-pod-eviction-policy)
   for more details.
-- `PodDeletionCost`: Enable the [Pod Deletion Cost](/docs/concepts/workloads/controllers/replicaset/#pod-deletion-cost)
+- `PodDeletionCost`: Enable the [Pod Deletion Cost](/docs/kubernetes/en/concepts/workloads/controllers/replicaset/#pod-deletion-cost)
    feature which allows users to influence ReplicaSet downscaling order.
 - `PodAffinityNamespaceSelector`: Enable the
-  [Pod Affinity Namespace Selector](/docs/concepts/scheduling-eviction/assign-pod-node/#namespace-selector)
-  and [CrossNamespacePodAffinity](/docs/concepts/policy/resource-quotas/#cross-namespace-pod-affinity-quota)
+  [Pod Affinity Namespace Selector](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node/#namespace-selector)
+  and [CrossNamespacePodAffinity](/docs/kubernetes/en/concepts/policy/resource-quotas/#cross-namespace-pod-affinity-quota)
   quota scope features.
 - `PodAndContainerStatsFromCRI`: Configure the kubelet to gather container and pod stats from the CRI container runtime rather than gathering them from cAdvisor.
   As of 1.26, this also includes gathering metrics from CRI and emitting them over `/metrics/cadvisor` (rather than having cAdvisor emit them directly).
 - `PodDisruptionConditions`: Enables support for appending a dedicated pod condition indicating that the pod is being deleted due to a disruption.
-- `PodHasNetworkCondition`: Enable the kubelet to mark the [PodHasNetwork](/docs/concepts/workloads/pods/pod-lifecycle/#pod-has-network) condition on pods.
-- `PodSchedulingReadiness`: Enable setting `schedulingGates` field to control a Pod's [scheduling readiness](/docs/concepts/scheduling-eviction/pod-scheduling-readiness).
+- `PodHasNetworkCondition`: Enable the kubelet to mark the [PodHasNetwork](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#pod-has-network) condition on pods.
+- `PodSchedulingReadiness`: Enable setting `schedulingGates` field to control a Pod's [scheduling readiness](/docs/kubernetes/en/concepts/scheduling-eviction/pod-scheduling-readiness).
 - `PodSecurity`: Enables the `PodSecurity` admission plugin.
 - `PreferNominatedNode`: This flag tells the scheduler whether the nominated
   nodes will be checked first before looping through all the other nodes in
   the cluster.
 - `ProbeTerminationGracePeriod`: Enable [setting probe-level
-  `terminationGracePeriodSeconds`](/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#probe-level-terminationgraceperiodseconds)
+  `terminationGracePeriodSeconds`](/docs/kubernetes/en/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#probe-level-terminationgraceperiodseconds)
   on pods. See the [enhancement proposal](https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/2238-liveness-probe-grace-period)
   for more details.
 - `ProcMountType`: Enables control over the type proc mounts for containers
@@ -720,18 +720,18 @@ Each feature gate is designed for enabling/disabling a specific feature:
   access mode.
 - `RecoverVolumeExpansionFailure`: Enables users to edit their PVCs to smaller
   sizes so as they can recover from previously issued volume expansion failures.
-  See [Recovering from Failure when Expanding Volumes](/docs/concepts/storage/persistent-volumes/#recovering-from-failure-when-expanding-volumes)
+  See [Recovering from Failure when Expanding Volumes](/docs/kubernetes/en/concepts/storage/persistent-volumes/#recovering-from-failure-when-expanding-volumes)
   for more details.
 - `RemainingItemCount`: Allow the API servers to show a count of remaining
   items in the response to a
-  [chunking list request](/docs/reference/using-api/api-concepts/#retrieving-large-results-sets-in-chunks).
+  [chunking list request](/docs/kubernetes/en/reference/using-api/api-concepts/#retrieving-large-results-sets-in-chunks).
 - `RemoveSelfLink`: Sets the `.metadata.selfLink` field to blank (empty string) for all
   objects and collections. This field has been deprecated since the Kubernetes v1.16
   release. When this feature is enabled, the `.metadata.selfLink` field remains part of
   the Kubernetes API, but is always unset.
 - `RetroactiveDefaultStorageClass`: Allow assigning StorageClass to unbound PVCs retroactively.
 - `RotateKubeletServerCertificate`: Enable the rotation of the server TLS certificate on the kubelet.
-  See [kubelet configuration](/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/#kubelet-configuration)
+  See [kubelet configuration](/docs/kubernetes/en/reference/access-authn-authz/kubelet-tls-bootstrapping/#kubelet-configuration)
   for more details.
 - `SELinuxMountReadWriteOncePod`: Speed up container startup by mounting volumes with the correct
   SELinux label instead of changing each file on the volumes recursively. The initial implementation
@@ -742,7 +742,7 @@ Each feature gate is designed for enabling/disabling a specific feature:
 - `SELinuxMountReadWriteOncePod`: Allows kubelet to mount volumes for a Pod directly with the
   right SELinux label instead of applying the SELinux label recursively on every file on the
   volume.
-- `ServerSideApply`: Enables the [Sever Side Apply (SSA)](/docs/reference/using-api/server-side-apply/)
+- `ServerSideApply`: Enables the [Sever Side Apply (SSA)](/docs/kubernetes/en/reference/using-api/server-side-apply/)
   feature on the API Server.
 - `ServerSideFieldValidation`: Enables server-side field validation. This means the validation
   of resource schema is performed at the API server side rather than the client side
@@ -750,13 +750,13 @@ Each feature gate is designed for enabling/disabling a specific feature:
 - `ServiceInternalTrafficPolicy`: Enables the `internalTrafficPolicy` field on Services
 - `ServiceLBNodePortControl`: Enables the `allocateLoadBalancerNodePorts` field on Services.
 - `ServiceLoadBalancerClass`: Enables the `loadBalancerClass` field on Services. See
-  [Specifying class of load balancer implementation](/docs/concepts/services-networking/service/#load-balancer-class)
+  [Specifying class of load balancer implementation](/docs/kubernetes/en/concepts/services-networking/service/#load-balancer-class)
   for more details.
 - `ServiceIPStaticSubrange`: Enables a strategy for Services ClusterIP allocations, whereby the
   ClusterIP range is subdivided. Dynamic allocated ClusterIP addresses will be allocated preferently
   from the upper range allowing users to assign static ClusterIPs from the lower range with a low
   risk of collision. See
-  [Avoiding collisions](/docs/concepts/services-networking/service/#avoiding-collisions)
+  [Avoiding collisions](/docs/kubernetes/en/concepts/services-networking/service/#avoiding-collisions)
   for more details.
 - `SizeMemoryBackedVolumes`: Enable kubelets to determine the size limit for
   memory-backed volumes (mainly `emptyDir` volumes).
@@ -764,21 +764,21 @@ Each feature gate is designed for enabling/disabling a specific feature:
   the StatefulSet controller.
 - `StatefulSetStartOrdinal`: Allow configuration of the start ordinal in a
   StatefulSet. See
-  [Start ordinal](/docs/concepts/workloads/controllers/statefulset/#start-ordinal)
+  [Start ordinal](/docs/kubernetes/en/concepts/workloads/controllers/statefulset/#start-ordinal)
   for more details.
 - `StorageVersionAPI`: Enable the
-  [storage version API](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#storageversion-v1alpha1-internal-apiserver-k8s-io).
+  [storage version API](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#storageversion-v1alpha1-internal-apiserver-k8s-io).
 - `StorageVersionHash`: Allow API servers to expose the storage version hash in the
   discovery.
 - `SuspendJob`: Enable support to suspend and resume Jobs. For more details, see
-   [the Jobs docs](/docs/concepts/workloads/controllers/job/).
+   [the Jobs docs](/docs/kubernetes/en/concepts/workloads/controllers/job/).
 - `TopologyAwareHints`: Enables topology aware routing based on topology hints
   in EndpointSlices. See [Topology Aware
-  Hints](/docs/concepts/services-networking/topology-aware-hints/) for more
+  Hints](/docs/kubernetes/en/concepts/services-networking/topology-aware-hints/) for more
   details.
 - `TopologyManager`: Enable a mechanism to coordinate fine-grained hardware resource
   assignments for different components in Kubernetes. See
-  [Control Topology Management Policies on a node](/docs/tasks/administer-cluster/topology-manager/).
+  [Control Topology Management Policies on a node](/docs/kubernetes/en/tasks/administer-cluster/topology-manager/).
 - `TopologyManagerPolicyAlphaOptions`: Allow fine-tuning of topology manager policies,
   experimental, Alpha-quality options.
   This feature gate guards *a group* of topology manager options whose quality level is alpha.
@@ -789,7 +789,7 @@ Each feature gate is designed for enabling/disabling a specific feature:
   This feature gate will never graduate to stable.
 - `TopologyManagerPolicyOptions`: Allow fine-tuning of topology manager policies,
 - `UserNamespacesStatelessPodsSupport`: Enable user namespace support for stateless Pods.
-- `ValidatingAdmissionPolicy`: Enable [ValidatingAdmissionPolicy](/docs/reference/access-authn-authz/validating-admission-policy/) support for CEL validations be used in Admission Control.
+- `ValidatingAdmissionPolicy`: Enable [ValidatingAdmissionPolicy](/docs/kubernetes/en/reference/access-authn-authz/validating-admission-policy/) support for CEL validations be used in Admission Control.
 - `VolumeCapacityPriority`: Enable support for prioritizing nodes in different
   topologies based on available PV capacity.
 - `WatchBookmark`: Enable support for watch bookmark events.
@@ -800,10 +800,10 @@ Each feature gate is designed for enabling/disabling a specific feature:
 
 ## {{% heading "whatsnext" %}}
 
-* The [deprecation policy](/docs/reference/using-api/deprecation-policy/) for Kubernetes explains
+* The [deprecation policy](/docs/kubernetes/en/reference/using-api/deprecation-policy/) for Kubernetes explains
   the project's approach to removing features and components.
 * Since Kubernetes 1.24, new beta APIs are not enabled by default.  When enabling a beta
   feature, you will also need to enable any associated API resources.
   For example, to enable a particular resource like
   `storage.k8s.io/v1beta1/csistoragecapacities`, set `--runtime-config=storage.k8s.io/v1beta1/csistoragecapacities`.
-  See [API Versioning](/docs/reference/using-api/#api-versioning) for more details on the command line flags.
+  See [API Versioning](/docs/kubernetes/en/reference/using-api/#api-versioning) for more details on the command line flags.

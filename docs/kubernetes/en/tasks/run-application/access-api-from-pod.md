@@ -20,7 +20,7 @@ When accessing the API from within a Pod, locating and authenticating
 to the API server are slightly different to the external client case.
 
 The easiest way to use the Kubernetes API from a Pod is to use
-one of the official [client libraries](/docs/reference/using-api/client-libraries/). These
+one of the official [client libraries](/docs/kubernetes/en/reference/using-api/client-libraries/). These
 libraries can automatically discover the API server and authenticate.
 
 ### Using Official Client Libraries
@@ -35,7 +35,7 @@ From within a Pod, the recommended ways to connect to the Kubernetes API are:
     The `config.load_incluster_config()` function handles API host discovery and authentication automatically.
     See [an example here](https://github.com/kubernetes-client/python/blob/master/examples/in_cluster_config.py).
 
-  - There are a number of other libraries available, please refer to the [Client Libraries](/docs/reference/using-api/client-libraries/) page.
+  - There are a number of other libraries available, please refer to the [Client Libraries](/docs/kubernetes/en/reference/using-api/client-libraries/) page.
 
 In each case, the service account credentials of the Pod are used to communicate
 securely with the API server.
@@ -48,7 +48,7 @@ While running in a Pod, the Kubernetes apiserver is accessible via a Service nam
 do this automatically.
 
 The recommended way to authenticate to the API server is with a
-[service account](/docs/tasks/configure-pod-container/configure-service-account/)
+[service account](/docs/kubernetes/en/tasks/configure-pod-container/configure-service-account/)
 credential. By default, a Pod
 is associated with a service account, and a credential (token) for that
 service account is placed into the filesystem tree of each container in that Pod,
@@ -64,7 +64,7 @@ at `/var/run/secrets/kubernetes.io/serviceaccount/namespace` in each container.
 ### Using kubectl proxy
 
 If you would like to query the API without an official client library, you can run `kubectl proxy`
-as the [command](/docs/tasks/inject-data-application/define-command-argument-container/)
+as the [command](/docs/kubernetes/en/tasks/inject-data-application/define-command-argument-container/)
 of a new sidecar container in the Pod. This way, `kubectl proxy` will authenticate
 to the API and expose it on the `localhost` interface of the Pod, so that other containers
 in the Pod can use it directly.

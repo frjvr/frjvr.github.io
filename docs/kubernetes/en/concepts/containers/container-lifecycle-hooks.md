@@ -45,7 +45,7 @@ the handler, the container will eventually terminate within the Pod's terminatio
 parameters are passed to the handler.
 
 A more detailed description of the termination behavior can be found in
-[Termination of Pods](/docs/concepts/workloads/pods/pod-lifecycle/#pod-termination).
+[Termination of Pods](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#pod-termination).
 
 ### Hook handler implementations
 
@@ -128,7 +128,7 @@ Events:
 ## {{% heading "whatsnext" %}}
 
 
-* Learn more about the [Container environment](/docs/concepts/containers/container-environment/).
+* Learn more about the [Container environment](/docs/kubernetes/en/concepts/containers/container-environment/).
 * Get hands-on experience
-  [attaching handlers to Container lifecycle events](/docs/tasks/configure-pod-container/attach-handler-lifecycle-event/).
+  [attaching handlers to Container lifecycle events](/docs/kubernetes/en/tasks/configure-pod-container/attach-handler-lifecycle-event/).
 

@@ -6,6 +6,6 @@ description: >
 ---
 
 {{< note >}}
-See [Network Policies](/docs/concepts/services-networking/network-policies/)
+See [Network Policies](/docs/kubernetes/en/concepts/services-networking/network-policies/)
 for documentation about NetworkPolicy in Kubernetes.
 {{< /note >}}

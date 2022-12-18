@@ -31,7 +31,7 @@ an application.  Examples are:
 - cloud provider or hypervisor failure makes VM disappear
 - a kernel panic
 - the node disappears from the cluster due to cluster network partition
-- eviction of a pod due to the node being [out-of-resources](/docs/concepts/scheduling-eviction/node-pressure-eviction/).
+- eviction of a pod due to the node being [out-of-resources](/docs/kubernetes/en/concepts/scheduling-eviction/node-pressure-eviction/).
 
 Except for the out-of-resources condition, all these conditions
 should be familiar to most users; they are not specific
@@ -47,7 +47,7 @@ Administrator.  Typical application owner actions include:
 
 Cluster administrator actions include:
 
-- [Draining a node](/docs/tasks/administer-cluster/safely-drain-node/) for repair or upgrade.
+- [Draining a node](/docs/kubernetes/en/tasks/administer-cluster/safely-drain-node/) for repair or upgrade.
 - Draining a node from a cluster to scale the cluster down (learn about
 [Cluster Autoscaling](https://github.com/kubernetes/autoscaler/#readme)
 ).
@@ -69,15 +69,15 @@ deleting deployments or pods bypasses Pod Disruption Budgets.
 
 Here are some ways to mitigate involuntary disruptions:
 
-- Ensure your pod [requests the resources](/docs/tasks/configure-pod-container/assign-memory-resource) it needs.
+- Ensure your pod [requests the resources](/docs/kubernetes/en/tasks/configure-pod-container/assign-memory-resource) it needs.
 - Replicate your application if you need higher availability.  (Learn about running replicated
-  [stateless](/docs/tasks/run-application/run-stateless-application-deployment/)
-  and [stateful](/docs/tasks/run-application/run-replicated-stateful-application/) applications.)
+  [stateless](/docs/kubernetes/en/tasks/run-application/run-stateless-application-deployment/)
+  and [stateful](/docs/kubernetes/en/tasks/run-application/run-replicated-stateful-application/) applications.)
 - For even higher availability when running replicated applications,
   spread applications across racks (using
-  [anti-affinity](/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity))
+  [anti-affinity](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity))
   or across zones (if using a
-  [multi-zone cluster](/docs/setup/multiple-zones).)
+  [multi-zone cluster](/docs/kubernetes/en/setup/multiple-zones).)
 
 The frequency of voluntary disruptions varies.  On a basic Kubernetes cluster, there are
 no automated voluntary disruptions (only user-triggered ones).  However, your cluster administrator or hosting provider
@@ -86,7 +86,7 @@ rolling out node software updates can cause voluntary disruptions. Also, some im
 of cluster (node) autoscaling may cause voluntary disruptions to defragment and compact nodes.
 Your cluster administrator or hosting provider should have documented what level of voluntary
 disruptions, if any, to expect. Certain configuration options, such as
-[using PriorityClasses](/docs/concepts/scheduling-eviction/pod-priority-preemption/)
+[using PriorityClasses](/docs/kubernetes/en/concepts/scheduling-eviction/pod-priority-preemption/)
 in your pod spec can also cause voluntary (and involuntary) disruptions.
 
 
@@ -106,7 +106,7 @@ ensure that the number of replicas serving load never falls below a certain
 percentage of the total.
 
 Cluster managers and hosting providers should use tools which
-respect PodDisruptionBudgets by calling the [Eviction API](/docs/tasks/administer-cluster/safely-drain-node/#eviction-api)
+respect PodDisruptionBudgets by calling the [Eviction API](/docs/kubernetes/en/tasks/administer-cluster/safely-drain-node/#eviction-api)
 instead of directly deleting pods or deployments.
 
 For example, the `kubectl drain` subcommand lets you mark a node as going out of
@@ -137,8 +137,8 @@ are not limited by PDBs when doing rolling upgrades. Instead, the handling of fa
 during application updates is configured in the spec for the specific workload resource.
 
 When a pod is evicted using the eviction API, it is gracefully
-[terminated](/docs/concepts/workloads/pods/pod-lifecycle/#pod-termination), honoring the
-`terminationGracePeriodSeconds` setting in its [PodSpec](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core).
+[terminated](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#pod-termination), honoring the
+`terminationGracePeriodSeconds` setting in its [PodSpec](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core).
 
 ## PodDisruptionBudget example {#pdb-example}
 
@@ -238,17 +238,17 @@ please refer to the corresponding version of the documentation.
 
 {{< note >}}
 In order to use this behavior, you must have the `PodDisruptionConditions`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/)
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/)
 enabled in your cluster.
 {{< /note >}}
 
-When enabled, a dedicated Pod `DisruptionTarget` [condition](/docs/concepts/workloads/pods/pod-lifecycle/#pod-conditions) is added to indicate
+When enabled, a dedicated Pod `DisruptionTarget` [condition](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#pod-conditions) is added to indicate
 that the Pod is about to be deleted due to a {{<glossary_tooltip term_id="disruption" text="disruption">}}.
 The `reason` field of the condition additionally
 indicates one of the following reasons for the Pod termination:
 
 `PreemptionByKubeScheduler`
-: Pod is due to be {{<glossary_tooltip term_id="preemption" text="preempted">}} by a scheduler in order to accommodate a new Pod with a higher priority. For more information, see [Pod priority preemption](/docs/concepts/scheduling-eviction/pod-priority-preemption/).
+: Pod is due to be {{<glossary_tooltip term_id="preemption" text="preempted">}} by a scheduler in order to accommodate a new Pod with a higher priority. For more information, see [Pod priority preemption](/docs/kubernetes/en/concepts/scheduling-eviction/pod-priority-preemption/).
 
 `DeletionByTaintManager`
 : Pod is due to be deleted by Taint Manager (which is part of the node lifecycle controller within `kube-controller-manager`) due to a `NoExecute` taint that the Pod does not tolerate; see {{<glossary_tooltip term_id="taint" text="taint">}}-based evictions.
@@ -257,10 +257,10 @@ indicates one of the following reasons for the Pod termination:
 : Pod has been marked for {{<glossary_tooltip term_id="api-eviction" text="eviction using the Kubernetes API">}} .
 
 `DeletionByPodGC`
-: Pod, that is bound to a no longer existing Node, is due to be deleted by [Pod garbage collection](/docs/concepts/workloads/pods/pod-lifecycle/#pod-garbage-collection).
+: Pod, that is bound to a no longer existing Node, is due to be deleted by [Pod garbage collection](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#pod-garbage-collection).
 
 `TerminationByKubelet`
-: Pod has been terminated by the kubelet, because of either {{<glossary_tooltip term_id="node-pressure-eviction" text="node pressure eviction">}} or the [graceful node shutdown](/docs/concepts/architecture/nodes/#graceful-node-shutdown).
+: Pod has been terminated by the kubelet, because of either {{<glossary_tooltip term_id="node-pressure-eviction" text="node pressure eviction">}} or the [graceful node shutdown](/docs/kubernetes/en/concepts/architecture/nodes/#graceful-node-shutdown).
 
 {{< note >}}
 A Pod disruption might be interrupted. The control plane might re-attempt to
@@ -272,10 +272,10 @@ Pod disruption condition will be cleared.
 
 When the `PodDisruptionConditions` feature gate is enabled,
 along with cleaning up the pods, the Pod garbage collector (PodGC) will also mark them as failed if they are in a non-terminal
-phase (see also [Pod garbage collection](/docs/concepts/workloads/pods/pod-lifecycle/#pod-garbage-collection)).
+phase (see also [Pod garbage collection](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#pod-garbage-collection)).
 
 When using a Job (or CronJob), you may want to use these Pod disruption conditions as part of your Job's
-[Pod failure policy](/docs/concepts/workloads/controllers/job#pod-failure-policy).
+[Pod failure policy](/docs/kubernetes/en/concepts/workloads/controllers/job#pod-failure-policy).
 
 ## Separating Cluster Owner and Application Owner Roles
 
@@ -317,10 +317,10 @@ the nodes in your cluster, such as a node or system software upgrade, here are s
 ## {{% heading "whatsnext" %}}
 
 
-* Follow steps to protect your application by [configuring a Pod Disruption Budget](/docs/tasks/run-application/configure-pdb/).
+* Follow steps to protect your application by [configuring a Pod Disruption Budget](/docs/kubernetes/en/tasks/run-application/configure-pdb/).
 
-* Learn more about [draining nodes](/docs/tasks/administer-cluster/safely-drain-node/)
+* Learn more about [draining nodes](/docs/kubernetes/en/tasks/administer-cluster/safely-drain-node/)
 
-* Learn about [updating a deployment](/docs/concepts/workloads/controllers/deployment/#updating-a-deployment)
+* Learn about [updating a deployment](/docs/kubernetes/en/concepts/workloads/controllers/deployment/#updating-a-deployment)
   including steps to maintain its availability during the rollout.
 

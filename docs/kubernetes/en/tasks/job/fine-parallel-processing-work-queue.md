@@ -33,7 +33,7 @@ Here is an overview of the steps in this example:
 <!-- steps -->
 
 Be familiar with the basic,
-non-parallel, use of [Job](/docs/concepts/workloads/controllers/job/).
+non-parallel, use of [Job](/docs/kubernetes/en/concepts/workloads/controllers/job/).
 
 <!-- steps -->
 
@@ -142,7 +142,7 @@ docker push <username>/job-wq-2
 ```
 
 You need to push to a public repository or [configure your cluster to be able to access
-your private repository](/docs/concepts/containers/images/).
+your private repository](/docs/kubernetes/en/concepts/containers/images/).
 
 If you are using [Google Container
 Registry](https://cloud.google.com/tools/container-registry/), tag
@@ -235,7 +235,7 @@ As you can see, one of our pods worked on several work units.
 
 If running a queue service or modifying your containers to use a work queue is inconvenient, you may
 want to consider one of the other
-[job patterns](/docs/concepts/workloads/controllers/job/#job-patterns).
+[job patterns](/docs/kubernetes/en/concepts/workloads/controllers/job/#job-patterns).
 
 If you have a continuous stream of background processing work to run, then
 consider running your background workers with a `ReplicaSet` instead,

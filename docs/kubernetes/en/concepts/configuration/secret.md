@@ -38,14 +38,14 @@ Deployment.
 
 In order to safely use Secrets, take at least the following steps:
 
-1. [Enable Encryption at Rest](/docs/tasks/administer-cluster/encrypt-data/) for Secrets.
-1. [Enable or configure RBAC rules](/docs/reference/access-authn-authz/authorization/) with
+1. [Enable Encryption at Rest](/docs/kubernetes/en/tasks/administer-cluster/encrypt-data/) for Secrets.
+1. [Enable or configure RBAC rules](/docs/kubernetes/en/reference/access-authn-authz/authorization/) with
    least-privilege access to Secrets.
 1. Restrict Secret access to specific containers.
 1. [Consider using external Secret store providers](https://secrets-store-csi-driver.sigs.k8s.io/concepts.html#provider-for-the-secrets-store-csi-driver).
 
 For more guidelines to manage and improve the security of your Secrets, refer to
-[Good practices for Kubernetes Secrets](/docs/concepts/security/secrets-good-practices).
+[Good practices for Kubernetes Secrets](/docs/kubernetes/en/concepts/security/secrets-good-practices).
 
 {{< /caution >}}
 
@@ -74,16 +74,16 @@ Here are some of your options:
 
 - if your cloud-native component needs to authenticate to another application that you
   know is running within the same Kubernetes cluster, you can use a
-  [ServiceAccount](/docs/reference/access-authn-authz/authentication/#service-account-tokens)
+  [ServiceAccount](/docs/kubernetes/en/reference/access-authn-authz/authentication/#service-account-tokens)
   and its tokens to identify your client.
 - there are third-party tools that you can run, either within or outside your cluster,
   that provide secrets management. For example, a service that Pods access over HTTPS,
   that reveals a secret if the client correctly authenticates (for example, with a ServiceAccount
   token).
 - for authentication, you can implement a custom signer for X.509 certificates, and use
-  [CertificateSigningRequests](/docs/reference/access-authn-authz/certificate-signing-requests/)
+  [CertificateSigningRequests](/docs/kubernetes/en/reference/access-authn-authz/certificate-signing-requests/)
   to let that custom signer issue certificates to Pods that need them.
-- you can use a [device plugin](/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/)
+- you can use a [device plugin](/docs/kubernetes/en/concepts/extend-kubernetes/compute-storage-net/device-plugins/)
   to expose node-local encryption hardware to a specific Pod. For example, you can schedule
   trusted Pods onto nodes that provide a Trusted Platform Module, configured out-of-band.
 
@@ -101,14 +101,14 @@ the exact mechanisms for issuing and refreshing those session tokens.
 
 There are several options to create a Secret:
 
-- [Use `kubectl`](/docs/tasks/configmap-secret/managing-secret-using-kubectl/)
-- [Use a configuration file](/docs/tasks/configmap-secret/managing-secret-using-config-file/)
-- [Use the Kustomize tool](/docs/tasks/configmap-secret/managing-secret-using-kustomize/)
+- [Use `kubectl`](/docs/kubernetes/en/tasks/configmap-secret/managing-secret-using-kubectl/)
+- [Use a configuration file](/docs/kubernetes/en/tasks/configmap-secret/managing-secret-using-config-file/)
+- [Use the Kustomize tool](/docs/kubernetes/en/tasks/configmap-secret/managing-secret-using-kustomize/)
 
 #### Constraints on Secret names and data {#restriction-names-data}
 
 The name of a Secret object must be a valid
-[DNS subdomain name](/docs/concepts/overview/working-with-objects/names#dns-subdomain-names).
+[DNS subdomain name](/docs/kubernetes/en/concepts/overview/working-with-objects/names#dns-subdomain-names).
 
 You can specify the `data` and/or the `stringData` field when creating a
 configuration file for a Secret.  The `data` and the `stringData` fields are optional.
@@ -127,7 +127,7 @@ precedence.
 Individual secrets are limited to 1MiB in size. This is to discourage creation
 of very large secrets that could exhaust the API server and kubelet memory.
 However, creation of many smaller secrets could also exhaust memory. You can
-use a [resource quota](/docs/concepts/policy/resource-quotas/) to limit the
+use a [resource quota](/docs/kubernetes/en/concepts/policy/resource-quotas/) to limit the
 number of Secrets (or other resources) in a namespace.
 
 ### Editing a Secret
@@ -135,10 +135,10 @@ number of Secrets (or other resources) in a namespace.
 You can edit an existing Secret unless it is [immutable](#secret-immutable). To
 edit a Secret, use one of the following methods:
 
-*  [Use `kubectl`](/docs/tasks/configmap-secret/managing-secret-using-kubectl/#edit-secret)
-*  [Use a configuration file](/docs/tasks/configmap-secret/managing-secret-using-config-file/#edit-secret)
+*  [Use `kubectl`](/docs/kubernetes/en/tasks/configmap-secret/managing-secret-using-kubectl/#edit-secret)
+*  [Use a configuration file](/docs/kubernetes/en/tasks/configmap-secret/managing-secret-using-config-file/#edit-secret)
 
-You can also edit the data in a Secret using the [Kustomize tool](/docs/tasks/configmap-secret/managing-secret-using-kustomize/#edit-secret). However, this
+You can also edit the data in a Secret using the [Kustomize tool](/docs/kubernetes/en/tasks/configmap-secret/managing-secret-using-kustomize/#edit-secret). However, this
 method creates a new `Secret` object with the edited data.
 
 Depending on how you created the Secret, as well as how the Secret is used in
@@ -225,16 +225,16 @@ Versions of Kubernetes before v1.22 automatically created credentials for access
 the Kubernetes API. This older mechanism was based on creating token Secrets that
 could then be mounted into running Pods.
 In more recent versions, including Kubernetes v{{< skew currentVersion >}}, API credentials
-are obtained directly by using the [TokenRequest](/docs/reference/kubernetes-api/authentication-resources/token-request-v1/) API,
-and are mounted into Pods using a [projected volume](/docs/reference/access-authn-authz/service-accounts-admin/#bound-service-account-token-volume).
+are obtained directly by using the [TokenRequest](/docs/kubernetes/en/reference/kubernetes-api/authentication-resources/token-request-v1/) API,
+and are mounted into Pods using a [projected volume](/docs/kubernetes/en/reference/access-authn-authz/service-accounts-admin/#bound-service-account-token-volume).
 The tokens obtained using this method have bounded lifetimes, and are automatically
 invalidated when the Pod they are mounted into is deleted.
 
-You can still [manually create](/docs/tasks/configure-pod-container/configure-service-account/#manually-create-a-service-account-api-token)
+You can still [manually create](/docs/kubernetes/en/tasks/configure-pod-container/configure-service-account/#manually-create-a-service-account-api-token)
 a service account token Secret; for example, if you need a token that never expires.
-However, using the [TokenRequest](/docs/reference/kubernetes-api/authentication-resources/token-request-v1/)
+However, using the [TokenRequest](/docs/kubernetes/en/reference/kubernetes-api/authentication-resources/token-request-v1/)
 subresource to obtain a token to access the API is recommended instead.
-You can use the [`kubectl create token`](/docs/reference/generated/kubectl/kubectl-commands#-em-token-em-)
+You can use the [`kubectl create token`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands#-em-token-em-)
 command to obtain a token from the `TokenRequest` API.
 {{< /note >}}
 
@@ -362,7 +362,7 @@ this and updates the data in the volume, using an eventually-consistent approach
 
 {{< note >}}
 A container using a Secret as a
-[subPath](/docs/concepts/storage/volumes#using-subpath) volume mount does not receive
+[subPath](/docs/kubernetes/en/concepts/storage/volumes#using-subpath) volume mount does not receive
 automated Secret updates.
 {{< /note >}}
 
@@ -370,7 +370,7 @@ The kubelet keeps a cache of the current keys and values for the Secrets that ar
 volumes for pods on that node.
 You can configure the way that the kubelet detects changes from the cached values. The
 `configMapAndSecretChangeDetectionStrategy` field in the
-[kubelet configuration](/docs/reference/config-api/kubelet-config.v1beta1/) controls
+[kubelet configuration](/docs/kubernetes/en/reference/config-api/kubelet-config.v1beta1/) controls
 which strategy the kubelet uses. The default strategy is `Watch`.
 
 Updates to Secrets can be either propagated by an API watch mechanism (the default), based on
@@ -494,7 +494,7 @@ The `imagePullSecrets` field for a Pod is a list of references to Secrets in the
 as the Pod.
 You can use an `imagePullSecrets` to pass image registry access credentials to
 the kubelet. The kubelet uses this information to pull a private image on behalf of your Pod.
-See `PodSpec` in the [Pod API reference](/docs/reference/kubernetes-api/workload-resources/pod-v1/#PodSpec)
+See `PodSpec` in the [Pod API reference](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/pod-v1/#PodSpec)
 for more information about the `imagePullSecrets` field.
 
 #### Using imagePullSecrets
@@ -502,13 +502,13 @@ for more information about the `imagePullSecrets` field.
 The `imagePullSecrets` field is a list of references to secrets in the same namespace.
 You can use an `imagePullSecrets` to pass a secret that contains a Docker (or other) image registry
 password to the kubelet. The kubelet uses this information to pull a private image on behalf of your Pod.
-See the [PodSpec API](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core)
+See the [PodSpec API](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core)
 for more information about the `imagePullSecrets` field.
 
 ##### Manually specifying an imagePullSecret
 
 You can learn how to specify `imagePullSecrets` from the
-[container images](/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod)
+[container images](/docs/kubernetes/en/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod)
 documentation.
 
 ##### Arranging for imagePullSecrets to be automatically attached
@@ -516,7 +516,7 @@ documentation.
 You can manually create `imagePullSecrets`, and reference these from a ServiceAccount. Any Pods
 created with that ServiceAccount or created with that ServiceAccount by default, will get their
 `imagePullSecrets` field set to that of the service account.
-See [Add ImagePullSecrets to a service account](/docs/tasks/configure-pod-container/configure-service-account/#add-imagepullsecrets-to-a-service-account)
+See [Add ImagePullSecrets to a service account](/docs/kubernetes/en/tasks/configure-pod-container/configure-service-account/#add-imagepullsecrets-to-a-service-account)
 for a detailed explanation of that process.
 
 ### Using Secrets with static Pods {#restriction-static-pod}
@@ -822,7 +822,7 @@ it to read a file.
 ## Types of Secret {#secret-types}
 
 When creating a Secret, you can specify its type using the `type` field of
-the [Secret](/docs/reference/kubernetes-api/config-and-storage-resources/secret-v1/)
+the [Secret](/docs/kubernetes/en/reference/kubernetes-api/config-and-storage-resources/secret-v1/)
 resource, or certain equivalent `kubectl` command line flags (if available).
 The Secret type is used to facilitate programmatic handling of the Secret data.
 
@@ -881,11 +881,11 @@ token credential that identifies a
 {{< glossary_tooltip text="service account" term_id="service-account" >}}.
 
 Since 1.22, this type of Secret is no longer used to mount credentials into Pods,
-and obtaining tokens via the [TokenRequest](/docs/reference/kubernetes-api/authentication-resources/token-request-v1/)
+and obtaining tokens via the [TokenRequest](/docs/kubernetes/en/reference/kubernetes-api/authentication-resources/token-request-v1/)
 API is recommended instead of using service account token Secret objects.
 Tokens obtained from the `TokenRequest` API are more secure than ones stored in Secret objects,
 because they have a bounded lifetime and are not readable by other API clients.
-You can use the [`kubectl create token`](/docs/reference/generated/kubectl/kubectl-commands#-em-token-em-)
+You can use the [`kubectl create token`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands#-em-token-em-)
 command to obtain a token from the `TokenRequest` API.
 
 You should only create a service account token Secret object
@@ -919,11 +919,11 @@ data:
 
 After creating the Secret, wait for Kubernetes to populate the `token` key in the `data` field.
 
-See the [ServiceAccount](/docs/tasks/configure-pod-container/configure-service-account/)
+See the [ServiceAccount](/docs/kubernetes/en/tasks/configure-pod-container/configure-service-account/)
 documentation for more information on how service accounts work.
 You can also check the `automountServiceAccountToken` field and the
 `serviceAccountName` field of the
-[`Pod`](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#pod-v1-core)
+[`Pod`](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#pod-v1-core)
 for information on referencing service account credentials from within Pods.
 
 ### Docker config Secrets
@@ -1084,7 +1084,7 @@ Kubernetes provides a builtin Secret type `kubernetes.io/tls` for storing
 a certificate and its associated key that are typically used for TLS.
 
 One common use for TLS secrets is to configure encryption in transit for
-an [Ingress](/docs/concepts/services-networking/ingress/), but you can also use it
+an [Ingress](/docs/kubernetes/en/concepts/services-networking/ingress/), but you can also use it
 with other resources or directly in your workload.
 When using this type of Secret, the `tls.key` and the `tls.crt` key must be provided
 in the `data` (or `stringData`) field of the Secret configuration, although the API
@@ -1274,9 +1274,9 @@ Secrets used on that node.
 ## {{% heading "whatsnext" %}}
 
 - For guidelines to manage and improve the security of your Secrets, refer to
-  [Good practices for Kubernetes Secrets](/docs/concepts/security/secrets-good-practices).
-- Learn how to [manage Secrets using `kubectl`](/docs/tasks/configmap-secret/managing-secret-using-kubectl/)
-- Learn how to [manage Secrets using config file](/docs/tasks/configmap-secret/managing-secret-using-config-file/)
-- Learn how to [manage Secrets using kustomize](/docs/tasks/configmap-secret/managing-secret-using-kustomize/)
-- Read the [API reference](/docs/reference/kubernetes-api/config-and-storage-resources/secret-v1/) for `Secret`
+  [Good practices for Kubernetes Secrets](/docs/kubernetes/en/concepts/security/secrets-good-practices).
+- Learn how to [manage Secrets using `kubectl`](/docs/kubernetes/en/tasks/configmap-secret/managing-secret-using-kubectl/)
+- Learn how to [manage Secrets using config file](/docs/kubernetes/en/tasks/configmap-secret/managing-secret-using-config-file/)
+- Learn how to [manage Secrets using kustomize](/docs/kubernetes/en/tasks/configmap-secret/managing-secret-using-kustomize/)
+- Read the [API reference](/docs/kubernetes/en/reference/kubernetes-api/config-and-storage-resources/secret-v1/) for `Secret`
 

@@ -374,5 +374,5 @@ CONTAINER ID   IMAGE    CREATED              STATE    NAME     ATTEMPT
 ## {{% heading "whatsnext" %}}
 
 * [Learn more about `crictl`](https://github.com/kubernetes-sigs/cri-tools).
-* [Map `docker` CLI commands to `crictl`](/docs/reference/tools/map-crictl-dockercli/).
+* [Map `docker` CLI commands to `crictl`](/docs/kubernetes/en/reference/tools/map-crictl-dockercli/).
 

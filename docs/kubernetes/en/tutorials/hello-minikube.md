@@ -83,10 +83,10 @@ minikube dashboard --url
 
 ## Create a Deployment
 
-A Kubernetes [*Pod*](/docs/concepts/workloads/pods/) is a group of one or more Containers,
+A Kubernetes [*Pod*](/docs/kubernetes/en/concepts/workloads/pods/) is a group of one or more Containers,
 tied together for the purposes of administration and networking. The Pod in this
 tutorial has only one Container. A Kubernetes
-[*Deployment*](/docs/concepts/workloads/controllers/deployment/) checks on the health of your
+[*Deployment*](/docs/kubernetes/en/concepts/workloads/controllers/deployment/) checks on the health of your
 Pod and restarts the Pod's Container if it terminates. Deployments are the
 recommended way to manage the creation and scaling of Pods.
 
@@ -136,7 +136,7 @@ Pod runs a Container based on the provided Docker image.
     ```
 
 {{< note >}}
-For more information about `kubectl` commands, see the [kubectl overview](/docs/reference/kubectl/).
+For more information about `kubectl` commands, see the [kubectl overview](/docs/kubernetes/en/reference/kubectl/).
 {{< /note >}}
 
 ## Create a Service
@@ -144,7 +144,7 @@ For more information about `kubectl` commands, see the [kubectl overview](/docs/
 By default, the Pod is only accessible by its internal IP address within the
 Kubernetes cluster. To make the `hello-node` Container accessible from outside the
 Kubernetes virtual network, you have to expose the Pod as a
-Kubernetes [*Service*](/docs/concepts/services-networking/service/).
+Kubernetes [*Service*](/docs/kubernetes/en/concepts/services-networking/service/).
 
 1. Expose the Pod to the public internet using the `kubectl expose` command:
 
@@ -300,7 +300,7 @@ minikube delete
 ## {{% heading "whatsnext" %}}
 
 
-* Learn more about [Deployment objects](/docs/concepts/workloads/controllers/deployment/).
-* Learn more about [Deploying applications](/docs/tasks/run-application/run-stateless-application-deployment/).
-* Learn more about [Service objects](/docs/concepts/services-networking/service/).
+* Learn more about [Deployment objects](/docs/kubernetes/en/concepts/workloads/controllers/deployment/).
+* Learn more about [Deploying applications](/docs/kubernetes/en/tasks/run-application/run-stateless-application-deployment/).
+* Learn more about [Service objects](/docs/kubernetes/en/concepts/services-networking/service/).
 

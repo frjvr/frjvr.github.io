@@ -2,7 +2,7 @@
 title: StatefulSet
 id: statefulset
 date: 2018-04-12
-full_link: /docs/concepts/workloads/controllers/statefulset/
+full_link: /docs/kubernetes/en/concepts/workloads/controllers/statefulset/
 short_description: >
   Manages deployment and scaling of a set of Pods, with durable storage and persistent identifiers for each Pod.
 

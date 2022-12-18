@@ -17,7 +17,7 @@ policies using the supported authorization modules.
 <!-- body -->
 In Kubernetes, you must be authenticated (logged in) before your request can be
 authorized (granted permission to access). For information about authentication,
-see [Controlling Access to the Kubernetes API](/docs/concepts/security/controlling-access/).
+see [Controlling Access to the Kubernetes API](/docs/kubernetes/en/concepts/security/controlling-access/).
 
 Kubernetes expects attributes that are common to REST API requests. This means
 that Kubernetes authorization works with existing organization-wide or
@@ -47,12 +47,12 @@ Kubernetes reviews only the following API request attributes:
  * **extra** - A map of arbitrary string keys to string values, provided by the authentication layer.
  * **API** - Indicates whether the request is for an API resource.
  * **Request path** - Path to miscellaneous non-resource endpoints like `/api` or `/healthz`.
- * **API request verb** - API verbs like `get`, `list`, `create`, `update`, `patch`, `watch`, `delete`, and `deletecollection` are used for resource requests. To determine the request verb for a resource API endpoint, see [Determine the request verb](/docs/reference/access-authn-authz/authorization/#determine-the-request-verb).
+ * **API request verb** - API verbs like `get`, `list`, `create`, `update`, `patch`, `watch`, `delete`, and `deletecollection` are used for resource requests. To determine the request verb for a resource API endpoint, see [Determine the request verb](/docs/kubernetes/en/reference/access-authn-authz/authorization/#determine-the-request-verb).
  * **HTTP request verb** - Lowercased HTTP methods like `get`, `post`, `put`, and `delete` are used for non-resource requests.
  * **Resource** - The ID or name of the resource that is being accessed (for resource requests only) -- For resource requests using `get`, `update`, `patch`, and `delete` verbs, you must provide the resource name.
  * **Subresource** - The subresource that is being accessed (for resource requests only).
  * **Namespace** - The namespace of the object that is being accessed (for namespaced resource requests only).
- * **API group** - The {{< glossary_tooltip text="API Group" term_id="api-group" >}} being accessed (for resource requests only). An empty string designates the _core_ [API group](/docs/reference/using-api/#api-groups).
+ * **API group** - The {{< glossary_tooltip text="API Group" term_id="api-group" >}} being accessed (for resource requests only). An empty string designates the _core_ [API group](/docs/kubernetes/en/reference/using-api/#api-groups).
 
 ## Determine the Request Verb
 
@@ -80,21 +80,21 @@ The `get`, `list` and `watch` verbs can all return the full details of a resourc
 
 Kubernetes sometimes checks authorization for additional permissions using specialized verbs. For example:
 
-* [RBAC](/docs/reference/access-authn-authz/rbac/#privilege-escalation-prevention-and-bootstrapping)
+* [RBAC](/docs/kubernetes/en/reference/access-authn-authz/rbac/#privilege-escalation-prevention-and-bootstrapping)
   * `bind` and `escalate` verbs on `roles` and `clusterroles` resources in the `rbac.authorization.k8s.io` API group.
-* [Authentication](/docs/reference/access-authn-authz/authentication/)
+* [Authentication](/docs/kubernetes/en/reference/access-authn-authz/authentication/)
   * `impersonate` verb on `users`, `groups`, and `serviceaccounts` in the core API group, and the `userextras` in the `authentication.k8s.io` API group.
 
 ## Authorization Modes {#authorization-modules}
 
 The Kubernetes API server may authorize a request using one of several authorization modes:
 
- * **Node** - A special-purpose authorization mode that grants permissions to kubelets based on the pods they are scheduled to run. To learn more about using the Node authorization mode, see [Node Authorization](/docs/reference/access-authn-authz/node/).
- * **ABAC** - Attribute-based access control (ABAC) defines an access control paradigm whereby access rights are granted to users through the use of policies which combine attributes together. The policies can use any type of attributes (user attributes, resource attributes, object, environment attributes, etc). To learn more about using the ABAC mode, see [ABAC Mode](/docs/reference/access-authn-authz/abac/).
- * **RBAC** - Role-based access control (RBAC) is a method of regulating access to computer or network resources based on the roles of individual users within an enterprise. In this context, access is the ability of an individual user to perform a specific task, such as view, create, or modify a file. To learn more about using the RBAC mode, see [RBAC Mode](/docs/reference/access-authn-authz/rbac/)
+ * **Node** - A special-purpose authorization mode that grants permissions to kubelets based on the pods they are scheduled to run. To learn more about using the Node authorization mode, see [Node Authorization](/docs/kubernetes/en/reference/access-authn-authz/node/).
+ * **ABAC** - Attribute-based access control (ABAC) defines an access control paradigm whereby access rights are granted to users through the use of policies which combine attributes together. The policies can use any type of attributes (user attributes, resource attributes, object, environment attributes, etc). To learn more about using the ABAC mode, see [ABAC Mode](/docs/kubernetes/en/reference/access-authn-authz/abac/).
+ * **RBAC** - Role-based access control (RBAC) is a method of regulating access to computer or network resources based on the roles of individual users within an enterprise. In this context, access is the ability of an individual user to perform a specific task, such as view, create, or modify a file. To learn more about using the RBAC mode, see [RBAC Mode](/docs/kubernetes/en/reference/access-authn-authz/rbac/)
    * When specified RBAC (Role-Based Access Control) uses the `rbac.authorization.k8s.io` API group to drive authorization decisions, allowing admins to dynamically configure permission policies through the Kubernetes API.
    * To enable RBAC, start the apiserver with `--authorization-mode=RBAC`.
- * **Webhook** - A WebHook is an HTTP callback: an HTTP POST that occurs when something happens; a simple event-notification via HTTP POST. A web application implementing WebHooks will POST a message to a URL when certain things happen. To learn more about using the Webhook mode, see [Webhook Mode](/docs/reference/access-authn-authz/webhook/).
+ * **Webhook** - A WebHook is an HTTP callback: an HTTP POST that occurs when something happens; a simple event-notification via HTTP POST. A web application implementing WebHooks will POST a message to a URL when certain things happen. To learn more about using the Webhook mode, see [Webhook Mode](/docs/kubernetes/en/reference/access-authn-authz/webhook/).
 
 #### Checking API Access
 
@@ -123,7 +123,7 @@ The output is similar to this:
 no
 ```
 
-Administrators can combine this with [user impersonation](/docs/reference/access-authn-authz/authentication/#user-impersonation)
+Administrators can combine this with [user impersonation](/docs/kubernetes/en/reference/access-authn-authz/authentication/#user-impersonation)
 to determine what action other users can perform.
 
 ```bash
@@ -211,12 +211,12 @@ so an earlier module has higher priority to allow or deny a request.
 
 ## Privilege escalation via workload creation or edits {#privilege-escalation-via-pod-creation}
 
-Users who can create/edit pods in a namespace, either directly or through a [controller](/docs/concepts/architecture/controller/)
+Users who can create/edit pods in a namespace, either directly or through a [controller](/docs/kubernetes/en/concepts/architecture/controller/)
 such as an operator, could escalate their privileges in that namespace.
 
 {{< caution >}}
 System administrators, use care when granting access to create or edit workloads.
-Details of how these can be misused are documented in [escalation paths](/docs/reference/access-authn-authz/authorization/#escalation-paths)
+Details of how these can be misused are documented in [escalation paths](/docs/kubernetes/en/reference/access-authn-authz/authorization/#escalation-paths)
 {{< /caution >}}
 
 ### Escalation paths {#escalation-paths}
@@ -239,6 +239,6 @@ This should be considered when deciding on your RBAC controls.
 
 ## {{% heading "whatsnext" %}}
 
-* To learn more about Authentication, see **Authentication** in [Controlling Access to the Kubernetes API](/docs/concepts/security/controlling-access/).
-* To learn more about Admission Control, see [Using Admission Controllers](/docs/reference/access-authn-authz/admission-controllers/).
+* To learn more about Authentication, see **Authentication** in [Controlling Access to the Kubernetes API](/docs/kubernetes/en/concepts/security/controlling-access/).
+* To learn more about Admission Control, see [Using Admission Controllers](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/).
 

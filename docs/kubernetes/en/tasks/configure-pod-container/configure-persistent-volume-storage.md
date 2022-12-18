@@ -32,7 +32,7 @@ do not already have a single-node cluster, you can create one by using
 [Minikube](https://minikube.sigs.k8s.io/docs/).
 
 * Familiarize yourself with the material in
-[Persistent Volumes](/docs/concepts/storage/persistent-volumes/).
+[Persistent Volumes](/docs/kubernetes/en/concepts/storage/persistent-volumes/).
 
 <!-- steps -->
 
@@ -86,9 +86,9 @@ PersistentVolume uses a file or directory on the Node to emulate network-attache
 In a production cluster, you would not use hostPath. Instead a cluster administrator
 would provision a network resource like a Google Compute Engine persistent disk,
 an NFS share, or an Amazon Elastic Block Store volume. Cluster administrators can also
-use [StorageClasses](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#storageclass-v1-storage-k8s-io)
+use [StorageClasses](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#storageclass-v1-storage-k8s-io)
 to set up
-[dynamic provisioning](/docs/concepts/storage/dynamic-provisioning/).
+[dynamic provisioning](/docs/kubernetes/en/concepts/storage/dynamic-provisioning/).
 
 Here is the configuration file for the hostPath PersistentVolume:
 
@@ -97,7 +97,7 @@ Here is the configuration file for the hostPath PersistentVolume:
 The configuration file specifies that the volume is at `/mnt/data` on the
 cluster's Node. The configuration also specifies a size of 10 gibibytes and
 an access mode of `ReadWriteOnce`, which means the volume can be mounted as
-read-write by a single Node. It defines the [StorageClass name](/docs/concepts/storage/persistent-volumes/#class)
+read-write by a single Node. It defines the [StorageClass name](/docs/kubernetes/en/concepts/storage/persistent-volumes/#class)
 `manual` for the PersistentVolume, which will be used to bind
 PersistentVolumeClaim requests to this PersistentVolume.
 
@@ -281,15 +281,15 @@ PersistentVolume are not present on the Pod resource itself.
 ## {{% heading "whatsnext" %}}
 
 
-* Learn more about [PersistentVolumes](/docs/concepts/storage/persistent-volumes/).
+* Learn more about [PersistentVolumes](/docs/kubernetes/en/concepts/storage/persistent-volumes/).
 * Read the [Persistent Storage design document](https://git.k8s.io/design-proposals-archive/storage/persistent-storage.md).
 
 ### Reference
 
-* [PersistentVolume](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#persistentvolume-v1-core)
-* [PersistentVolumeSpec](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#persistentvolumespec-v1-core)
-* [PersistentVolumeClaim](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#persistentvolumeclaim-v1-core)
-* [PersistentVolumeClaimSpec](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#persistentvolumeclaimspec-v1-core)
+* [PersistentVolume](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#persistentvolume-v1-core)
+* [PersistentVolumeSpec](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#persistentvolumespec-v1-core)
+* [PersistentVolumeClaim](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#persistentvolumeclaim-v1-core)
+* [PersistentVolumeClaimSpec](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#persistentvolumeclaimspec-v1-core)
 
 
 

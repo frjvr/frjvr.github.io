@@ -13,9 +13,9 @@ weight: 20
 
 <!-- overview -->
 This page shows how to install a
-[custom resource](/docs/concepts/extend-kubernetes/api-extension/custom-resources/)
+[custom resource](/docs/kubernetes/en/concepts/extend-kubernetes/api-extension/custom-resources/)
 into the Kubernetes API by creating a
-[CustomResourceDefinition](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#customresourcedefinition-v1-apiextensions-k8s-io).
+[CustomResourceDefinition](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#customresourcedefinition-v1-apiextensions-k8s-io).
 
 ## {{% heading "prerequisites" %}}
 
@@ -506,7 +506,7 @@ In [Validation Schema Publishing](#publish-validation-schema-in-openapi-v2),
 
 ### RawExtension
 
-RawExtensions (as in [`runtime.RawExtension`](/docs/reference//kubernetes-api/workload-resources/controller-revision-v1#RawExtension))
+RawExtensions (as in [`runtime.RawExtension`](/docs/kubernetes/en/reference//kubernetes-api/workload-resources/controller-revision-v1#RawExtension))
 holds complete Kubernetes objects, i.e. with `apiVersion` and `kind` fields.
 
 It is possible to specify those embedded objects (both completely without constraints or partially specified)
@@ -537,7 +537,7 @@ With `x-kubernetes-embedded-resource: true`, the `apiVersion`, `kind` and `metad
 
 ## Serving multiple versions of a CRD
 
-See [Custom resource definition versioning](/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/)
+See [Custom resource definition versioning](/docs/kubernetes/en/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/)
 for more information about serving multiple versions of your
 CustomResourceDefinition and migrating your objects from one version to another.
 
@@ -582,7 +582,7 @@ Custom resources are validated via
 [OpenAPI v3 schemas](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#schemaObject),
 by x-kubernetes-validations when the [Validation Rules feature](#validation-rules) is enabled, and you
 can add additional validation using
-[admission webhooks](/docs/reference/access-authn-authz/admission-controllers/#validatingadmissionwebhook).
+[admission webhooks](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/#validatingadmissionwebhook).
 
 Additionally, the following restrictions are applied to the schema:
 
@@ -724,10 +724,10 @@ crontab "my-new-cron-object" created
 
 
 Validation rules are in beta since 1.25 and the `CustomResourceValidationExpressions`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/) is enabled by default to
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) is enabled by default to
 validate custom resource based on _validation rules_. You can disable this feature by explicitly
 setting the `CustomResourceValidationExpressions` feature gate to `false`, for the
-[kube-apiserver](/docs/reference/command-line-tools-reference/kube-apiserver/) component. This
+[kube-apiserver](/docs/kubernetes/en/reference/command-line-tools-reference/kube-apiserver/) component. This
 feature is only available if the schema is a [structural schema](#specifying-a-structural-schema).
 
 Validation rules use the [Common Expression Language (CEL)](https://github.com/google/cel-spec)
@@ -1033,7 +1033,7 @@ Here is the declarations type mapping between OpenAPIv3 and CEL type:
 
 xref: [CEL types](https://github.com/google/cel-spec/blob/v0.6.0/doc/langdef.md#values),
 [OpenAPI types](https://swagger.io/specification/#data-types),
-[Kubernetes Structural Schemas](/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#specifying-a-structural-schema).
+[Kubernetes Structural Schemas](/docs/kubernetes/en/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#specifying-a-structural-schema).
 
 #### Validation functions {#available-validation-functions}
 
@@ -1350,16 +1350,16 @@ default.
 
 CustomResourceDefinition [OpenAPI v3 validation schemas](#validation) which are
 [structural](#specifying-a-structural-schema) and [enable pruning](#field-pruning) are published
-as part of the [OpenAPI v2 spec](/docs/concepts/overview/kubernetes-api/#openapi-and-swagger-definitions)
+as part of the [OpenAPI v2 spec](/docs/kubernetes/en/concepts/overview/kubernetes-api/#openapi-and-swagger-definitions)
 from Kubernetes API server.
 
-The [kubectl](/docs/reference/kubectl/) command-line tool consumes the published schema to perform
+The [kubectl](/docs/kubernetes/en/reference/kubectl/) command-line tool consumes the published schema to perform
 client-side validation (`kubectl create` and `kubectl apply`), schema explanation (`kubectl explain`)
 on custom resources. The published schema can be consumed for other purposes as well, like client generation or documentation.
 
 The OpenAPI v3 validation schema is converted to OpenAPI v2 schema, and
 show up in `definitions` and `paths` fields in the
-[OpenAPI v2 spec](/docs/concepts/overview/kubernetes-api/#openapi-and-swagger-definitions).
+[OpenAPI v2 spec](/docs/kubernetes/en/concepts/overview/kubernetes-api/#openapi-and-swagger-definitions).
 
 The following modifications are applied during the conversion to keep backwards compatibility with
 kubectl in previous 1.13 version. These modifications prevent kubectl from being over-strict and rejecting
@@ -1673,7 +1673,7 @@ kubectl get crontabs my-new-cron-object -o jsonpath='{.spec.replicas}'
 5
 ```
 
-You can use a [PodDisruptionBudget](/docs/tasks/run-application/configure-pdb/) to protect custom
+You can use a [PodDisruptionBudget](/docs/kubernetes/en/tasks/run-application/configure-pdb/) to protect custom
 resources that have the scale subresource enabled.
 
 ### Categories
@@ -1763,10 +1763,10 @@ crontabs/my-new-cron-object   3s
 
 ## {{% heading "whatsnext" %}}
 
-* Read about [custom resources](/docs/concepts/extend-kubernetes/api-extension/custom-resources/).
+* Read about [custom resources](/docs/kubernetes/en/concepts/extend-kubernetes/api-extension/custom-resources/).
 
-* See [CustomResourceDefinition](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#customresourcedefinition-v1-apiextensions-k8s-io).
+* See [CustomResourceDefinition](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#customresourcedefinition-v1-apiextensions-k8s-io).
 
-* Serve [multiple versions](/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/) of a
+* Serve [multiple versions](/docs/kubernetes/en/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/) of a
   CustomResourceDefinition.
 

@@ -7,9 +7,9 @@ weight: 30
 <!-- overview -->
 
 Operators are software extensions to Kubernetes that make use of
-[custom resources](/docs/concepts/extend-kubernetes/api-extension/custom-resources/)
+[custom resources](/docs/kubernetes/en/concepts/extend-kubernetes/api-extension/custom-resources/)
 to manage applications and their components. Operators follow
-Kubernetes principles, notably the [control loop](/docs/concepts/architecture/controller).
+Kubernetes principles, notably the [control loop](/docs/kubernetes/en/concepts/architecture/controller).
 
 <!-- body -->
 
@@ -35,7 +35,7 @@ Kubernetes' {{< glossary_tooltip text="operator pattern" term_id="operator-patte
 concept lets you extend the cluster's behaviour without modifying the code of Kubernetes
 itself by linking {{< glossary_tooltip text="controllers" term_id="controller" >}} to
 one or more custom resources. Operators are clients of the Kubernetes API that act as
-controllers for a [Custom Resource](/docs/concepts/extend-kubernetes/api-extension/custom-resources/).
+controllers for a [Custom Resource](/docs/kubernetes/en/concepts/extend-kubernetes/api-extension/custom-resources/).
 
 ## An example operator {#example}
 
@@ -105,7 +105,7 @@ If there isn't an operator in the ecosystem that implements the behavior you
 want, you can code your own. 
 
 You also implement an operator (that is, a Controller) using any language / runtime
-that can act as a [client for the Kubernetes API](/docs/reference/using-api/client-libraries/).
+that can act as a [client for the Kubernetes API](/docs/kubernetes/en/reference/using-api/client-libraries/).
 
 Following are a few libraries and tools you can use to write your own cloud native
 operator.
@@ -129,7 +129,7 @@ operator.
 
 * Read the {{< glossary_tooltip text="CNCF" term_id="cncf" >}}
   [Operator White Paper](https://github.com/cncf/tag-app-delivery/blob/eece8f7307f2970f46f100f51932db106db46968/operator-wg/whitepaper/Operator-WhitePaper_v1-0.md).
-* Learn more about [Custom Resources](/docs/concepts/extend-kubernetes/api-extension/custom-resources/)
+* Learn more about [Custom Resources](/docs/kubernetes/en/concepts/extend-kubernetes/api-extension/custom-resources/)
 * Find ready-made operators on [OperatorHub.io](https://operatorhub.io/) to suit your use case
 * [Publish](https://operatorhub.io/) your operator for other people to use
 * Read [CoreOS' original article](https://web.archive.org/web/20170129131616/https://coreos.com/blog/introducing-operators.html)

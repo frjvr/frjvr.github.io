@@ -60,7 +60,7 @@ as the kube-apiserver is often a public endpoint.
 #### Enabling tracing in the kube-apiserver
 
 To enable tracing, enable the `APIServerTracing`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/)
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/)
 on the kube-apiserver. Also, provide the kube-apiserver with a tracing configuration file
 with `--tracing-config-file=<path-to-config>`. This is an example config that records
 spans for 1 in 10000 requests, and uses the default OpenTelemetry endpoint:
@@ -74,7 +74,7 @@ samplingRatePerMillion: 100
 ```
 
 For more information about the `TracingConfiguration` struct, see
-[API server config API (v1alpha1)](/docs/reference/config-api/apiserver-config.v1alpha1/#apiserver-k8s-io-v1alpha1-TracingConfiguration).
+[API server config API (v1alpha1)](/docs/kubernetes/en/reference/config-api/apiserver-config.v1alpha1/#apiserver-k8s-io-v1alpha1-TracingConfiguration).
 
 ### kubelet traces
 
@@ -89,7 +89,7 @@ Enabled without a configured endpoint, the default OpenTelemetry Collector recie
 #### Enabling tracing in the kubelet
 
 To enable tracing, enable the `KubeletTracing`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/)
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/)
 on the kubelet. Also, provide the kubelet with a
 [tracing configuration](https://github.com/kubernetes/component-base/blob/release-1.25/tracing/api/v1/types.go).
 This is an example snippet of a kubelet config that records spans for 1 in 10000 requests, and uses the default OpenTelemetry endpoint:

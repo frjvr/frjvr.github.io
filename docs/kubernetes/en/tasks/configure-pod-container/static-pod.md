@@ -39,7 +39,7 @@ The `spec` of a static Pod cannot refer to other API objects
 {{< /note >}}
 
 {{< note >}}
-Static pods do not support [ephemeral containers](/docs/concepts/workloads/pods/ephemeral-containers/).
+Static pods do not support [ephemeral containers](/docs/kubernetes/en/concepts/workloads/pods/ephemeral-containers/).
 {{< /note >}}
 
 ## {{% heading "prerequisites" %}}
@@ -54,12 +54,12 @@ Instructions for other distributions or Kubernetes installations may vary.
 
 ## Create a static pod {#static-pod-creation}
 
-You can configure a static Pod with either a [file system hosted configuration file](/docs/tasks/configure-pod-container/static-pod/#configuration-files) or a [web hosted configuration file](/docs/tasks/configure-pod-container/static-pod/#pods-created-via-http).
+You can configure a static Pod with either a [file system hosted configuration file](/docs/kubernetes/en/tasks/configure-pod-container/static-pod/#configuration-files) or a [web hosted configuration file](/docs/kubernetes/en/tasks/configure-pod-container/static-pod/#pods-created-via-http).
 
 ### Filesystem-hosted static Pod manifest {#configuration-files}
 
 Manifests are standard Pod definitions in JSON or YAML format in a specific directory. Use the `staticPodPath: <the directory>` field in the
-[kubelet configuration file](/docs/reference/config-api/kubelet-config.v1beta1/),
+[kubelet configuration file](/docs/kubernetes/en/reference/config-api/kubelet-config.v1beta1/),
 which periodically scans the directory and creates/deletes static Pods as YAML/JSON files appear/disappear there.
 Note that the kubelet will ignore files starting with dots when scanning the specified directory.
 
@@ -100,7 +100,7 @@ For example, this is how to start a simple web server as a static Pod:
    KUBELET_ARGS="--cluster-dns=10.254.0.10 --cluster-domain=kube.local --pod-manifest-path=/etc/kubernetes/manifests/"
    ```
    or add the `staticPodPath: <the directory>` field in the
-   [kubelet configuration file](/docs/reference/config-api/kubelet-config.v1beta1/).
+   [kubelet configuration file](/docs/kubernetes/en/reference/config-api/kubelet-config.v1beta1/).
 
 4. Restart the kubelet. On Fedora, you would run:
 

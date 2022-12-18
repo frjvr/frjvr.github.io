@@ -130,7 +130,7 @@ Here is the configuration file for the application Deployment:
 ## Using a service configuration file
 
 As an alternative to using `kubectl expose`, you can use a
-[service configuration file](/docs/concepts/services-networking/service/)
+[service configuration file](/docs/kubernetes/en/concepts/services-networking/service/)
 to create a Service.
 
 
@@ -154,5 +154,5 @@ the Hello World application, enter this command:
 ## {{% heading "whatsnext" %}}
 
 Follow the
-[Connecting Applications with Services](/docs/tutorials/services/connect-applications-service/)
+[Connecting Applications with Services](/docs/kubernetes/en/tutorials/services/connect-applications-service/)
 tutorial.

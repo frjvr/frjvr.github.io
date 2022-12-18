@@ -20,21 +20,21 @@ of terminating one or more Pods on Nodes.
 
 ## Scheduling
 
-* [Kubernetes Scheduler](/docs/concepts/scheduling-eviction/kube-scheduler/)
-* [Assigning Pods to Nodes](/docs/concepts/scheduling-eviction/assign-pod-node/)
-* [Pod Overhead](/docs/concepts/scheduling-eviction/pod-overhead/)
-* [Pod Topology Spread Constraints](/docs/concepts/scheduling-eviction/topology-spread-constraints/)
-* [Taints and Tolerations](/docs/concepts/scheduling-eviction/taint-and-toleration/)
-* [Scheduling Framework](/docs/concepts/scheduling-eviction/scheduling-framework)
-* [Dynamic Resource Allocation](/docs/concepts/scheduling-eviction/dynamic-resource-allocation)
-* [Scheduler Performance Tuning](/docs/concepts/scheduling-eviction/scheduler-perf-tuning/)
-* [Resource Bin Packing for Extended Resources](/docs/concepts/scheduling-eviction/resource-bin-packing/)
-* [Pod Scheduling Readiness](/docs/concepts/scheduling-eviction/pod-scheduling-readiness/)
+* [Kubernetes Scheduler](/docs/kubernetes/en/concepts/scheduling-eviction/kube-scheduler/)
+* [Assigning Pods to Nodes](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node/)
+* [Pod Overhead](/docs/kubernetes/en/concepts/scheduling-eviction/pod-overhead/)
+* [Pod Topology Spread Constraints](/docs/kubernetes/en/concepts/scheduling-eviction/topology-spread-constraints/)
+* [Taints and Tolerations](/docs/kubernetes/en/concepts/scheduling-eviction/taint-and-toleration/)
+* [Scheduling Framework](/docs/kubernetes/en/concepts/scheduling-eviction/scheduling-framework)
+* [Dynamic Resource Allocation](/docs/kubernetes/en/concepts/scheduling-eviction/dynamic-resource-allocation)
+* [Scheduler Performance Tuning](/docs/kubernetes/en/concepts/scheduling-eviction/scheduler-perf-tuning/)
+* [Resource Bin Packing for Extended Resources](/docs/kubernetes/en/concepts/scheduling-eviction/resource-bin-packing/)
+* [Pod Scheduling Readiness](/docs/kubernetes/en/concepts/scheduling-eviction/pod-scheduling-readiness/)
 
 ## Pod Disruption
 
 {{<glossary_definition term_id="pod-disruption" length="all">}}
 
-* [Pod Priority and Preemption](/docs/concepts/scheduling-eviction/pod-priority-preemption/)
-* [Node-pressure Eviction](/docs/concepts/scheduling-eviction/node-pressure-eviction/)
-* [API-initiated Eviction](/docs/concepts/scheduling-eviction/api-eviction/)
+* [Pod Priority and Preemption](/docs/kubernetes/en/concepts/scheduling-eviction/pod-priority-preemption/)
+* [Node-pressure Eviction](/docs/kubernetes/en/concepts/scheduling-eviction/node-pressure-eviction/)
+* [API-initiated Eviction](/docs/kubernetes/en/concepts/scheduling-eviction/api-eviction/)

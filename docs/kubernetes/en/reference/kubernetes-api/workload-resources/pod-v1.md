@@ -75,7 +75,7 @@ PodSpec is a description of a pod.
 
   *Patch strategy: merge on key `name`*
   
-  List of initialization containers belonging to the pod. Init containers are executed in order prior to containers being started. If any init container fails, the pod is considered to have failed and is handled according to its restartPolicy. The name for an init container or normal container must be unique among all containers. Init containers may not have Lifecycle actions, Readiness probes, Liveness probes, or Startup probes. The resourceRequirements of an init container are taken into account during scheduling by finding the highest request/limit for each resource type, and then using the max of of that value or the sum of the normal containers. Limits are applied to init containers in a similar fashion. Init containers cannot currently be added or removed. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
+  List of initialization containers belonging to the pod. Init containers are executed in order prior to containers being started. If any init container fails, the pod is considered to have failed and is handled according to its restartPolicy. The name for an init container or normal container must be unique among all containers. Init containers may not have Lifecycle actions, Readiness probes, Liveness probes, or Startup probes. The resourceRequirements of an init container are taken into account during scheduling by finding the highest request/limit for each resource type, and then using the max of of that value or the sum of the normal containers. Limits are applied to init containers in a similar fashion. Init containers cannot currently be added or removed. Cannot be updated. More info: https://kubernetes.io/docs/kubernetes/en/concepts/workloads/pods/init-containers/
 
 - **ephemeralContainers** ([]<a href="{{< ref "../workload-resources/pod-v1#EphemeralContainer" >}}">EphemeralContainer</a>)
 
@@ -87,7 +87,7 @@ PodSpec is a description of a pod.
 
   *Patch strategy: merge on key `name`*
   
-  ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. More info: https://kubernetes.io/docs/concepts/containers/images#specifying-imagepullsecrets-on-a-pod
+  ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. More info: https://kubernetes.io/docs/kubernetes/en/concepts/containers/images#specifying-imagepullsecrets-on-a-pod
 
 - **enableServiceLinks** (boolean)
 
@@ -115,14 +115,14 @@ PodSpec is a description of a pod.
 
   *Patch strategies: retainKeys, merge on key `name`*
   
-  List of volumes that can be mounted by containers belonging to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes
+  List of volumes that can be mounted by containers belonging to the pod. More info: https://kubernetes.io/docs/kubernetes/en/concepts/storage/volumes
 
 ### Scheduling
 
 
 - **nodeSelector** (map[string]string)
 
-  NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
+  NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.io/docs/kubernetes/en/concepts/configuration/assign-pod-node/
 
 - **nodeName** (string)
 
@@ -265,7 +265,7 @@ PodSpec is a description of a pod.
 
 - **restartPolicy** (string)
 
-  Restart policy for all containers within the pod. One of Always, OnFailure, Never. Default to Always. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy
+  Restart policy for all containers within the pod. One of Always, OnFailure, Never. Default to Always. More info: https://kubernetes.io/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#restart-policy
   
   
 
@@ -379,7 +379,7 @@ PodSpec is a description of a pod.
 
 - **serviceAccountName** (string)
 
-  ServiceAccountName is the name of the ServiceAccount to use to run this pod. More info: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
+  ServiceAccountName is the name of the ServiceAccount to use to run this pod. More info: https://kubernetes.io/docs/kubernetes/en/tasks/configure-pod-container/configure-service-account/
 
 - **automountServiceAccountToken** (boolean)
 
@@ -595,11 +595,11 @@ A single application container that you want to run within a pod.
 
 - **image** (string)
 
-  Container image name. More info: https://kubernetes.io/docs/concepts/containers/images This field is optional to allow higher level config management to default or override container images in workload controllers like Deployments and StatefulSets.
+  Container image name. More info: https://kubernetes.io/docs/kubernetes/en/concepts/containers/images This field is optional to allow higher level config management to default or override container images in workload controllers like Deployments and StatefulSets.
 
 - **imagePullPolicy** (string)
 
-  Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+  Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/kubernetes/en/concepts/containers/images#updating-images
   
   
 
@@ -608,11 +608,11 @@ A single application container that you want to run within a pod.
 
 - **command** ([]string)
 
-  Entrypoint array. Not executed within a shell. The container image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+  Entrypoint array. Not executed within a shell. The container image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/kubernetes/en/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 
 - **args** ([]string)
 
-  Arguments to the entrypoint. The container image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+  Arguments to the entrypoint. The container image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/kubernetes/en/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 
 - **workingDir** (string)
 
@@ -694,7 +694,7 @@ A single application container that you want to run within a pod.
 
       - **env.valueFrom.configMapKeyRef.name** (string)
 
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of the referent. More info: https://kubernetes.io/docs/kubernetes/en/concepts/overview/working-with-objects/names/#names
 
       - **env.valueFrom.configMapKeyRef.optional** (boolean)
 
@@ -721,7 +721,7 @@ A single application container that you want to run within a pod.
 
       - **env.valueFrom.secretKeyRef.name** (string)
 
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of the referent. More info: https://kubernetes.io/docs/kubernetes/en/concepts/overview/working-with-objects/names/#names
 
       - **env.valueFrom.secretKeyRef.optional** (boolean)
 
@@ -745,7 +745,7 @@ A single application container that you want to run within a pod.
 
     - **envFrom.configMapRef.name** (string)
 
-      Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+      Name of the referent. More info: https://kubernetes.io/docs/kubernetes/en/concepts/overview/working-with-objects/names/#names
 
     - **envFrom.configMapRef.optional** (boolean)
 
@@ -766,7 +766,7 @@ A single application container that you want to run within a pod.
 
     - **envFrom.secretRef.name** (string)
 
-      Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+      Name of the referent. More info: https://kubernetes.io/docs/kubernetes/en/concepts/overview/working-with-objects/names/#names
 
     - **envFrom.secretRef.optional** (boolean)
 
@@ -830,7 +830,7 @@ A single application container that you want to run within a pod.
 
 - **resources** (ResourceRequirements)
 
-  Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+  Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/kubernetes/en/concepts/configuration/manage-resources-containers/
 
   <a name="ResourceRequirements"></a>
   *ResourceRequirements describes the compute resource requirements.*
@@ -854,11 +854,11 @@ A single application container that you want to run within a pod.
 
   - **resources.limits** (map[string]<a href="{{< ref "../common-definitions/quantity#Quantity" >}}">Quantity</a>)
 
-    Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+    Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/kubernetes/en/concepts/configuration/manage-resources-containers/
 
   - **resources.requests** (map[string]<a href="{{< ref "../common-definitions/quantity#Quantity" >}}">Quantity</a>)
 
-    Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+    Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/kubernetes/en/concepts/configuration/manage-resources-containers/
 
 ### Lifecycle
 
@@ -872,11 +872,11 @@ A single application container that you want to run within a pod.
 
   - **lifecycle.postStart** (<a href="{{< ref "../workload-resources/pod-v1#LifecycleHandler" >}}">LifecycleHandler</a>)
 
-    PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+    PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/kubernetes/en/concepts/containers/container-lifecycle-hooks/#container-hooks
 
   - **lifecycle.preStop** (<a href="{{< ref "../workload-resources/pod-v1#LifecycleHandler" >}}">LifecycleHandler</a>)
 
-    PreStop is called immediately before a container is terminated due to an API request or management event such as liveness/startup probe failure, preemption, resource contention, etc. The handler is not called if the container crashes or exits. The Pod's termination grace period countdown begins before the PreStop hook is executed. Regardless of the outcome of the handler, the container will eventually terminate within the Pod's termination grace period (unless delayed by finalizers). Other management of the container blocks until the hook completes or until the termination grace period is reached. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+    PreStop is called immediately before a container is terminated due to an API request or management event such as liveness/startup probe failure, preemption, resource contention, etc. The handler is not called if the container crashes or exits. The Pod's termination grace period countdown begins before the PreStop hook is executed. Regardless of the outcome of the handler, the container will eventually terminate within the Pod's termination grace period (unless delayed by finalizers). Other management of the container blocks until the hook completes or until the termination grace period is reached. More info: https://kubernetes.io/docs/kubernetes/en/concepts/containers/container-lifecycle-hooks/#container-hooks
 
 - **terminationMessagePath** (string)
 
@@ -890,22 +890,22 @@ A single application container that you want to run within a pod.
 
 - **livenessProbe** (<a href="{{< ref "../workload-resources/pod-v1#Probe" >}}">Probe</a>)
 
-  Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+  Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle#container-probes
 
 - **readinessProbe** (<a href="{{< ref "../workload-resources/pod-v1#Probe" >}}">Probe</a>)
 
-  Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+  Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle#container-probes
 
 - **startupProbe** (<a href="{{< ref "../workload-resources/pod-v1#Probe" >}}">Probe</a>)
 
-  StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+  StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. More info: https://kubernetes.io/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle#container-probes
 
 ### Security Context
 
 
 - **securityContext** (SecurityContext)
 
-  SecurityContext defines the security options the container should be run with. If set, the fields of SecurityContext override the equivalent fields of PodSecurityContext. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+  SecurityContext defines the security options the container should be run with. If set, the fields of SecurityContext override the equivalent fields of PodSecurityContext. More info: https://kubernetes.io/docs/kubernetes/en/tasks/configure-pod-container/security-context/
 
   <a name="SecurityContext"></a>
   *SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext.  When both are set, the values in SecurityContext take precedence.*
@@ -1060,11 +1060,11 @@ To add an ephemeral container, use the ephemeralcontainers subresource of an exi
 
 - **image** (string)
 
-  Container image name. More info: https://kubernetes.io/docs/concepts/containers/images
+  Container image name. More info: https://kubernetes.io/docs/kubernetes/en/concepts/containers/images
 
 - **imagePullPolicy** (string)
 
-  Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+  Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/kubernetes/en/concepts/containers/images#updating-images
   
   
 
@@ -1073,11 +1073,11 @@ To add an ephemeral container, use the ephemeralcontainers subresource of an exi
 
 - **command** ([]string)
 
-  Entrypoint array. Not executed within a shell. The image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+  Entrypoint array. Not executed within a shell. The image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/kubernetes/en/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 
 - **args** ([]string)
 
-  Arguments to the entrypoint. The image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+  Arguments to the entrypoint. The image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/kubernetes/en/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 
 - **workingDir** (string)
 
@@ -1123,7 +1123,7 @@ To add an ephemeral container, use the ephemeralcontainers subresource of an exi
 
       - **env.valueFrom.configMapKeyRef.name** (string)
 
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of the referent. More info: https://kubernetes.io/docs/kubernetes/en/concepts/overview/working-with-objects/names/#names
 
       - **env.valueFrom.configMapKeyRef.optional** (boolean)
 
@@ -1150,7 +1150,7 @@ To add an ephemeral container, use the ephemeralcontainers subresource of an exi
 
       - **env.valueFrom.secretKeyRef.name** (string)
 
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of the referent. More info: https://kubernetes.io/docs/kubernetes/en/concepts/overview/working-with-objects/names/#names
 
       - **env.valueFrom.secretKeyRef.optional** (boolean)
 
@@ -1174,7 +1174,7 @@ To add an ephemeral container, use the ephemeralcontainers subresource of an exi
 
     - **envFrom.configMapRef.name** (string)
 
-      Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+      Name of the referent. More info: https://kubernetes.io/docs/kubernetes/en/concepts/overview/working-with-objects/names/#names
 
     - **envFrom.configMapRef.optional** (boolean)
 
@@ -1195,7 +1195,7 @@ To add an ephemeral container, use the ephemeralcontainers subresource of an exi
 
     - **envFrom.secretRef.name** (string)
 
-      Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+      Name of the referent. More info: https://kubernetes.io/docs/kubernetes/en/concepts/overview/working-with-objects/names/#names
 
     - **envFrom.secretRef.optional** (boolean)
 
@@ -1462,11 +1462,11 @@ To add an ephemeral container, use the ephemeralcontainers subresource of an exi
 
   - **resources.limits** (map[string]<a href="{{< ref "../common-definitions/quantity#Quantity" >}}">Quantity</a>)
 
-    Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+    Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/kubernetes/en/concepts/configuration/manage-resources-containers/
 
   - **resources.requests** (map[string]<a href="{{< ref "../common-definitions/quantity#Quantity" >}}">Quantity</a>)
 
-    Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+    Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/kubernetes/en/concepts/configuration/manage-resources-containers/
 
 - **lifecycle** (Lifecycle)
 
@@ -1477,11 +1477,11 @@ To add an ephemeral container, use the ephemeralcontainers subresource of an exi
 
   - **lifecycle.postStart** (<a href="{{< ref "../workload-resources/pod-v1#LifecycleHandler" >}}">LifecycleHandler</a>)
 
-    PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+    PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/kubernetes/en/concepts/containers/container-lifecycle-hooks/#container-hooks
 
   - **lifecycle.preStop** (<a href="{{< ref "../workload-resources/pod-v1#LifecycleHandler" >}}">LifecycleHandler</a>)
 
-    PreStop is called immediately before a container is terminated due to an API request or management event such as liveness/startup probe failure, preemption, resource contention, etc. The handler is not called if the container crashes or exits. The Pod's termination grace period countdown begins before the PreStop hook is executed. Regardless of the outcome of the handler, the container will eventually terminate within the Pod's termination grace period (unless delayed by finalizers). Other management of the container blocks until the hook completes or until the termination grace period is reached. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+    PreStop is called immediately before a container is terminated due to an API request or management event such as liveness/startup probe failure, preemption, resource contention, etc. The handler is not called if the container crashes or exits. The Pod's termination grace period countdown begins before the PreStop hook is executed. Regardless of the outcome of the handler, the container will eventually terminate within the Pod's termination grace period (unless delayed by finalizers). Other management of the container blocks until the hook completes or until the termination grace period is reached. More info: https://kubernetes.io/docs/kubernetes/en/concepts/containers/container-lifecycle-hooks/#container-hooks
 
 - **livenessProbe** (<a href="{{< ref "../workload-resources/pod-v1#Probe" >}}">Probe</a>)
 
@@ -1851,7 +1851,7 @@ Probe describes a health check to be performed against a container to determine 
 
 - **initialDelaySeconds** (int32)
 
-  Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+  Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle#container-probes
 
 - **terminationGracePeriodSeconds** (int64)
 
@@ -1863,7 +1863,7 @@ Probe describes a health check to be performed against a container to determine 
 
 - **timeoutSeconds** (int32)
 
-  Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+  Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle#container-probes
 
 - **failureThreshold** (int32)
 
@@ -1921,7 +1921,7 @@ PodStatus represents information about the status of a pod. Status may trail the
   
   Pending: The pod has been accepted by the Kubernetes system, but one or more of the container images has not been created. This includes time before being scheduled as well as time spent downloading images over the network, which could take a while. Running: The pod has been bound to a node, and all of the containers have been created. At least one container is still running, or is in the process of starting or restarting. Succeeded: All containers in the pod have terminated in success, and will not be restarted. Failed: All containers in the pod have terminated, and at least one container has terminated in failure. The container either exited with non-zero status or was terminated by the system. Unknown: For some reason the state of the pod could not be obtained, typically due to an error in communicating with the host of the pod.
   
-  More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-phase
+  More info: https://kubernetes.io/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle#pod-phase
   
   
 
@@ -1956,18 +1956,18 @@ PodStatus represents information about the status of a pod. Status may trail the
 
   *Patch strategy: merge on key `type`*
   
-  Current service state of pod. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions
+  Current service state of pod. More info: https://kubernetes.io/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle#pod-conditions
 
   <a name="PodCondition"></a>
   *PodCondition contains details for the current condition of this pod.*
 
   - **conditions.status** (string), required
 
-    Status is the status of the condition. Can be True, False, Unknown. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions
+    Status is the status of the condition. Can be True, False, Unknown. More info: https://kubernetes.io/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle#pod-conditions
 
   - **conditions.type** (string), required
 
-    Type is the type of the condition. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions
+    Type is the type of the condition. More info: https://kubernetes.io/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle#pod-conditions
 
   - **conditions.lastProbeTime** (Time)
 
@@ -1999,7 +1999,7 @@ PodStatus represents information about the status of a pod. Status may trail the
 
 - **initContainerStatuses** ([]ContainerStatus)
 
-  The list has one entry per init container in the manifest. The most recent successful init container will have ready = true, the most recently started container will have startTime set. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-and-container-status
+  The list has one entry per init container in the manifest. The most recent successful init container will have ready = true, the most recently started container will have startTime set. More info: https://kubernetes.io/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle#pod-and-container-status
 
   <a name="ContainerStatus"></a>
   *ContainerStatus contains details for the current status of this container.*
@@ -2010,7 +2010,7 @@ PodStatus represents information about the status of a pod. Status may trail the
 
   - **initContainerStatuses.image** (string), required
 
-    The image the container is running. More info: https://kubernetes.io/docs/concepts/containers/images.
+    The image the container is running. More info: https://kubernetes.io/docs/kubernetes/en/concepts/containers/images.
 
   - **initContainerStatuses.imageID** (string), required
 
@@ -2188,7 +2188,7 @@ PodStatus represents information about the status of a pod. Status may trail the
 
 - **containerStatuses** ([]ContainerStatus)
 
-  The list has one entry per container in the manifest. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-and-container-status
+  The list has one entry per container in the manifest. More info: https://kubernetes.io/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle#pod-and-container-status
 
   <a name="ContainerStatus"></a>
   *ContainerStatus contains details for the current status of this container.*
@@ -2199,7 +2199,7 @@ PodStatus represents information about the status of a pod. Status may trail the
 
   - **containerStatuses.image** (string), required
 
-    The image the container is running. More info: https://kubernetes.io/docs/concepts/containers/images.
+    The image the container is running. More info: https://kubernetes.io/docs/kubernetes/en/concepts/containers/images.
 
   - **containerStatuses.imageID** (string), required
 
@@ -2388,7 +2388,7 @@ PodStatus represents information about the status of a pod. Status may trail the
 
   - **ephemeralContainerStatuses.image** (string), required
 
-    The image the container is running. More info: https://kubernetes.io/docs/concepts/containers/images.
+    The image the container is running. More info: https://kubernetes.io/docs/kubernetes/en/concepts/containers/images.
 
   - **ephemeralContainerStatuses.imageID** (string), required
 

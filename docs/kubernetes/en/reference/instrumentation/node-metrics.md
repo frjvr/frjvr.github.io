@@ -7,7 +7,7 @@ description: >-
   as seen by the kubelet.
 ---
 
-The [kubelet](/docs/reference/command-line-tools-reference/kubelet/)
+The [kubelet](/docs/kubernetes/en/reference/command-line-tools-reference/kubelet/)
 gathers metric statistics at the node, volume, pod and container level,
 and emits this information in the
 [Summary API](https://github.com/kubernetes/kubernetes/blob/7d309e0104fedb57280b261e5677d919cb2a0e2d/staging/src/k8s.io/kubelet/pkg/apis/stats/v1alpha1/types.go).
@@ -44,12 +44,12 @@ By default, Kubernetes fetches node summary metrics data using an embedded
 {{< feature-state for_k8s_version="v1.23" state="alpha" >}}
 
 If you enable the `PodAndContainerStatsFromCRI`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/) in your
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) in your
 cluster, and you use a container runtime that supports statistics access via
 {{< glossary_tooltip term_id="cri" text="Container Runtime Interface">}} (CRI), then
 the kubelet fetches Pod- and container-level metric data using CRI, and not via cAdvisor.
 
 ## {{% heading "whatsnext" %}}
 
-The task pages for [Troubleshooting Clusters](/docs/tasks/debug/debug-cluster/) discuss
+The task pages for [Troubleshooting Clusters](/docs/kubernetes/en/tasks/debug/debug-cluster/) discuss
 how to use a metrics pipeline that rely on these data.

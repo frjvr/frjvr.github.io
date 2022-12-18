@@ -30,11 +30,11 @@ on general patterns for running stateful applications in Kubernetes.
 * {{< include "task-tutorial-prereqs.md" >}}
 * {{< include "default-storage-class-prereqs.md" >}}
 * This tutorial assumes you are familiar with
-  [PersistentVolumes](/docs/concepts/storage/persistent-volumes/)
-  and [StatefulSets](/docs/concepts/workloads/controllers/statefulset/),
-  as well as other core concepts like [Pods](/docs/concepts/workloads/pods/),
-  [Services](/docs/concepts/services-networking/service/), and
-  [ConfigMaps](/docs/tasks/configure-pod-container/configure-pod-configmap/).
+  [PersistentVolumes](/docs/kubernetes/en/concepts/storage/persistent-volumes/)
+  and [StatefulSets](/docs/kubernetes/en/concepts/workloads/controllers/statefulset/),
+  as well as other core concepts like [Pods](/docs/kubernetes/en/concepts/workloads/pods/),
+  [Services](/docs/kubernetes/en/concepts/services-networking/service/), and
+  [ConfigMaps](/docs/kubernetes/en/tasks/configure-pod-container/configure-pod-configmap/).
 * Some familiarity with MySQL helps, but this tutorial aims to present
   general patterns that should be useful for other systems.
 * You are using the default namespace or another namespace that does not contain any conflicting objects.
@@ -157,7 +157,7 @@ properties to perform orderly startup of MySQL replication.
 ### Generating configuration
 
 Before starting any of the containers in the Pod spec, the Pod first runs any
-[init containers](/docs/concepts/workloads/pods/init-containers/)
+[init containers](/docs/kubernetes/en/concepts/workloads/pods/init-containers/)
 in the order defined.
 
 The first init container, named `init-mysql`, generates special MySQL config
@@ -176,7 +176,7 @@ Because the example topology consists of a single primary MySQL server and any n
 replicas, the script assigns ordinal `0` to be the primary server, and everyone
 else to be replicas.
 Combined with the StatefulSet controller's
-[deployment order guarantee](/docs/concepts/workloads/controllers/statefulset/#deployment-and-scaling-guarantees),
+[deployment order guarantee](/docs/kubernetes/en/concepts/workloads/controllers/statefulset/#deployment-and-scaling-guarantees),
 this ensures the primary MySQL server is Ready before creating replicas, so they can begin
 replicating.
 
@@ -300,7 +300,7 @@ running while you force a Pod out of the Ready state.
 
 ### Break the Readiness probe
 
-The [readiness probe](/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-readiness-probes)
+The [readiness probe](/docs/kubernetes/en/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-readiness-probes)
 for the `mysql` container runs the command `mysql -h 127.0.0.1 -e 'SELECT 1'`
 to make sure the server is up and able to execute queries.
 
@@ -357,7 +357,7 @@ and then return on its own.
 
 If your Kubernetes cluster has multiple Nodes, you can simulate Node downtime
 (such as when Nodes are upgraded) by issuing a
-[drain](/docs/reference/generated/kubectl/kubectl-commands/#drain).
+[drain](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#drain).
 
 First determine which Node one of the MySQL Pods is on:
 
@@ -540,10 +540,10 @@ kubectl delete pvc data-mysql-4
 
 ## {{% heading "whatsnext" %}}
 
-* Learn more about [scaling a StatefulSet](/docs/tasks/run-application/scale-stateful-set/).
-* Learn more about [debugging a StatefulSet](/docs/tasks/debug/debug-application/debug-statefulset/).
-* Learn more about [deleting a StatefulSet](/docs/tasks/run-application/delete-stateful-set/).
-* Learn more about [force deleting StatefulSet Pods](/docs/tasks/run-application/force-delete-stateful-set-pod/).
+* Learn more about [scaling a StatefulSet](/docs/kubernetes/en/tasks/run-application/scale-stateful-set/).
+* Learn more about [debugging a StatefulSet](/docs/kubernetes/en/tasks/debug/debug-application/debug-statefulset/).
+* Learn more about [deleting a StatefulSet](/docs/kubernetes/en/tasks/run-application/delete-stateful-set/).
+* Learn more about [force deleting StatefulSet Pods](/docs/kubernetes/en/tasks/run-application/force-delete-stateful-set-pod/).
 * Look in the [Helm Charts repository](https://artifacthub.io/)
   for other stateful application examples.
 

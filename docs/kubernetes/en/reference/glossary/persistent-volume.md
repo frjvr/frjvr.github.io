@@ -2,7 +2,7 @@
 title: Persistent Volume
 id: persistent-volume
 date: 2018-04-12
-full_link: /docs/concepts/storage/persistent-volumes/
+full_link: /docs/kubernetes/en/concepts/storage/persistent-volumes/
 short_description: >
   An API object that represents a piece of storage in the cluster. Available as a general, pluggable resource that persists beyond the lifecycle of any individual Pod.
 

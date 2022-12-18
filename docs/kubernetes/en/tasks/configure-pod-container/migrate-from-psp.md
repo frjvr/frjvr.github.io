@@ -22,7 +22,7 @@ If you are currently running a version of Kubernetes other than
 page in the documentation for the version of Kubernetes that you
 are actually running.
 
-This page assumes you are already familiar with the basic [Pod Security Admission](/docs/concepts/security/pod-security-admission/)
+This page assumes you are already familiar with the basic [Pod Security Admission](/docs/kubernetes/en/concepts/security/pod-security-admission/)
 concepts.
 
 <!-- body -->
@@ -55,20 +55,20 @@ Security Admission:
 - **Setting default security constraints** - Pod Security Admission is a non-mutating admission
   controller, meaning it won't modify pods before validating them. If you were relying on this
   aspect of PSP, you will need to either modify your workloads to meet the Pod Security constraints,
-  or use a [Mutating Admission Webhook](/docs/reference/access-authn-authz/extensible-admission-controllers/)
+  or use a [Mutating Admission Webhook](/docs/kubernetes/en/reference/access-authn-authz/extensible-admission-controllers/)
   to make those changes. See [Simplify & Standardize PodSecurityPolicies](#simplify-psps) below for more detail.
 - **Fine-grained control over policy definition** - Pod Security Admission only supports
-  [3 standard levels](/docs/concepts/security/pod-security-standards/).
+  [3 standard levels](/docs/kubernetes/en/concepts/security/pod-security-standards/).
   If you require more control over specific constraints, then you will need to use a
-  [Validating Admission Webhook](/docs/reference/access-authn-authz/extensible-admission-controllers/)
+  [Validating Admission Webhook](/docs/kubernetes/en/reference/access-authn-authz/extensible-admission-controllers/)
   to enforce those policies.
 - **Sub-namespace policy granularity** - PodSecurityPolicy lets you bind different policies to
   different Service Accounts or users, even within a single namespace. This approach has many
   pitfalls and is not recommended, but if you require this feature anyway you will
   need to use a 3rd party webhook instead. The exception to this is if you only need to completely exempt
-  specific users or [RuntimeClasses](/docs/concepts/containers/runtime-class/), in which case Pod
+  specific users or [RuntimeClasses](/docs/kubernetes/en/concepts/containers/runtime-class/), in which case Pod
   Security Admission does expose some
-  [static configuration for exemptions](/docs/concepts/security/pod-security-admission/#exemptions).
+  [static configuration for exemptions](/docs/kubernetes/en/concepts/security/pod-security-admission/#exemptions).
 
 Even if Pod Security Admission does not meet all of your needs it was designed to be _complementary_
 to other policy enforcement mechanisms, and can provide a useful fallback running alongside other
@@ -78,13 +78,13 @@ admission webhooks.
 ## 1. Review namespace permissions {#review-namespace-permissions}
 
 Pod Security Admission is controlled by [labels on
-namespaces](/docs/concepts/security/pod-security-admission/#pod-security-admission-labels-for-namespaces).
+namespaces](/docs/kubernetes/en/concepts/security/pod-security-admission/#pod-security-admission-labels-for-namespaces).
 This means that anyone who can update (or patch or create) a namespace can also modify the Pod
 Security level for that namespace, which could be used to bypass a more restrictive policy. Before
 proceeding, ensure that only trusted, privileged users have these namespace permissions. It is not
 recommended to grant these powerful permissions to users that shouldn't have elevated permissions,
 but if you must you will need to use an
-[admission webhook](/docs/reference/access-authn-authz/extensible-admission-controllers/)
+[admission webhook](/docs/kubernetes/en/reference/access-authn-authz/extensible-admission-controllers/)
 to place additional restrictions on setting Pod Security labels on Namespace objects.
 
 ## 2. Simplify & standardize PodSecurityPolicies {#simplify-psps}
@@ -105,7 +105,7 @@ separate mutating & validating fields, so this is not a straightforward migratio
 
 You can start by eliminating the fields that are purely mutating, and don't have any bearing on the
 validating policy. These fields (also listed in the
-[Mapping PodSecurityPolicies to Pod Security Standards](/docs/reference/access-authn-authz/psp-to-pod-security-standards/)
+[Mapping PodSecurityPolicies to Pod Security Standards](/docs/kubernetes/en/reference/access-authn-authz/psp-to-pod-security-standards/)
 reference) are:
 
 - `.spec.defaultAllowPrivilegeEscalation`
@@ -125,12 +125,12 @@ out safely.
 
 There are several fields in PodSecurityPolicy that are not covered by the Pod Security Standards. If
 you must enforce these options, you will need to supplement Pod Security Admission with an
-[admission webhook](/docs/reference/access-authn-authz/extensible-admission-controllers/),
+[admission webhook](/docs/kubernetes/en/reference/access-authn-authz/extensible-admission-controllers/),
 which is outside the scope of this guide.
 
 First, you can remove the purely validating fields that the Pod Security Standards do not cover.
 These fields (also listed in the
-[Mapping PodSecurityPolicies to Pod Security Standards](/docs/reference/access-authn-authz/psp-to-pod-security-standards/)
+[Mapping PodSecurityPolicies to Pod Security Standards](/docs/kubernetes/en/reference/access-authn-authz/psp-to-pod-security-standards/)
 reference with "no opinion") are:
 
 - `.spec.allowedHostPaths`
@@ -177,7 +177,7 @@ For each updated PodSecurityPolicy:
    kubectl get pods --all-namespaces -o jsonpath="{range .items[?(@.metadata.annotations.kubernetes\.io\/psp=='$PSP_NAME')]}{.metadata.namespace} {.metadata.name}{'\n'}{end}"
    ```
 2. Compare these running pods against the original pod spec to determine whether PodSecurityPolicy
-   has modified the pod. For pods created by a [workload resource](/docs/concepts/workloads/controllers/)
+   has modified the pod. For pods created by a [workload resource](/docs/kubernetes/en/concepts/workloads/controllers/)
    you can compare the pod with the PodTemplate in the controller resource. If any changes are
    identified, the original Pod or PodTemplate should be updated with the desired configuration.
    The fields to review are:
@@ -215,7 +215,7 @@ in these steps use the `$NAMESPACE` variable to refer to the namespace being upd
 
 ### 3.a. Identify an appropriate Pod Security level {#identify-appropriate-level}
 
-Start reviewing the [Pod Security Standards](/docs/concepts/security/pod-security-standards/) and
+Start reviewing the [Pod Security Standards](/docs/kubernetes/en/concepts/security/pod-security-standards/) and
 familiarizing yourself with the 3 different levels.
 
 There are several ways to choose a Pod Security level for your namespace:
@@ -224,7 +224,7 @@ There are several ways to choose a Pod Security level for your namespace:
    level for the namespace, you can choose an appropriate level based on those requirements, similar
    to how one might approach this on a new cluster.
 2. **By existing PodSecurityPolicies** - Using the
-   [Mapping PodSecurityPolicies to Pod Security Standards](/docs/reference/access-authn-authz/psp-to-pod-security-standards/)
+   [Mapping PodSecurityPolicies to Pod Security Standards](/docs/kubernetes/en/reference/access-authn-authz/psp-to-pod-security-standards/)
    reference you can map each
    PSP to a Pod Security Standard level. If your PSPs aren't based on the Pod Security Standards, you
    may need to decide between choosing a level that is at least as permissive as the PSP, and a
@@ -315,18 +315,18 @@ appropriate Pod Security profile is applied to new namespaces.
 
 You can also statically configure the Pod Security admission controller to set a default enforce,
 audit, and/or warn level for unlabeled namespaces. See
-[Configure the Admission Controller](/docs/tasks/configure-pod-container/enforce-standards-admission-controller/#configure-the-admission-controller)
+[Configure the Admission Controller](/docs/kubernetes/en/tasks/configure-pod-container/enforce-standards-admission-controller/#configure-the-admission-controller)
 for more information.
 
 ## 5. Disable PodSecurityPolicy {#disable-psp}
 
 Finally, you're ready to disable PodSecurityPolicy. To do so, you will need to modify the admission
 configuration of the API server:
-[How do I turn off an admission controller?](/docs/reference/access-authn-authz/admission-controllers/#how-do-i-turn-off-an-admission-controller).
+[How do I turn off an admission controller?](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/#how-do-i-turn-off-an-admission-controller).
 
 To verify that the PodSecurityPolicy admission controller is no longer enabled, you can manually run
 a test by impersonating a user without access to any PodSecurityPolicies (see the
-[PodSecurityPolicy example](/docs/concepts/security/pod-security-policy/#example)), or by verifying in
+[PodSecurityPolicy example](/docs/kubernetes/en/concepts/security/pod-security-policy/#example)), or by verifying in
 the API server logs. At startup, the API server outputs log lines listing the loaded admission
 controller plugins:
 

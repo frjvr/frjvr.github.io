@@ -29,7 +29,7 @@ kubectl apply -k <kustomization_directory>
 ## {{% heading "prerequisites" %}}
 
 
-Install [`kubectl`](/docs/tasks/tools/).
+Install [`kubectl`](/docs/kubernetes/en/tasks/tools/).
 
 {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
 
@@ -1009,6 +1009,6 @@ deployment.apps "dev-my-nginx" deleted
 
 * [Kustomize](https://github.com/kubernetes-sigs/kustomize)
 * [Kubectl Book](https://kubectl.docs.kubernetes.io)
-* [Kubectl Command Reference](/docs/reference/generated/kubectl/kubectl-commands/)
-* [Kubernetes API Reference](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/)
+* [Kubectl Command Reference](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/)
+* [Kubernetes API Reference](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/)
 

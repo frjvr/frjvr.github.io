@@ -12,10 +12,10 @@ weight: 20
 
 Bootstrap tokens are a simple bearer token that is meant to be used when
 creating new clusters or joining new nodes to an existing cluster.  It was built
-to support [kubeadm](/docs/reference/setup-tools/kubeadm/), but can be used in other contexts
+to support [kubeadm](/docs/kubernetes/en/reference/setup-tools/kubeadm/), but can be used in other contexts
 for users that wish to start clusters without `kubeadm`. It is also built to
 work, via RBAC policy, with the
-[Kubelet TLS Bootstrapping](/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/) system.
+[Kubelet TLS Bootstrapping](/docs/kubernetes/en/reference/access-authn-authz/kubelet-tls-bootstrapping/) system.
 
 
 <!-- body -->
@@ -123,7 +123,7 @@ The expiry value is encoded as an absolute UTC time using RFC3339.  Enable the
 ## Token Management with kubeadm
 
 You can use the `kubeadm` tool to manage tokens on a running cluster. See the
-[kubeadm token docs](/docs/reference/setup-tools/kubeadm/kubeadm-token/) for details.
+[kubeadm token docs](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-token/) for details.
 
 ## ConfigMap Signing
 
@@ -186,6 +186,6 @@ many clients, since a compromised client can potentially man-in-the middle anoth
 client relying on the signature to bootstrap TLS trust.
 {{< /warning >}}
 
-Consult the [kubeadm implementation details](/docs/reference/setup-tools/kubeadm/implementation-details/)
+Consult the [kubeadm implementation details](/docs/kubernetes/en/reference/setup-tools/kubeadm/implementation-details/)
 section for more information.
 

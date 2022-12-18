@@ -21,7 +21,7 @@ Kubernetes command-line tool, `kubectl`.
 
 To access a cluster, you need to know the location of the cluster and have credentials
 to access it. Typically, this is automatically set-up when you work through
-a [Getting started guide](/docs/setup/),
+a [Getting started guide](/docs/kubernetes/en/setup/),
 or someone else set up the cluster and provided you with credentials and a location.
 
 Check the location and credentials that kubectl knows about with this command:
@@ -31,7 +31,7 @@ kubectl config view
 ```
 
 Many of the [examples](https://github.com/kubernetes/examples/tree/master/) provide an introduction to using
-kubectl. Complete documentation is found in the [kubectl manual](/docs/reference/kubectl/).
+kubectl. Complete documentation is found in the [kubectl manual](/docs/kubernetes/en/reference/kubectl/).
 
 ### Directly accessing the REST API
 
@@ -54,7 +54,7 @@ Run it like this:
 kubectl proxy --port=8080 &
 ```
 
-See [kubectl proxy](/docs/reference/generated/kubectl/kubectl-commands/#proxy) for more details.
+See [kubectl proxy](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#proxy) for more details.
 
 Then you can explore the API with curl, wget, or a browser, like so:
 
@@ -145,12 +145,12 @@ certificate.
 
 On some clusters, the API server does not require authentication; it may serve
 on localhost, or be protected by a firewall. There is not a standard
-for this. [Controlling Access to the Kubernetes API](/docs/concepts/security/controlling-access)
+for this. [Controlling Access to the Kubernetes API](/docs/kubernetes/en/concepts/security/controlling-access)
 describes how you can configure this as a cluster administrator.
 
 ### Programmatic access to the API
 
-Kubernetes officially supports client libraries for [Go](#go-client), [Python](#python-client), [Java](#java-client), [dotnet](#dotnet-client), [JavaScript](#javascript-client), and [Haskell](#haskell-client). There are other client libraries that are provided and maintained by their authors, not the Kubernetes team. See [client libraries](/docs/reference/using-api/client-libraries/) for accessing the API from other languages and how they authenticate.
+Kubernetes officially supports client libraries for [Go](#go-client), [Python](#python-client), [Java](#java-client), [dotnet](#dotnet-client), [JavaScript](#javascript-client), and [Haskell](#haskell-client). There are other client libraries that are provided and maintained by their authors, not the Kubernetes team. See [client libraries](/docs/kubernetes/en/reference/using-api/client-libraries/) for accessing the API from other languages and how they authenticate.
 
 #### Go client
 
@@ -163,7 +163,7 @@ client-go defines its own API objects, so if needed, import API definitions from
 
 {{< /note >}}
 
-The Go client can use the same [kubeconfig file](/docs/concepts/configuration/organize-cluster-access-kubeconfig/)
+The Go client can use the same [kubeconfig file](/docs/kubernetes/en/concepts/configuration/organize-cluster-access-kubeconfig/)
 as the kubectl CLI does to locate and authenticate to the API server. See this [example](https://git.k8s.io/client-go/examples/out-of-cluster-client-configuration/main.go):
 
 ```golang
@@ -189,13 +189,13 @@ func main() {
 }
 ```
 
-If the application is deployed as a Pod in the cluster, see [Accessing the API from within a Pod](/docs/tasks/access-application-cluster/access-cluster/#accessing-the-api-from-a-pod).
+If the application is deployed as a Pod in the cluster, see [Accessing the API from within a Pod](/docs/kubernetes/en/tasks/access-application-cluster/access-cluster/#accessing-the-api-from-a-pod).
 
 #### Python client
 
 To use [Python client](https://github.com/kubernetes-client/python), run the following command: `pip install kubernetes`. See [Python Client Library page](https://github.com/kubernetes-client/python) for more installation options.
 
-The Python client can use the same [kubeconfig file](/docs/concepts/configuration/organize-cluster-access-kubeconfig/)
+The Python client can use the same [kubeconfig file](/docs/kubernetes/en/concepts/configuration/organize-cluster-access-kubeconfig/)
 as the kubectl CLI does to locate and authenticate to the API server. See this [example](https://github.com/kubernetes-client/python/blob/master/examples/out_of_cluster_config.py):
 
 ```python
@@ -225,7 +225,7 @@ mvn install
 
 See [https://github.com/kubernetes-client/java/releases](https://github.com/kubernetes-client/java/releases) to see which versions are supported.
 
-The Java client can use the same [kubeconfig file](/docs/concepts/configuration/organize-cluster-access-kubeconfig/)
+The Java client can use the same [kubeconfig file](/docs/kubernetes/en/concepts/configuration/organize-cluster-access-kubeconfig/)
 as the kubectl CLI does to locate and authenticate to the API server. See this [example](https://github.com/kubernetes-client/java/blob/master/examples/examples-release-15/src/main/java/io/kubernetes/client/examples/KubeConfigFileClientExample.java):
 
 ```java
@@ -279,7 +279,7 @@ public class KubeConfigFileClientExample {
 
 To use [dotnet client](https://github.com/kubernetes-client/csharp), run the following command: `dotnet add package KubernetesClient --version 1.6.1` See [dotnet Client Library page](https://github.com/kubernetes-client/csharp) for more installation options. See [https://github.com/kubernetes-client/csharp/releases](https://github.com/kubernetes-client/csharp/releases) to see which versions are supported.
 
-The dotnet client can use the same [kubeconfig file](/docs/concepts/configuration/organize-cluster-access-kubeconfig/)
+The dotnet client can use the same [kubeconfig file](/docs/kubernetes/en/concepts/configuration/organize-cluster-access-kubeconfig/)
 as the kubectl CLI does to locate and authenticate to the API server. See this [example](https://github.com/kubernetes-client/csharp/blob/master/examples/simple/PodList.cs):
 
 ```csharp
@@ -314,7 +314,7 @@ namespace simple
 
 To install [JavaScript client](https://github.com/kubernetes-client/javascript), run the following command: `npm install @kubernetes/client-node`. See [https://github.com/kubernetes-client/javascript/releases](https://github.com/kubernetes-client/javascript/releases) to see which versions are supported.
 
-The JavaScript client can use the same [kubeconfig file](/docs/concepts/configuration/organize-cluster-access-kubeconfig/)
+The JavaScript client can use the same [kubeconfig file](/docs/kubernetes/en/concepts/configuration/organize-cluster-access-kubeconfig/)
 as the kubectl CLI does to locate and authenticate to the API server. See this [example](https://github.com/kubernetes-client/javascript/blob/master/examples/example.js):
 
 ```javascript
@@ -334,7 +334,7 @@ k8sApi.listNamespacedPod('default').then((res) => {
 
 See [https://github.com/kubernetes-client/haskell/releases](https://github.com/kubernetes-client/haskell/releases) to see which versions are supported.
 
-The [Haskell client](https://github.com/kubernetes-client/haskell) can use the same [kubeconfig file](/docs/concepts/configuration/organize-cluster-access-kubeconfig/)
+The [Haskell client](https://github.com/kubernetes-client/haskell) can use the same [kubeconfig file](/docs/kubernetes/en/concepts/configuration/organize-cluster-access-kubeconfig/)
 as the kubectl CLI does to locate and authenticate to the API server. See this [example](https://github.com/kubernetes-client/haskell/blob/master/kubernetes-client/example/App.hs):
 
 ```haskell
@@ -351,4 +351,4 @@ exampleWithKubeConfig = do
 
 ## {{% heading "whatsnext" %}}
 
-* [Accessing the Kubernetes API from a Pod](/docs/tasks/run-application/access-api-from-pod/)
+* [Accessing the Kubernetes API from a Pod](/docs/kubernetes/en/tasks/run-application/access-api-from-pod/)

@@ -99,7 +99,7 @@ Use the configuration file to create a pod that will get scheduled on `foo-node`
 
 ## {{% heading "whatsnext" %}}
 
-* Learn more about [labels and selectors](/docs/concepts/overview/working-with-objects/labels/).
-* Learn more about [nodes](/docs/concepts/architecture/nodes/).
+* Learn more about [labels and selectors](/docs/kubernetes/en/concepts/overview/working-with-objects/labels/).
+* Learn more about [nodes](/docs/kubernetes/en/concepts/architecture/nodes/).
 
 

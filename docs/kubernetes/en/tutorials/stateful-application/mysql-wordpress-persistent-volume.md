@@ -13,7 +13,7 @@ card:
 <!-- overview -->
 This tutorial shows you how to deploy a WordPress site and a MySQL database using Minikube. Both applications use PersistentVolumes and PersistentVolumeClaims to store data. 
 
-A [PersistentVolume](/docs/concepts/storage/persistent-volumes/) (PV) is a piece of storage in the cluster that has been manually provisioned by an administrator, or dynamically provisioned by Kubernetes using a [StorageClass](/docs/concepts/storage/storage-classes).  A [PersistentVolumeClaim](/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims) (PVC) is a request for storage by a user that can be fulfilled by a PV. PersistentVolumes and PersistentVolumeClaims are independent from Pod lifecycles and preserve data through restarting, rescheduling, and even deleting Pods.
+A [PersistentVolume](/docs/kubernetes/en/concepts/storage/persistent-volumes/) (PV) is a piece of storage in the cluster that has been manually provisioned by an administrator, or dynamically provisioned by Kubernetes using a [StorageClass](/docs/kubernetes/en/concepts/storage/storage-classes).  A [PersistentVolumeClaim](/docs/kubernetes/en/concepts/storage/persistent-volumes/#persistentvolumeclaims) (PVC) is a request for storage by a user that can be fulfilled by a PV. PersistentVolumes and PersistentVolumeClaims are independent from Pod lifecycles and preserve data through restarting, rescheduling, and even deleting Pods.
 
 {{< warning >}}
 This deployment is not suitable for production use cases, as it uses single instance WordPress and MySQL Pods. Consider using [WordPress Helm Chart](https://github.com/bitnami/charts/tree/master/bitnami/wordpress) to deploy WordPress in production.
@@ -70,13 +70,13 @@ If you are bringing up a cluster that needs to use the `hostPath` provisioner, t
 {{< /note >}}
 
 {{< note >}}
-If you have a Kubernetes cluster running on Google Kubernetes Engine, please follow [this guide](https://cloud.google.com/kubernetes-engine/docs/tutorials/persistent-disk).
+If you have a Kubernetes cluster running on Google Kubernetes Engine, please follow [this guide](https://cloud.google.com/kubernetes-engine/docs/kubernetes/en/tutorials/persistent-disk).
 {{< /note >}}
 
 ## Create a kustomization.yaml
 
 ### Add a Secret generator
-A [Secret](/docs/concepts/configuration/secret/) is an object that stores a piece of sensitive data like a password or key. Since 1.14, `kubectl` supports the management of Kubernetes objects using a kustomization file. You can create a Secret by generators in `kustomization.yaml`.
+A [Secret](/docs/kubernetes/en/concepts/configuration/secret/) is an object that stores a piece of sensitive data like a password or key. Since 1.14, `kubectl` supports the management of Kubernetes objects using a kustomization file. You can create a Secret by generators in `kustomization.yaml`.
 
 Add a Secret generator in `kustomization.yaml` from the following command. You will need to replace `YOUR_PASSWORD` with the password you want to use.
 
@@ -236,10 +236,10 @@ Do not leave your WordPress installation on this page. If another user finds it,
 ## {{% heading "whatsnext" %}}
 
 
-* Learn more about [Introspection and Debugging](/docs/tasks/debug/debug-application/debug-running-pod/)
-* Learn more about [Jobs](/docs/concepts/workloads/controllers/job/)
-* Learn more about [Port Forwarding](/docs/tasks/access-application-cluster/port-forward-access-application-cluster/)
-* Learn how to [Get a Shell to a Container](/docs/tasks/debug/debug-application/get-shell-running-container/)
+* Learn more about [Introspection and Debugging](/docs/kubernetes/en/tasks/debug/debug-application/debug-running-pod/)
+* Learn more about [Jobs](/docs/kubernetes/en/concepts/workloads/controllers/job/)
+* Learn more about [Port Forwarding](/docs/kubernetes/en/tasks/access-application-cluster/port-forward-access-application-cluster/)
+* Learn how to [Get a Shell to a Container](/docs/kubernetes/en/tasks/debug/debug-application/get-shell-running-container/)
 
 
 

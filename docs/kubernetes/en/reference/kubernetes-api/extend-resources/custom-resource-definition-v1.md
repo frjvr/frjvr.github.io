@@ -120,7 +120,7 @@ CustomResourceDefinitionSpec describes how a user wants their resource to appear
 
   - **versions.additionalPrinterColumns** ([]CustomResourceColumnDefinition)
 
-    additionalPrinterColumns specifies additional columns returned in Table output. See https://kubernetes.io/docs/reference/using-api/api-concepts/#receiving-resources-as-tables for details. If no columns are specified, a single column displaying the age of the custom resource is used.
+    additionalPrinterColumns specifies additional columns returned in Table output. See https://kubernetes.io/docs/kubernetes/en/reference/using-api/api-concepts/#receiving-resources-as-tables for details. If no columns are specified, a single column displaying the age of the custom resource is used.
 
     <a name="CustomResourceColumnDefinition"></a>
     *CustomResourceColumnDefinition specifies a column for server side printing.*
@@ -192,7 +192,7 @@ CustomResourceDefinitionSpec describes how a user wants their resource to appear
 
       - **versions.subresources.scale.labelSelectorPath** (string)
 
-        labelSelectorPath defines the JSON path inside of a custom resource that corresponds to Scale `status.selector`. Only JSON paths without the array notation are allowed. Must be a JSON Path under `.status` or `.spec`. Must be set to work with HorizontalPodAutoscaler. The field pointed by this JSON path must be a string field (not a complex selector struct) which contains a serialized label selector in string form. More info: https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions#scale-subresource If there is no value under the given path in the custom resource, the `status.selector` value in the `/scale` subresource will default to the empty string.
+        labelSelectorPath defines the JSON path inside of a custom resource that corresponds to Scale `status.selector`. Only JSON paths without the array notation are allowed. Must be a JSON Path under `.status` or `.spec`. Must be set to work with HorizontalPodAutoscaler. The field pointed by this JSON path must be a string field (not a complex selector struct) which contains a serialized label selector in string form. More info: https://kubernetes.io/docs/kubernetes/en/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions#scale-subresource If there is no value under the given path in the custom resource, the `status.selector` value in the `/scale` subresource will default to the empty string.
 
     - **versions.subresources.status** (CustomResourceSubresourceStatus)
 
@@ -276,7 +276,7 @@ CustomResourceDefinitionSpec describes how a user wants their resource to appear
 
 - **preserveUnknownFields** (boolean)
 
-  preserveUnknownFields indicates that object fields which are not specified in the OpenAPI schema should be preserved when persisting to storage. apiVersion, kind, metadata and known fields inside metadata are always preserved. This field is deprecated in favor of setting `x-preserve-unknown-fields` to true in `spec.versions[*].schema.openAPIV3Schema`. See https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#field-pruning for details.
+  preserveUnknownFields indicates that object fields which are not specified in the OpenAPI schema should be preserved when persisting to storage. apiVersion, kind, metadata and known fields inside metadata are always preserved. This field is deprecated in favor of setting `x-preserve-unknown-fields` to true in `spec.versions[*].schema.openAPIV3Schema`. See https://kubernetes.io/docs/kubernetes/en/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#field-pruning for details.
 
 
 

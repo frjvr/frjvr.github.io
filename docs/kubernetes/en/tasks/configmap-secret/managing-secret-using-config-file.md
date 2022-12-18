@@ -17,7 +17,7 @@ description: Creating Secret objects using resource configuration file.
 
 You can define the `Secret` object in a manifest first, in JSON or YAML format,
 and then create that object. The
-[Secret](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#secret-v1-core)
+[Secret](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#secret-v1-core)
 resource contains two maps: `data` and `stringData`.
 The `data` field is used to store arbitrary data, encoded using base64. The
 `stringData` field is provided for convenience, and it allows you to provide
@@ -59,9 +59,9 @@ The following example stores two strings in a Secret using the `data` field.
    ```
 
    Note that the name of a Secret object must be a valid
-   [DNS subdomain name](/docs/concepts/overview/working-with-objects/names#dns-subdomain-names).
+   [DNS subdomain name](/docs/kubernetes/en/concepts/overview/working-with-objects/names#dns-subdomain-names).
 
-1. Create the Secret using [`kubectl apply`](/docs/reference/generated/kubectl/kubectl-commands#apply):
+1. Create the Secret using [`kubectl apply`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands#apply):
 
    ```shell
    kubectl apply -f ./secret.yaml
@@ -74,7 +74,7 @@ The following example stores two strings in a Secret using the `data` field.
    ```
 
 To verify that the Secret was created and to decode the Secret data, refer to
-[Managing Secrets using kubectl](/docs/tasks/configmap-secret/managing-secret-using-kubectl/#verify-the-secret).
+[Managing Secrets using kubectl](/docs/kubernetes/en/tasks/configmap-secret/managing-secret-using-kubectl/#verify-the-secret).
 
 ### Specify unencoded data when creating a Secret
 
@@ -175,7 +175,7 @@ type: Opaque
 To edit the data in the Secret you created using a manifest, modify the `data`
 or `stringData` field in your manifest and apply the file to your
 cluster. You can edit an existing `Secret` object unless it is
-[immutable](/docs/concepts/configuration/secret/#secret-immutable).
+[immutable](/docs/kubernetes/en/concepts/configuration/secret/#secret-immutable).
 
 For example, if you want to change the password from the previous example to
 `birdsarentreal`, do the following:
@@ -223,7 +223,7 @@ fetches the existing object, plans changes to it, and submits the changed
 `Secret` object to your cluster control plane.
 
 If you specified `kubectl apply --server-side` instead, `kubectl` uses
-[Server Side Apply](/docs/reference/using-api/server-side-apply/) instead.
+[Server Side Apply](/docs/kubernetes/en/reference/using-api/server-side-apply/) instead.
 
 ## Clean up
 
@@ -235,6 +235,6 @@ kubectl delete secret mysecret
 
 ## {{% heading "whatsnext" %}}
 
-- Read more about the [Secret concept](/docs/concepts/configuration/secret/)
-- Learn how to [manage Secrets using kubectl](/docs/tasks/configmap-secret/managing-secret-using-kubectl/)
-- Learn how to [manage Secrets using kustomize](/docs/tasks/configmap-secret/managing-secret-using-kustomize/)
+- Read more about the [Secret concept](/docs/kubernetes/en/concepts/configuration/secret/)
+- Learn how to [manage Secrets using kubectl](/docs/kubernetes/en/tasks/configmap-secret/managing-secret-using-kubectl/)
+- Learn how to [manage Secrets using kustomize](/docs/kubernetes/en/tasks/configmap-secret/managing-secret-using-kustomize/)

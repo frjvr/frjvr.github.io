@@ -77,11 +77,11 @@ in a majority of cases, and the most intuitive location; other constants paths a
 
 ## kubeadm init workflow internal design
 
-The `kubeadm init` [internal workflow](/docs/reference/setup-tools/kubeadm/kubeadm-init/#init-workflow)
+The `kubeadm init` [internal workflow](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-init/#init-workflow)
 consists of a sequence of atomic work tasks to perform,
 as described in `kubeadm init`.
 
-The [`kubeadm init phase`](/docs/reference/setup-tools/kubeadm/kubeadm-init-phase/) command allows
+The [`kubeadm init phase`](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-init-phase/) command allows
 users to invoke each task individually, and ultimately offers a reusable and composable
 API/toolbox that can be used by other Kubernetes bootstrap tools, by any IT automation tool or by
 an advanced user for creating custom clusters.
@@ -131,7 +131,7 @@ The user can skip specific preflight checks or all of them with the `--ignore-pr
 Please note that:
 
 1. Preflight checks can be invoked individually with the
-   [`kubeadm init phase preflight`](/docs/reference/setup-tools/kubeadm/kubeadm-init-phase/#cmd-phase-preflight)
+   [`kubeadm init phase preflight`](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-init-phase/#cmd-phase-preflight)
    command
 
 ### Generate the necessary certificates
@@ -175,15 +175,15 @@ Please note that:
 1. If a given certificate and private key pair both exist, and its content is evaluated compliant with the above specs, the existing files will
    be used and the generation phase for the given certificate skipped. This means the user can, for example, copy an existing CA to
    `/etc/kubernetes/pki/ca.{crt,key}`, and then kubeadm will use those files for signing the rest of the certs.
-   See also [using custom certificates](/docs/tasks/administer-cluster/kubeadm/kubeadm-certs#custom-certificates)
+   See also [using custom certificates](/docs/kubernetes/en/tasks/administer-cluster/kubeadm/kubeadm-certs#custom-certificates)
 1. Only for the CA, it is possible to provide the `ca.crt` file but not the `ca.key` file, if all other certificates and kubeconfig files
    already are in place kubeadm recognize this condition and activates the ExternalCA , which also implies the `csrsigner`controller in
    controller-manager won't be started
-1. If kubeadm is running in [external CA mode](/docs/tasks/administer-cluster/kubeadm/kubeadm-certs#external-ca-mode);
+1. If kubeadm is running in [external CA mode](/docs/kubernetes/en/tasks/administer-cluster/kubeadm/kubeadm-certs#external-ca-mode);
    all the certificates must be provided by the user, because kubeadm cannot generate them by itself
 1. In case of kubeadm is executed in the `--dry-run` mode, certificates files are written in a temporary folder
 1. Certificate generation can be invoked individually with the
-   [`kubeadm init phase certs all`](/docs/reference/setup-tools/kubeadm/kubeadm-init-phase/#cmd-phase-certs) command
+   [`kubeadm init phase certs all`](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-init-phase/#cmd-phase-certs) command
 
 ### Generate kubeconfig files for control plane components
 
@@ -196,24 +196,24 @@ Kubeadm generates kubeconfig files with identities for control plane components:
   This client cert should:
 
   - Be in the `system:nodes` organization, as required by the
-    [Node Authorization](/docs/reference/access-authn-authz/node/) module
+    [Node Authorization](/docs/kubernetes/en/reference/access-authn-authz/node/) module
   - Have the Common Name (CN) `system:node:<hostname-lowercased>`
 
 - A kubeconfig file for controller-manager, `/etc/kubernetes/controller-manager.conf`; inside this
   file is embedded a client certificate with controller-manager identity. This client cert should
   have the CN `system:kube-controller-manager`, as defined by default
-  [RBAC core components roles](/docs/reference/access-authn-authz/rbac/#core-component-roles)
+  [RBAC core components roles](/docs/kubernetes/en/reference/access-authn-authz/rbac/#core-component-roles)
 
 - A kubeconfig file for scheduler, `/etc/kubernetes/scheduler.conf`; inside this file is embedded
   a client certificate with scheduler identity.
   This client cert should have the CN `system:kube-scheduler`, as defined by default
-  [RBAC core components roles](/docs/reference/access-authn-authz/rbac/#core-component-roles)
+  [RBAC core components roles](/docs/kubernetes/en/reference/access-authn-authz/rbac/#core-component-roles)
 
 Additionally, a kubeconfig file for kubeadm itself and the admin is generated and saved into the
 `/etc/kubernetes/admin.conf` file.  The "admin" here is defined as the actual person(s) that is
 administering the cluster and wants to have full control (**root**) over the cluster.  The
 embedded client certificate for admin should be in the `system:masters` organization, as defined
-by default [RBAC user facing role bindings](/docs/reference/access-authn-authz/rbac/#user-facing-roles).
+by default [RBAC user facing role bindings](/docs/kubernetes/en/reference/access-authn-authz/rbac/#user-facing-roles).
 It should also include a CN. Kubeadm uses the `kubernetes-admin` CN.
 
 Please note that:
@@ -221,12 +221,12 @@ Please note that:
 1. `ca.crt` certificate is embedded in all the kubeconfig files.
 2. If a given kubeconfig file exists, and its content is evaluated compliant with the above specs,
    the existing file will be used and the generation phase for the given kubeconfig skipped
-3. If kubeadm is running in [ExternalCA mode](/docs/reference/setup-tools/kubeadm/kubeadm-init/#external-ca-mode),
+3. If kubeadm is running in [ExternalCA mode](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-init/#external-ca-mode),
    all the required kubeconfig must be provided by the user as well, because kubeadm cannot
    generate any of them by itself
 4. In case of kubeadm is executed in the `--dry-run` mode, kubeconfig files are written in a temporary folder
 5. Kubeconfig files generation can be invoked individually with the
-   [`kubeadm init phase kubeconfig all`](/docs/reference/setup-tools/kubeadm/kubeadm-init-phase/#cmd-phase-kubeconfig) command
+   [`kubeadm init phase kubeconfig all`](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-init-phase/#cmd-phase-kubeconfig) command
 
 ### Generate static Pod manifests for control plane components
 
@@ -247,18 +247,18 @@ Static Pod manifest share a set of common properties:
 - Leader election is enabled for both the controller-manager and the scheduler
 - Controller-manager and the scheduler will reference kubeconfig files with their respective, unique identities
 - All static Pods get any extra flags specified by the user as described in
-  [passing custom arguments to control plane components](/docs/setup/production-environment/tools/kubeadm/control-plane-flags/)
+  [passing custom arguments to control plane components](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/control-plane-flags/)
 - All static Pods get any extra Volumes specified by the user (Host path)
 
 Please note that:
 
 1. All images will be pulled from registry.k8s.io by default.
-   See [using custom images](/docs/reference/setup-tools/kubeadm/kubeadm-init/#custom-images)
+   See [using custom images](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-init/#custom-images)
    for customizing the image repository
 1. In case of kubeadm is executed in the `--dry-run` mode, static Pods files are written in a
    temporary folder
 1. Static Pod manifest generation for control plane components can be invoked individually with
-   the [`kubeadm init phase control-plane all`](/docs/reference/setup-tools/kubeadm/kubeadm-init-phase/#cmd-phase-control-plane) command
+   the [`kubeadm init phase control-plane all`](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-init-phase/#cmd-phase-control-plane) command
 
 #### API server
 
@@ -278,27 +278,27 @@ Other API server flags that are set unconditionally are:
 
 - `--insecure-port=0` to avoid insecure connections to the api server
 - `--enable-bootstrap-token-auth=true` to enable the `BootstrapTokenAuthenticator` authentication module.
-  See [TLS Bootstrapping](/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/) for more details
+  See [TLS Bootstrapping](/docs/kubernetes/en/reference/access-authn-authz/kubelet-tls-bootstrapping/) for more details
 - `--allow-privileged` to `true` (required e.g. by kube proxy)
 - `--requestheader-client-ca-file` to `front-proxy-ca.crt`
 - `--enable-admission-plugins` to:
 
-  - [`NamespaceLifecycle`](/docs/reference/access-authn-authz/admission-controllers/#namespacelifecycle)
+  - [`NamespaceLifecycle`](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/#namespacelifecycle)
     e.g. to avoid deletion of system reserved namespaces
-  - [`LimitRanger`](/docs/reference/access-authn-authz/admission-controllers/#limitranger)
-    and [`ResourceQuota`](/docs/reference/access-authn-authz/admission-controllers/#resourcequota)
+  - [`LimitRanger`](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/#limitranger)
+    and [`ResourceQuota`](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/#resourcequota)
     to enforce limits on namespaces
-  - [`ServiceAccount`](/docs/reference/access-authn-authz/admission-controllers/#serviceaccount)
+  - [`ServiceAccount`](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/#serviceaccount)
     to enforce service account automation
-  - [`PersistentVolumeLabel`](/docs/reference/access-authn-authz/admission-controllers/#persistentvolumelabel)
+  - [`PersistentVolumeLabel`](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/#persistentvolumelabel)
     attaches region or zone labels to PersistentVolumes as defined by the cloud provider (This
     admission controller is deprecated and will be removed in a future version.
     It is not deployed by kubeadm by default with v1.9 onwards when not explicitly opting into
     using `gce` or `aws` as cloud providers)
-  - [`DefaultStorageClass`](/docs/reference/access-authn-authz/admission-controllers/#defaultstorageclass)
+  - [`DefaultStorageClass`](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/#defaultstorageclass)
     to enforce default storage class on `PersistentVolumeClaim` objects
-  - [`DefaultTolerationSeconds`](/docs/reference/access-authn-authz/admission-controllers/#defaulttolerationseconds)
-  - [`NodeRestriction`](/docs/reference/access-authn-authz/admission-controllers/#noderestriction)
+  - [`DefaultTolerationSeconds`](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/#defaulttolerationseconds)
+  - [`NodeRestriction`](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/#noderestriction)
     to limit what a kubelet can modify (e.g. only pods on this node)
 
 - `--kubelet-preferred-address-types` to `InternalIP,ExternalIP,Hostname;` this makes `kubectl
@@ -318,7 +318,7 @@ Other API server flags that are set unconditionally are:
   - `--proxy-client-key-file` to `front-proxy-client.key`
 
 - Other flags for securing the front proxy
-  ([API Aggregation](/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/))
+  ([API Aggregation](/docs/kubernetes/en/concepts/extend-kubernetes/api-extension/apiserver-aggregation/))
   communications:
 
   - `--requestheader-username-headers=X-Remote-User`
@@ -344,7 +344,7 @@ the users:
 Other flags that are set unconditionally are:
 
 - `--controllers` enabling all the default controllers plus `BootstrapSigner` and `TokenCleaner`
-  controllers for TLS bootstrap.  See [TLS Bootstrapping](/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/)
+  controllers for TLS bootstrap.  See [TLS Bootstrapping](/docs/kubernetes/en/reference/access-authn-authz/kubelet-tls-bootstrapping/)
   for more details
 
 - `--use-service-account-credentials` to `true`
@@ -372,12 +372,12 @@ static Pod manifest file for creating a local etcd instance running in a Pod wit
 Please note that:
 
 1. The etcd container image will be pulled from `registry.gcr.io` by default. See
-   [using custom images](/docs/reference/setup-tools/kubeadm/kubeadm-init/#custom-images)
+   [using custom images](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-init/#custom-images)
    for customizing the image repository.
 2. If you run kubeadm in `--dry-run` mode, the etcd static Pod manifest is written
    into a temporary folder.
 3. You can directly invoke static Pod manifest generation for local etcd, using the
-   [`kubeadm init phase etcd local`](/docs/reference/setup-tools/kubeadm/kubeadm-init-phase/#cmd-phase-etcd)
+   [`kubeadm init phase etcd local`](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-init-phase/#cmd-phase-etcd)
    command.
 
 ### Wait for the control plane to come up
@@ -402,7 +402,7 @@ Please note that:
 
 1. Before saving the ClusterConfiguration, sensitive information like the token is stripped from the configuration
 1. Upload of control plane node configuration can be invoked individually with the command
-   [`kubeadm init phase upload-config`](/docs/reference/setup-tools/kubeadm/kubeadm-init-phase/#cmd-phase-upload-config).
+   [`kubeadm init phase upload-config`](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-init-phase/#cmd-phase-upload-config).
 
 ### Mark the node as control-plane
 
@@ -412,7 +412,7 @@ As soon as the control plane is available, kubeadm executes following actions:
 - Taints the node with `node-role.kubernetes.io/control-plane:NoSchedule`
 
 Please note that the phase to mark the control-plane phase can be invoked
-individually with the [`kubeadm init phase mark-control-plane`](/docs/reference/setup-tools/kubeadm/kubeadm-init-phase/#cmd-phase-mark-control-plane) command.
+individually with the [`kubeadm init phase mark-control-plane`](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-init-phase/#cmd-phase-mark-control-plane) command.
 
 - Taints the node with `node-role.kubernetes.io/master:NoSchedule` and
   `node-role.kubernetes.io/control-plane:NoSchedule`
@@ -421,12 +421,12 @@ Please note that:
 
 1. The `node-role.kubernetes.io/master` taint is deprecated and will be removed in kubeadm version 1.25
 1. Mark control-plane phase phase can be invoked individually with the command
-   [`kubeadm init phase mark-control-plane`](/docs/reference/setup-tools/kubeadm/kubeadm-init-phase/#cmd-phase-mark-control-plane)
+   [`kubeadm init phase mark-control-plane`](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-init-phase/#cmd-phase-mark-control-plane)
 
 
 ### Configure TLS-Bootstrapping for node joining
 
-Kubeadm uses [Authenticating with Bootstrap Tokens](/docs/reference/access-authn-authz/bootstrap-tokens/)
+Kubeadm uses [Authenticating with Bootstrap Tokens](/docs/kubernetes/en/reference/access-authn-authz/bootstrap-tokens/)
 for joining new nodes to an existing cluster; for more details see also
 [design proposal](https://git.k8s.io/design-proposals-archive/cluster-lifecycle/bootstrap-discovery.md).
 
@@ -437,7 +437,7 @@ previous paragraphs.
 Please note that:
 
 1. TLS bootstrapping for nodes can be configured with the command
-   [`kubeadm init phase bootstrap-token`](/docs/reference/setup-tools/kubeadm/kubeadm-init-phase/#cmd-phase-bootstrap-token),
+   [`kubeadm init phase bootstrap-token`](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-init-phase/#cmd-phase-bootstrap-token),
    executing all the configuration steps described in following paragraphs;
    alternatively, each step can be invoked individually
 
@@ -453,7 +453,7 @@ Please note that:
    bootstrap process; those users will be member of
   `system:bootstrappers:kubeadm:default-node-token` group
 2. The token has a limited validity, default 24 hours (the interval may be changed with the `—token-ttl` flag)
-3. Additional tokens can be created with the [`kubeadm token`](/docs/reference/setup-tools/kubeadm/kubeadm-token/)
+3. Additional tokens can be created with the [`kubeadm token`](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-token/)
    command, that provide as well other useful functions for token management.
 
 #### Allow joining nodes to call CSR API
@@ -507,7 +507,7 @@ Kubeadm installs the internal DNS server and the kube-proxy addon components via
 Please note that:
 
 1. This phase can be invoked individually with the command
-   [`kubeadm init phase addon all`](/docs/reference/setup-tools/kubeadm/kubeadm-init-phase/#cmd-phase-addon).
+   [`kubeadm init phase addon all`](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-init-phase/#cmd-phase-addon).
 
 #### proxy
 
@@ -522,7 +522,7 @@ deployed as a DaemonSet:
 
 - The CoreDNS service is named `kube-dns`. This is done to prevent any interruption
   in service when the user is switching the cluster DNS from kube-dns to CoreDNS
-  the `--config` method described [here](/docs/reference/setup-tools/kubeadm/kubeadm-init-phase/#cmd-phase-addon).
+  the `--config` method described [here](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-init-phase/#cmd-phase-addon).
 
 - A ServiceAccount for CoreDNS is created in the `kube-system` namespace.
 
@@ -539,7 +539,7 @@ atomic work tasks to perform.
 This is split into discovery (having the Node trust the Kubernetes Master) and TLS bootstrap
 (having the Kubernetes Master trust the Node).
 
-see [Authenticating with Bootstrap Tokens](/docs/reference/access-authn-authz/bootstrap-tokens/)
+see [Authenticating with Bootstrap Tokens](/docs/kubernetes/en/reference/access-authn-authz/bootstrap-tokens/)
 or the corresponding [design proposal](https://git.k8s.io/design-proposals-archive/cluster-lifecycle/bootstrap-discovery.md).
 
 ### Preflight checks
@@ -596,7 +596,7 @@ to verify the connection.
 
 With file discovery, the cluster CA certificates is provided into the file itself; in fact, the
 discovery file is a kubeconfig file with only `server` and `certificate-authority-data` attributes
-set, as described in [`kubeadm join`](/docs/reference/setup-tools/kubeadm/kubeadm-join/#file-or-https-based-discovery)
+set, as described in [`kubeadm join`](/docs/kubernetes/en/reference/setup-tools/kubeadm/kubeadm-join/#file-or-https-based-discovery)
 reference doc; when the connection with the cluster is established, kubeadm try to access the
 `cluster-info` ConfigMap, and if available, uses it.
 

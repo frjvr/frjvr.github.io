@@ -25,10 +25,10 @@ If you must use an untrusted kubeconfig file, inspect it carefully first, much a
 By default, `kubectl` looks for a file named `config` in the `$HOME/.kube` directory.
 You can specify other kubeconfig files by setting the `KUBECONFIG` environment
 variable or by setting the
-[`--kubeconfig`](/docs/reference/generated/kubectl/kubectl/) flag.
+[`--kubeconfig`](/docs/kubernetes/en/reference/generated/kubectl/kubectl/) flag.
 
 For step-by-step instructions on creating and specifying kubeconfig files, see
-[Configure Access to Multiple Clusters](/docs/tasks/access-application-cluster/configure-access-multiple-clusters).
+[Configure Access to Multiple Clusters](/docs/kubernetes/en/tasks/access-application-cluster/configure-access-multiple-clusters).
 
 
 
@@ -102,7 +102,7 @@ Here are the rules that `kubectl` uses when it merges kubeconfig files:
      Even if the second file has non-conflicting entries under `red-user`, discard them.
 
    For an example of setting the `KUBECONFIG` environment variable, see
-   [Setting the KUBECONFIG environment variable](/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#set-the-kubeconfig-environment-variable).
+   [Setting the KUBECONFIG environment variable](/docs/kubernetes/en/tasks/access-application-cluster/configure-access-multiple-clusters/#set-the-kubeconfig-environment-variable).
 
    Otherwise, use the default kubeconfig file, `$HOME/.kube/config`, with no merging.
 
@@ -174,8 +174,8 @@ contexts:
 ## {{% heading "whatsnext" %}}
 
 
-* [Configure Access to Multiple Clusters](/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)
-* [`kubectl config`](/docs/reference/generated/kubectl/kubectl-commands#config)
+* [Configure Access to Multiple Clusters](/docs/kubernetes/en/tasks/access-application-cluster/configure-access-multiple-clusters/)
+* [`kubectl config`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands#config)
 
 
 

@@ -18,7 +18,7 @@ min-kubernetes-server-version: 1.16
 
 Server-Side Apply helps users and controllers manage their resources through
 declarative configurations. Clients can create and modify their
-[objects](/docs/concepts/overview/working-with-objects/kubernetes-objects/)
+[objects](/docs/kubernetes/en/concepts/overview/working-with-objects/kubernetes-objects/)
 declaratively by sending their fully specified intent.
 
 A fully specified intent is a partial object that only includes the fields and
@@ -71,7 +71,7 @@ the appliers, results in a conflict. Shared field owners may give up ownership
 of a field by removing it from their configuration.
 
 Field management is stored in a`managedFields` field that is part of an object's
-[`metadata`](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#objectmeta-v1-meta).
+[`metadata`](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#objectmeta-v1-meta).
 
 A simple example of an object created by Server-Side Apply could look like this:
 
@@ -114,7 +114,7 @@ option to try if, for example, the `managedFields` get into an inconsistent
 state (which clearly should not happen).
 
 The format of the `managedFields` is described in the
-[API](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#fieldsv1-v1-meta).
+[API](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#fieldsv1-v1-meta).
 
 ## Conflicts
 
@@ -226,7 +226,7 @@ A number of markers were added in Kubernetes 1.16 and 1.17, to allow API
 developers to describe the merge strategy supported by lists, maps, and
 structs. These markers can be applied to objects of the respective type,
 in Go files or in the OpenAPI schema definition of the
-[CRD](/docs/reference/generated/kubernetes-api/{{< param "version" >}}#jsonschemaprops-v1-apiextensions-k8s-io):
+[CRD](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}#jsonschemaprops-v1-apiextensions-k8s-io):
 
 | Golang marker | OpenAPI extension | Accepted values | Description | Introduced in |
 |---|---|---|---|---|
@@ -299,7 +299,7 @@ By default, Server-Side Apply treats custom resources as unstructured data. All
 keys are treated the same as struct fields, and all lists are considered atomic.
 
 If the Custom Resource Definition defines a
-[schema](/docs/reference/generated/kubernetes-api/{{< param "version" >}}#jsonschemaprops-v1-apiextensions-k8s-io)
+[schema](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}#jsonschemaprops-v1-apiextensions-k8s-io)
 that contains annotations as defined in the previous "Merge Strategy"
 section, these annotations will be used when merging objects of this
 type.

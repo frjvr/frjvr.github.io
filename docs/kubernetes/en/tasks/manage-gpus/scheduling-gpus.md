@@ -67,7 +67,7 @@ spec:
 ## Clusters containing different types of GPUs
 
 If different nodes in your cluster have different types of GPUs, then you
-can use [Node Labels and Node Selectors](/docs/tasks/configure-pod-container/assign-pods-nodes/)
+can use [Node Labels and Node Selectors](/docs/kubernetes/en/tasks/configure-pod-container/assign-pods-nodes/)
 to schedule pods to appropriate nodes.
 
 For example:

@@ -62,11 +62,11 @@ DaemonSetSpec is the specification of a daemon set.
 
 - **selector** (<a href="{{< ref "../common-definitions/label-selector#LabelSelector" >}}">LabelSelector</a>), required
 
-  A label query over pods that are managed by the daemon set. Must match in order to be controlled. It must match the pod template's labels. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
+  A label query over pods that are managed by the daemon set. Must match in order to be controlled. It must match the pod template's labels. More info: https://kubernetes.io/docs/kubernetes/en/concepts/overview/working-with-objects/labels/#label-selectors
 
 - **template** (<a href="{{< ref "../workload-resources/pod-template-v1#PodTemplateSpec" >}}">PodTemplateSpec</a>), required
 
-  An object that describes the pod that will be created. The DaemonSet will create exactly one copy of this pod on every node that matches the template's node selector (or on every node if no node selector is specified). More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template
+  An object that describes the pod that will be created. The DaemonSet will create exactly one copy of this pod on every node that matches the template's node selector (or on every node if no node selector is specified). More info: https://kubernetes.io/docs/kubernetes/en/concepts/workloads/controllers/replicationcontroller#pod-template
 
 - **minReadySeconds** (int32)
 
@@ -134,15 +134,15 @@ DaemonSetStatus represents the current status of a daemon set.
 
 - **numberMisscheduled** (int32), required
 
-  The number of nodes that are running the daemon pod, but are not supposed to run the daemon pod. More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
+  The number of nodes that are running the daemon pod, but are not supposed to run the daemon pod. More info: https://kubernetes.io/docs/kubernetes/en/concepts/workloads/controllers/daemonset/
 
 - **desiredNumberScheduled** (int32), required
 
-  The total number of nodes that should be running the daemon pod (including nodes correctly running the daemon pod). More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
+  The total number of nodes that should be running the daemon pod (including nodes correctly running the daemon pod). More info: https://kubernetes.io/docs/kubernetes/en/concepts/workloads/controllers/daemonset/
 
 - **currentNumberScheduled** (int32), required
 
-  The number of nodes that are running at least 1 daemon pod and are supposed to run the daemon pod. More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
+  The number of nodes that are running at least 1 daemon pod and are supposed to run the daemon pod. More info: https://kubernetes.io/docs/kubernetes/en/concepts/workloads/controllers/daemonset/
 
 - **updatedNumberScheduled** (int32)
 

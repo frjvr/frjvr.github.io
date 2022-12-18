@@ -2,7 +2,7 @@
 title: Resource Quotas
 id: resource-quota
 date: 2018-04-12
-full_link: /docs/concepts/policy/resource-quotas/
+full_link: /docs/kubernetes/en/concepts/policy/resource-quotas/
 short_description: >
   Provides constraints that limit aggregate resource consumption per namespace.
 

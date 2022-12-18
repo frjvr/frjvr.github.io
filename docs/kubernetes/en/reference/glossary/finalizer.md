@@ -2,7 +2,7 @@
 title: Finalizer
 id: finalizer
 date: 2021-07-07
-full_link: /docs/concepts/overview/working-with-objects/finalizers/
+full_link: /docs/kubernetes/en/concepts/overview/working-with-objects/finalizers/
 short_description: >
   A namespaced key that tells Kubernetes to wait until specific conditions are met
   before it fully deletes an object marked for deletion.

@@ -28,7 +28,7 @@ one zone also impairs services in another zone.
 
 ## Control plane behavior
 
-All [control plane components](/docs/concepts/overview/components/#control-plane-components)
+All [control plane components](/docs/kubernetes/en/concepts/overview/components/#control-plane-components)
 support running as a pool of interchangeable resources, replicated per
 component.
 
@@ -59,11 +59,11 @@ When nodes start up, the kubelet on each node automatically adds
 {{< glossary_tooltip text="labels" term_id="label" >}} to the Node object
 that represents that specific kubelet in the Kubernetes API.
 These labels can include
-[zone information](/docs/reference/labels-annotations-taints/#topologykubernetesiozone).
+[zone information](/docs/kubernetes/en/reference/labels-annotations-taints/#topologykubernetesiozone).
 
 If your cluster spans multiple zones or regions, you can use node labels
 in conjunction with
-[Pod topology spread constraints](/docs/concepts/scheduling-eviction/topology-spread-constraints/)
+[Pod topology spread constraints](/docs/kubernetes/en/concepts/scheduling-eviction/topology-spread-constraints/)
 to control how Pods are spread across your cluster among fault domains:
 regions, zones, and even specific nodes.
 These hints enable the
@@ -89,14 +89,14 @@ automatically heal the cluster in case of whole-zone service disruption.
 
 ## Manual zone assignment for Pods
 
-You can apply [node selector constraints](/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector)
+You can apply [node selector constraints](/docs/kubernetes/en/concepts/scheduling-eviction/assign-pod-node/#nodeselector)
 to Pods that you create, as well as to Pod templates in workload resources
 such as Deployment, StatefulSet, or Job.
 
 ## Storage access for zones
 
 When persistent volumes are created, the `PersistentVolumeLabel`
-[admission controller](/docs/reference/access-authn-authz/admission-controllers/)
+[admission controller](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/)
 automatically adds zone labels to any PersistentVolumes that are linked to a specific
 zone. The {{< glossary_tooltip text="scheduler" term_id="kube-scheduler" >}} then ensures,
 through its `NoVolumeZoneConflict` predicate, that pods which claim a given PersistentVolume
@@ -106,12 +106,12 @@ You can specify a {{< glossary_tooltip text="StorageClass" term_id="storage-clas
 for PersistentVolumeClaims that specifies the failure domains (zones) that the
 storage in that class may use.
 To learn about configuring a StorageClass that is aware of failure domains or zones,
-see [Allowed topologies](/docs/concepts/storage/storage-classes/#allowed-topologies).
+see [Allowed topologies](/docs/kubernetes/en/concepts/storage/storage-classes/#allowed-topologies).
 
 ## Networking
 
 By itself, Kubernetes does not include zone-aware networking. You can use a
-[network plugin](/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/)
+[network plugin](/docs/kubernetes/en/concepts/extend-kubernetes/compute-storage-net/network-plugins/)
 to configure cluster networking, and that network solution might have zone-specific
 elements. For example, if your cloud provider supports Services with
 `type=LoadBalancer`, the load balancer might only send traffic to Pods running in the
@@ -141,4 +141,4 @@ something to consider.
 ## {{% heading "whatsnext" %}}
 
 To learn how the scheduler places Pods in a cluster, honoring the configured constraints,
-visit [Scheduling and Eviction](/docs/concepts/scheduling-eviction/).
+visit [Scheduling and Eviction](/docs/kubernetes/en/concepts/scheduling-eviction/).

@@ -30,11 +30,11 @@ the documentation for the version of Kubernetes that you plan to upgrade to.
 ### kubeadm {#upgrade-kubeadm}
 
 If your cluster was deployed using the `kubeadm` tool, refer to 
-[Upgrading kubeadm clusters](/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)
+[Upgrading kubeadm clusters](/docs/kubernetes/en/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)
 for detailed information on how to upgrade the cluster.
 
 Once you have upgraded the cluster, remember to
-[install the latest version of `kubectl`](/docs/tasks/tools/).
+[install the latest version of `kubectl`](/docs/kubernetes/en/tasks/tools/).
 
 ### Manual deployments
 
@@ -52,9 +52,9 @@ You should manually update the control plane following this sequence:
 - cloud controller manager, if you use one
 
 At this point you should
-[install the latest version of `kubectl`](/docs/tasks/tools/).
+[install the latest version of `kubectl`](/docs/kubernetes/en/tasks/tools/).
 
-For each node in your cluster, [drain](/docs/tasks/administer-cluster/safely-drain-node/)
+For each node in your cluster, [drain](/docs/kubernetes/en/tasks/administer-cluster/safely-drain-node/)
 that node and then either replace it with a new node that uses the {{< skew currentVersion >}}
 kubelet, or upgrade the kubelet on that node and bring the node back into service.
 
@@ -99,4 +99,4 @@ release with a newer device plugin API version, device plugins must be upgraded 
 both version before the node is upgraded in order to guarantee that device allocations
 continue to complete successfully during the upgrade.
 
-Refer to [API compatiblity](/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins.md/#api-compatibility) and [Kubelet Device Manager API Versions](/docs/reference/node/device-plugin-api-versions.md) for more details.
+Refer to [API compatiblity](/docs/kubernetes/en/concepts/extend-kubernetes/compute-storage-net/device-plugins.md/#api-compatibility) and [Kubelet Device Manager API Versions](/docs/kubernetes/en/reference/node/device-plugin-api-versions.md) for more details.

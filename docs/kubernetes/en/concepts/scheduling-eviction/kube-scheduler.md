@@ -26,7 +26,7 @@ page will help you learn about scheduling.
 
 ## kube-scheduler
 
-[kube-scheduler](/docs/reference/command-line-tools-reference/kube-scheduler/)
+[kube-scheduler](/docs/kubernetes/en/reference/command-line-tools-reference/kube-scheduler/)
 is the default scheduler for Kubernetes and runs as part of the
 {{< glossary_tooltip text="control plane" term_id="control-plane" >}}.
 kube-scheduler is designed so that, if you want and need to, you can
@@ -78,20 +78,20 @@ one of these at random.
 There are two supported ways to configure the filtering and scoring behavior
 of the scheduler:
 
-1. [Scheduling Policies](/docs/reference/scheduling/policies) allow you to configure _Predicates_ for filtering and _Priorities_ for scoring.
-1. [Scheduling Profiles](/docs/reference/scheduling/config/#profiles) allow you to configure Plugins that implement different scheduling stages, including: `QueueSort`, `Filter`, `Score`, `Bind`, `Reserve`, `Permit`, and others. You can also configure the kube-scheduler to run different profiles.
+1. [Scheduling Policies](/docs/kubernetes/en/reference/scheduling/policies) allow you to configure _Predicates_ for filtering and _Priorities_ for scoring.
+1. [Scheduling Profiles](/docs/kubernetes/en/reference/scheduling/config/#profiles) allow you to configure Plugins that implement different scheduling stages, including: `QueueSort`, `Filter`, `Score`, `Bind`, `Reserve`, `Permit`, and others. You can also configure the kube-scheduler to run different profiles.
 
 ## {{% heading "whatsnext" %}}
 
-* Read about [scheduler performance tuning](/docs/concepts/scheduling-eviction/scheduler-perf-tuning/)
-* Read about [Pod topology spread constraints](/docs/concepts/scheduling-eviction/topology-spread-constraints/)
-* Read the [reference documentation](/docs/reference/command-line-tools-reference/kube-scheduler/) for kube-scheduler
-* Read the [kube-scheduler config (v1beta3)](/docs/reference/config-api/kube-scheduler-config.v1beta3/) reference
-* Learn about [configuring multiple schedulers](/docs/tasks/extend-kubernetes/configure-multiple-schedulers/)
-* Learn about [topology management policies](/docs/tasks/administer-cluster/topology-manager/)
-* Learn about [Pod Overhead](/docs/concepts/scheduling-eviction/pod-overhead/)
+* Read about [scheduler performance tuning](/docs/kubernetes/en/concepts/scheduling-eviction/scheduler-perf-tuning/)
+* Read about [Pod topology spread constraints](/docs/kubernetes/en/concepts/scheduling-eviction/topology-spread-constraints/)
+* Read the [reference documentation](/docs/kubernetes/en/reference/command-line-tools-reference/kube-scheduler/) for kube-scheduler
+* Read the [kube-scheduler config (v1beta3)](/docs/kubernetes/en/reference/config-api/kube-scheduler-config.v1beta3/) reference
+* Learn about [configuring multiple schedulers](/docs/kubernetes/en/tasks/extend-kubernetes/configure-multiple-schedulers/)
+* Learn about [topology management policies](/docs/kubernetes/en/tasks/administer-cluster/topology-manager/)
+* Learn about [Pod Overhead](/docs/kubernetes/en/concepts/scheduling-eviction/pod-overhead/)
 * Learn about scheduling of Pods that use volumes in:
-  * [Volume Topology Support](/docs/concepts/storage/storage-classes/#volume-binding-mode)
-  * [Storage Capacity Tracking](/docs/concepts/storage/storage-capacity/)
-  * [Node-specific Volume Limits](/docs/concepts/storage/storage-limits/)
+  * [Volume Topology Support](/docs/kubernetes/en/concepts/storage/storage-classes/#volume-binding-mode)
+  * [Storage Capacity Tracking](/docs/kubernetes/en/concepts/storage/storage-capacity/)
+  * [Node-specific Volume Limits](/docs/kubernetes/en/concepts/storage/storage-limits/)
 

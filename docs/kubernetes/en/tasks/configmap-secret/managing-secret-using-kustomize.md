@@ -7,7 +7,7 @@ description: Creating Secret objects using kustomization.yaml file.
 
 <!-- overview -->
 
-`kubectl` supports using the [Kustomize object management tool](/docs/tasks/manage-kubernetes-objects/kustomization/) to manage Secrets
+`kubectl` supports using the [Kustomize object management tool](/docs/kubernetes/en/tasks/manage-kubernetes-objects/kustomization/) to manage Secrets
 and ConfigMaps. You create a *resource generator* using Kustomize, which
 generates a Secret that you can apply to the API server using `kubectl`.
 
@@ -90,7 +90,7 @@ the Secret data and appending the hash value to the name. This ensures that
 a new Secret is generated each time the data is modified.
 
 To verify that the Secret was created and to decode the Secret data, refer to
-[Managing Secrets using kubectl](/docs/tasks/configmap-secret/managing-secret-using-kubectl/#verify-the-secret).
+[Managing Secrets using kubectl](/docs/kubernetes/en/tasks/configmap-secret/managing-secret-using-kubectl/#verify-the-secret).
 
 ## Edit a Secret {#edit-secret}
 
@@ -121,6 +121,6 @@ kubectl delete secret db-user-pass
 
 ## {{% heading "whatsnext" %}}
 
-- Read more about the [Secret concept](/docs/concepts/configuration/secret/)
-- Learn how to [manage Secrets using kubectl](/docs/tasks/configmap-secret/managing-secret-using-kubectl/)
-- Learn how to [manage Secrets using config file](/docs/tasks/configmap-secret/managing-secret-using-config-file/)
+- Read more about the [Secret concept](/docs/kubernetes/en/concepts/configuration/secret/)
+- Learn how to [manage Secrets using kubectl](/docs/kubernetes/en/tasks/configmap-secret/managing-secret-using-kubectl/)
+- Learn how to [manage Secrets using config file](/docs/kubernetes/en/tasks/configmap-secret/managing-secret-using-config-file/)

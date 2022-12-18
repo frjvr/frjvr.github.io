@@ -27,7 +27,7 @@ The kubelet acts as a client when connecting to the container runtime via gRPC.
 The runtime and image service endpoints have to be available in the container
 runtime, which can be configured separately within the kubelet by using the
 `--image-service-endpoint` and `--container-runtime-endpoint` [command line
-flags](/docs/reference/command-line-tools-reference/kubelet)
+flags](/docs/kubernetes/en/reference/command-line-tools-reference/kubelet)
 
 For Kubernetes v{{< skew currentVersion >}}, the kubelet prefers to use CRI `v1`.
 If a container runtime does not support `v1` of the CRI, then the kubelet tries to

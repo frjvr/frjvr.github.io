@@ -79,7 +79,7 @@ You now have to ensure that the kubectl completion script gets sourced in all yo
     echo 'complete -o default -F __start_kubectl k' >>~/.bash_profile
     ```
 
-- If you installed kubectl with Homebrew (as explained [here](/docs/tasks/tools/install-kubectl-macos/#install-with-homebrew-on-macos)), then the kubectl completion script should already be in `/usr/local/etc/bash_completion.d/kubectl`. In that case, you don't need to do anything.
+- If you installed kubectl with Homebrew (as explained [here](/docs/kubernetes/en/tasks/tools/install-kubectl-macos/#install-with-homebrew-on-macos)), then the kubectl completion script should already be in `/usr/local/etc/bash_completion.d/kubectl`. In that case, you don't need to do anything.
 
    {{< note >}}
    The Homebrew installation of bash-completion v2 sources all the files in the `BASH_COMPLETION_COMPAT_DIR` directory, that's why the latter two methods work.

@@ -9,13 +9,13 @@ min-kubernetes-server-version: 1.21
 
 {{< feature-state for_k8s_version="v1.23" state="stable" >}}
 
-Your Kubernetes cluster includes [dual-stack](/docs/concepts/services-networking/dual-stack/) networking, which means that cluster networking lets you use either address family. In a cluster, the control plane can assign both an IPv4 address and an IPv6 address to a single {{< glossary_tooltip text="Pod" term_id="pod" >}} or a {{< glossary_tooltip text="Service" term_id="service" >}}.
+Your Kubernetes cluster includes [dual-stack](/docs/kubernetes/en/concepts/services-networking/dual-stack/) networking, which means that cluster networking lets you use either address family. In a cluster, the control plane can assign both an IPv4 address and an IPv6 address to a single {{< glossary_tooltip text="Pod" term_id="pod" >}} or a {{< glossary_tooltip text="Service" term_id="service" >}}.
 
 <!-- body -->
 
 ## {{% heading "prerequisites" %}}
 
-You need to have installed the {{< glossary_tooltip text="kubeadm" term_id="kubeadm" >}} tool, following the steps from [Installing kubeadm](/docs/setup/production-environment/tools/kubeadm/install-kubeadm/).
+You need to have installed the {{< glossary_tooltip text="kubeadm" term_id="kubeadm" >}} tool, following the steps from [Installing kubeadm](/docs/kubernetes/en/setup/production-environment/tools/kubeadm/install-kubeadm/).
 
 For each server that you want to use as a {{< glossary_tooltip text="node" term_id="node" >}}, make sure it allows IPv6 forwarding. On Linux, you can set this by running run `sysctl -w net.ipv6.conf.all.forwarding=1` as the root user on each server.
 
@@ -44,7 +44,7 @@ kubeadm init --pod-network-cidr=10.244.0.0/16,2001:db8:42:0::/56 --service-cidr=
 ```
 
 To make things clearer, here is an example kubeadm
-[configuration file](/docs/reference/config-api/kubeadm-config.v1beta3/)
+[configuration file](/docs/kubernetes/en/reference/config-api/kubeadm-config.v1beta3/)
 `kubeadm-config.yaml` for the primary dual-stack control plane node.
 
 ```yaml
@@ -73,7 +73,7 @@ Run kubeadm to initiate the dual-stack control plane node:
 kubeadm init --config=kubeadm-config.yaml
 ```
 
-The kube-controller-manager flags `--node-cidr-mask-size-ipv4|--node-cidr-mask-size-ipv6` are set with default values. See [configure IPv4/IPv6 dual stack](/docs/concepts/services-networking/dual-stack#configure-ipv4-ipv6-dual-stack).
+The kube-controller-manager flags `--node-cidr-mask-size-ipv4|--node-cidr-mask-size-ipv6` are set with default values. See [configure IPv4/IPv6 dual stack](/docs/kubernetes/en/concepts/services-networking/dual-stack#configure-ipv4-ipv6-dual-stack).
 
 {{< note >}}
 The `--apiserver-advertise-address` flag does not support dual-stack.
@@ -83,7 +83,7 @@ The `--apiserver-advertise-address` flag does not support dual-stack.
 
 Before joining a node, make sure that the node has IPv6 routable network interface and allows IPv6 forwarding.
 
-Here is an example kubeadm [configuration file](/docs/reference/config-api/kubeadm-config.v1beta3/)
+Here is an example kubeadm [configuration file](/docs/kubernetes/en/reference/config-api/kubeadm-config.v1beta3/)
 `kubeadm-config.yaml` for joining a worker node to the cluster.
 
 ```yaml
@@ -101,7 +101,7 @@ nodeRegistration:
     node-ip: 10.100.0.3,fd00:1:2:3::3
 ```
 
-Also, here is an example kubeadm [configuration file](/docs/reference/config-api/kubeadm-config.v1beta3/)
+Also, here is an example kubeadm [configuration file](/docs/kubernetes/en/reference/config-api/kubeadm-config.v1beta3/)
 `kubeadm-config.yaml` for joining another control plane node to the cluster.
 
 ```yaml
@@ -138,7 +138,7 @@ You can deploy a single-stack cluster that has the dual-stack networking feature
 {{< /note >}}
 
 To make things more clear, here is an example kubeadm
-[configuration file](/docs/reference/config-api/kubeadm-config.v1beta3/)
+[configuration file](/docs/kubernetes/en/reference/config-api/kubeadm-config.v1beta3/)
 `kubeadm-config.yaml` for the single-stack control plane node.
 
 ```yaml
@@ -151,6 +151,6 @@ networking:
 
 ## {{% heading "whatsnext" %}}
 
-* [Validate IPv4/IPv6 dual-stack](/docs/tasks/network/validate-dual-stack) networking
-* Read about [Dual-stack](/docs/concepts/services-networking/dual-stack/) cluster networking
-* Learn more about the kubeadm [configuration format](/docs/reference/config-api/kubeadm-config.v1beta3/)
+* [Validate IPv4/IPv6 dual-stack](/docs/kubernetes/en/tasks/network/validate-dual-stack) networking
+* Read about [Dual-stack](/docs/kubernetes/en/concepts/services-networking/dual-stack/) cluster networking
+* Learn more about the kubeadm [configuration format](/docs/kubernetes/en/reference/config-api/kubeadm-config.v1beta3/)

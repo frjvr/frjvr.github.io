@@ -58,7 +58,7 @@ image if it already exists.
 ### Image pull policy
 
 The `imagePullPolicy` for a container and the tag of the image affect when the
-[kubelet](/docs/reference/command-line-tools-reference/kubelet/) attempts to pull (download) the specified image.
+[kubelet](/docs/kubernetes/en/reference/command-line-tools-reference/kubelet/) attempts to pull (download) the specified image.
 
 Here's a list of the values you can set for `imagePullPolicy` and the effects
 these values have:
@@ -99,7 +99,7 @@ replace `<image-name>:<tag>` with `<image-name>@<digest>`
 
 When using image tags, if the image registry were to change the code that the tag on that image represents, you might end up with a mix of Pods running the old and new code. An image digest uniquely identifies a specific version of the image, so Kubernetes runs the same code every time it starts a container with that image name and digest specified. Specifying an image by digest fixes the code that you run so that a change at the registry cannot lead to that mix of versions.
 
-There are third-party [admission controllers](/docs/reference/access-authn-authz/admission-controllers/)
+There are third-party [admission controllers](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/)
 that mutate Pods (and pod templates) when they are created, so that the
 running workload is defined based on an image digest rather than a tag.
 That might be useful if you want to make sure that all your workload is
@@ -137,13 +137,13 @@ If you would like to always force a pull, you can do one of the following:
   Kubernetes will set the policy to `Always` when you submit the Pod.
 - Omit the `imagePullPolicy` and the tag for the image to use;
   Kubernetes will set the policy to `Always` when you submit the Pod.
-- Enable the [AlwaysPullImages](/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) admission controller.
+- Enable the [AlwaysPullImages](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/#alwayspullimages) admission controller.
 
 
 ### ImagePullBackOff
 
 When a kubelet starts creating containers for a Pod using a container runtime,
-it might be possible the container is in [Waiting](/docs/concepts/workloads/pods/pod-lifecycle/#container-state-waiting)
+it might be possible the container is in [Waiting](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#container-state-waiting)
 state because of `ImagePullBackOff`.
 
 The status `ImagePullBackOff` means that a container could not start because Kubernetes
@@ -187,7 +187,7 @@ These options are explained in more detail below.
 Specific instructions for setting credentials depends on the container runtime and registry you chose to use. You should refer to your solution's documentation for the most accurate information.
 
 For an example of configuring a private container image registry, see the
-[Pull an Image from a Private Registry](/docs/tasks/configure-pod-container/pull-image-private-registry)
+[Pull an Image from a Private Registry](/docs/kubernetes/en/tasks/configure-pod-container/pull-image-private-registry)
 task. That example uses a private registry in Docker Hub.
 
 ### Kubelet credential provider for authenticated image pulls {#kubelet-credential-provider}
@@ -200,7 +200,7 @@ Most commonly used for registries provided by cloud providers where auth tokens 
 You can configure the kubelet to invoke a plugin binary to dynamically fetch registry credentials for a container image.
 This is the most robust and versatile way to fetch credentials for private registries, but also requires kubelet-level configuration to enable.
 
-See [Configure a kubelet image credential provider](/docs/tasks/administer-cluster/kubelet-credential-provider/) for more details.
+See [Configure a kubelet image credential provider](/docs/kubernetes/en/tasks/administer-cluster/kubelet-credential-provider/) for more details.
 
 ### Interpretation of config.json {#config-json}
 
@@ -313,7 +313,7 @@ kubectl create secret docker-registry <name> --docker-server=DOCKER_REGISTRY_SER
 If you already have a Docker credentials file then, rather than using the above
 command, you can import the credentials file as a Kubernetes
 {{< glossary_tooltip text="Secrets" term_id="secret" >}}.  
-[Create a Secret based on existing Docker credentials](/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials) explains how to set this up.
+[Create a Secret based on existing Docker credentials](/docs/kubernetes/en/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials) explains how to set this up.
 
 This is particularly useful if you are using multiple private container
 registries, as `kubectl create secret docker-registry` creates a Secret that
@@ -356,9 +356,9 @@ EOF
 This needs to be done for each pod that is using a private registry.
 
 However, setting of this field can be automated by setting the imagePullSecrets
-in a [ServiceAccount](/docs/tasks/configure-pod-container/configure-service-account/) resource.
+in a [ServiceAccount](/docs/kubernetes/en/tasks/configure-pod-container/configure-service-account/) resource.
 
-Check [Add ImagePullSecrets to a Service Account](/docs/tasks/configure-pod-container/configure-service-account/#add-imagepullsecrets-to-a-service-account) for detailed instructions.
+Check [Add ImagePullSecrets to a Service Account](/docs/kubernetes/en/tasks/configure-pod-container/configure-service-account/#add-imagepullsecrets-to-a-service-account) for detailed instructions.
 
 You can use this in conjunction with a per-node `.docker/config.json`.  The credentials
 will be merged.
@@ -382,10 +382,10 @@ common use cases and suggested solutions.
      - It will work better with cluster autoscaling than manual node configuration.
    - Or, on a cluster where changing the node configuration is inconvenient, use `imagePullSecrets`.
 1. Cluster with proprietary images, a few of which require stricter access control.
-   - Ensure [AlwaysPullImages admission controller](/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) is active. Otherwise, all Pods potentially have access to all images.
+   - Ensure [AlwaysPullImages admission controller](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/#alwayspullimages) is active. Otherwise, all Pods potentially have access to all images.
    - Move sensitive data into a "Secret" resource, instead of packaging it in an image.
 1. A multi-tenant cluster where each tenant needs own private registry.
-   - Ensure [AlwaysPullImages admission controller](/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) is active. Otherwise, all Pods of all tenants potentially have access to all images.
+   - Ensure [AlwaysPullImages admission controller](/docs/kubernetes/en/reference/access-authn-authz/admission-controllers/#alwayspullimages) is active. Otherwise, all Pods of all tenants potentially have access to all images.
    - Run a private registry with authorization required.
    - Generate registry credential for each tenant, put into secret, and populate secret to each tenant namespace.
    - The tenant adds that secret to imagePullSecrets of each namespace.
@@ -396,5 +396,5 @@ If you need access to multiple registries, you can create one secret for each re
 ## {{% heading "whatsnext" %}}
 
 * Read the [OCI Image Manifest Specification](https://github.com/opencontainers/image-spec/blob/master/manifest.md).
-* Learn about [container image garbage collection](/docs/concepts/architecture/garbage-collection/#container-image-garbage-collection).
-* Learn more about [pulling an Image from a Private Registry](/docs/tasks/configure-pod-container/pull-image-private-registry).
+* Learn about [container image garbage collection](/docs/kubernetes/en/concepts/architecture/garbage-collection/#container-image-garbage-collection).
+* Learn more about [pulling an Image from a Private Registry](/docs/kubernetes/en/tasks/configure-pod-container/pull-image-private-registry).

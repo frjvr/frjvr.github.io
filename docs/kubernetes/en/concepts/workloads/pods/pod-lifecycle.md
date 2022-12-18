@@ -21,7 +21,7 @@ status for a Pod object consists of a set of [Pod conditions](#pod-conditions).
 You can also inject [custom readiness information](#pod-readiness-gate) into the
 condition data for a Pod, if that is useful to your application.
 
-Pods are only [scheduled](/docs/concepts/scheduling-eviction/) once in their lifetime.
+Pods are only [scheduled](/docs/kubernetes/en/concepts/scheduling-eviction/) once in their lifetime.
 Once a Pod is scheduled (assigned) to a Node, the Pod runs on that Node until it stops
 or is [terminated](#pod-termination).
 
@@ -31,7 +31,7 @@ or is [terminated](#pod-termination).
 
 Like individual application containers, Pods are considered to be relatively
 ephemeral (rather than durable) entities. Pods are created, assigned a unique
-ID ([UID](/docs/concepts/overview/working-with-objects/names/#uids)), and scheduled
+ID ([UID](/docs/kubernetes/en/concepts/overview/working-with-objects/names/#uids)), and scheduled
 to nodes where they remain until termination (according to restart policy) or
 deletion.
 If a {{< glossary_tooltip term_id="node" >}} dies, the Pods scheduled to that node
@@ -63,7 +63,7 @@ web server that uses a persistent volume for shared storage between the containe
 ## Pod phase
 
 A Pod's `status` field is a
-[PodStatus](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podstatus-v1-core)
+[PodStatus](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#podstatus-v1-core)
 object, which has a `phase` field.
 
 The phase of a Pod is a simple, high-level summary of where the Pod is in its
@@ -88,7 +88,7 @@ Value       | Description
 When a Pod is being deleted, it is shown as `Terminating` by some kubectl commands.
 This `Terminating` status is not one of the Pod phases.
 A Pod is granted a term to terminate gracefully, which defaults to 30 seconds.
-You can use the flag `--force` to [terminate a Pod by force](/docs/concepts/workloads/pods/pod-lifecycle/#pod-termination-forced).
+You can use the flag `--force` to [terminate a Pod by force](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#pod-termination-forced).
 {{< /note >}}
 
 If a node dies or is disconnected from the rest of the cluster, Kubernetes
@@ -98,7 +98,7 @@ applies a policy for setting the `phase` of all Pods on the lost node to Failed.
 
 As well as the [phase](#pod-phase) of the Pod overall, Kubernetes tracks the state of
 each container inside a Pod. You can use
-[container lifecycle hooks](/docs/concepts/containers/container-lifecycle-hooks/) to
+[container lifecycle hooks](/docs/kubernetes/en/concepts/containers/container-lifecycle-hooks/) to
 trigger events to run at certain points in a container's lifecycle.
 
 Once the {{< glossary_tooltip text="scheduler" term_id="kube-scheduler" >}}
@@ -153,7 +153,7 @@ without any problems, the kubelet resets the restart backoff timer for that cont
 ## Pod conditions
 
 A Pod has a PodStatus, which has an array of
-[PodConditions](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podcondition-v1-core)
+[PodConditions](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#podcondition-v1-core)
 through which the Pod has or has not passed. Kubelet manages the following
 PodConditions:
 
@@ -161,7 +161,7 @@ PodConditions:
 * `PodHasNetwork`: (alpha feature; must be [enabled explicitly](#pod-has-network)) the
   Pod sandbox has been successfully created and networking configured.
 * `ContainersReady`: all containers in the Pod are ready.
-* `Initialized`: all [init containers](/docs/concepts/workloads/pods/init-containers/)
+* `Initialized`: all [init containers](/docs/kubernetes/en/concepts/workloads/pods/init-containers/)
   have completed successfully.
 * `Ready`: the Pod is able to serve requests and should be added to the load
   balancing pools of all matching Services.
@@ -213,7 +213,7 @@ status:
 ...
 ```
 
-The Pod conditions you add must have names that meet the Kubernetes [label key format](/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set).
+The Pod conditions you add must have names that meet the Kubernetes [label key format](/docs/kubernetes/en/concepts/overview/working-with-objects/labels/#syntax-and-character-set).
 
 
 ### Status for Pod readiness {#pod-readiness-status}
@@ -222,7 +222,7 @@ The `kubectl patch` command does not support patching object status.
 To set these `status.conditions` for the pod, applications and
 {{< glossary_tooltip term_id="operator-pattern" text="operators">}} should use
 the `PATCH` action.
-You can use a [Kubernetes client library](/docs/reference/using-api/client-libraries/) to
+You can use a [Kubernetes client library](/docs/kubernetes/en/reference/using-api/client-libraries/) to
 write code that sets custom Pod conditions for Pod readiness.
 
 For a Pod that uses custom conditions, that Pod is evaluated to be ready **only**
@@ -242,7 +242,7 @@ After a Pod gets scheduled on a node, it needs to be admitted by the Kubelet and
 have any volumes mounted. Once these phases are complete, the Kubelet works with
 a container runtime (using {{< glossary_tooltip term_id="cri" >}}) to set up a
 runtime sandbox and configure networking for the Pod. If the
-`PodHasNetworkCondition` [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) is enabled,
+`PodHasNetworkCondition` [feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/) is enabled,
 Kubelet reports whether a pod has reached this initialization milestone through
 the `PodHasNetwork` condition in the `status.conditions` field of a Pod.
 
@@ -272,7 +272,7 @@ condition to `True` before sandbox creation and network configuration starts.
 
 A _probe_ is a diagnostic
 performed periodically by the
-[kubelet](/docs/reference/command-line-tools-reference/kubelet/)
+[kubelet](/docs/kubernetes/en/reference/command-line-tools-reference/kubelet/)
 on a container. To perform a diagnostic,
 the kubelet either executes code within the container, or makes
 a network request.
@@ -294,7 +294,7 @@ Each probe must define exactly one of these four mechanisms:
   of the response is `SERVING`.  
   gRPC probes are an alpha feature and are only available if you
   enable the `GRPCContainerProbe`
-  [feature gate](/docs/reference/command-line-tools-reference/feature-gates/).
+  [feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/).
 
 `httpGet`
 : Performs an HTTP `GET` request against the Pod's IP
@@ -348,7 +348,7 @@ containers:
   provide a startup probe, the default state is `Success`.
 
 For more information about how to set up a liveness, readiness, or startup probe,
-see [Configure Liveness, Readiness and Startup Probes](/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/).
+see [Configure Liveness, Readiness and Startup Probes](/docs/kubernetes/en/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/).
 
 #### When should you use a liveness probe?
 
@@ -446,7 +446,7 @@ An example flow:
    as terminating (a graceful shutdown duration has been set), the kubelet begins the local Pod
    shutdown process.
    1. If one of the Pod's containers has defined a `preStop`
-      [hook](/docs/concepts/containers/container-lifecycle-hooks), the kubelet
+      [hook](/docs/kubernetes/en/concepts/containers/container-lifecycle-hooks), the kubelet
       runs that hook inside of the container. If the `preStop` hook is still running after the
       grace period expires, the kubelet requests a small, one-off grace period extension of 2
       seconds.
@@ -505,7 +505,7 @@ Immediate deletion does not wait for confirmation that the running resource has 
 
 If you need to force-delete Pods that are part of a StatefulSet, refer to the task
 documentation for
-[deleting Pods from a StatefulSet](/docs/tasks/run-application/force-delete-stateful-set-pod/).
+[deleting Pods from a StatefulSet](/docs/kubernetes/en/tasks/run-application/force-delete-stateful-set-pod/).
 
 ### Garbage collection of Pods {#pod-garbage-collection}
 
@@ -521,24 +521,24 @@ This avoids a resource leak as Pods are created and terminated over time.
 Additionally, PodGC cleans up any Pods which satisfy any of the following conditions:
 1. are orphan pods - bound to a node which no longer exists,
 2. are unscheduled terminating pods,
-3. are terminating pods, bound to a non-ready node tainted with [`node.kubernetes.io/out-of-service`](/docs/reference/labels-annotations-taints/#node-kubernetes-io-out-of-service), when the `NodeOutOfServiceVolumeDetach` feature gate is enabled.
+3. are terminating pods, bound to a non-ready node tainted with [`node.kubernetes.io/out-of-service`](/docs/kubernetes/en/reference/labels-annotations-taints/#node-kubernetes-io-out-of-service), when the `NodeOutOfServiceVolumeDetach` feature gate is enabled.
 
 When the `PodDisruptionConditions` feature gate is enabled, along with
 cleaning up the pods, PodGC will also mark them as failed if they are in a non-terminal
 phase. Also, PodGC adds a pod disruption condition when cleaning up an orphan
 pod (see also:
-[Pod disruption conditions](/docs/concepts/workloads/pods/disruptions#pod-disruption-conditions)).
+[Pod disruption conditions](/docs/kubernetes/en/concepts/workloads/pods/disruptions#pod-disruption-conditions)).
 
 ## {{% heading "whatsnext" %}}
 
 * Get hands-on experience
-  [attaching handlers to container lifecycle events](/docs/tasks/configure-pod-container/attach-handler-lifecycle-event/).
+  [attaching handlers to container lifecycle events](/docs/kubernetes/en/tasks/configure-pod-container/attach-handler-lifecycle-event/).
 
 * Get hands-on experience
-  [configuring Liveness, Readiness and Startup Probes](/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/).
+  [configuring Liveness, Readiness and Startup Probes](/docs/kubernetes/en/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/).
 
-* Learn more about [container lifecycle hooks](/docs/concepts/containers/container-lifecycle-hooks/).
+* Learn more about [container lifecycle hooks](/docs/kubernetes/en/concepts/containers/container-lifecycle-hooks/).
 
 * For detailed information about Pod and container status in the API, see
   the API reference documentation covering
-  [`.status`](/docs/reference/kubernetes-api/workload-resources/pod-v1/#PodStatus) for Pod.
+  [`.status`](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/pod-v1/#PodStatus) for Pod.

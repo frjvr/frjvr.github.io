@@ -35,10 +35,10 @@ the target localization.
 [Destination NAT](https://en.wikipedia.org/wiki/Network_address_translation#DNAT)
 : replacing the destination IP on a packet; in this page, that usually means replacing with the IP address of a {{< glossary_tooltip term_id="pod" >}}
 
-[VIP](/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies)
+[VIP](/docs/kubernetes/en/concepts/services-networking/service/#virtual-ips-and-service-proxies)
 : a virtual IP address, such as the one assigned to every {{< glossary_tooltip text="Service" term_id="service" >}} in Kubernetes
 
-[kube-proxy](/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies)
+[kube-proxy](/docs/kubernetes/en/concepts/services-networking/service/#virtual-ips-and-service-proxies)
 : a network daemon that orchestrates Service VIP management on every node
 
 ### Prerequisites
@@ -74,7 +74,7 @@ deployment.apps/source-ip-app created
 
 Packets sent to ClusterIP from within the cluster are never source NAT'd if
 you're running kube-proxy in
-[iptables mode](/docs/concepts/services-networking/service/#proxy-mode-iptables),
+[iptables mode](/docs/kubernetes/en/concepts/services-networking/service/#proxy-mode-iptables),
 (the default). You can query the kube-proxy mode by fetching
 `http://localhost:10249/proxyMode` on the node where kube-proxy is running.
 
@@ -165,7 +165,7 @@ The `client_address` is always the client pod's IP address, whether the client p
 ## Source IP for Services with `Type=NodePort`
 
 Packets sent to Services with
-[`Type=NodePort`](/docs/concepts/services-networking/service/#type-nodeport)
+[`Type=NodePort`](/docs/kubernetes/en/concepts/services-networking/service/#type-nodeport)
 are source NAT'd by default. You can test this by creating a `NodePort` Service:
 
 ```shell
@@ -207,11 +207,11 @@ Note that these are not the correct client IPs, they're cluster internal IPs. Th
 
 Visually:
 
-{{< figure src="/docs/images/tutor-service-nodePort-fig01.svg" alt="source IP nodeport figure 01" class="diagram-large" caption="Figure. Source IP Type=NodePort using SNAT" link="https://mermaid.live/edit#pako:eNqNkV9rwyAUxb-K3LysYEqS_WFYKAzat9GHdW9zDxKvi9RoMIZtlH732ZjSbE970cu5v3s86hFqJxEYfHjRNeT5ZcUtIbXRaMNN2hZ5vrYRqt52cSXV-4iMSuwkZiYtyX739EqWaahMQ-V1qPxDVLNOvkYrO6fj2dupWMR2iiT6foOKdEZoS5Q2hmVSStoH7w7IMqXUVOefWoaG3XVftHbGeZYVRbH6ZXJ47CeL2-qhxvt_ucTe1SUlpuMN6CX12XeGpLdJiaMMFFr0rdAyvvfxjHEIDbbIgcVSohKDCRy4PUV06KQIuJU6OA9MCdMjBTEEt_-2NbDgB7xAGy3i97VJPP0ABRmcqg" >}}
+{{< figure src="/docs/kubernetes/en/images/tutor-service-nodePort-fig01.svg" alt="source IP nodeport figure 01" class="diagram-large" caption="Figure. Source IP Type=NodePort using SNAT" link="https://mermaid.live/edit#pako:eNqNkV9rwyAUxb-K3LysYEqS_WFYKAzat9GHdW9zDxKvi9RoMIZtlH732ZjSbE970cu5v3s86hFqJxEYfHjRNeT5ZcUtIbXRaMNN2hZ5vrYRqt52cSXV-4iMSuwkZiYtyX739EqWaahMQ-V1qPxDVLNOvkYrO6fj2dupWMR2iiT6foOKdEZoS5Q2hmVSStoH7w7IMqXUVOefWoaG3XVftHbGeZYVRbH6ZXJ47CeL2-qhxvt_ucTe1SUlpuMN6CX12XeGpLdJiaMMFFr0rdAyvvfxjHEIDbbIgcVSohKDCRy4PUV06KQIuJU6OA9MCdMjBTEEt_-2NbDgB7xAGy3i97VJPP0ABRmcqg" >}}
 
 
 To avoid this, Kubernetes has a feature to
-[preserve the client source IP](/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip).
+[preserve the client source IP](/docs/kubernetes/en/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip).
 If you set `service.spec.externalTrafficPolicy` to the value `Local`,
 kube-proxy only proxies proxy requests to local endpoints, and does not
 forward traffic to other nodes. This approach preserves the original
@@ -253,12 +253,12 @@ This is what happens:
 Visually:
 
 
-{{< figure src="/docs/images/tutor-service-nodePort-fig02.svg" alt="source IP nodeport figure 02" class="diagram-large" caption="Figure. Source IP Type=NodePort preserves client source IP address" link="" >}}
+{{< figure src="/docs/kubernetes/en/images/tutor-service-nodePort-fig02.svg" alt="source IP nodeport figure 02" class="diagram-large" caption="Figure. Source IP Type=NodePort preserves client source IP address" link="" >}}
 
 ## Source IP for Services with `Type=LoadBalancer`
 
 Packets sent to Services with
-[`Type=LoadBalancer`](/docs/concepts/services-networking/service/#loadbalancer)
+[`Type=LoadBalancer`](/docs/kubernetes/en/concepts/services-networking/service/#loadbalancer)
 are source NAT'd by default, because all schedulable Kubernetes nodes in the
 `Ready` state are eligible for load-balanced traffic. So if packets arrive
 at a node without an endpoint, the system proxies it to a node *with* an
@@ -416,5 +416,5 @@ kubectl delete deployment source-ip-app
 
 ## {{% heading "whatsnext" %}}
 
-* Learn more about [connecting applications via services](/docs/tutorials/services/connect-applications-service/)
-* Read how to [Create an External Load Balancer](/docs/tasks/access-application-cluster/create-external-load-balancer/)
+* Learn more about [connecting applications via services](/docs/kubernetes/en/tutorials/services/connect-applications-service/)
+* Read how to [Create an External Load Balancer](/docs/kubernetes/en/tasks/access-application-cluster/create-external-load-balancer/)

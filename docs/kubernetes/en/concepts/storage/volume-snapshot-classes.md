@@ -14,8 +14,8 @@ weight: 61 # just after volume snapshots
 <!-- overview -->
 
 This document describes the concept of VolumeSnapshotClass in Kubernetes. Familiarity
-with [volume snapshots](/docs/concepts/storage/volume-snapshots/) and
-[storage classes](/docs/concepts/storage/storage-classes) is suggested.
+with [volume snapshots](/docs/kubernetes/en/concepts/storage/volume-snapshots/) and
+[storage classes](/docs/kubernetes/en/concepts/storage/storage-classes) is suggested.
 
 
 

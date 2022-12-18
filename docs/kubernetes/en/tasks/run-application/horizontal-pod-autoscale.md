@@ -40,7 +40,7 @@ The horizontal pod autoscaling controller, running within the Kubernetes
 desired scale of its target (for example, a Deployment) to match observed metrics such as average
 CPU utilization, average memory utilization, or any other custom metric you specify.
 
-There is [walkthrough example](/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/) of using
+There is [walkthrough example](/docs/kubernetes/en/tasks/run-application/horizontal-pod-autoscale-walkthrough/) of using
 horizontal pod autoscaling.
 
 <!-- body -->
@@ -75,7 +75,7 @@ Figure 1. HorizontalPodAutoscaler controls the scale of a Deployment and its Rep
 Kubernetes implements horizontal pod autoscaling as a control loop that runs intermittently
 (it is not a continuous process). The interval is set by the
 `--horizontal-pod-autoscaler-sync-period` parameter to the
-[`kube-controller-manager`](/docs/reference/command-line-tools-reference/kube-controller-manager/)
+[`kube-controller-manager`](/docs/kubernetes/en/reference/command-line-tools-reference/kube-controller-manager/)
 (and the default interval is 15 seconds).
 
 Once during each period, the controller manager queries the resource utilization against the
@@ -88,7 +88,7 @@ or the custom metrics API (for all other metrics).
   from the resource metrics API for each Pod targeted by the HorizontalPodAutoscaler.
   Then, if a target utilization value is set, the controller calculates the utilization
   value as a percentage of the equivalent
-  [resource request](/docs/concepts/configuration/manage-resources-containers/#requests-and-limits)
+  [resource request](/docs/kubernetes/en/concepts/configuration/manage-resources-containers/#requests-and-limits)
   on the containers in each Pod.  If a target raw value is set, the raw metric values are used directly.
   The controller then takes the mean of the utilization or the raw value (depending on the type
   of target specified) across all targeted Pods, and produces a ratio used to scale
@@ -113,7 +113,7 @@ The common use for HorizontalPodAutoscaler is to configure it to fetch metrics f
 (`metrics.k8s.io`, `custom.metrics.k8s.io`, or `external.metrics.k8s.io`).  The `metrics.k8s.io` API is
 usually provided by an add-on named Metrics Server, which needs to be launched separately.
 For more information about resource metrics, see
-[Metrics Server](/docs/tasks/debug/debug-cluster/resource-metrics-pipeline/#metrics-server).
+[Metrics Server](/docs/kubernetes/en/tasks/debug/debug-cluster/resource-metrics-pipeline/#metrics-server).
 
 [Support for metrics APIs](#support-for-metrics-apis) explains the stability guarantees and support status for these
 different APIs.
@@ -122,7 +122,7 @@ The HorizontalPodAutoscaler controller accesses corresponding workload resources
 and StatefulSet). These resources each have a subresource named `scale`, an interface that allows you to dynamically set the
 number of replicas and examine each of their current states.
 For general information about subresources in the Kubernetes API, see
-[Kubernetes API Concepts](/docs/reference/using-api/api-concepts/).
+[Kubernetes API Concepts](/docs/kubernetes/en/reference/using-api/api-concepts/).
 
 ### Algorithm details
 
@@ -147,7 +147,7 @@ metric across all Pods in the HorizontalPodAutoscaler's scale target.
 
 Before checking the tolerance and deciding on the final values, the control
 plane also considers whether any metrics are missing, and how many Pods
-are [`Ready`](/docs/concepts/workloads/pods/pod-lifecycle/#pod-conditions).
+are [`Ready`](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#pod-conditions).
 All Pods with a deletion timestamp set (objects with a deletion timestamp are
 in the process of being shut down / removed) are ignored, and all failed Pods
 are discarded.
@@ -219,9 +219,9 @@ memory and custom metrics. The new fields introduced in
 `autoscaling/v1`.
 
 When you create a HorizontalPodAutoscaler API object, make sure the name specified is a valid
-[DNS subdomain name](/docs/concepts/overview/working-with-objects/names#dns-subdomain-names).
+[DNS subdomain name](/docs/kubernetes/en/concepts/overview/working-with-objects/names#dns-subdomain-names).
 More details about the API object can be found at
-[HorizontalPodAutoscaler Object](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#horizontalpodautoscaler-v2-autoscaling).
+[HorizontalPodAutoscaler Object](/docs/kubernetes/en/reference/generated/kubernetes-api/{{< param "version" >}}/#horizontalpodautoscaler-v2-autoscaling).
 
 ## Stability of workload scale {#flapping}
 
@@ -347,7 +347,7 @@ overall maximum that you configured).
 By default, the HorizontalPodAutoscaler controller retrieves metrics from a series of APIs.  In order for it to access these
 APIs, cluster administrators must ensure that:
 
-* The [API aggregation layer](/docs/tasks/extend-kubernetes/configure-aggregation-layer/) is enabled.
+* The [API aggregation layer](/docs/kubernetes/en/tasks/extend-kubernetes/configure-aggregation-layer/) is enabled.
 
 * The corresponding APIs are registered:
 
@@ -364,8 +364,8 @@ For more information on these different metrics paths and how they differ please
 [custom.metrics.k8s.io](https://git.k8s.io/design-proposals-archive/instrumentation/custom-metrics-api.md)
 and [external.metrics.k8s.io](https://git.k8s.io/design-proposals-archive/instrumentation/external-metrics-api.md).
 
-For examples of how to use them see [the walkthrough for using custom metrics](/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/#autoscaling-on-multiple-metrics-and-custom-metrics)
-and [the walkthrough for using external metrics](/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/#autoscaling-on-metrics-not-related-to-kubernetes-objects).
+For examples of how to use them see [the walkthrough for using custom metrics](/docs/kubernetes/en/tasks/run-application/horizontal-pod-autoscale-walkthrough/#autoscaling-on-multiple-metrics-and-custom-metrics)
+and [the walkthrough for using external metrics](/docs/kubernetes/en/tasks/run-application/horizontal-pod-autoscale-walkthrough/#autoscaling-on-metrics-not-related-to-kubernetes-objects).
 
 ## Configurable scaling behavior
 
@@ -374,7 +374,7 @@ and [the walkthrough for using external metrics](/docs/tasks/run-application/hor
 (the `autoscaling/v2beta2` API version previously provided this ability as a beta feature)
 
 If you use the `v2` HorizontalPodAutoscaler API, you can use the `behavior` field
-(see the [API reference](/docs/reference/kubernetes-api/workload-resources/horizontal-pod-autoscaler-v2/#HorizontalPodAutoscalerSpec))
+(see the [API reference](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/horizontal-pod-autoscaler-v2/#HorizontalPodAutoscalerSpec))
 to configure separate scale-up and scale-down behaviors.
 You specify these behaviours by setting `scaleUp` and / or `scaleDown`
 under the `behavior` field.
@@ -561,7 +561,7 @@ desired and could be troublesome when an HPA is active.
 
 Keep in mind that the removal of `spec.replicas` may incur a one-time
 degradation of Pod counts as the default value of this key is 1 (reference
-[Deployment Replicas](/docs/concepts/workloads/controllers/deployment#replicas)).
+[Deployment Replicas](/docs/kubernetes/en/concepts/workloads/controllers/deployment#replicas)).
 Upon the update, all Pods except 1 will begin their termination procedures.  Any
 deployment application afterwards will behave as normal and respect a rolling
 update configuration as desired.  You can avoid this degradation by choosing one of the following two
@@ -581,8 +581,8 @@ methods based on how you are modifying your deployments:
 {{% /tab %}}
 {{% tab name="Server Side Apply" %}}
 
-When using the [Server-Side Apply](/docs/reference/using-api/server-side-apply/)
-you can follow the [transferring ownership](/docs/reference/using-api/server-side-apply/#transferring-ownership)
+When using the [Server-Side Apply](/docs/kubernetes/en/reference/using-api/server-side-apply/)
+you can follow the [transferring ownership](/docs/kubernetes/en/reference/using-api/server-side-apply/#transferring-ownership)
 guidelines, which cover this exact use case.
 
 {{% /tab %}}
@@ -595,8 +595,8 @@ cluster-level autoscaler such as [Cluster Autoscaler](https://github.com/kuberne
 
 For more information on HorizontalPodAutoscaler:
 
-* Read a [walkthrough example](/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/) for horizontal pod autoscaling.
-* Read documentation for [`kubectl autoscale`](/docs/reference/generated/kubectl/kubectl-commands/#autoscale).
+* Read a [walkthrough example](/docs/kubernetes/en/tasks/run-application/horizontal-pod-autoscale-walkthrough/) for horizontal pod autoscaling.
+* Read documentation for [`kubectl autoscale`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands/#autoscale).
 * If you would like to write your own custom metrics adapter, check out the
   [boilerplate](https://github.com/kubernetes-sigs/custom-metrics-apiserver) to get started.
-* Read the [API reference](/docs/reference/kubernetes-api/workload-resources/horizontal-pod-autoscaler-v2/) for HorizontalPodAutoscaler.
+* Read the [API reference](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/horizontal-pod-autoscaler-v2/) for HorizontalPodAutoscaler.

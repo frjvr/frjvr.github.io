@@ -8,7 +8,7 @@ weight: 10
 
 <!-- overview -->
 
-This page outlines steps to find out what [container runtime](/docs/setup/production-environment/container-runtimes/)
+This page outlines steps to find out what [container runtime](/docs/kubernetes/en/setup/production-environment/container-runtimes/)
 the nodes in your cluster use.
 
 Depending on the way you run your cluster, the container runtime for the nodes may
@@ -19,7 +19,7 @@ the execution of `kubectl` is allowed.
 
 ## {{% heading "prerequisites" %}}
 
-Install and configure `kubectl`. See [Install Tools](/docs/tasks/tools/#kubectl) section for details.
+Install and configure `kubectl`. See [Install Tools](/docs/kubernetes/en/tasks/tools/#kubectl) section for details.
 
 ## Find out the container runtime used on a Node
 
@@ -55,13 +55,13 @@ node-3       Ready    v1.19.6   containerd://1.4.1
 ```
 
 Find out more information about container runtimes
-on [Container Runtimes](/docs/setup/production-environment/container-runtimes/)
+on [Container Runtimes](/docs/kubernetes/en/setup/production-environment/container-runtimes/)
 page.
 
 ## Find out what container runtime endpoint you use {#which-endpoint}
 
 The container runtime talks to the kubelet over a Unix socket using the [CRI
-protocol](/docs/concepts/architecture/cri/), which is based on the gRPC
+protocol](/docs/kubernetes/en/concepts/architecture/cri/), which is based on the gRPC
 framework. The kubelet acts as a client, and the runtime acts as the server.
 In some cases, you might find it useful to know which socket your nodes use. For
 example, with the removal of dockershim in Kubernetes v1.24 and later, you might
@@ -94,6 +94,6 @@ nodes.
         `unix:///run/containerd/containerd.sock` is the containerd endpoint.
 
 If you want to change the Container Runtime on a Node from Docker Engine to containerd,
-you can find out more information on [migrating from Docker Engine to  containerd](/docs/tasks/administer-cluster/migrating-from-dockershim/change-runtime-containerd/),
+you can find out more information on [migrating from Docker Engine to  containerd](/docs/kubernetes/en/tasks/administer-cluster/migrating-from-dockershim/change-runtime-containerd/),
 or, if you want to continue using Docker Engine in Kubernetes v1.24 and later, migrate to a
 CRI-compatible adapter like [`cri-dockerd`](https://github.com/Mirantis/cri-dockerd).

@@ -36,9 +36,9 @@ part of Kubernetes (this removal was
 [announced](/blog/2020/12/08/kubernetes-1-20-release-announcement/#dockershim-deprecation)
 as part of the v1.20 release).
 You can read
-[Check whether Dockershim removal affects you](/docs/tasks/administer-cluster/migrating-from-dockershim/check-if-dockershim-removal-affects-you/)
+[Check whether Dockershim removal affects you](/docs/kubernetes/en/tasks/administer-cluster/migrating-from-dockershim/check-if-dockershim-removal-affects-you/)
 to understand how this removal might affect you. To learn about migrating from using dockershim, see
-[Migrating from dockershim](/docs/tasks/administer-cluster/migrating-from-dockershim/).
+[Migrating from dockershim](/docs/kubernetes/en/tasks/administer-cluster/migrating-from-dockershim/).
 
 If you are running a version of Kubernetes other than v{{< skew currentVersion >}},
 check the documentation for that version.
@@ -52,7 +52,7 @@ The following steps apply common settings for Kubernetes nodes on Linux.
 
 You can skip a particular setting if you're certain you don't need it.
 
-For more information, see [Network Plugin Requirements](/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#network-plugin-requirements) or the documentation for your specific container runtime.
+For more information, see [Network Plugin Requirements](/docs/kubernetes/en/concepts/extend-kubernetes/compute-storage-net/network-plugins/#network-plugin-requirements) or the documentation for your specific container runtime.
 
 ### Forwarding IPv4 and letting iptables see bridged traffic
 
@@ -89,7 +89,7 @@ are used to constrain resources that are allocated to processes.
 
 Both {{< glossary_tooltip text="kubelet" term_id="kubelet" >}} and the
 underlying container runtime need to interface with control groups to enforce
-[resource management for pods and containers](/docs/concepts/configuration/manage-resources-containers/) and set
+[resource management for pods and containers](/docs/kubernetes/en/concepts/configuration/manage-resources-containers/) and set
 resources such as cpu/memory requests and limits. To interface with control
 groups, the kubelet and the container runtime need to use a *cgroup driver*.
 It's critical that the kubelet and the container runtime uses the same cgroup
@@ -109,7 +109,7 @@ the cgroup filesystem to configure cgroups.
 The `cgroupfs` driver is **not** recommended when
 [systemd](https://www.freedesktop.org/wiki/Software/systemd/) is the
 init system because systemd expects a single cgroup manager on
-the system. Additionally, if you use [cgroup v2](/docs/concepts/architecture/cgroups)
+the system. Additionally, if you use [cgroup v2](/docs/kubernetes/en/concepts/architecture/cgroups)
 , use the `systemd` cgroup driver instead of
 `cgroupfs`.
 
@@ -132,7 +132,7 @@ The approach to mitigate this instability is to use `systemd` as the cgroup driv
 the kubelet and the container runtime when systemd is the selected init system.
 
 To set `systemd` as the cgroup driver, edit the
-[`KubeletConfiguration`](/docs/tasks/administer-cluster/kubelet-config-file/)
+[`KubeletConfiguration`](/docs/kubernetes/en/tasks/administer-cluster/kubelet-config-file/)
 option of `cgroupDriver` and set it to `systemd`. For example:
 
 ```yaml
@@ -163,7 +163,7 @@ configuration, or reinstall it using automation.
 ### Migrating to the `systemd` driver in kubeadm managed clusters
 
 If you wish to migrate to the `systemd` cgroup driver in existing kubeadm managed clusters,
-follow [configuring a cgroup driver](/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver/).
+follow [configuring a cgroup driver](/docs/kubernetes/en/tasks/administer-cluster/kubeadm/configure-cgroup-driver/).
 
 ## CRI version support {#cri-versions}
 
@@ -208,7 +208,7 @@ To use the `systemd` cgroup driver in `/etc/containerd/config.toml` with `runc`,
     SystemdCgroup = true
 ```
 
-The `systemd` cgroup driver is recommended if you use [cgroup v2](/docs/concepts/architecture/cgroups).
+The `systemd` cgroup driver is recommended if you use [cgroup v2](/docs/kubernetes/en/concepts/architecture/cgroups).
 
 {{< note >}}
 If you installed containerd from a package (for example, RPM or `.deb`), you may find
@@ -226,7 +226,7 @@ sudo systemctl restart containerd
 ```
 
 When using kubeadm, manually configure the
-[cgroup driver for kubelet](/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver/#configuring-the-kubelet-cgroup-driver).
+[cgroup driver for kubelet](/docs/kubernetes/en/tasks/administer-cluster/kubeadm/configure-cgroup-driver/#configuring-the-kubelet-cgroup-driver).
 
 #### Overriding the sandbox (pause) image {#override-pause-image-containerd}
 
@@ -318,4 +318,4 @@ The command line argument to use is `--pod-infra-container-image`.
 ## {{% heading "whatsnext" %}}
 
 As well as a container runtime, your cluster will need a working
-[network plugin](/docs/concepts/cluster-administration/networking/#how-to-implement-the-kubernetes-networking-model).
+[network plugin](/docs/kubernetes/en/concepts/cluster-administration/networking/#how-to-implement-the-kubernetes-networking-model).

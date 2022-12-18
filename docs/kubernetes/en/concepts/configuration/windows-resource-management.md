@@ -62,7 +62,7 @@ To account for memory and CPU used by the operating system, the container runtim
 Kubernetes host processes such as the kubelet, you can (and should) reserve
 memory and CPU resources with the  `--kube-reserved` and/or `--system-reserved` kubelet flags.
 On Windows these values are only used to calculate the node's
-[allocatable](/docs/tasks/administer-cluster/reserve-compute-resources/#node-allocatable) resources.
+[allocatable](/docs/kubernetes/en/tasks/administer-cluster/reserve-compute-resources/#node-allocatable) resources.
 
 {{< caution >}}
 As you deploy workloads, set resource memory and CPU limits on containers.

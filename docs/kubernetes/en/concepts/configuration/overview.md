@@ -39,20 +39,20 @@ to others, please don't hesitate to file an issue or submit a PR.
 
 ## "Naked" Pods versus ReplicaSets, Deployments, and Jobs {#naked-pods-vs-replicasets-deployments-and-jobs}
 
-- Don't use naked Pods (that is, Pods not bound to a [ReplicaSet](/docs/concepts/workloads/controllers/replicaset/) or
-  [Deployment](/docs/concepts/workloads/controllers/deployment/)) if you can avoid it. Naked Pods
+- Don't use naked Pods (that is, Pods not bound to a [ReplicaSet](/docs/kubernetes/en/concepts/workloads/controllers/replicaset/) or
+  [Deployment](/docs/kubernetes/en/concepts/workloads/controllers/deployment/)) if you can avoid it. Naked Pods
   will not be rescheduled in the event of a node failure.
 
   A Deployment, which both creates a ReplicaSet to ensure that the desired number of Pods is
   always available, and specifies a strategy to replace Pods (such as
-  [RollingUpdate](/docs/concepts/workloads/controllers/deployment/#rolling-update-deployment)), is
+  [RollingUpdate](/docs/kubernetes/en/concepts/workloads/controllers/deployment/#rolling-update-deployment)), is
   almost always preferable to creating Pods directly, except for some explicit
-  [`restartPolicy: Never`](/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy) scenarios.
-  A [Job](/docs/concepts/workloads/controllers/job/) may also be appropriate.
+  [`restartPolicy: Never`](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle/#restart-policy) scenarios.
+  A [Job](/docs/kubernetes/en/concepts/workloads/controllers/job/) may also be appropriate.
 
 ## Services
 
-- Create a [Service](/docs/concepts/services-networking/service/) before its corresponding backend
+- Create a [Service](/docs/kubernetes/en/concepts/services-networking/service/) before its corresponding backend
   workloads (Deployments or ReplicaSets), and before any workloads that need to access it.
   When Kubernetes starts a container, it provides environment variables pointing to all the Services
   which were running when the container was started. For example, if a Service named `foo` exists,
@@ -67,7 +67,7 @@ to others, please don't hesitate to file an issue or submit a PR.
   created before the `Pod` itself, or else the environment variables will not be populated.
   DNS does not have this restriction.
 
-- An optional (though strongly recommended) [cluster add-on](/docs/concepts/cluster-administration/addons/)
+- An optional (though strongly recommended) [cluster add-on](/docs/kubernetes/en/concepts/cluster-administration/addons/)
   is a DNS server. The DNS server watches the Kubernetes API for new `Services` and creates a set
   of DNS records for each. If DNS has been enabled throughout the cluster then all `Pods` should be
   able to do name resolution of `Services` automatically.
@@ -79,22 +79,22 @@ to others, please don't hesitate to file an issue or submit a PR.
   default `protocol`.
 
   If you only need access to the port for debugging purposes, you can use the
-  [apiserver proxy](/docs/tasks/access-application-cluster/access-cluster/#manually-constructing-apiserver-proxy-urls)
-  or [`kubectl port-forward`](/docs/tasks/access-application-cluster/port-forward-access-application-cluster/).
+  [apiserver proxy](/docs/kubernetes/en/tasks/access-application-cluster/access-cluster/#manually-constructing-apiserver-proxy-urls)
+  or [`kubectl port-forward`](/docs/kubernetes/en/tasks/access-application-cluster/port-forward-access-application-cluster/).
 
   If you explicitly need to expose a Pod's port on the node, consider using a
-  [NodePort](/docs/concepts/services-networking/service/#type-nodeport) Service before resorting to
+  [NodePort](/docs/kubernetes/en/concepts/services-networking/service/#type-nodeport) Service before resorting to
   `hostPort`.
 
 - Avoid using `hostNetwork`, for the same reasons as `hostPort`.
 
-- Use [headless Services](/docs/concepts/services-networking/service/#headless-services)
+- Use [headless Services](/docs/kubernetes/en/concepts/services-networking/service/#headless-services)
   (which have a `ClusterIP` of `None`) for service discovery when you don't need `kube-proxy`
   load balancing.
 
 ## Using Labels
 
-- Define and use [labels](/docs/concepts/overview/working-with-objects/labels/) that identify
+- Define and use [labels](/docs/kubernetes/en/concepts/overview/working-with-objects/labels/) that identify
   __semantic attributes__ of your application or Deployment, such as `{ app.kubernetes.io/name:
   MyApp, tier: frontend, phase: test, deployment: v3 }`. You can use these labels to select the
   appropriate Pods for other resources; for example, a Service that selects all `tier: frontend`
@@ -104,15 +104,15 @@ to others, please don't hesitate to file an issue or submit a PR.
 
 A Service can be made to span multiple Deployments by omitting release-specific labels from its
 selector. When you need to update a running service without downtime, use a
-[Deployment](/docs/concepts/workloads/controllers/deployment/).
+[Deployment](/docs/kubernetes/en/concepts/workloads/controllers/deployment/).
 
 A desired state of an object is described by a Deployment, and if changes to that spec are
 _applied_, the deployment controller changes the actual state to the desired state at a controlled
 rate.
 
-- Use the [Kubernetes common labels](/docs/concepts/overview/working-with-objects/common-labels/)
+- Use the [Kubernetes common labels](/docs/kubernetes/en/concepts/overview/working-with-objects/common-labels/)
   for common use cases. These standardized labels enrich the metadata in a way that allows tools,
-  including `kubectl` and [dashboard](/docs/tasks/access-application-cluster/web-ui-dashboard), to
+  including `kubectl` and [dashboard](/docs/kubernetes/en/tasks/access-application-cluster/web-ui-dashboard), to
   work in an interoperable way.
 
 - You can manipulate labels for debugging. Because Kubernetes controllers (such as ReplicaSet) and
@@ -120,7 +120,7 @@ rate.
   it from being considered by a controller or from being served traffic by a Service. If you remove
   the labels of an existing Pod, its controller will create a new Pod to take its place. This is a
   useful way to debug a previously "live" Pod in a "quarantine" environment. To interactively remove
-  or add labels, use [`kubectl label`](/docs/reference/generated/kubectl/kubectl-commands#label).
+  or add labels, use [`kubectl label`](/docs/kubernetes/en/reference/generated/kubectl/kubectl-commands#label).
 
 ## Using kubectl
 
@@ -128,11 +128,11 @@ rate.
   `.yml`, and `.json` files in `<directory>` and passes it to `apply`.
 
 - Use label selectors for `get` and `delete` operations instead of specific object names. See the
-  sections on [label selectors](/docs/concepts/overview/working-with-objects/labels/#label-selectors)
-  and [using labels effectively](/docs/concepts/cluster-administration/manage-deployment/#using-labels-effectively).
+  sections on [label selectors](/docs/kubernetes/en/concepts/overview/working-with-objects/labels/#label-selectors)
+  and [using labels effectively](/docs/kubernetes/en/concepts/cluster-administration/manage-deployment/#using-labels-effectively).
 
 - Use `kubectl create deployment` and `kubectl expose` to quickly create single-container
   Deployments and Services.
-  See [Use a Service to Access an Application in a Cluster](/docs/tasks/access-application-cluster/service-access-application-cluster/)
+  See [Use a Service to Access an Application in a Cluster](/docs/kubernetes/en/tasks/access-application-cluster/service-access-application-cluster/)
   for an example.
 

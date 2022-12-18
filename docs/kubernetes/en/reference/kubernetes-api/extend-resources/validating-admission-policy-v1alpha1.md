@@ -190,7 +190,7 @@ ValidatingAdmissionPolicy describes the definition of an admission validation po
         ]
       }
       
-      See https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/ for more examples of label selectors.
+      See https://kubernetes.io/docs/kubernetes/en/concepts/overview/working-with-objects/labels/ for more examples of label selectors.
       
       Default to the empty LabelSelector, which matches everything.
 
@@ -413,7 +413,7 @@ ValidatingAdmissionPolicyBinding binds the ValidatingAdmissionPolicy with parame
         ]
       }
       
-      See https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/ for more examples of label selectors.
+      See https://kubernetes.io/docs/kubernetes/en/concepts/overview/working-with-objects/labels/ for more examples of label selectors.
       
       Default to the empty LabelSelector, which matches everything.
 

@@ -32,12 +32,12 @@ The Memory Manager is only pertinent to Linux based hosts.
 To align memory resources with other requested resources in a Pod spec:
 
 - the CPU Manager should be enabled and proper CPU Manager policy should be configured on a Node.
-  See [control CPU Management Policies](/docs/tasks/administer-cluster/cpu-management-policies/);
+  See [control CPU Management Policies](/docs/kubernetes/en/tasks/administer-cluster/cpu-management-policies/);
 - the Topology Manager should be enabled and proper Topology Manager policy should be configured on a Node.
-  See [control Topology Management Policies](/docs/tasks/administer-cluster/topology-manager/).
+  See [control Topology Management Policies](/docs/kubernetes/en/tasks/administer-cluster/topology-manager/).
 
 Starting from v1.22, the Memory Manager is enabled by default through `MemoryManager`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/).
+[feature gate](/docs/kubernetes/en/reference/command-line-tools-reference/feature-gates/).
 
 Preceding v1.22, the `kubelet` must be started with the following flag:
 
@@ -124,7 +124,7 @@ and does not reserve the memory in the internal [NodeMap][2] object.
 
 ### Reserved memory flag
 
-The [Node Allocatable](/docs/tasks/administer-cluster/reserve-compute-resources/) mechanism
+The [Node Allocatable](/docs/kubernetes/en/tasks/administer-cluster/reserve-compute-resources/) mechanism
 is commonly used by node administrators to reserve K8S node system resources for the kubelet
 or operating system processes in order to enhance the node stability.
 A dedicated set of flags can be used for this purpose to set the total amount of reserved memory
@@ -149,7 +149,7 @@ the Memory Manager assumes that only `9Gi` is available for containers.
 
 You can omit this parameter, however, you should be aware that the quantity of reserved memory
 from all NUMA nodes should be equal to the quantity of memory specified by the
-[Node Allocatable feature](/docs/tasks/administer-cluster/reserve-compute-resources/).
+[Node Allocatable feature](/docs/kubernetes/en/tasks/administer-cluster/reserve-compute-resources/).
 If at least one node allocatable parameter is non-zero, you will need to specify
 `--reserved-memory` for at least one NUMA node.
 In fact, `eviction-hard` threshold value is equal to `100Mi` by default, so
@@ -460,7 +460,7 @@ by using `--reserved-memory` flag.
 ### Device plugin resource API
 
 The kubelet provides a `PodResourceLister` gRPC service to enable discovery of resources and associated metadata.
-By using its [List gRPC endpoint](/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/#grpc-endpoint-list),
+By using its [List gRPC endpoint](/docs/kubernetes/en/concepts/extend-kubernetes/compute-storage-net/device-plugins/#grpc-endpoint-list),
 information about reserved memory for each container can be retrieved, which is contained
 in protobuf `ContainerMemory` message.
 This information can be retrieved solely for pods in Guaranteed QoS class.

@@ -80,14 +80,14 @@ In the example above, the Pods have the label `app.kubernetes.io/name=MyApp`; su
 
 ### Force deletion of StatefulSet pods
 
-If you find that some pods in your StatefulSet are stuck in the 'Terminating' or 'Unknown' states for an extended period of time, you may need to manually intervene to forcefully delete the pods from the apiserver. This is a potentially dangerous task. Refer to [Force Delete StatefulSet Pods](/docs/tasks/run-application/force-delete-stateful-set-pod/) for details.
+If you find that some pods in your StatefulSet are stuck in the 'Terminating' or 'Unknown' states for an extended period of time, you may need to manually intervene to forcefully delete the pods from the apiserver. This is a potentially dangerous task. Refer to [Force Delete StatefulSet Pods](/docs/kubernetes/en/tasks/run-application/force-delete-stateful-set-pod/) for details.
 
 
 
 ## {{% heading "whatsnext" %}}
 
 
-Learn more about [force deleting StatefulSet Pods](/docs/tasks/run-application/force-delete-stateful-set-pod/).
+Learn more about [force deleting StatefulSet Pods](/docs/kubernetes/en/tasks/run-application/force-delete-stateful-set-pod/).
 
 
 

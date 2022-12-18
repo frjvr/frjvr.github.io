@@ -10,16 +10,16 @@ You can request eviction by calling the Eviction API directly, or programmatical
 using a client of the {{<glossary_tooltip term_id="kube-apiserver" text="API server">}}, like the `kubectl drain` command. This
 creates an `Eviction` object, which causes the API server to terminate the Pod.
 
-API-initiated evictions respect your configured [`PodDisruptionBudgets`](/docs/tasks/run-application/configure-pdb/)
-and [`terminationGracePeriodSeconds`](/docs/concepts/workloads/pods/pod-lifecycle#pod-termination). 
+API-initiated evictions respect your configured [`PodDisruptionBudgets`](/docs/kubernetes/en/tasks/run-application/configure-pdb/)
+and [`terminationGracePeriodSeconds`](/docs/kubernetes/en/concepts/workloads/pods/pod-lifecycle#pod-termination). 
 
 Using the API to create an Eviction object for a Pod is like performing a
-policy-controlled [`DELETE` operation](/docs/reference/kubernetes-api/workload-resources/pod-v1/#delete-delete-a-pod)
+policy-controlled [`DELETE` operation](/docs/kubernetes/en/reference/kubernetes-api/workload-resources/pod-v1/#delete-delete-a-pod)
 on the Pod. 
 
 ## Calling the Eviction API
 
-You can use a [Kubernetes language client](/docs/tasks/administer-cluster/access-cluster-api/#programmatic-access-to-the-api)
+You can use a [Kubernetes language client](/docs/kubernetes/en/tasks/administer-cluster/access-cluster-api/#programmatic-access-to-the-api)
 to access the Kubernetes API and create an `Eviction` object. To do this, you
 POST the attempted operation, similar to the following example:
 
@@ -117,6 +117,6 @@ If you notice stuck evictions, try one of the following solutions:
 
 ## {{% heading "whatsnext" %}}
 
-* Learn how to protect your applications with a [Pod Disruption Budget](/docs/tasks/run-application/configure-pdb/).
-* Learn about [Node-pressure Eviction](/docs/concepts/scheduling-eviction/node-pressure-eviction/).
-* Learn about [Pod Priority and Preemption](/docs/concepts/scheduling-eviction/pod-priority-preemption/).
+* Learn how to protect your applications with a [Pod Disruption Budget](/docs/kubernetes/en/tasks/run-application/configure-pdb/).
+* Learn about [Node-pressure Eviction](/docs/kubernetes/en/concepts/scheduling-eviction/node-pressure-eviction/).
+* Learn about [Pod Priority and Preemption](/docs/kubernetes/en/concepts/scheduling-eviction/pod-priority-preemption/).

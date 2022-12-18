@@ -4,7 +4,7 @@ weight: 20
 ---
 
 <!--
-{{/* There is a Netlify redirect from this page to /docs/tasks/tools/ */}}
+{{/* There is a Netlify redirect from this page to /docs/kubernetes/en/tasks/tools/ */}}
 {{/* This page content only exists to provide a navigation stub */}}
 {{/* and to protect in case that redirect is one day removed. */}}
 

@@ -20,7 +20,7 @@ Cron jobs have limitations and idiosyncrasies.
 For example, in certain circumstances, a single cron job can create multiple jobs.
 Therefore, jobs should be idempotent.
 
-For more limitations, see [CronJobs](/docs/concepts/workloads/controllers/cron-jobs).
+For more limitations, see [CronJobs](/docs/kubernetes/en/concepts/workloads/controllers/cron-jobs).
 
 ## {{% heading "prerequisites" %}}
 
@@ -122,17 +122,17 @@ kubectl delete cronjob hello
 ```
 
 Deleting the cron job removes all the jobs and pods it created and stops it from creating additional jobs.
-You can read more about removing jobs in [garbage collection](/docs/concepts/architecture/garbage-collection/).
+You can read more about removing jobs in [garbage collection](/docs/kubernetes/en/concepts/architecture/garbage-collection/).
 
 ## Writing a CronJob Spec {#writing-a-cron-job-spec}
 
 As with all other Kubernetes objects, a CronJob must have `apiVersion`, `kind`, and `metadata` fields.
 For more information about working with Kubernetes objects and their
 {{< glossary_tooltip text="manifests" term_id="manifest" >}}, see the
-[managing resources](/docs/concepts/cluster-administration/manage-deployment/),
-and [using kubectl to manage resources](/docs/concepts/overview/working-with-objects/object-management/) documents.
+[managing resources](/docs/kubernetes/en/concepts/cluster-administration/manage-deployment/),
+and [using kubectl to manage resources](/docs/kubernetes/en/concepts/overview/working-with-objects/object-management/) documents.
 
-Each manifest for a CronJob also needs a [`.spec`](/docs/concepts/overview/working-with-objects/kubernetes-objects/#object-spec-and-status) section.
+Each manifest for a CronJob also needs a [`.spec`](/docs/kubernetes/en/concepts/overview/working-with-objects/kubernetes-objects/#object-spec-and-status) section.
 
 {{< note >}}
 If you modify a CronJob, the changes you make will apply to new jobs that start to run after your modification
@@ -164,9 +164,9 @@ it stands for any of available value for a given field.
 ### Job Template
 
 The `.spec.jobTemplate` is the template for the job, and it is required.
-It has exactly the same schema as a [Job](/docs/concepts/workloads/controllers/job/), except that
+It has exactly the same schema as a [Job](/docs/kubernetes/en/concepts/workloads/controllers/job/), except that
 it is nested and does not have an `apiVersion` or `kind`.
-For information about writing a job `.spec`, see [Writing a Job Spec](/docs/concepts/workloads/controllers/job/#writing-a-job-spec).
+For information about writing a job `.spec`, see [Writing a Job Spec](/docs/kubernetes/en/concepts/workloads/controllers/job/#writing-a-job-spec).
 
 ### Starting Deadline
 
