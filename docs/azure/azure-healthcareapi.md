@@ -570,4 +570,87 @@ az healthcareapis workspace iot-connector fhir-destination wait [--created]
                                                                 [--workspace-name]
 ```
 
-                                                               
+## Azure Healthcare APIs Workspace Private Endpoint Connection
+
+### az healthcareapis workspace private-endpoint-connection create
+```
+az healthcareapis workspace private-endpoint-connection create --name
+                                                               --resource-group
+                                                               --workspace-name
+                                                               [--no-wait]
+                                                               [--private-link-service-connection-state]
+```
+
+### az healthcareapis workspace private-endpoint-connection delete
+```
+az healthcareapis workspace private-endpoint-connection delete [--ids]
+                                                               [--name]
+                                                               [--no-wait]
+                                                               [--resource-group]
+                                                               [--subscription]
+                                                               [--workspace-name]
+                                                               [--yes]
+```
+
+### az healthcareapis workspace private-endpoint-connection list
+```
+az healthcareapis workspace private-endpoint-connection list --resource-group
+                                                             --workspace-name
+```
+
+### az healthcareapis workspace private-endpoint-connection show
+```
+az healthcareapis workspace private-endpoint-connection show [--ids]
+                                                             [--name]
+                                                             [--resource-group]
+                                                             [--subscription]
+                                                             [--workspace-name]
+```
+
+### az healthcareapis workspace private-endpoint-connection update
+```
+az healthcareapis workspace private-endpoint-connection update [--add]
+                                                               [--force-string]
+                                                               [--ids]
+                                                               [--name]
+                                                               [--no-wait]
+                                                               [--private-link-service-connection-state]
+                                                               [--remove]
+                                                               [--resource-group]
+                                                               [--set]
+                                                               [--subscription]
+                                                               [--workspace-name]
+```
+
+### az healthcareapis workspace private-endpoint-connection wait
+```
+az healthcareapis workspace private-endpoint-connection wait [--created]
+                                                             [--custom]
+                                                             [--deleted]
+                                                             [--exists]
+                                                             [--ids]
+                                                             [--interval]
+                                                             [--name]
+                                                             [--resource-group]
+                                                             [--subscription]
+                                                             [--timeout]
+                                                             [--updated]
+                                                             [--workspace-name]
+```
+
+## Azure Healthcare APIs Workspace Private Link Resource
+
+### az healthcareapis workspace private-link-resource list
+```
+az healthcareapis workspace private-link-resource list --resource-group
+                                                       --workspace-name
+```
+
+### az healthcareapis workspace private-link-resource show
+```
+az healthcareapis workspace private-link-resource show [--group-name]
+                                                       [--ids]
+                                                       [--resource-group]
+                                                       [--subscription]
+                                                       [--workspace-name]
+```
