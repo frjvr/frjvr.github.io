@@ -1923,6 +1923,485 @@ az webapp deployment container config --enable-cd {false, true}
                                       [--subscription]
 ```
 
+### az webapp deployment container show-cd-url
+```
+az webapp deployment container show-cd-url [--ids]
+                                           [--name]
+                                           [--resource-group]
+                                           [--slot]
+                                           [--subscription]
+```
+
+## Azure Webapp Deployment Github Actions
+
+### az webapp deployment github-actions add
+```
+az webapp deployment github-actions add --repo
+                                        [--branch]
+                                        [--force]
+                                        [--ids]
+                                        [--login-with-github]
+                                        [--name]
+                                        [--resource-group]
+                                        [--runtime]
+                                        [--slot]
+                                        [--subscription]
+                                        [--token]
+```
+
+### az webapp deployment github-actions remove
+```
+az webapp deployment github-actions remove --repo
+                                           [--branch]
+                                           [--ids]
+                                           [--login-with-github]
+                                           [--name]
+                                           [--resource-group]
+                                           [--slot]
+                                           [--subscription]
+                                           [--token]
+```
+
+## Azure Webapp Deployment Slot
+
+### az webapp deployment slot auto-swap
+```
+az webapp deployment slot auto-swap --slot
+                                    [--auto-swap-slot]
+                                    [--disable]
+                                    [--ids]
+                                    [--name]
+                                    [--resource-group]
+                                    [--subscription]
+```
+
+### az webapp deployment slot create
+```
+az webapp deployment slot create --name
+                                 --resource-group
+                                 --slot
+                                 [--configuration-source]
+                                 [--deployment-container-image-name]
+                                 [--docker-registry-server-password]
+                                 [--docker-registry-server-user]
+```
+
+### az webapp deployment slot delete
+```
+az webapp deployment slot delete --slot
+                                 [--ids]
+                                 [--name]
+                                 [--resource-group]
+                                 [--subscription]
+```
+
+### az webapp deployment slot list
+```
+az webapp deployment slot list [--ids]
+                               [--name]
+                               [--resource-group]
+                               [--subscription]
+```
+
+### az webapp deployment slot swap
+```
+az webapp deployment slot swap --slot
+                               [--action {preview, reset, swap}]
+                               [--ids]
+                               [--name]
+                               [--preserve-vnet {false, true}]
+                               [--resource-group]
+                               [--subscription]
+                               [--target-slot]
+```
+
+## Azure Webapp Deployment Source Control
+
+### az webapp deployment source config
+```
+az webapp deployment source config --repo-url
+                                   [--branch]
+                                   [--git-token]
+                                   [--github-action]
+                                   [--ids]
+                                   [--manual-integration]
+                                   [--name]
+                                   [--repository-type {externalgit, git, github, localgit, mercurial}]
+                                   [--resource-group]
+                                   [--slot]
+                                   [--subscription]
+```
+
+### az webapp deployment source config-local-git
+```
+az webapp deployment source config-local-git [--ids]
+                                             [--name]
+                                             [--resource-group]
+                                             [--slot]
+                                             [--subscription]
+```
+
+### az webapp deployment source config-zip
+```
+az webapp deployment source config-zip --src
+                                       [--ids]
+                                       [--name]
+                                       [--resource-group]
+                                       [--slot]
+                                       [--subscription]
+                                       [--timeout]
+```
+
+### az webapp deployment source delete
+```
+az webapp deployment source delete [--ids]
+                                   [--name]
+                                   [--resource-group]
+                                   [--slot]
+                                   [--subscription]
+```
+
+### az webapp deployment source show
+```
+az webapp deployment source show [--ids]
+                                 [--name]
+                                 [--resource-group]
+                                 [--slot]
+                                 [--subscription]
+```
+
+### az webapp deployment source sync
+```
+az webapp deployment source sync [--ids]
+                                 [--name]
+                                 [--resource-group]
+                                 [--slot]
+                                 [--subscription]
+```
+
+### az webapp deployment source update-token
+```
+az webapp deployment source update-token [--git-token]
+```
+
+## Azure Webapp Deployment User
+
+### az webapp deployment user set
+```
+az webapp deployment user set --user-name
+                              [--password]
+```
+
+### az webapp deployment user show
+```
+az webapp deployment user show
+```
+
+## Azure Webapp Hybrid Connection
+
+### az webapp hybrid-connection add
+```
+az webapp hybrid-connection add --hybrid-connection
+                                --name
+                                --namespace
+                                --resource-group
+                                [--slot]
+```
+
+### az webapp hybrid-connection list
+```
+az webapp hybrid-connection list --name
+                                 --resource-group
+                                 [--slot]
+```
+
+### az webapp hybrid-connection remove
+```
+az webapp hybrid-connection remove --hybrid-connection
+                                   --name
+                                   --namespace
+                                   --resource-group
+                                   [--slot]
+```
+
+## Azure Webapp Identity
+
+### az webapp identity assign
+```
+az webapp identity assign [--identities]
+                          [--ids]
+                          [--name]
+                          [--resource-group]
+                          [--role]
+                          [--scope]
+                          [--slot]
+                          [--subscription]
+```
+
+### az webapp identity remove
+```
+az webapp identity remove [--identities]
+                          [--ids]
+                          [--name]
+                          [--resource-group]
+                          [--slot]
+                          [--subscription]
+```
+
+### az webapp identity show
+```
+az webapp identity show [--ids]
+                        [--name]
+                        [--resource-group]
+                        [--slot]
+                        [--subscription]
+```
+
+## Azure Webapp Logs
+
+### az webapp log config
+```
+az webapp log config [--application-logging {azureblobstorage, filesystem, off}]
+                     [--detailed-error-messages {false, true}]
+                     [--docker-container-logging {filesystem, off}]
+                     [--failed-request-tracing {false, true}]
+                     [--ids]
+                     [--level {error, information, verbose, warning}]
+                     [--name]
+                     [--resource-group]
+                     [--slot]
+                     [--subscription]
+                     [--web-server-logging {filesystem, off}]
+```
+
+### az webapp log download
+```
+az webapp log download [--ids]
+                       [--log-file]
+                       [--name]
+                       [--resource-group]
+                       [--slot]
+                       [--subscription]
+```
+
+### az webapp log show
+```
+az webapp log show [--ids]
+                   [--name]
+                   [--resource-group]
+                   [--slot]
+                   [--subscription]
+```
+
+### az webapp log tail
+```
+az webapp log tail [--ids]
+                   [--name]
+                   [--provider]
+                   [--resource-group]
+                   [--slot]
+                   [--subscription]
+```
+
+## Azure Webapp Deployment Logs
+
+### az webapp log deployment list
+```
+az webapp log deployment list --name
+                              --resource-group
+                              [--slot]
+```
+
+### az webapp log deployment log show
+```
+az webapp log deployment show --name
+                              --resource-group
+                              [--deployment-id]
+                              [--slot]
+```
+
+## Azure Webapp Scan
+
+### az webapp scan list-result
+```
+az webapp scan list-result [--ids]
+                           [--name]
+                           [--resource-group]
+                           [--slot]
+                           [--subscription]
+```
+
+### az webapp scan show-result
+```
+az webapp scan show-result --scan-id
+                           [--ids]
+                           [--name]
+                           [--resource-group]
+                           [--slot]
+                           [--subscription]
+```
+
+### az webapp scan start
+```
+az webapp scan start [--ids]
+                     [--name]
+                     [--resource-group]
+                     [--slot]
+                     [--subscription]
+                     [--timeout]
+```
+
+### az webapp scan stop
+```
+az webapp scan stop [--ids]
+                    [--name]
+                    [--resource-group]
+                    [--slot]
+                    [--subscription]
+```
+
+### az webapp scan track
+```
+az webapp scan track --scan-id
+                     [--ids]
+                     [--name]
+                     [--resource-group]
+                     [--slot]
+                     [--subscription]
+```
+
+## Azure Webapp Traffic Routing
+
+### az webapp traffic-routing clear
+```
+az webapp traffic-routing clear [--ids]
+                                [--name]
+                                [--resource-group]
+                                [--subscription]
+```
+
+### az webapp traffic-routing set
+```
+az webapp traffic-routing set --distribution
+                              [--ids]
+                              [--name]
+                              [--resource-group]
+                              [--subscription]
+```
+
+### az webapp traffic-routing show
+```
+az webapp traffic-routing show [--ids]
+                               [--name]
+                               [--resource-group]
+                               [--subscription]
+```
+
+## Azure Webapp Virtual Network Integration
+
+### az webapp vnet-integration add
+```
+az webapp vnet-integration add --name
+                               --resource-group
+                               --subnet
+                               --vnet
+                               [--skip-delegation-check {false, true}]
+                               [--slot]
+```
+
+### az webapp vnet-integration list
+```
+az webapp vnet-integration list --name
+                                --resource-group
+                                [--slot]
+```
+
+### az webapp vnet-integration remove
+```
+az webapp vnet-integration remove --name
+                                  --resource-group
+                                  [--slot]
+```
+
+## Azure Webapp Continuous Webjob
+
+### az webapp webjob continuous list
+```
+az webapp webjob continuous list --name
+                                 --resource-group
+                                 [--slot]
+```
+
+### az webapp webjob continuous remove
+```
+az webapp webjob continuous remove --webjob-name
+                                   [--ids]
+                                   [--name]
+                                   [--resource-group]
+                                   [--slot]
+                                   [--subscription]
+```
+
+### az webapp webjob continuous start
+```
+az webapp webjob continuous start --webjob-name
+                                  [--ids]
+                                  [--name]
+                                  [--resource-group]
+                                  [--slot]
+                                  [--subscription]
+```
+
+### az webapp webjob continuous stop
+```
+az webapp webjob continuous stop --webjob-name
+                                 [--ids]
+                                 [--name]
+                                 [--resource-group]
+                                 [--slot]
+                                 [--subscription]
+```
+
+## Azure Webapp Triggered Webjob
+
+### az webapp webjob triggered list
+```
+az webapp webjob triggered list --name
+                                --resource-group
+                                [--slot]
+```
+
+### az webapp webjob triggered log
+```
+az webapp webjob triggered log --webjob-name
+                               [--ids]
+                               [--name]
+                               [--resource-group]
+                               [--slot]
+                               [--subscription]
+```
+
+### az webapp webjob triggered remove
+```
+az webapp webjob triggered remove --webjob-name
+                                  [--ids]
+                                  [--name]
+                                  [--resource-group]
+                                  [--slot]
+                                  [--subscription]
+```
+
+### az webapp webjob triggered run
+```
+az webapp webjob triggered run --webjob-name
+                               [--ids]
+                               [--name]
+                               [--resource-group]
+                               [--slot]
+                               [--subscription]
+```
+
+
 
 
 
