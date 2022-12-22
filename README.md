@@ -6,4 +6,4 @@
 ### Contact
 #### fjavier.hormigosjimenez@protonmail.com
 
-### [Azure](/azure-index.md)
+
