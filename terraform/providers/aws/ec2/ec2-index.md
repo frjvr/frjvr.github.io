@@ -2,4 +2,5 @@
 
 ### Resources
 
-[**ami**](/terraform/providers/aws/ec2/resources/aws-ami.md)
+[**ami**](/terraform/providers/aws/ec2/resources/aws-ami.md)  
+[**ami_copy**](/terraform/providers/aws/ec2/resources/aws-ami-copy.md)
